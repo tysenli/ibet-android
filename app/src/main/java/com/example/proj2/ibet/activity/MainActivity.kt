@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter
 
 import com.example.proj2.ibet.R
 import com.example.proj2.ibet.fragment.Home
+import com.example.proj2.ibet.fragment.User
 //import com.example.proj2.ibet.fragment.PlayList
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 else -> {
-                    Home(parentContext)
+                    User(parentContext)
 
                 }
             }
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                 0 -> "Home"
                 1 -> "Game"
                 else -> {
-                    return "Search"
+                    return "User"
                 }
             }
         }
