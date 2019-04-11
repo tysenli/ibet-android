@@ -16,7 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.proj2.ibet.Games
 import com.example.proj2.ibet.R
-import com.example.proj2.ibet.activity.login
+import com.example.proj2.ibet.activity.Login
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_user.*
 import kotlinx.android.synthetic.main.fragment_user.view.*
@@ -37,7 +37,7 @@ class User (context: Context): Fragment() {
         super.onStart()
         userlogin.setOnClickListener { view ->
             //Log.d("btnSetup", "Selected")
-            var intent = Intent(parentContext, login::class.java)
+            var intent = Intent(parentContext, Login::class.java)
             startActivity(intent)
         }
 

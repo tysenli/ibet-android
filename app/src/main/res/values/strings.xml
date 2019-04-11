@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Ibet</string>
+    <string name="facebook_app_id">599263050578163</string>
+    <string name="fb_login_protocol_scheme">fb599263050578163</string>
 </resources>
