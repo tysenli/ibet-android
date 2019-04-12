@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_auth.*
 import java.util.*
 
 
-class AuthenticatedActivity : AppCompatActivity() {
+class fbAuthenticatedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

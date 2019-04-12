@@ -1,9 +1,7 @@
 package com.example.proj2.ibet.activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
@@ -15,6 +13,7 @@ import com.facebook.FacebookException
 import com.facebook.FacebookSdk
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import kotlinx.android.synthetic.main.activity_login.*
 
 import java.util.*
 
@@ -28,7 +27,7 @@ class Login : AppCompatActivity() {
 
         setContentView(R.layout.activity_login)
 
-        var btnLoginFacebook = findViewById<Button>(R.id.btnLoginFacebook)
+        //var btnLoginFacebook = findViewById<Button>(R.id.btnLoginFacebook)
 
         btnLoginFacebook.setOnClickListener(View.OnClickListener {
             // Login
@@ -39,7 +38,7 @@ class Login : AppCompatActivity() {
                 object : FacebookCallback<LoginResult> {
                     override fun onSuccess(loginResult: LoginResult) {
                         Log.d("MainActivity", "Facebook token: " + loginResult.accessToken.token)
-                        startActivity(Intent(applicationContext, AuthenticatedActivity::class.java))
+                        startActivity(Intent(applicationContext, fbAuthenticatedActivity::class.java))
                     }
 
                     override fun onCancel() {

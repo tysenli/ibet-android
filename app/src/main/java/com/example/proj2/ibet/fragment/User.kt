@@ -43,11 +43,4 @@ class User (context: Context): Fragment() {
 
     }
 
-
-
-
-
-
-
-
 }
