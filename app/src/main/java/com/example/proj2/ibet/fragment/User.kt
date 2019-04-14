@@ -35,7 +35,7 @@ class User (context: Context): Fragment() {
 
     override fun onStart() {
         super.onStart()
-        userlogin.setOnClickListener { view ->
+        usersignup.setOnClickListener { view ->
             //Log.d("btnSetup", "Selected")
             var intent = Intent(parentContext, Login::class.java)
             startActivity(intent)
