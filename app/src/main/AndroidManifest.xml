@@ -23,10 +23,13 @@
 
         </activity>
 
-        <activity android:name=".activity.Login">
+        <activity android:name=".activity.Signup">
         </activity>
 
         <activity android:name=".activity.fbAuthenticatedActivity">
+        </activity>
+
+        <activity android:name=".activity.emailAuthActivity">
         </activity>
 
         <meta-data android:name="com.facebook.sdk.ApplicationId"
