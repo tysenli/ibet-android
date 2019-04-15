@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.proj2.ibet.R
-import com.example.proj2.ibet.activity.Signup
+import com.example.proj2.ibet.activity.Signup.Signup
 import kotlinx.android.synthetic.main.fragment_user.*
 
 
