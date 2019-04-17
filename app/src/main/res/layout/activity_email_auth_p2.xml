@@ -1,15 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                              android:layout_height="match_parent">
-
     <TextView
             android:text="Sign up (2 of 3)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_signup" android:layout_marginTop="8dp"
+            android:id="@+id/tv_signup2" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:textSize="24sp"
             android:textStyle="bold"/>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="633dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:fillViewport="false" android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/tv_signup2">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            <TextView
+                    android:text="Contact details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_contact_detalis"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="24sp"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:text="Phone number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_phone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="phone"
+                    android:ems="10"
+                    android:background="@drawable/border"
+                    android:id="@+id/phone" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="8dp"
+                    tools:layout_editor_absoluteY="69dp"/>
+            <TextView
+                    android:text="We'll send you an SMS to confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:id="@+id/tv_username3"
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"/>
+            <TextView
+                    android:text="First name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_first_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:background="@drawable/border"
+                    android:id="@+id/first_name" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="8dp"
+                    tools:layout_editor_absoluteY="69dp"/>
+            <TextView
+                    android:text="Last name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_last_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:background="@drawable/border"
+                    android:id="@+id/last_name" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="8dp"
+                    tools:layout_editor_absoluteY="69dp"/>
+            <TextView
+                    android:text="Address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_address"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="24sp"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:text="Address line 1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_address_line1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:background="@drawable/border"
+                    android:id="@+id/address_line1" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="8dp"
+                    tools:layout_editor_absoluteY="69dp"/>
+            <TextView
+                    android:text="Address line 2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_address_line2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:background="@drawable/border"
+                    android:id="@+id/address_line2" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="8dp"
+                    tools:layout_editor_absoluteY="69dp"/>
+            <TextView
+                    android:text="City"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_city"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:background="@drawable/border"
+                    android:id="@+id/city" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="8dp"
+                    tools:layout_editor_absoluteY="69dp"/>
+            <TextView
+                    android:text="Postcodes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_postcodes"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:background="@drawable/border"
+                    android:id="@+id/postcode" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="8dp"
+                    tools:layout_editor_absoluteY="69dp"/>
+            <TextView
+                    android:text="Preferences"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_preferences"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="24sp"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:text="Deposit limit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_deposit_limit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="24sp"
+                    android:textStyle="bold"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>
