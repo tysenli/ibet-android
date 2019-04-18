@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+
+    <CheckBox
+            android:text="Show "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox2" android:textSize="14sp"
+            android:textStyle="italic"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="28dp"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/con_password"/>
+    <TextView
+            android:text="Sign up (1 of 3)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_signup1" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:textSize="24sp"
+            android:textStyle="bold"/>
+
+
+
+    <TextView
+            android:text="User name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_username1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="18sp"
+            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/tv_signup1"/>
+    <EditText
+            android:layout_width="373dp"
+            android:layout_height="39dp"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:background="@drawable/border"
+            android:id="@+id/username" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username1"/>
+    <TextView
+            android:text="This will be used to log in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_username2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="18sp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/username"/>
+
+
+
+    <TextView
+            android:text="Email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_email1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="18sp"
+            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/tv_username2"/>
+    <EditText
+            android:layout_width="374dp"
+            android:layout_height="37dp"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/email" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_email1" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:background="@drawable/border"
+            android:singleLine="false" android:selectAllOnFocus="false" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <TextView
+            android:text="This will be used to log in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_email2" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/email" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="18sp"/>
+
+
+
+    <TextView
+            android:text="Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_password1" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_email2" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="18sp"/>
+    <EditText
+            android:layout_width="375dp"
+            android:layout_height="39dp"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/password" android:layout_marginTop="8dp"
+            android:background="@drawable/border"
+            app:layout_constraintTop_toBottomOf="@+id/tv_password1" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <TextView
+            android:text="At least 8 characters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_password2" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/password" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="18sp"/>
+    <LinearLayout
+            android:layout_width="274dp"
+            android:layout_height="20dp"
+            android:orientation="horizontal" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_password2" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            android:id="@+id/linearLayout">
+        <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminate="false"
+                android:maxHeight="20dip"
+                android:minHeight="20dip"
+                android:layout_weight="1"
+                android:progress="0"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Weak"
+                android:id="@+id/password_strength"/>
+    </LinearLayout>
+
+    <TextView
+            android:text="Tips for a strong password: \n - Use letters and numbers \n - Use special characters (eg.!@) \n - Mix lower and uppercase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_tips_password"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="14sp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+    <TextView
+            android:text="Confirm Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_con_password1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="18sp"
+            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/tv_tips_password"/>
+    <EditText
+            android:layout_width="375dp"
+            android:layout_height="39dp"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/con_password"
+            android:background="@drawable/border"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.05" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/continue1" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_con_password1" app:layout_constraintVertical_bias="0.0"/>
+
+    <Button
+            android:text="Continue"
+            android:layout_width="285dp"
+            android:layout_height="41dp"
+            android:id="@+id/continue1" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/com_facebook_button_login_silver_background_color"/>
+    <CheckBox
+            android:text="Show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox1" android:textSize="14sp"
+            android:textStyle="italic" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/password" android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="28dp"/>
+
+</android.support.constraint.ConstraintLayout>

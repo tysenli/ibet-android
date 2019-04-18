@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+            android:text="Sign up (3 of 3)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_signup3" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:textSize="24sp"
+            android:textStyle="bold"/>
+    <TextView
+            android:text="Final Step. We need to know you're \na real person. \n\nPlease confirm either your phone \nnumber or  your email to complete\nyour registration. "
+            android:layout_width="381dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_word"
+            android:textSize="24sp"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintHorizontal_bias="0.571"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tv_signup3"/>
+    <Button
+            android:text="Confirm with SMS"
+            android:layout_width="282dp"
+            android:layout_height="52dp"
+            android:id="@+id/con_sms" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            android:background="@color/com_facebook_button_login_silver_background_color"
+            app:layout_constraintTop_toBottomOf="@+id/tv_word" app:layout_constraintHorizontal_bias="0.495"
+            android:layout_marginTop="60dp" android:textSize="18sp"/>
+    <Button
+            android:text="Confirm with email"
+            android:layout_width="282dp"
+            android:layout_height="52dp"
+            android:id="@+id/con_email" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            android:background="@color/com_facebook_button_login_silver_background_color"
+            app:layout_constraintHorizontal_bias="0.495"
+            android:textSize="18sp" android:layout_marginTop="72dp" app:layout_constraintTop_toBottomOf="@+id/con_sms"/>
+
+</android.support.constraint.ConstraintLayout>

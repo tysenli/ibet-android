@@ -23,10 +23,13 @@
 
         </activity>
 
-        <activity android:name=".activity.Login">
+        <activity android:name=".activity.Signup.Signup">
         </activity>
 
-        <activity android:name=".activity.fbAuthenticatedActivity">
+        <activity android:name=".activity.Signup.fbAuthenticatedActivity">
+        </activity>
+
+        <activity android:name=".activity.Signup.emailAuthP1">
         </activity>
 
         <meta-data android:name="com.facebook.sdk.ApplicationId"
@@ -46,8 +49,10 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.Signup.emailAuthP2"/>
 
-
+        <activity android:name=".activity.Signup.emailAuthP3">
+        </activity>
 
     </application>
 
