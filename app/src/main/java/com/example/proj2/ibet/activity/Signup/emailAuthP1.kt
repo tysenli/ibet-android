@@ -16,6 +16,7 @@ import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 import android.R.attr.password
 import android.R
+import com.wajahatkarim3.easyvalidation.core.view_ktx.minLength
 import com.ybs.passwordstrengthmeter.PasswordStrength
 
 
@@ -24,13 +25,35 @@ class emailAuthP1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.example.proj2.ibet.R.layout.activity_email_auth_p1)
+        var usertxt = findViewById<EditText>(com.example.proj2.ibet.R.id.username)
         var emailtxt = findViewById<EditText>(com.example.proj2.ibet.R.id.email)
-        //var passwordStr = password.text.toString()
-
         var passwordtxt = findViewById<EditText>(com.example.proj2.ibet.R.id.password)
+        var conPasswordtxt = findViewById<EditText>(com.example.proj2.ibet.R.id.con_password)
 
+        var isValidUser = false
+        var isValidEmail = false
+        var isValidPassword = false
+        var isValidConPassword = false
+
+        continue1.setEnabled(false)
+        usertxt.addTextChangedListener (object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+               isValidUser = true
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                usertxt.validator().nonEmpty().addErrorCallback {
+                    usertxt.error = it
+                }.check()
+            }
+
+        })
         emailtxt.addTextChangedListener (object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
+               isValidEmail = true
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -46,6 +69,7 @@ class emailAuthP1 : AppCompatActivity() {
 
         passwordtxt.addTextChangedListener (object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
+               isValidPassword = true
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -56,6 +80,22 @@ class emailAuthP1 : AppCompatActivity() {
                     passwordtxt.error = it
                 }.check()
                 updatePasswordStrenth(s.toString())
+            }
+
+        })
+        conPasswordtxt.addTextChangedListener (object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                conPasswordtxt.validator().textEqualTo(passwordtxt.text.toString()).addErrorCallback {
+                    conPasswordtxt.error = it
+                }.check()
+                continue1.setEnabled(true)
             }
 
         })
@@ -78,8 +118,11 @@ class emailAuthP1 : AppCompatActivity() {
             }
         }
 
+
+
         continue1.setOnClickListener {
-            startActivity(Intent(applicationContext, emailAuthP2::class.java))
+                startActivity(Intent(applicationContext, emailAuthP2::class.java))
+
         }
 
     }
