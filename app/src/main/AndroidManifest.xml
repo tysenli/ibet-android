@@ -51,6 +51,8 @@
         </activity>
         <activity android:name=".activity.Signup.emailAuthP2"/>
 
+        <activity android:name=".activity.Signup.emailAuthP3">
+        </activity>
 
     </application>
 

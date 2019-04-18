@@ -14,17 +14,18 @@
             android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:textSize="24sp"
             android:textStyle="bold"/>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="633dp"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:fillViewport="false" android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintTop_toBottomOf="@+id/tv_signup2">
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="633dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:fillViewport="false" android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.023"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signup2" app:layout_constraintHorizontal_bias="1.0"
+            android:id="@+id/scrollView2">
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -33,7 +34,7 @@
 
 
             <TextView
-                    android:text="Contact details"
+                    android:text="Personal details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_contact_detalis"
@@ -69,6 +70,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginStart="8dp"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"/>
+
             <TextView
                     android:text="First name"
                     android:layout_width="wrap_content"
@@ -114,6 +116,51 @@
                     android:layout_marginTop="8dp"
                     tools:layout_editor_absoluteY="69dp"/>
             <TextView
+                    android:text="Gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_gender"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <Spinner
+                    android:layout_width="198dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_height="34dp" android:id="@+id/gender"/>
+            <TextView
+                    android:text="Date of birth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_birth"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <TextView
+                    android:id="@+id/birth_show"
+                    android:layout_width="206dp"
+                    android:layout_height="31dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text=""
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" android:textSize="18sp"/>
+
+            <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="select"
+                    android:onClick="clickDataPicker"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/birth_show"/>
+
+
+            <TextView
                     android:text="Address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -121,6 +168,28 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="24sp"
                     android:textStyle="bold"/>
+            <TextView
+                    android:text="Country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_country"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:background="@drawable/border"
+                    android:id="@+id/country" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="8dp"
+                    tools:layout_editor_absoluteY="69dp"/>
             <TextView
                     android:text="Address line 1"
                     android:layout_width="wrap_content"
@@ -194,7 +263,6 @@
                     android:id="@+id/tv_postcodes"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginLeft="8dp"
-
                     android:layout_marginStart="8dp" android:textSize="18sp"/>
             <EditText
                     android:layout_width="match_parent"
@@ -218,6 +286,43 @@
                     android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="24sp"
                     android:textStyle="bold"/>
             <TextView
+                    android:text="Currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_currency"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <Spinner
+                    android:layout_width="198dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_height="34dp" android:id="@+id/currency"/>
+            <TextView
+                    android:text="Odds display"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_odds_display"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <Spinner
+                    android:layout_width="198dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_height="34dp" android:id="@+id/odds_display"/>
+            <TextView
+                    android:text="Preferred team"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_team"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <Spinner
+                    android:layout_width="198dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_height="34dp" android:id="@+id/team"/>
+
+            <TextView
                     android:text="Deposit limit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -225,9 +330,64 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="24sp"
                     android:textStyle="bold"/>
+            <TextView
+                    android:text="Deposit limit - time period"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_time_period"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <Spinner
+                    android:layout_width="198dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_height="34dp" android:id="@+id/time_period"/>
+            <TextView
+                    android:text="Deposit limit - amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_amount"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <Spinner
+                    android:layout_width="198dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_height="34dp" android:id="@+id/amount"/>
+            <TextView
+                    android:text="Promo code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_promo_code"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp" android:textSize="18sp"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:background="@drawable/border"
+                    android:id="@+id/prome_code" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="8dp"
+                    tools:layout_editor_absoluteY="69dp"/>
 
 
         </LinearLayout>
     </ScrollView>
+    <Button
+            android:text="Continue"
+            android:layout_width="282dp"
+            android:layout_height="37dp"
+            android:id="@+id/continue2" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/com_facebook_button_login_silver_background_color"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2"/>
 
 </android.support.constraint.ConstraintLayout>
