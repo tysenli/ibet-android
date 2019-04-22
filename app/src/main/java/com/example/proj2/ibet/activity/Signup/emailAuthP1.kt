@@ -16,6 +16,7 @@ import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 import android.R.attr.password
 import android.R
+import com.example.proj2.ibet.activity.MainActivity
 import com.wajahatkarim3.easyvalidation.core.view_ktx.minLength
 import com.ybs.passwordstrengthmeter.PasswordStrength
 import java.util.*
@@ -134,12 +135,17 @@ class emailAuthP1 : AppCompatActivity() {
             }
         }
 
-
-
         continue1.setOnClickListener {
                 startActivity(Intent(applicationContext, emailAuthP2::class.java))
 
         }
+
+        close1.setOnClickListener {
+            startActivity(Intent(applicationContext, MainActivity::class.java))
+
+        }
+
+
 
     }
 

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.*
 import com.example.proj2.ibet.R
+import com.example.proj2.ibet.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 import kotlinx.android.synthetic.main.activity_email_auth_p2.*
 import java.text.SimpleDateFormat
@@ -37,6 +38,10 @@ class emailAuthP2: AppCompatActivity() {
         }
         continue2.setOnClickListener {
             startActivity(Intent(applicationContext, emailAuthP3::class.java))
+        }
+        close2.setOnClickListener {
+            startActivity(Intent(applicationContext, MainActivity::class.java))
+
         }
     }
     @RequiresApi(Build.VERSION_CODES.N)
