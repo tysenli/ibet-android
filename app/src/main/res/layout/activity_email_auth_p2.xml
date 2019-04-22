@@ -4,7 +4,7 @@
                                              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                              android:layout_height="match_parent">
     <TextView
-            android:text="Sign up (2 of 3)"
+            android:text="@string/sign_up_2_of_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_signup2" android:layout_marginTop="8dp"
@@ -34,7 +34,7 @@
 
 
             <TextView
-                    android:text="Personal details"
+                    android:text="@string/personal_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_contact_detalis"
@@ -42,7 +42,7 @@
                     android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="24sp"
                     android:textStyle="bold"/>
             <TextView
-                    android:text="Phone number"
+                    android:text="@string/phone_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_phone"
@@ -62,7 +62,7 @@
                     android:layout_marginTop="8dp"
                     tools:layout_editor_absoluteY="69dp"/>
             <TextView
-                    android:text="We'll send you an SMS to confirm"
+                    android:text="@string/we_ll_send_you_an_sms_to_confirm"
                     android:layout_width="wrap_content"
                     android:layout_height="34dp"
                     android:id="@+id/tv_username3"
@@ -72,7 +72,7 @@
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"/>
 
             <TextView
-                    android:text="First name"
+                    android:text="@string/first_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_first_name"
@@ -94,7 +94,7 @@
                     android:layout_marginTop="8dp"
                     tools:layout_editor_absoluteY="69dp"/>
             <TextView
-                    android:text="Last name"
+                    android:text="@string/last_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_last_name"
@@ -116,7 +116,7 @@
                     android:layout_marginTop="8dp"
                     tools:layout_editor_absoluteY="69dp"/>
             <TextView
-                    android:text="Gender"
+                    android:text="@string/gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_gender"
@@ -129,7 +129,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_height="34dp" android:id="@+id/gender"/>
             <TextView
-                    android:text="Date of birth"
+                    android:text="@string/date_of_birth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_birth"
@@ -153,7 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="select"
+                    android:text="@string/select"
                     android:onClick="clickDataPicker"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -161,7 +161,7 @@
 
 
             <TextView
-                    android:text="Address"
+                    android:text="@string/address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_address"
@@ -169,7 +169,7 @@
                     android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="24sp"
                     android:textStyle="bold"/>
             <TextView
-                    android:text="Country"
+                    android:text="@string/country"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_country"
@@ -191,7 +191,7 @@
                     android:layout_marginTop="8dp"
                     tools:layout_editor_absoluteY="69dp"/>
             <TextView
-                    android:text="Address line 1"
+                    android:text="@string/address_line_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_address_line1"
@@ -213,7 +213,7 @@
                     android:layout_marginTop="8dp"
                     tools:layout_editor_absoluteY="69dp"/>
             <TextView
-                    android:text="Address line 2"
+                    android:text="@string/address_line_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_address_line2"
@@ -235,7 +235,7 @@
                     android:layout_marginTop="8dp"
                     tools:layout_editor_absoluteY="69dp"/>
             <TextView
-                    android:text="City"
+                    android:text="@string/city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_city"
@@ -257,7 +257,7 @@
                     android:layout_marginTop="8dp"
                     tools:layout_editor_absoluteY="69dp"/>
             <TextView
-                    android:text="Postcodes"
+                    android:text="@string/postcodes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_postcodes"
@@ -278,7 +278,7 @@
                     android:layout_marginTop="8dp"
                     tools:layout_editor_absoluteY="69dp"/>
             <TextView
-                    android:text="Preferences"
+                    android:text="@string/preferences"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_preferences"
@@ -286,7 +286,7 @@
                     android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="24sp"
                     android:textStyle="bold"/>
             <TextView
-                    android:text="Currency"
+                    android:text="@string/currency"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_currency"
@@ -298,7 +298,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_height="34dp" android:id="@+id/currency"/>
             <TextView
-                    android:text="Odds display"
+                    android:text="@string/odds_display"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_odds_display"
@@ -310,7 +310,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_height="34dp" android:id="@+id/odds_display"/>
             <TextView
-                    android:text="Preferred team"
+                    android:text="@string/preferred_team"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_team"
@@ -323,7 +323,7 @@
                     android:layout_height="34dp" android:id="@+id/team"/>
 
             <TextView
-                    android:text="Deposit limit"
+                    android:text="@string/deposit_limit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_deposit_limit"
@@ -331,7 +331,7 @@
                     android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="24sp"
                     android:textStyle="bold"/>
             <TextView
-                    android:text="Deposit limit - time period"
+                    android:text="@string/deposit_limit_time_period"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_time_period"
@@ -343,7 +343,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_height="34dp" android:id="@+id/time_period"/>
             <TextView
-                    android:text="Deposit limit - amount"
+                    android:text="@string/deposit_limit_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_amount"
@@ -355,7 +355,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_height="34dp" android:id="@+id/amount"/>
             <TextView
-                    android:text="Promo code"
+                    android:text="@string/promo_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_promo_code"
@@ -380,7 +380,7 @@
         </LinearLayout>
     </ScrollView>
     <Button
-            android:text="Continue"
+            android:text="@string/continue_"
             android:layout_width="282dp"
             android:layout_height="37dp"
             android:id="@+id/continue2" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"

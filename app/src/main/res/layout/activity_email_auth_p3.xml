@@ -4,7 +4,7 @@
                                              android:layout_height="match_parent"
                                              xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
-            android:text="Sign up (3 of 3)"
+            android:text="@string/sign_up_3_of_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_signup3" android:layout_marginTop="8dp"
@@ -14,7 +14,7 @@
             android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:textSize="24sp"
             android:textStyle="bold"/>
     <TextView
-            android:text="Final Step. We need to know you're \na real person. \n\nPlease confirm either your phone \nnumber or  your email to complete\nyour registration. "
+            android:text="@string/final_step_we_need_to_know_you_re_na_real_person_n_nplease_confirm_either_your_phone_nnumber_or_your_email_to_complete_nyour_registration"
             android:layout_width="381dp"
             android:layout_height="wrap_content"
             android:id="@+id/tv_word"
@@ -25,7 +25,7 @@
             app:layout_constraintHorizontal_bias="0.571"
             android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tv_signup3"/>
     <Button
-            android:text="Confirm with SMS"
+            android:text="@string/confirm_with_sms"
             android:layout_width="282dp"
             android:layout_height="52dp"
             android:id="@+id/con_sms" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
@@ -35,7 +35,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_word" app:layout_constraintHorizontal_bias="0.495"
             android:layout_marginTop="60dp" android:textSize="18sp"/>
     <Button
-            android:text="Confirm with email"
+            android:text="@string/confirm_with_email"
             android:layout_width="282dp"
             android:layout_height="52dp"
             android:id="@+id/con_email" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"

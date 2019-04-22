@@ -1,11 +1,76 @@
 <resources>
     <string name="app_name">Ibet</string>
-    <string name="facebook_app_id">599263050578163</string>
-    <string name="fb_login_protocol_scheme">fb599263050578163</string>
+    <string name="facebook_app_id" translatable="false">599263050578163</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb599263050578163</string>
     <string name="password_strength_weak">Weak</string>
     <string name="password_strength_medium">Medium</string>
     <string name="password_strength_strong">Strong</string>
     <string name="password_strength_very_strong">Very Strong</string>
-    <string name="selected_item">Selected item:</string>
+    <string name="selected_item" translatable="false">Selected item:</string>
+    <string name="sign_up_1_of_3">Sign up (1 of 3)</string>
+    <string name="show">Show</string>
+    <string name="user_name">User name</string>
+    <string name="this_will_be_used_to_log_in">This will be used to log in</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="at_least_8_characters">At least 8 characters</string>
+    <string name="weak">Weak</string>
+    <string name="tips_for_a_strong_password_n_use_letters_and_numbers_n_use_special_characters_eg_n_mix_lower_and_uppercase"
+            translatable="false">
+        Tips for a strong password: - Use letters and numbers - Use special characters (eg.!@) - Mix lower and uppercase
+    </string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="continue_">Continue</string>
+    <string name="sign_up_2_of_3">Sign up (2 of 3)</string>
+    <string name="personal_details">Personal details</string>
+    <string name="phone_number">Phone number</string>
+    <string name="select">select</string>
+    <string name="address_line_2">Address line 2</string>
+    <string name="we_ll_send_you_an_sms_to_confirm">We\'ll send you an SMS to confirm</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="gender">Gender</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="city">City</string>
+    <string name="address">Address</string>
+    <string name="country">Country</string>
+    <string name="address_line_1">Address line 1</string>
+    <string name="postcodes">Postcodes</string>
+    <string name="preferences">Preferences</string>
+    <string name="promo_code">Promo code</string>
+    <string name="deposit_limit_amount">Deposit limit - amount</string>
+    <string name="deposit_limit_time_period">Deposit limit - time period</string>
+    <string name="deposit_limit">Deposit limit</string>
+    <string name="currency">Currency</string>
+    <string name="odds_display">Odds display</string>
+    <string name="preferred_team">Preferred team</string>
+    <string name="sign_up_3_of_3">Sign up (3 of 3)</string>
+    <string name="final_step_we_need_to_know_you_re_na_real_person_n_nplease_confirm_either_your_phone_nnumber_or_your_email_to_complete_nyour_registration"
+            translatable="false">
+        Final Step. We need to know you\'re a real person. Please confirm either your phone number or your email to
+        complete your registration.
+    </string>
+    <string name="confirm_with_sms">Confirm with SMS</string>
+    <string name="confirm_with_email">Confirm with email</string>
+    <string name="sign_up">Sign up</string>
+    <string name="welcome_to_the_best_n_betting_on_the_planet_n" translatable="false">Welcome to the best betting on the planet.</string>
+    <string name="we_mean_it_ibet_is_the_mutt_s_nuts_n_soon_you_ll_see_why_n_n_so_how_would_you_like_to_log_in_to_n_your_ibet_account"
+            translatable="false">
+        We mean it. ibet is the mutt’s nuts. Soon you’ll see why. So, how would you like to log in to your ibet account?
+    </string>
+    <string name="i_ll_use_facebook">I\'ll use Facebook</string>
+    <string name="i_ll_use_twitter">I\'ll use Twitter</string>
+    <string name="i_ll_use_email_and_password">I\'ll use email and password</string>
+    <string name="we_will_sometimes_send_you_emails_with_offers_n_regarding_our_services_you_can_unsubscribe_n_from_receiving_these_emails_at_any_time_free_n_of_charge_n_nby_signing_up_you_agree_to_ibet_s_terms_and_conditions_and_confirm_that_you_ve_read_and_understood_the_privacy_policy"
+            translatable="false">
+        We will sometimes send you emails with offers regarding our services.You can unsubscribe from receiving these
+        emails at any time, free of charge. By signing up you agree to ibet’s terms and conditions and confirm that
+        you’ve read and understood the privacy policy.
+    </string>
+    <string name="login">Login</string>
+    <string name="sign">Sign Up</string>
+    <string name="chinese">Chinese</string>
+    <string name="english">english</string>
+
 
 </resources>
