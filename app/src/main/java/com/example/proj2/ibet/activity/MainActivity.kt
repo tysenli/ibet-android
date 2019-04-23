@@ -16,6 +16,7 @@ import com.example.proj2.ibet.Games
 
 import com.example.proj2.ibet.R
 import com.example.proj2.ibet.fragment.Home
+import com.example.proj2.ibet.fragment.Language
 import com.example.proj2.ibet.fragment.User
 //import com.example.proj2.ibet.fragment.PlayList
 
@@ -85,6 +86,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val ft = fm.beginTransaction()
                 //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
                 ft.replace(R.id.frag_placeholder, User(this@MainActivity), "FAVORITES_FRAG")
+                ft.commit()
+            }
+            R.id.language -> {
+                val fm = supportFragmentManager
+
+                // add
+                val ft = fm.beginTransaction()
+                //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
+                ft.replace(R.id.frag_placeholder, Language(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit()
             }
 

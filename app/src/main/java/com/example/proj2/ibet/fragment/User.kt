@@ -32,18 +32,7 @@ class User (context: Context): Fragment() {
             var intent = Intent(parentContext, Signup::class.java)
             startActivity(intent)
         }
-        chinese.setOnClickListener {
-            val locale = Locale("zh")
-            val config = context!!.resources.configuration
-            config.locale = locale
-            context!!.resources.updateConfiguration(config, context!!.resources.displayMetrics)
-        }
-        english.setOnClickListener {
-            val locale = Locale("en")
-            val config = context!!.resources.configuration
-            config.locale = locale
-            context!!.resources.updateConfiguration(config, context!!.resources.displayMetrics)
-        }
+
 
 
     }
