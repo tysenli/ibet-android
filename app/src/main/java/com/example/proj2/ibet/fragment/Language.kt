@@ -3,6 +3,7 @@ package com.example.proj2.ibet.fragment
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -33,6 +34,7 @@ class Language (context: Context): Fragment() {
     override fun onStart() {
         super.onStart()
         chinese.setOnClickListener {
+            chinese.setBackgroundColor(Color.LTGRAY)
             val locale = Locale("zh")
             val config = context!!.resources.configuration
             config.locale = locale
@@ -40,6 +42,7 @@ class Language (context: Context): Fragment() {
             startActivity(Intent(parentContext, MainActivity::class.java))
         }
         english.setOnClickListener {
+            english.setBackgroundColor(Color.LTGRAY)
             val locale = Locale("en")
             val config = context!!.resources.configuration
             config.locale = locale
