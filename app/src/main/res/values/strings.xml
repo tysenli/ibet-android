@@ -69,7 +69,7 @@
     </string>
     <string name="login">Login</string>
     <string name="sign">Sign Up</string>
-    <string name="chinese">Chinese</string>
+    <string name="chinese">中文</string>
     <string name="english" translatable="false">english</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
