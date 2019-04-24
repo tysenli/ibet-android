@@ -78,6 +78,7 @@
     <string name="game">Game</string>
     <string name="user">User</string>
     <string name="language">Language</string>
+    <string name="title">Title</string>
 
 
 </resources>
