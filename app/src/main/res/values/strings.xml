@@ -2,4 +2,10 @@
     <string name="app_name">Ibet</string>
     <string name="facebook_app_id">599263050578163</string>
     <string name="fb_login_protocol_scheme">fb599263050578163</string>
+    <string name="password_strength_weak">Weak</string>
+    <string name="password_strength_medium">Medium</string>
+    <string name="password_strength_strong">Strong</string>
+    <string name="password_strength_very_strong">Very Strong</string>
+    <string name="selected_item">Selected item:</string>
+
 </resources>
