@@ -3,7 +3,7 @@
                                              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                              android:layout_height="match_parent">
     <TextView
-            android:text="Sign up"
+            android:text="@string/sign_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView1"
@@ -15,7 +15,7 @@
     />
 
     <TextView
-            android:text=" Welcome to the best \n betting on the planet.\n"
+            android:text="@string/welcome_to_the_best_n_betting_on_the_planet_n"
             android:layout_width="303dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
@@ -25,7 +25,7 @@
             android:textSize="26sp" android:textStyle="bold" android:textColor="@android:color/widget_edittext_dark"/>
 
     <TextView
-            android:text=" We mean it. ibet is the mutt’s nuts. \n Soon you’ll see why. \n \n So, how would you like to log in to \n your ibet account?"
+            android:text="@string/we_mean_it_ibet_is_the_mutt_s_nuts_n_soon_you_ll_see_why_n_n_so_how_would_you_like_to_log_in_to_n_your_ibet_account"
             android:layout_width="381dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView3"
@@ -44,7 +44,7 @@
             android:layout_centerInParent="true"
             android:layout_margin="20dp"
             android:background="@color/com_facebook_button_login_silver_background_color"
-            android:text="I'll use Facebook"
+            android:text="@string/i_ll_use_facebook"
             android:textAllCaps="false"
             android:textColor="@android:color/widget_edittext_dark"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
             android:layout_centerInParent="true"
             android:layout_margin="20dp"
             android:background="@color/com_facebook_button_login_silver_background_color"
-            android:text="I'll use Twitter"
+            android:text="@string/i_ll_use_twitter"
             android:textAllCaps="false"
             android:textColor="@android:color/widget_edittext_dark"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,7 @@
             android:layout_centerInParent="true"
             android:layout_margin="20dp"
             android:background="@color/com_facebook_button_login_silver_background_color"
-            android:text="I'll use email and password"
+            android:text="@string/i_ll_use_email_and_password"
             android:textAllCaps="false"
             android:textColor="@android:color/widget_edittext_dark"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +87,7 @@
     />
 
     <TextView
-            android:text="We will sometimes send you emails with offers \n regarding our services.You can unsubscribe \n from receiving these emails at any time, free \n of charge. \n \nBy signing up you agree to ibet’s terms and conditions and confirm that you’ve read and understood the privacy policy."
+            android:text="@string/we_will_sometimes_send_you_emails_with_offers_n_regarding_our_services_you_can_unsubscribe_n_from_receiving_these_emails_at_any_time_free_n_of_charge_n_nby_signing_up_you_agree_to_ibet_s_terms_and_conditions_and_confirm_that_you_ve_read_and_understood_the_privacy_policy"
             android:layout_width="375dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView4"

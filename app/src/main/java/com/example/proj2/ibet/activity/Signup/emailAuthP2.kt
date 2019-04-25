@@ -9,19 +9,41 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.*
 import com.example.proj2.ibet.R
+import com.example.proj2.ibet.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 import kotlinx.android.synthetic.main.activity_email_auth_p2.*
 import java.text.SimpleDateFormat
 import java.util.*
 
+
+
 class emailAuthP2: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_auth_p2)
+        //title
+        var title = arrayOf("Mr.", "Mrs.", "Ms.")
+        var titleSpinner = findViewById<Spinner>(R.id.title)
+        if (titleSpinner != null) {
+            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, title)
+            titleSpinner.adapter = arrayAdapter
+
+            titleSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    //Toast.makeText(this, getString(R.string.selected_item) + " " + gender[position], Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // Code to perform some action when nothing is selected
+                }
+            }
+
+        }
+        //gender
         val gender = arrayOf("male", "female")
         val genderSpinner = findViewById<Spinner>(R.id.gender)
         if (genderSpinner != null) {
-            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, gender)
+            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, gender)
             genderSpinner.adapter = arrayAdapter
 
             genderSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -35,10 +57,67 @@ class emailAuthP2: AppCompatActivity() {
             }
 
         }
+        // country
+        val locales = Locale.getAvailableLocales();
+        val countries = ArrayList<String>()
+        for (locale in locales) {
+            val country = locale.displayCountry
+            if (country.trim { it <= ' ' }.length > 0 && !countries.contains(country)) {
+                countries.add(country)
+            }
+        }
+
+        Collections.sort(countries)
+        val countrySpinner = findViewById<Spinner>(R.id.country)
+        if (countrySpinner != null) {
+            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, countries)
+            countrySpinner.adapter = arrayAdapter
+        }
+        //currency
+        val currency = arrayOf("GBP", "CAD","EUR","RMB","USD")
+        val currencySpinner = findViewById<Spinner>(R.id.currency)
+        if (currencySpinner != null) {
+            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, currency)
+            currencySpinner.adapter = arrayAdapter
+        }
+        //odds
+        val odds = arrayOf("Decimal Odds","Fractional Odds", "US Odds")
+        val oddsSpinner = findViewById<Spinner>(R.id.odds_display)
+        if (oddsSpinner != null) {
+            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, odds)
+            oddsSpinner.adapter = arrayAdapter
+        }
+        //prefer team
+        val prefer = arrayOf("01","02","03")
+        val preferSpinner = findViewById<Spinner>(R.id.team)
+        if (preferSpinner != null) {
+            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, prefer)
+            preferSpinner.adapter = arrayAdapter
+        }
+        //deposit limit - time
+        val deTime = arrayOf("1 week", "1 month","1 year")
+        val timeSpinner = findViewById<Spinner>(R.id.time_period)
+        if (timeSpinner != null) {
+            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, deTime)
+            timeSpinner.adapter = arrayAdapter
+        }
+        //deposit limit - amount
+        val amount = arrayOf("1 hundred", "1 thousand","1 million","1 billion")
+        val amountSpinner = findViewById<Spinner>(R.id.amount)
+        if (amountSpinner != null) {
+            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, amount)
+            amountSpinner.adapter = arrayAdapter
+        }
+
         continue2.setOnClickListener {
             startActivity(Intent(applicationContext, emailAuthP3::class.java))
         }
+        close2.setOnClickListener {
+            startActivity(Intent(applicationContext, MainActivity::class.java))
+
+        }
     }
+
     @RequiresApi(Build.VERSION_CODES.N)
     fun clickDataPicker(view: View) {
         val c = Calendar.getInstance()
@@ -46,7 +125,7 @@ class emailAuthP2: AppCompatActivity() {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        val dpd = DatePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 // Display Selected date in Toast
             //Toast.makeText(this, """$dayOfMonth - ${monthOfYear + 1} - $year""", Toast.LENGTH_LONG).show()
             birth_show.setText("""$dayOfMonth - ${monthOfYear + 1} - $year""")
@@ -55,29 +134,7 @@ class emailAuthP2: AppCompatActivity() {
         dpd.show()
     }
 
-        /*
-        val tv_birth: TextView = findViewById(R.id.birth)
-        tv_birth.text = SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
 
-        var cal = Calendar.getInstance()
-
-        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            cal.set(Calendar.YEAR, year)
-            cal.set(Calendar.MONTH, monthOfYear)
-            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-
-            val myFormat = "dd.MM.yyyy" // mention the format you need
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            tv_birth.text = sdf.format(cal.time)
-
-        }
-
-        tv_birth.setOnClickListener {
-            DatePickerDialog(this, dateSetListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)).show()
-        }*/
 
 
 }
