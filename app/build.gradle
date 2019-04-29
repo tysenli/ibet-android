@@ -21,6 +21,14 @@ android {
         }
     }
 }
+android {
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -38,6 +46,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.facebook.android:facebook-android-sdk:4.17.0'
+    implementation 'com.github.kittinunf.fuel:fuel:2.0.0'
+    implementation 'com.hbb20:ccp:2.2.2'
 
 
 }

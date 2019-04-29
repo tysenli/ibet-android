@@ -10,6 +10,8 @@ import android.view.View
 import android.widget.*
 import com.example.proj2.ibet.R
 import com.example.proj2.ibet.activity.MainActivity
+import com.github.kittinunf.fuel.Fuel
+import com.hbb20.CountryCodePicker
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 import kotlinx.android.synthetic.main.activity_email_auth_p2.*
 import java.text.SimpleDateFormat
@@ -17,10 +19,23 @@ import java.util.*
 
 
 
-class emailAuthP2: AppCompatActivity() {
+
+class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener  {
+    private var ccp: CountryCodePicker?=null
+    private var countryCode:String?=null
+    private var countryName:String?=null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_auth_p2)
+        //phone_area
+        ccp = findViewById<com.hbb20.CountryCodePicker>(R.id.country_code_picker)
+        ccp!!.setOnCountryChangeListener(this)
+
+        //to set default country code as Japan
+        //ccp!!.setDefaultCountryUsingNameCode("JP")
+
         //title
         var title = arrayOf("Mr.", "Mrs.", "Ms.")
         var titleSpinner = findViewById<Spinner>(R.id.title)
@@ -108,14 +123,30 @@ class emailAuthP2: AppCompatActivity() {
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, amount)
             amountSpinner.adapter = arrayAdapter
         }
-
-        continue2.setOnClickListener {
+        /*
+        val signupJson = """
+            { "title" : "foo",
+            "body" : "bar",
+             "id" : "1"
+            }
+            """
+        */
+        signup2.setOnClickListener {
+            //post(signupJson)
             startActivity(Intent(applicationContext, emailAuthP3::class.java))
+
         }
         close2.setOnClickListener {
             startActivity(Intent(applicationContext, MainActivity::class.java))
 
         }
+    }
+    override fun onCountrySelected() {
+        countryCode=ccp!!.selectedCountryCode
+        countryName=ccp!!.selectedCountryName
+
+        Toast.makeText(this,"Country Code "+countryCode,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Country Name "+countryName,Toast.LENGTH_SHORT).show()
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -132,6 +163,12 @@ class emailAuthP2: AppCompatActivity() {
 
         }, year, month, day)
         dpd.show()
+    }
+
+    private fun post(signupJson : String) {
+        val (request, response, result) = Fuel.post("http://10.0.2.2:8000/users/api/signup")
+            .body(signupJson)
+            .response()
     }
 
 

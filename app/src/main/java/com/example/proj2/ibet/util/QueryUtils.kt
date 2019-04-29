@@ -3,6 +3,7 @@ package com.example.proj2.ibet.util
 import android.text.TextUtils
 import android.util.Log
 import com.example.proj2.ibet.model.GameModel
+import com.github.kittinunf.fuel.httpGet
 
 import org.json.JSONArray
 import org.json.JSONException
@@ -24,16 +25,18 @@ class QueryUtils {
 
         fun fetchGameData(jsonQueryString: String): ArrayList<GameModel>? {
             val url: URL? = createUrl("${this.BaseURL }$jsonQueryString")
-
             var jsonResponse: String? = null
+           //val (request, response, result) = "http://10.0.2.2:8000/users/api/games/?term=Casino".httpGet().response()
             try {
                 jsonResponse = makeHttpRequest(url)
             }
             catch (e: IOException) {
                 Log.e(this.LogTag, "Problem making the HTTP request.", e)
             }
-
             return extractDataFromJson(jsonResponse)
+
+
+
         }
 
 
@@ -78,7 +81,7 @@ class QueryUtils {
                 urlConnection?.disconnect()
                 inputStream?.close()
             }
-
+            println(jsonResponse)
             return jsonResponse
         }
 
