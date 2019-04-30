@@ -27,9 +27,6 @@ class emailAuthP1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
-
         setContentView(com.example.proj2.ibet.R.layout.activity_email_auth_p1)
         var usertxt = findViewById<EditText>(com.example.proj2.ibet.R.id.username)
         var emailtxt = findViewById<EditText>(com.example.proj2.ibet.R.id.email)
@@ -49,7 +46,6 @@ class emailAuthP1 : AppCompatActivity() {
                }
 
             }
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 

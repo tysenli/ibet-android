@@ -278,6 +278,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_postcodes"
+                    android:inputType="number"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp" android:textSize="18sp"/>
@@ -287,7 +288,7 @@
                     android:inputType="textPersonName"
                     android:ems="10"
                     android:background="@drawable/border"
-                    android:id="@+id/postcode" android:layout_marginStart="8dp"
+                    android:id="@+id/zipcode" android:layout_marginStart="8dp"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
                     android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"

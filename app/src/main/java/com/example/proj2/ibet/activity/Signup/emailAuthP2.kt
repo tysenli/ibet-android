@@ -6,12 +6,15 @@ import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.*
 import com.example.proj2.ibet.R
 import com.example.proj2.ibet.activity.MainActivity
 import com.github.kittinunf.fuel.Fuel
 import com.hbb20.CountryCodePicker
+import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 import kotlinx.android.synthetic.main.activity_email_auth_p2.*
 import java.text.SimpleDateFormat
@@ -35,7 +38,50 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
 
         //to set default country code as Japan
         //ccp!!.setDefaultCountryUsingNameCode("JP")
+        phone.addTextChangedListener (object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
 
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                phone.validator().nonEmpty().addErrorCallback {
+                    phone.error = it
+                }.check()
+            }
+
+        })
+        //first_name
+        first_name.addTextChangedListener (object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                first_name.validator().nonEmpty().addErrorCallback {
+                    first_name.error = it
+                }.check()
+            }
+
+        })
+        //last_name
+        last_name.addTextChangedListener (object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                last_name.validator().nonEmpty().addErrorCallback {
+                    last_name.error = it
+                }.check()
+            }
+
+        })
         //title
         var title = arrayOf("Mr.", "Mrs.", "Ms.")
         var titleSpinner = findViewById<Spinner>(R.id.title)
@@ -88,6 +134,36 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, countries)
             countrySpinner.adapter = arrayAdapter
         }
+        //city
+        city.addTextChangedListener (object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                city.validator().nonEmpty().addErrorCallback {
+                    city.error = it
+                }.check()
+            }
+
+        })
+        //zipcode
+        zipcode.addTextChangedListener (object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                zipcode.validator().nonEmpty().addErrorCallback {
+                    zipcode.error = it
+                }.check()
+            }
+
+        })
         //currency
         val currency = arrayOf("GBP", "CAD","EUR","RMB","USD")
         val currencySpinner = findViewById<Spinner>(R.id.currency)
