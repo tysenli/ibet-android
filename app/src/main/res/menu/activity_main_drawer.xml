@@ -27,9 +27,6 @@
                         android:id="@+id/lottery"
                         android:title="Lottery"/>
                  <item
-                    android:id="@+id/user"
-                    android:title="@string/user"/>
-                 <item
                          android:id="@+id/language"
                     android:title="@string/language"/>
             </menu>

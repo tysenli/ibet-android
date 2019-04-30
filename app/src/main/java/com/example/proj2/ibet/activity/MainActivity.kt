@@ -1,23 +1,18 @@
 package com.example.proj2.ibet.activity
 
-import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
-import com.example.proj2.ibet.Games
 
 
 import com.example.proj2.ibet.R
 import com.example.proj2.ibet.fragment.Home
 import com.example.proj2.ibet.fragment.Language
-import com.example.proj2.ibet.fragment.User
+import com.example.proj2.ibet.fragment.Login
 //import com.example.proj2.ibet.fragment.PlayList
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -58,7 +53,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
+            R.id.login -> {
+                val fm = supportFragmentManager
+
+                // add
+                val ft = fm.beginTransaction()
+                //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
+                ft.replace(R.id.frag_placeholder, Login(this@MainActivity), "FAVORITES_FRAG")
+                ft.commit()
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -78,15 +82,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.game -> {
 
-            }
-            R.id.user -> {
-                val fm = supportFragmentManager
-
-                // add
-                val ft = fm.beginTransaction()
-                //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
-                ft.replace(R.id.frag_placeholder, User(this@MainActivity), "FAVORITES_FRAG")
-                ft.commit()
             }
             R.id.language -> {
                 val fm = supportFragmentManager

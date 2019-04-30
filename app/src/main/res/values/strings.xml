@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ibet</string>
+    <string name="app_name">ibet</string>
     <string name="facebook_app_id" translatable="false">599263050578163</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb599263050578163</string>
     <string name="password_strength_weak">Weak</string>
@@ -87,6 +87,7 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="support">Support</string>
     <string name="search_ibet">Search iBet</string>
+    <string name="log_in">Log in</string>
 
 
 </resources>
