@@ -8,19 +8,28 @@ import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.proj2.ibet.R
 import com.example.proj2.ibet.activity.MainActivity
 import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.core.extensions.jsonBody
 import com.hbb20.CountryCodePicker
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 import kotlinx.android.synthetic.main.activity_email_auth_p2.*
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
-
-
+//import jdk.nashorn.internal.runtime.ScriptingFunctions.readLine
+import java.net.HttpURLConnection.HTTP_OK
+//import com.sun.xml.internal.ws.streaming.XMLStreamWriterUtil.getOutputStream
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
+import java.net.HttpURLConnection
+import java.net.URL
 
 
 class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener  {
@@ -199,15 +208,69 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, amount)
             amountSpinner.adapter = arrayAdapter
         }
-        /*
-        val signupJson = """
-            { "title" : "foo",
-            "body" : "bar",
-             "id" : "1"
+
+
+
+
+        var signupJson =
+            """
+            {
+             "username":"Jiaqi",
+             "password1":"Lub13080*",
+	            "password2":"Lub13080*",
+	            "email":"jiaqi@test.com",
+	            "phone": "3142004001",
+	            "first_name": "jiaqi",
+	            "last_name": "hu",
+	            "title": "Mr.",
+	            "gender": "male",
+	            "date_of_birth": "02/02/1996",
+	            "country": "United States",
+	            "street_address_1": "123 street",
+	            "street_address_2": "123",
+	            "city": "san jose",
+	            "state": "ca",
+	            "zipcode": "95954",
+	            "preferred_team": "01",
+	            "over_eighteen": true,
+	            "contact_option":"SMS",
+
             }
             """
-        */
+
+
         signup2.setOnClickListener {
+            /*
+            val signupJson = JSONObject()
+            signupJson.put("username" , "Jiaqi")
+            signupJson.put("password1", "LUB13080*")
+            signupJson.put("password2", "LUB13080*")
+            signupJson.put("email"    , "jiaqi@test.com")
+            signupJson.put("phone"    , "3143143131")
+            signupJson.put("first_name" , "Jennie")
+            signupJson.put("last_name", "Hu")
+            signupJson.put("title"    , "Ms.")
+            signupJson.put("gender"   , "female")
+            signupJson.put("date_of_birth" , "04/07/1996")
+            signupJson.put("country"  , "United States")
+            signupJson.put("street_address_1" , "test street")
+            signupJson.put("street_address_2" , "123")
+            signupJson.put("city"     , "saint louis")
+            signupJson.put("state"    , "MO")
+            signupJson.put("zipcode"  , "63130")
+            signupJson.put("preferred_team" , "01")
+            signupJson.put("over_eighteen" , true) */
+            println(signupJson)
+
+            val (request, response, result) = Fuel.post("http://127.0.0.1:8000/users/api/signup")
+                .body(signupJson)
+                .responseString()
+
+            result.fold(success = {
+                println(it.toString())
+            }, failure = {
+                println(String(it.errorData))
+            })
             //post(signupJson)
             startActivity(Intent(applicationContext, emailAuthP3::class.java))
 
@@ -242,7 +305,7 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
     }
 
     private fun post(signupJson : String) {
-        val (request, response, result) = Fuel.post("http://10.0.2.2:8000/users/api/signup")
+        val (request, response, result) = Fuel.post("http://127.0.0.1:8000/users/api/signup")
             .body(signupJson)
             .response()
     }

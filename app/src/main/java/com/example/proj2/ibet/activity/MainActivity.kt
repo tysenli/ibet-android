@@ -1,12 +1,16 @@
 package com.example.proj2.ibet.activity
 
+import android.content.res.Resources
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.Window
+import android.widget.TextView
 
 
 import com.example.proj2.ibet.R
@@ -18,10 +22,23 @@ import com.example.proj2.ibet.fragment.Login
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
+
+
+
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    //private actionBar:ActionBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        /*
+        actionBar = actionBar
+        val titleId = Resources.getSystem().getIdentifier(
+            "action_bar_title",
+            "id", "android"
+        )
+        tvTitle =  findViewById<TextView>(titleId)
+        tvTitle.gravity = Gravity.CENTER
+        */
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
