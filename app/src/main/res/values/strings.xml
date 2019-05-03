@@ -88,6 +88,7 @@
     <string name="support">Support</string>
     <string name="search_ibet">Search iBet</string>
     <string name="log_in">Log in</string>
+    <string name="state">State *</string>
 
 
 </resources>

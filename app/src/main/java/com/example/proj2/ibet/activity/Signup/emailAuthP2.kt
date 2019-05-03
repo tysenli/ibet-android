@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.StrictMode
 import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
@@ -19,6 +20,10 @@ import com.hbb20.CountryCodePicker
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 import kotlinx.android.synthetic.main.activity_email_auth_p2.*
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,10 +42,11 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
     private var countryCode:String?=null
     private var countryName:String?=null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_auth_p2)
+        val policy   = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
         //phone_area
         ccp = findViewById<com.hbb20.CountryCodePicker>(R.id.country_code_picker)
         ccp!!.setOnCountryChangeListener(this)
@@ -93,7 +99,7 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
         })
         //title
         var title = arrayOf("Mr.", "Mrs.", "Ms.")
-        var titleSpinner = findViewById<Spinner>(R.id.title)
+        var titleSpinner = findViewById<Spinner>(R.id.title_id)
         if (titleSpinner != null) {
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, title)
             titleSpinner.adapter = arrayAdapter
@@ -111,7 +117,7 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
         }
         //gender
         val gender = arrayOf("male", "female")
-        val genderSpinner = findViewById<Spinner>(R.id.gender)
+        val genderSpinner = findViewById<Spinner>(R.id.gender_id)
         if (genderSpinner != null) {
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, gender)
             genderSpinner.adapter = arrayAdapter
@@ -138,7 +144,7 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
         }
 
         Collections.sort(countries)
-        val countrySpinner = findViewById<Spinner>(R.id.country)
+        val countrySpinner = findViewById<Spinner>(R.id.country_id)
         if (countrySpinner != null) {
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, countries)
             countrySpinner.adapter = arrayAdapter
@@ -175,106 +181,94 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
         })
         //currency
         val currency = arrayOf("GBP", "CAD","EUR","RMB","USD")
-        val currencySpinner = findViewById<Spinner>(R.id.currency)
+        val currencySpinner = findViewById<Spinner>(R.id.currency_id)
         if (currencySpinner != null) {
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, currency)
             currencySpinner.adapter = arrayAdapter
         }
         //odds
         val odds = arrayOf("Decimal Odds","Fractional Odds", "US Odds")
-        val oddsSpinner = findViewById<Spinner>(R.id.odds_display)
+        val oddsSpinner = findViewById<Spinner>(R.id.odds_display_id)
         if (oddsSpinner != null) {
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, odds)
             oddsSpinner.adapter = arrayAdapter
         }
         //prefer team
         val prefer = arrayOf("01","02","03")
-        val preferSpinner = findViewById<Spinner>(R.id.team)
+        val preferSpinner = findViewById<Spinner>(R.id.team_id)
         if (preferSpinner != null) {
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, prefer)
             preferSpinner.adapter = arrayAdapter
         }
         //deposit limit - time
         val deTime = arrayOf("1 week", "1 month","1 year")
-        val timeSpinner = findViewById<Spinner>(R.id.time_period)
+        val timeSpinner = findViewById<Spinner>(R.id.time_period_id)
         if (timeSpinner != null) {
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, deTime)
             timeSpinner.adapter = arrayAdapter
         }
         //deposit limit - amount
         val amount = arrayOf("1 hundred", "1 thousand","1 million","1 billion")
-        val amountSpinner = findViewById<Spinner>(R.id.amount)
+        val amountSpinner = findViewById<Spinner>(R.id.amount_id)
         if (amountSpinner != null) {
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, amount)
             amountSpinner.adapter = arrayAdapter
         }
 
-
-
-
+        //signup
+        /*
         var signupJson =
             """
             {
-             "username":"Jiaqi",
-             "password1":"Lub13080*",
-	            "password2":"Lub13080*",
-	            "email":"jiaqi@test.com",
-	            "phone": "3142004001",
-	            "first_name": "jiaqi",
-	            "last_name": "hu",
-	            "title": "Mr.",
-	            "gender": "male",
-	            "date_of_birth": "02/02/1996",
-	            "country": "United States",
-	            "street_address_1": "123 street",
-	            "street_address_2": "123",
-	            "city": "san jose",
-	            "state": "ca",
-	            "zipcode": "95954",
-	            "preferred_team": "01",
-	            "over_eighteen": true,
-	            "contact_option":"SMS",
-
+             "username"         : jiaqi,
+             "password1"        : "Lub13080*",
+             "password2"        : "Lub13080*",
+             "email"            : "jiaqi@test.com",
+             "phone"            : "3142004001",
+             "first_name"       : "jiaqi",
+             "last_name"        : "hu",
+             "title"            : "Mr.",
+             "gender"           : "male",
+             "date_of_birth"    : "02/02/1996",
+             "country"          : "United States",
+             "street_address_1" : "123 street",
+             "street_address_2" : "123",
+             "city"             : "san jose",
+             "state"            : "ca",
+             "zipcode"          : "95954",
+             "preferred_team"   : "01",
+             "over_eighteen"    : true,
+             "contact_option"   :"SMS"
             }
-            """
-
+        """  */
+        //println(signupJson)
 
         signup2.setOnClickListener {
-            /*
+            //println("hhh" + address_line1.text.toString())
             val signupJson = JSONObject()
-            signupJson.put("username" , "Jiaqi")
-            signupJson.put("password1", "LUB13080*")
-            signupJson.put("password2", "LUB13080*")
-            signupJson.put("email"    , "jiaqi@test.com")
-            signupJson.put("phone"    , "3143143131")
-            signupJson.put("first_name" , "Jennie")
-            signupJson.put("last_name", "Hu")
-            signupJson.put("title"    , "Ms.")
-            signupJson.put("gender"   , "female")
-            signupJson.put("date_of_birth" , "04/07/1996")
-            signupJson.put("country"  , "United States")
-            signupJson.put("street_address_1" , "test street")
-            signupJson.put("street_address_2" , "123")
-            signupJson.put("city"     , "saint louis")
-            signupJson.put("state"    , "MO")
-            signupJson.put("zipcode"  , "63130")
-            signupJson.put("preferred_team" , "01")
-            signupJson.put("over_eighteen" , true) */
-            println(signupJson)
-
-            val (request, response, result) = Fuel.post("http://127.0.0.1:8000/users/api/signup")
-                .body(signupJson)
-                .responseString()
-
-            result.fold(success = {
-                println(it.toString())
-            }, failure = {
-                println(String(it.errorData))
-            })
-            //post(signupJson)
+            //println("this is birth: " + birth_show.text.toString())
+            signupJson.put("username"         , intent.getStringExtra(emailAuthP1.USER))
+            signupJson.put("password1"        , intent.getStringExtra(emailAuthP1.PASS1))
+            signupJson.put("password2"        , intent.getStringExtra(emailAuthP1.PASS2))
+            signupJson.put("email"            , intent.getStringExtra(emailAuthP1.MAIL))
+            signupJson.put("phone"            , phone.text.toString())
+            signupJson.put("first_name"       , first_name.text.toString())
+            signupJson.put("last_name"        , last_name.text.toString())
+            signupJson.put("title"            , title_id.selectedItem.toString())
+            signupJson.put("gender"           , gender_id.selectedItem.toString())
+            signupJson.put("date_of_birth"    , birth_show.text.toString())
+            signupJson.put("country"          , country_id.selectedItem.toString())
+            signupJson.put("street_address_1" , address_line1.text.toString())
+            signupJson.put("street_address_2" , address_line2.text.toString())
+            signupJson.put("city"             , city.text.toString())
+            signupJson.put("state"            , state_id.text.toString())
+            signupJson.put("zipcode"          , zipcode.text.toString())
+            signupJson.put("preferred_team"   , team_id.selectedItem.toString())
+            signupJson.put("over_eighteen"    , true)
+            post(signupJson.toString())
             startActivity(Intent(applicationContext, emailAuthP3::class.java))
-
         }
+
         close2.setOnClickListener {
             startActivity(Intent(applicationContext, MainActivity::class.java))
 
@@ -298,17 +292,45 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
         val dpd = DatePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 // Display Selected date in Toast
             //Toast.makeText(this, """$dayOfMonth - ${monthOfYear + 1} - $year""", Toast.LENGTH_LONG).show()
-            birth_show.setText("""$dayOfMonth - ${monthOfYear + 1} - $year""")
+            var day_dis = ""
+            var month_dis = ""
+            if ((dayOfMonth < 10) ){
+                day_dis = "0$dayOfMonth"
+                //
+            } else {
+                day_dis = dayOfMonth.toString()
+            }
+            if (monthOfYear + 1 < 10 ) {
+                month_dis = "0${monthOfYear + 1}"
+            } else {
+                month_dis = (monthOfYear + 1).toString()
+            }
+            birth_show.setText(day_dis + "/" + month_dis + "/" + "$year")
 
         }, year, month, day)
         dpd.show()
     }
 
     private fun post(signupJson : String) {
-        val (request, response, result) = Fuel.post("http://127.0.0.1:8000/users/api/signup")
-            .body(signupJson)
-            .response()
+        val url = "http://10.0.2.2:8000/users/api/signup/"
+
+        val client = OkHttpClient()
+
+        val JSON = MediaType.get("application/json; charset=utf-8")
+        val body = RequestBody.create(JSON,signupJson)
+        val request = Request.Builder()
+            // .addHeader("Authorization", "Bearer $token")
+            .url(url)
+            .post(body)
+            .build()
+
+        val  response = client . newCall (request).execute()
+
+       println(response.request())
+       println(response.body()!!.string())
+
     }
+
 
 
 
