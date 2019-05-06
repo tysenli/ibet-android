@@ -18,6 +18,15 @@
         <item android:title="iBet" >
             <menu>
                 <item
+                    android:id="@+id/sportsbook_a"
+                    android:title="Sportsbook A"/>
+                <item
+                    android:id="@+id/sportsbook_b"
+                    android:title="Sportsbook B"/>
+                <item
+                    android:id="@+id/sportsbook_c"
+                    android:title="Sportsbook C"/>
+                <item
                     android:id="@+id/live_casino"
                     android:title="Live Casino"/>
                 <item

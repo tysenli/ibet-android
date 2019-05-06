@@ -93,18 +93,34 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                 // add
                 val ft = fm.beginTransaction()
+                setTitle("ibet")
                 //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
                 ft.replace(R.id.frag_placeholder, Home(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit()
             }
+            R.id.sportsbook_a -> {
+                title = "Sportsbook A"
+            }
+            R.id.sportsbook_b -> {
+                title = "Sportsbook B"
+            }
+            R.id.sportsbook_c -> {
+                title = "Sportsbook C"
+            }
+            R.id.live_casino -> {
+                title ="Live Casino"
+            }
             R.id.game -> {
-
+                title = "Games"
+            }
+            R.id.lottery -> {
+                title = "Lottery"
             }
             R.id.language -> {
                 val fm = supportFragmentManager
-
                 // add
                 val ft = fm.beginTransaction()
+                title = "Language"
                 //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
                 ft.replace(R.id.frag_placeholder, Language(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit()
