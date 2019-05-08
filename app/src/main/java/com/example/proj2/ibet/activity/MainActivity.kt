@@ -17,6 +17,7 @@ import com.example.proj2.ibet.R
 import com.example.proj2.ibet.fragment.Home
 import com.example.proj2.ibet.fragment.Language
 import com.example.proj2.ibet.fragment.Login
+import com.example.proj2.ibet.fragment.UserInfo
 //import com.example.proj2.ibet.fragment.PlayList
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,6 +28,10 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     //private actionBar:ActionBar
+    companion object {
+        var isLogin = false
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +54,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if (!isLogin) {
+            menu!!.findItem(R.id.user).isVisible = false
+            menu.findItem(R.id.login).isVisible = true
+        } else {
+            menu!!.findItem(R.id.user).isVisible = true
+            menu.findItem(R.id.login).isVisible = false
+        }
+        return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onBackPressed() {
@@ -80,6 +96,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 ft.commit()
                 return true
             }
+            R.id.user -> {
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
+                ft.replace(R.id.frag_placeholder, UserInfo(this@MainActivity), "FAVORITES_FRAG")
+                ft.commit()
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -93,7 +117,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                 // add
                 val ft = fm.beginTransaction()
-                setTitle("ibet")
+                title = "ibet"
                 //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
                 ft.replace(R.id.frag_placeholder, Home(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit()
@@ -115,6 +139,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.lottery -> {
                 title = "Lottery"
+
             }
             R.id.language -> {
                 val fm = supportFragmentManager
