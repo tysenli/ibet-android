@@ -1,32 +1,44 @@
 package com.example.proj2.ibet.activity
 
-import android.content.Context
+import android.content.res.Resources
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import com.example.proj2.ibet.Games
+import android.view.Window
+import android.widget.TextView
 
 
 import com.example.proj2.ibet.R
 import com.example.proj2.ibet.fragment.Home
 import com.example.proj2.ibet.fragment.Language
-import com.example.proj2.ibet.fragment.User
+import com.example.proj2.ibet.fragment.Login
 //import com.example.proj2.ibet.fragment.PlayList
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
+
+
+
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    //private actionBar:ActionBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        /*
+        actionBar = actionBar
+        val titleId = Resources.getSystem().getIdentifier(
+            "action_bar_title",
+            "id", "android"
+        )
+        tvTitle =  findViewById<TextView>(titleId)
+        tvTitle.gravity = Gravity.CENTER
+        */
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
@@ -58,7 +70,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
+            R.id.login -> {
+                val fm = supportFragmentManager
+
+                // add
+                val ft = fm.beginTransaction()
+                //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
+                ft.replace(R.id.frag_placeholder, Login(this@MainActivity), "FAVORITES_FRAG")
+                ft.commit()
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -72,27 +93,34 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                 // add
                 val ft = fm.beginTransaction()
+                setTitle("ibet")
                 //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
                 ft.replace(R.id.frag_placeholder, Home(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit()
             }
-            R.id.game -> {
-
+            R.id.sportsbook_a -> {
+                title = "Sportsbook A"
             }
-            R.id.user -> {
-                val fm = supportFragmentManager
-
-                // add
-                val ft = fm.beginTransaction()
-                //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
-                ft.replace(R.id.frag_placeholder, User(this@MainActivity), "FAVORITES_FRAG")
-                ft.commit()
+            R.id.sportsbook_b -> {
+                title = "Sportsbook B"
+            }
+            R.id.sportsbook_c -> {
+                title = "Sportsbook C"
+            }
+            R.id.live_casino -> {
+                title ="Live Casino"
+            }
+            R.id.game -> {
+                title = "Games"
+            }
+            R.id.lottery -> {
+                title = "Lottery"
             }
             R.id.language -> {
                 val fm = supportFragmentManager
-
                 // add
                 val ft = fm.beginTransaction()
+                title = "Language"
                 //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
                 ft.replace(R.id.frag_placeholder, Language(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit()

@@ -13,7 +13,7 @@ import com.example.proj2.ibet.R
 import com.example.proj2.ibet.activity.MainActivity
 import com.example.proj2.ibet.activity.Signup.Signup
 import kotlinx.android.synthetic.main.fragment_language.*
-import kotlinx.android.synthetic.main.fragment_user.*
+import kotlinx.android.synthetic.main.fragment_login.*
 import java.util.*
 
 

@@ -10,31 +10,31 @@ import android.text.method.PasswordTransformationMethod
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
-import android.R.attr.password
-import android.R
+import android.app.Activity
 import com.example.proj2.ibet.activity.MainActivity
 import com.wajahatkarim3.easyvalidation.core.view_ktx.minLength
 import com.ybs.passwordstrengthmeter.PasswordStrength
-import java.util.*
 
 
 class emailAuthP1 : AppCompatActivity() {
+    companion object {
+        val USER = "user"
+        var MAIL = "mail"
+        var PASS1 = "pass1"
+        var PASS2 = "pass2"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
-
         setContentView(com.example.proj2.ibet.R.layout.activity_email_auth_p1)
-        var usertxt = findViewById<EditText>(com.example.proj2.ibet.R.id.username)
-        var emailtxt = findViewById<EditText>(com.example.proj2.ibet.R.id.email)
-        var passwordtxt = findViewById<EditText>(com.example.proj2.ibet.R.id.password)
-        var conPasswordtxt = findViewById<EditText>(com.example.proj2.ibet.R.id.con_password)
+        var usertxt = findViewById<EditText>(com.example.proj2.ibet.R.id.username_id)
+        var emailtxt = findViewById<EditText>(com.example.proj2.ibet.R.id.email_id)
+        var passwordtxt = findViewById<EditText>(com.example.proj2.ibet.R.id.password_id)
+        var conPasswordtxt = findViewById<EditText>(com.example.proj2.ibet.R.id.con_password_id)
 
         var isValidUser = false
         var isValidEmail = false
@@ -49,7 +49,6 @@ class emailAuthP1 : AppCompatActivity() {
                }
 
             }
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
@@ -119,24 +118,36 @@ class emailAuthP1 : AppCompatActivity() {
 
         checkBox1.setOnCheckedChangeListener() { buttonView, isChecked ->
             if (!isChecked) {
-                password.transformationMethod = PasswordTransformationMethod.getInstance()
+                password_id.transformationMethod = PasswordTransformationMethod.getInstance()
             } else {
-                password.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                password_id.transformationMethod = HideReturnsTransformationMethod.getInstance()
 
             }
         }
 
         checkBox2.setOnCheckedChangeListener() { buttonView, isChecked ->
             if (!isChecked) {
-                con_password.transformationMethod = PasswordTransformationMethod.getInstance()
+                con_password_id.transformationMethod = PasswordTransformationMethod.getInstance()
             } else {
-                con_password.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                con_password_id.transformationMethod = HideReturnsTransformationMethod.getInstance()
 
             }
         }
 
         continue1.setOnClickListener {
-                startActivity(Intent(applicationContext, emailAuthP2::class.java))
+            val user = username_id.text.toString()
+            val mail = email_id.text.toString()
+            val pass1 = password_id.text.toString()
+            val pass2 = con_password_id.text.toString()
+            val res = Intent(applicationContext, emailAuthP2::class.java)
+            println("user name:" + user)
+            res.putExtra(emailAuthP1.USER,user)
+            res.putExtra(emailAuthP1.MAIL,mail)
+            res.putExtra(emailAuthP1.PASS1,pass1)
+            res.putExtra(emailAuthP1.PASS2,pass2)
+            //startActivity(res)
+           // setResult(Activity.RESULT_OK, res)
+            startActivity(res)
 
         }
 
