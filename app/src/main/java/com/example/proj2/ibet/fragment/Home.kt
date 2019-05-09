@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import com.example.proj2.ibet.R
-import com.example.proj2.ibet.Games
+import com.example.proj2.ibet.HomeGames
 
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -30,7 +30,7 @@ class Home (context: Context): Fragment() {
         if (!this.initialized) {
             val fm = fragmentManager
             val ft = fm?.beginTransaction()
-            ft?.add(R.id.list_holder, Games(this.parentContext), "NEW_FRAG") //frag 1: load top track
+            ft?.add(R.id.list_holder, HomeGames(this.parentContext), "NEW_FRAG") //frag 1: load top track
             ft?.commit()
             //search
             search_edit_text.setOnEditorActionListener { _, actionId, _ ->

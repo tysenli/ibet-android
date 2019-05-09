@@ -10,10 +10,10 @@ import android.view.ViewGroup
 import com.example.proj2.ibet.R
 
 @SuppressLint("ValidFragment")
-class Games (context: Context): Fragment() {
+class SportsA (context: Context): Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_games, container, false)
+        return inflater.inflate(R.layout.fragment_sports_a, container, false)
     }
 
 }

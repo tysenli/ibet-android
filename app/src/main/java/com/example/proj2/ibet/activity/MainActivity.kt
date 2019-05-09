@@ -14,10 +14,7 @@ import android.widget.TextView
 
 
 import com.example.proj2.ibet.R
-import com.example.proj2.ibet.fragment.Home
-import com.example.proj2.ibet.fragment.Language
-import com.example.proj2.ibet.fragment.Login
-import com.example.proj2.ibet.fragment.UserInfo
+import com.example.proj2.ibet.fragment.*
 //import com.example.proj2.ibet.fragment.PlayList
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -122,8 +119,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 ft.replace(R.id.frag_placeholder, Home(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit()
             }
+
             R.id.sportsbook_a -> {
                 title = "Sportsbook A"
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, SportsA(this@MainActivity), "FAVORITES_FRAG")
+                ft.commit()
             }
             R.id.sportsbook_b -> {
                 title = "Sportsbook B"
@@ -136,6 +138,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.game -> {
                 title = "Games"
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Games(this@MainActivity), "FAVORITES_FRAG")
+                ft.commit()
             }
             R.id.lottery -> {
                 title = "Lottery"
