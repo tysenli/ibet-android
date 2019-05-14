@@ -1,5 +1,6 @@
 package com.example.proj2.ibet.activity
 
+import android.content.Intent
 import android.content.res.Resources
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -14,13 +15,14 @@ import android.widget.TextView
 
 
 import com.example.proj2.ibet.R
+import com.example.proj2.ibet.activity.OnBoarding.Welcome1
+import com.example.proj2.ibet.activity.OnBoarding.Welcome2
 import com.example.proj2.ibet.fragment.*
 //import com.example.proj2.ibet.fragment.PlayList
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-
-
+import kotlinx.android.synthetic.main.content_main.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -51,6 +53,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+        on_board.setOnClickListener {
+            startActivity(Intent(applicationContext, Welcome1::class.java))
+        }
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {

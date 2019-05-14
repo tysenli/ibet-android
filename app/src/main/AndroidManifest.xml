@@ -59,6 +59,14 @@
 
         <activity android:name=".activity.Signup.emailAuthP3">
         </activity>
+        <activity android:name=".activity.OnBoarding.Welcome1">
+        </activity>
+        <activity android:name=".activity.OnBoarding.Welcome2">
+        </activity>
+        <activity android:name=".activity.OnBoarding.Welcome3">
+        </activity>
+        <activity android:name=".activity.OnBoarding.Welcome4">
+        </activity>
 
     </application>
 
