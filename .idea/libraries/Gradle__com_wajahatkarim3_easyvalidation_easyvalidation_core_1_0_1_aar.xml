@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.wajahatkarim3.easyvalidation:easyvalidation-core:1.0.1@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/easyvalidation-core-1.0.1.aar/1b1deb4c65f4431902513c7d35e2fd70/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/easyvalidation-core-1.0.1.aar/1b1deb4c65f4431902513c7d35e2fd70/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.wajahatkarim3.easyvalidation/easyvalidation-core/1.0.1/8ea0e60686994ffbdcb1ff556198f2de7fe34efc/easyvalidation-core-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
