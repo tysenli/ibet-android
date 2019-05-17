@@ -12,7 +12,7 @@
             android:textStyle="italic"
             android:layout_marginEnd="28dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="28dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/con_password"/>
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/con_password_id"/>
     <TextView
             android:text="@string/sign_up_1_of_3"
             android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:background="@drawable/border"
-            android:id="@+id/username" android:layout_marginStart="8dp"
+            android:id="@+id/username_id" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
             app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
@@ -51,7 +51,7 @@
             android:id="@+id/tv_username2"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="18sp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/username"/>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/username_id"/>
 
 
 
@@ -68,7 +68,7 @@
             android:layout_height="37dp"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/email" android:layout_marginTop="8dp"
+            android:id="@+id/email_id" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/tv_email1" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
             android:background="@drawable/border"
@@ -82,7 +82,7 @@
             android:id="@+id/tv_email2"
             android:textSize="18sp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/email"/>
+            app:layout_constraintTop_toBottomOf="@+id/email_id"/>
 
 
 
@@ -98,7 +98,7 @@
             android:layout_height="39dp"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/password" android:layout_marginTop="8dp"
+            android:id="@+id/password_id" android:layout_marginTop="8dp"
             android:background="@drawable/border"
             app:layout_constraintTop_toBottomOf="@+id/tv_password1" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_password2" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/password" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password_id" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="18sp"/>
     <LinearLayout
             android:layout_width="274dp"
@@ -157,7 +157,7 @@
             android:layout_height="39dp"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/con_password"
+            android:id="@+id/con_password_id"
             android:background="@drawable/border"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
@@ -175,14 +175,14 @@
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:background="@color/com_facebook_button_login_silver_background_color" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/con_password"/>
+            app:layout_constraintTop_toBottomOf="@+id/con_password_id"/>
     <CheckBox
             android:text="@string/show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox1" android:textSize="14sp"
             android:textStyle="italic" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/password" android:layout_marginEnd="28dp"
+            app:layout_constraintBottom_toTopOf="@+id/password_id" android:layout_marginEnd="28dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="28dp"/>
     <Button
             android:layout_width="48dp"

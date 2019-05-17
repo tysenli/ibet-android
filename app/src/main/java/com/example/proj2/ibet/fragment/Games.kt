@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -48,8 +49,8 @@ class Games(context: Context) : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
-        game_list.layoutManager = LinearLayoutManager(this.context)
+        game_list.layoutManager = GridLayoutManager(this.context,2)
+        //game_list.layoutManager = LinearLayoutManager(this.context)
         game_list.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
