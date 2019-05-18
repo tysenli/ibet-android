@@ -67,6 +67,11 @@
         </activity>
         <activity android:name=".activity.OnBoarding.Welcome4">
         </activity>
+        <activity android:name=".activity.Signup.oneClick">
+        </activity>
+        <activity android:name=".activity.Signup.oneClickIntro">
+        </activity>
+
 
     </application>
 

@@ -54,6 +54,9 @@ class Signup : AppCompatActivity() {
         btnLoginEmail.setOnClickListener {
             startActivity(Intent(applicationContext, emailAuthP1::class.java))
         }
+        btnOneClick.setOnClickListener {
+            startActivity(Intent(applicationContext, oneClick::class.java))
+        }
 
 
     }
