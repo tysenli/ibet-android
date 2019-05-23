@@ -10,6 +10,7 @@ class oneClick : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_one_click)
+        info.text = "Username: " + intent.getStringExtra("username") + "\n" + "Password: " + intent.getStringExtra("password")
         btn_ok.setOnClickListener {
             startActivity(Intent(applicationContext, oneClickIntro::class.java))
         }
