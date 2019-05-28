@@ -266,7 +266,7 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
             signupJson.put("preferred_team"   , team_id.selectedItem.toString())
             signupJson.put("over_eighteen"    , true)
             val url = "http://10.0.2.2:8000/users/api/signup/"
-            post(signupJson.toString(), url)
+           // post(signupJson.toString(), url)
             startActivity(Intent(applicationContext, emailAuthP3::class.java))
         }
 

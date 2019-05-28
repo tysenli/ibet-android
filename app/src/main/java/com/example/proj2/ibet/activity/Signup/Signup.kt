@@ -31,11 +31,13 @@ class Signup : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_signup)
+
         if (android.os.Build.VERSION.SDK_INT > 9) {
             var policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
 
         }
+
 
         //var btnLoginFacebook = findViewById<Button>(R.id.btnLoginFacebook)
 
@@ -67,21 +69,21 @@ class Signup : AppCompatActivity() {
             startActivity(Intent(applicationContext, emailAuthP1::class.java))
         }
         btnOneClick.setOnClickListener {
-            val visitorJson = JSONObject()
-            //println("this is birth: " + birth_show.text.toString())
-            var user = "visitor" + (100..999).random().toString()
+
+            var userNum = (100..999).random().toString()
+            var user = "visitor" + userNum
             val STRING_CHARACTERS = ('0'..'z').toList().toTypedArray()
             val password = (8..16).map { STRING_CHARACTERS.random() }.joinToString("")
 
            // println("password:1111" + password)
-
+            val visitorJson = JSONObject()
             visitorJson.put("username"         , user)
             visitorJson.put("password1"        , password)
             visitorJson.put("password2"        , password)
-            visitorJson.put("email"            , "test@gmail.com")
-            visitorJson.put("phone"            , "3142003333")
-            visitorJson.put("first_name"       , "test")
-            visitorJson.put("last_name"        , "test")
+            visitorJson.put("email"            , user + "@gmail.com")
+            visitorJson.put("phone"            , "3140000" + userNum)
+            visitorJson.put("first_name"       , "visitor")
+            visitorJson.put("last_name"        , "visitor")
 
             visitorJson.put("gender"           , "male")
             visitorJson.put("date_of_birth"    , "01/01/1990")
@@ -93,15 +95,17 @@ class Signup : AppCompatActivity() {
 
             val url = "http://10.0.2.2:8000/users/api/signup/"
 
-            emailAuthP2().post(visitorJson.toString(), url)
+
             var res = Intent(applicationContext, oneClick::class.java)
             res.putExtra("username",user)
             res.putExtra("password", password)
+            emailAuthP2().post(visitorJson.toString(), url)
             startActivity(res)
         }
 
 
     }
+
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
