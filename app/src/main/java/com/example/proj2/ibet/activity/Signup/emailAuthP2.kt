@@ -266,7 +266,7 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
             signupJson.put("preferred_team"   , team_id.selectedItem.toString())
             signupJson.put("over_eighteen"    , true)
             val url = "http://10.0.2.2:8000/users/api/signup/"
-           // post(signupJson.toString(), url)
+            Signup().post(signupJson.toString(), url)
             startActivity(Intent(applicationContext, emailAuthP3::class.java))
         }
 
@@ -306,31 +306,12 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
             } else {
                 month_dis = (monthOfYear + 1).toString()
             }
-            birth_show.setText(day_dis + "/" + month_dis + "/" + "$year")
+            birth_show.setText(month_dis + "/" + day_dis + "/" + "$year")
 
         }, year, month, day)
         dpd.show()
     }
 
-    fun post(json : String, url : String) {
-
-
-        val client = OkHttpClient()
-
-        val JSON = MediaType.get("application/json; charset=utf-8")
-        val body = RequestBody.create(JSON,json)
-        val request = Request.Builder()
-            // .addHeader("Authorization", "Bearer $token")
-            .url(url)
-            .post(body)
-            .build()
-
-        val  response = client . newCall (request).execute()
-
-       println(response.request())
-       println(response.body()!!.string())
-
-    }
 
 
 

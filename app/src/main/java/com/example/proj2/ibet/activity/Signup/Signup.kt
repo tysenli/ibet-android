@@ -70,43 +70,43 @@ class Signup : AppCompatActivity() {
         }
         btnOneClick.setOnClickListener {
 
-            var userNum = (100..999).random().toString()
-            var user = "visitor" + userNum
-            val STRING_CHARACTERS = ('0'..'z').toList().toTypedArray()
-            val password = (8..16).map { STRING_CHARACTERS.random() }.joinToString("")
-
-           // println("password:1111" + password)
             val visitorJson = JSONObject()
-            visitorJson.put("username"         , user)
-            visitorJson.put("password1"        , password)
-            visitorJson.put("password2"        , password)
-            visitorJson.put("email"            , user + "@gmail.com")
-            visitorJson.put("phone"            , "3140000" + userNum)
-            visitorJson.put("first_name"       , "visitor")
-            visitorJson.put("last_name"        , "visitor")
 
-            visitorJson.put("gender"           , "male")
-            visitorJson.put("date_of_birth"    , "01/01/1990")
-            visitorJson.put("country"          , "USA")
-
-            visitorJson.put("city"             , "test")
-            visitorJson.put("state"            , "MO")
-            visitorJson.put("zipcode"          , "63130")
-
-            val url = "http://10.0.2.2:8000/users/api/signup/"
-
+            val url = "http://10.0.2.2:8000/users/api/oneclicksignup/"
+            val info = post(visitorJson.toString(), url)
+            var info1 = info.split("-")
+           // println(info1[1])
+           // println(info1[0])
 
             var res = Intent(applicationContext, oneClick::class.java)
-            res.putExtra("username",user)
-            res.putExtra("password", password)
-            emailAuthP2().post(visitorJson.toString(), url)
+            res.putExtra("username",info1[0])
+            res.putExtra("password", info1[1])
+
             startActivity(res)
+
         }
 
 
     }
+    fun post(json : String, url : String):String{
 
+        val client = OkHttpClient()
 
+        val JSON = MediaType.get("application/json; charset=utf-8")
+        val body = RequestBody.create(JSON, json)
+        val request = Request.Builder()
+            // .addHeader("Authorization", "Bearer $token")
+            .url(url)
+            .post(body)
+            .build()
+
+        val response = client.newCall(request).execute()
+
+        println(response.request())
+        //println("this is:" + response.body()!!.string())
+        return response.body()!!.string()
+
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
