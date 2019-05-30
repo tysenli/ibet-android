@@ -298,7 +298,7 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
             } else {
                 month_dis = (monthOfYear + 1).toString()
             }
-            birth_show.setText(day_dis + "/" + month_dis + "/" + "$year")
+            birth_show.setText(month_dis + "/" + day_dis + "/" + "$year")
 
         }, year, month, day)
         dpd.show()
