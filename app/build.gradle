@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.proj2"
+        applicationId "com.app.android.ibet"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
@@ -16,6 +16,7 @@ android {
     }
     buildTypes {
         release {
+            resValue 'string','url','"http://10.0.2.2:8000/users/api/signup/"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
