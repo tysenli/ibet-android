@@ -68,8 +68,8 @@ class Signup : AppCompatActivity() {
 
             val visitorJson = JSONObject()
 
-            //val url = "http://10.0.2.2:8000/users/api/oneclicksignup/"
-            val info = post(visitorJson.toString(), )
+            val url = "http://10.0.2.2:8000/users/api/oneclicksignup/"
+            val info = post(visitorJson.toString(),url)
             var info1 = info.split("-")
            // println(info1[1])
            // println(info1[0])
