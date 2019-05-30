@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.proj2.ibet">
+          package="com.app.android.ibet">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -19,7 +19,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.example.proj2.ibet.activity.MainActivity"
+        <activity android:name=".activity.MainActivity"
                   android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -59,13 +59,13 @@
 
         <activity android:name=".activity.Signup.emailAuthP3">
         </activity>
-        <activity android:name=".activity.OnBoarding.Welcome1">
+        <activity android:name=".activity.OnBoarding.IntroOne">
         </activity>
-        <activity android:name=".activity.OnBoarding.Welcome2">
+        <activity android:name=".activity.OnBoarding.IntroTwo">
         </activity>
-        <activity android:name=".activity.OnBoarding.Welcome3">
+        <activity android:name=".activity.OnBoarding.IntroThree">
         </activity>
-        <activity android:name=".activity.OnBoarding.Welcome4">
+        <activity android:name=".activity.OnBoarding.IntroFour">
         </activity>
         <activity android:name=".activity.Signup.oneClick">
         </activity>
