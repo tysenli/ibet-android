@@ -11,6 +11,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.*
+import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.MainActivity
 import com.hbb20.CountryCodePicker
@@ -250,8 +251,8 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
             signupJson.put("zipcode"          , zipcode.text.toString())
             signupJson.put("preferred_team"   , team_id.selectedItem.toString())
             signupJson.put("over_eighteen"    , true)
-            val url = "http://10.0.2.2:8000/users/api/signup/"
-            Signup().post(signupJson.toString(), url)
+            //val url = "http://10.0.2.2:8000/users/api/signup/"
+            Signup().post(signupJson.toString(), BuildConfig.SIGNUP_URL)
             startActivity(Intent(applicationContext, emailAuthP3::class.java))
         }
 

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.facebook.*
 import com.facebook.login.LoginManager
@@ -68,8 +69,9 @@ class Signup : AppCompatActivity() {
 
             val visitorJson = JSONObject()
 
-            val url = "http://10.0.2.2:8000/users/api/oneclicksignup/"
-            val info = post(visitorJson.toString(),url)
+            //val url = "http://10.0.2.2:8000/users/api/oneclicksignup/"
+
+            val info = post(visitorJson.toString(),BuildConfig.ONE_CLICK_SIGNUP_URL)
             var info1 = info.split("-")
            // println(info1[1])
            // println(info1[0])

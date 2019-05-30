@@ -15,13 +15,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        debug{
+        debug {
             buildConfigField 'String','SIGNUP_URL','"http://10.0.2.2:8000/users/api/signup/"'
             buildConfigField 'String','ONE_CLICK_SIGNUP_URL','"http://10.0.2.2:8000/users/api/oneclicksignup/"'
-
         }
         release {
-
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
