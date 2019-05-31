@@ -6,8 +6,12 @@
     <item android:id="@+id/login"
           android:title="@string/log_in"
           android:orderInCategory="100"
-          app:showAsAction="never"/>
+          app:showAsAction="always"/>
 
+    <item android:id="@+id/user"
+          android:icon="@drawable/user_icon"
+          android:title=""
+          app:showAsAction="always" />
 
 
 </menu>

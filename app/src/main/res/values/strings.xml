@@ -89,6 +89,7 @@
     <string name="search_ibet">Search iBet</string>
     <string name="log_in">Log in</string>
     <string name="state">State *</string>
+    <string name="log_out">log out</string>
 
 
 </resources>

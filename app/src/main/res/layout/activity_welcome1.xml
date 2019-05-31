@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent" android:visibility="visible">
+
+
+    <Button
+            android:text="Got it"
+            android:layout_width="285dp"
+            android:layout_height="41dp"
+            android:id="@+id/welcome1" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            android:background="@color/com_facebook_button_login_silver_background_color"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+            android:text="Welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_welcome"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+    />
+    <TextView
+            android:text="Game changing."
+            android:layout_width="303dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_text1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            android:textSize="26sp" android:textStyle="bold" android:textColor="@android:color/widget_edittext_dark"
+            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/tv_welcome"/>
+
+    <TextView
+            android:text="Welcome to ibet, where nothing comes between you and the thrill.\n\nHere at ibet we work relentlessly with making your gambling experience the best it can be.\n\nGives us a shout in the 24/7 text chat if you need any help!  "
+            android:layout_width="378dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:textSize="18sp"
+            android:textColor="@android:color/primary_text_light_nodisable"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp"
+            android:typeface="normal" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.47" android:layout_marginTop="44dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_text1"/>
+    <ImageView
+            android:layout_width="114dp"
+            android:layout_height="124dp"
+            android:id="@+id/imageView4"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/welcome1" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            android:background="@drawable/chat"/>
+</android.support.constraint.ConstraintLayout>
