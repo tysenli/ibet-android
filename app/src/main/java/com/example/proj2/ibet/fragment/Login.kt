@@ -16,8 +16,14 @@ import android.widget.TextView
 import com.example.proj2.ibet.R
 import com.example.proj2.ibet.activity.LostDetailsSet.LostDetails
 import com.example.proj2.ibet.activity.Signup.Signup
+import kotlinx.android.synthetic.*
 
 import kotlinx.android.synthetic.main.fragment_login.*
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import org.json.JSONObject
 
 
 @SuppressLint("ValidFragment")
@@ -47,8 +53,12 @@ class Login (context: Context): Fragment() {
 
             }*/
 
-        login_button.setOnClickListener { view ->
+
+        login_button.setOnClickListener {
             //Log.d("btnSetup", "Selected")
+            val visitorJson = JSONObject()
+            val info = post(visitorJson.toString(), BuilderConfig.LOGIN_URL)
+            val info1= info.split
             login_button.autoSizeMaxTextSize
             var intent = Intent(parentContext, Signup::class.java)
             startActivity(intent)
@@ -66,6 +76,25 @@ class Login (context: Context): Fragment() {
             var intent = Intent(parentContext, Signup::class.java)
             startActivity(intent)
         }*/
+    }
+
+    fun post(json: String, url: String): String{
+        val client = OkHttpClient()
+
+        val JSON = MediaType.get("application/json; charset=utf-8")
+        val body = RequestBody.create(JSON, json)
+        val request = Request.Builder()
+
+            .url(url)
+            .post(body)
+            .build()
+
+        val response = client.newCall(request).execute()
+
+        println(response.request())
+
+        return response.body()!!.string()
+
     }
 
 }

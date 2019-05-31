@@ -24,12 +24,14 @@ class LostDetails : AppCompatActivity() {
 
         val emailOrPhoneText = findViewById<EditText>(com.example.proj2.ibet.R.id.email_phone_text)
 
-        send_code.isClickable = false
+        val isPhoneText: Boolean? = false
 
         fun EditText.afterTextChanged (afterTextChange: (String) -> Unit) {
             this.addTextChangedListener((object: TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                     afterTextChange.invoke(s.toString())
+                    send_code.isEnabled = s.toString().isNotBlank()
+
                 }
 
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -48,6 +50,28 @@ class LostDetails : AppCompatActivity() {
 
         fun String.isValidEmail(): Boolean
         = this.isNotBlank() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+
+        fun String.isValidMobile() : Boolean
+        = this.isNotBlank() && Patterns.PHONE.matcher(this).matches()
+
+        fun String.isEmail()
+        = this.isNotBlank() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+
+//        email_phone_text.validate("Valid email address required") {s -> s.isValidEmail()}
+        email_phone_text.validate("Valid phone number required") {s -> s.isValidMobile()}
+
+
+        send_code.setOnClickListener{view ->
+            var intent = Intent(this@LostDetails, ConfirmPhoneNumber::class.java)
+            startActivity(intent)
+        }
+
+        forgot_username.setOnClickListener{ view ->
+            var intent = Intent(this@LostDetails, LostUsername::class.java)
+            startActivity(intent)
+        }
+
+
 
 
 

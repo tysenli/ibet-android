@@ -54,7 +54,9 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
             app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/ver_info" android:autofillHints=""/>
+            app:layout_constraintTop_toBottomOf="@+id/ver_info" android:autofillHints=""
+            android:maxLength="1"
+            android:nextFocusForward="@+id/ver_code2"/>
 
     <EditText
             android:layout_width="80dp"
@@ -65,9 +67,11 @@
             android:id="@+id/ver_code2" android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.052" android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="0.057" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/ver_info"
-            android:autofillHints="" app:layout_constraintStart_toEndOf="@+id/ver_code1"/>
+            android:autofillHints="" app:layout_constraintStart_toEndOf="@+id/ver_code1"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/ver_code3"/>
 
     <EditText
             android:layout_width="80dp"
@@ -78,9 +82,11 @@
             android:id="@+id/ver_code3" android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.052" android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="0.126" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/ver_info"
-            android:autofillHints="" app:layout_constraintStart_toEndOf="@+id/ver_code2"/>
+            android:autofillHints="" app:layout_constraintStart_toEndOf="@+id/ver_code2"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/ver_code4"/>
 
     <EditText
             android:layout_width="80dp"
@@ -91,9 +97,22 @@
             android:id="@+id/ver_code4" android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.052" android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="0.636" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/ver_info"
-            android:autofillHints="" app:layout_constraintStart_toEndOf="@+id/ver_code3"/>
+            android:autofillHints="" app:layout_constraintStart_toEndOf="@+id/ver_code3"
+            android:maxLength="1"/>
+
+    <TextView
+            android:text="Resend SMS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/resend_phone"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/ver_code1"
+            android:textStyle="bold"
+            android:clickable="true" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"/>
 
 
 
