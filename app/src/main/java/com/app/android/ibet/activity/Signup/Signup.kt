@@ -2,16 +2,21 @@ package com.app.android.ibet.activity.Signup
 
 import android.content.Intent
 import android.os.Bundle
+
+import android.os.StrictMode
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.FacebookSdk
+import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import kotlinx.android.synthetic.main.activity_signup.*
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import org.json.JSONObject
 
 import java.util.*
 
@@ -24,6 +29,14 @@ class Signup : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_signup)
+
+
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            var policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+            StrictMode.setThreadPolicy(policy)
+
+        }
+
 
         //var btnLoginFacebook = findViewById<Button>(R.id.btnLoginFacebook)
 
@@ -54,6 +67,45 @@ class Signup : AppCompatActivity() {
         btnLoginEmail.setOnClickListener {
             startActivity(Intent(applicationContext, emailAuthP1::class.java))
         }
+
+        btnOneClick.setOnClickListener {
+
+            val visitorJson = JSONObject()
+
+            //val url = "http://10.0.2.2:8000/users/api/oneclicksignup/"
+
+            val info = post(visitorJson.toString(),BuildConfig.ONE_CLICK_SIGNUP_URL)
+            var info1 = info.split("-")
+           // println(info1[1])
+           // println(info1[0])
+
+            var res = Intent(applicationContext, oneClick::class.java)
+            res.putExtra("username",info1[0])
+            res.putExtra("password", info1[1])
+
+            startActivity(res)
+
+        }
+
+
+    }
+    fun post(json : String, url : String):String{
+
+        val client = OkHttpClient()
+
+        val JSON = MediaType.get("application/json; charset=utf-8")
+        val body = RequestBody.create(JSON, json)
+        val request = Request.Builder()
+            // .addHeader("Authorization", "Bearer $token")
+            .url(url)
+            .post(body)
+            .build()
+
+        val response = client.newCall(request).execute()
+
+        println(response.request())
+        //println("this is:" + response.body()!!.string())
+        return response.body()!!.string()
 
 
     }

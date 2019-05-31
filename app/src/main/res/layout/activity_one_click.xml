@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <Button
+            android:layout_width="48dp"
+            android:layout_height="43dp"
+
+            android:id="@+id/btn_ok" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:drawable/checkbox_on_background"/>
+    <Button
+            android:id="@+id/copy_login_details"
+            android:layout_width="378dp"
+            android:layout_height="41dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:text="Copy login details"
+            android:background="@drawable/border"
+            android:textAllCaps="false"
+            android:textColor="@android:color/widget_edittext_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            android:textSize="16sp"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+            app:layout_constraintTop_toBottomOf="@+id/info"/>
+    <Button
+            android:id="@+id/send_to_email"
+            android:background="@drawable/border"
+            android:layout_width="378dp"
+            android:layout_height="41dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:text="Send to email"
+            android:textAllCaps="false"
+            android:textColor="@android:color/widget_edittext_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.545"
+            android:textSize="16sp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            app:layout_constraintTop_toBottomOf="@+id/copy_login_details"/>
+    <Button
+            android:id="@+id/send_to_phone"
+            android:background="@drawable/border"
+            android:layout_width="378dp"
+            android:layout_height="41dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:text="Send to phone"
+            android:textAllCaps="false"
+            android:textColor="@android:color/widget_edittext_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            android:textSize="16sp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            app:layout_constraintTop_toBottomOf="@+id/send_to_email"/>
+    <Button
+            android:id="@+id/first_deposit"
+            android:background="@drawable/border"
+            android:layout_width="378dp"
+            android:layout_height="44dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:text="Make my first deposit"
+            android:textAllCaps="false"
+            android:textColor="@android:color/widget_edittext_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.515"
+            android:textSize="16sp"
+            style="@style/Widget.AppCompat.Button.Borderless" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/send_to_phone"/>
+    <TextView
+            android:text="By signing up you agree to ibet's terms and conditions and confirm that you've read and understood the privacy policy."
+            android:layout_width="375dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView11"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:textSize="18sp"
+            android:layout_marginBottom="44dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_deposit" app:layout_constraintVertical_bias="0.0"
+            android:layout_marginTop="8dp" app:layout_constraintHorizontal_bias="0.6"/>
+    <TextView
+            android:text="Your account has been created. Save these details and use them to resume play."
+            android:layout_width="388dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView10"
+            android:textSize="18sp"
+            android:textColor="@android:color/primary_text_light_nodisable"
+            android:layout_marginStart="16dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/textView9"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"/>
+    <TextView
+            android:text="@string/welcome_to_the_best_n_betting_on_the_planet_n"
+            android:layout_width="303dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView9"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            android:textSize="26sp" android:textStyle="bold" android:textColor="@android:color/widget_edittext_dark"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView8"/>
+    <TextView
+            android:text="@string/sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"/>
+    <TextView
+            android:text="Username:\nPassword:"
+            android:background="@drawable/border"
+            android:layout_width="379dp"
+            android:layout_height="68dp"
+            android:id="@+id/info" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+            android:lineSpacingExtra="8sp" android:textColor="@color/defaultContentColor" android:textSize="18sp"/>
+</android.support.constraint.ConstraintLayout>

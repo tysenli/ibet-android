@@ -17,10 +17,7 @@ import com.app.android.ibet.activity.MainActivity
 import com.hbb20.CountryCodePicker
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import kotlinx.android.synthetic.main.activity_email_auth_p2.*
-import okhttp3.MediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
+
 import org.json.JSONObject
 import java.util.*
 //import jdk.nashorn.internal.runtime.ScriptingFunctions.readLine
@@ -255,10 +252,9 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
             signupJson.put("zipcode"          , zipcode.text.toString())
             signupJson.put("preferred_team"   , team_id.selectedItem.toString())
             signupJson.put("over_eighteen"    , true)
-           // val url = "http://10.0.2.2:8000/users/api/signup/"
 
-            //System.getenv("url")
-            post(signupJson.toString(), BuildConfig.SIGNUP_URL)
+            //val url = "http://10.0.2.2:8000/users/api/signup/"
+            Signup().post(signupJson.toString(), BuildConfig.SIGNUP_URL)
             startActivity(Intent(applicationContext, emailAuthP3::class.java))
         }
 
@@ -304,25 +300,7 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
         dpd.show()
     }
 
-    fun post(json : String, url : String) {
 
-
-        val client = OkHttpClient()
-
-        val JSON = MediaType.get("application/json; charset=utf-8")
-        val body = RequestBody.create(JSON,json)
-        val request = Request.Builder()
-            // .addHeader("Authorization", "Bearer $token")
-            .url(url)
-            .post(body)
-            .build()
-
-        val  response = client . newCall (request).execute()
-
-       println(response.request())
-       println(response.body()!!.string())
-
-    }
 
 
 
