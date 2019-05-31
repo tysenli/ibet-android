@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity
 import com.app.android.ibet.R
 import kotlinx.android.synthetic.main.activity_welcome3.*
 
+
 class IntroThree :AppCompatActivity(){
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

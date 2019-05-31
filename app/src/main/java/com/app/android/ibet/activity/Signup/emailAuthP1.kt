@@ -13,12 +13,13 @@ import android.widget.TextView
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 
+
 import com.app.android.ibet.activity.MainActivity
 import com.wajahatkarim3.easyvalidation.core.view_ktx.minLength
 import com.ybs.passwordstrengthmeter.PasswordStrength
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 
-//import kotlinx.android.synthetic.main.activity_email_auth_p1.*
+
 
 
 class emailAuthP1 : AppCompatActivity() {

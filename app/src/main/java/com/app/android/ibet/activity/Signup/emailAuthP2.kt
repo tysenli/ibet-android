@@ -17,6 +17,7 @@ import com.app.android.ibet.activity.MainActivity
 import com.hbb20.CountryCodePicker
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import kotlinx.android.synthetic.main.activity_email_auth_p2.*
+
 import org.json.JSONObject
 import java.util.*
 //import jdk.nashorn.internal.runtime.ScriptingFunctions.readLine
@@ -251,6 +252,7 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
             signupJson.put("zipcode"          , zipcode.text.toString())
             signupJson.put("preferred_team"   , team_id.selectedItem.toString())
             signupJson.put("over_eighteen"    , true)
+
             //val url = "http://10.0.2.2:8000/users/api/signup/"
             Signup().post(signupJson.toString(), BuildConfig.SIGNUP_URL)
             startActivity(Intent(applicationContext, emailAuthP3::class.java))
@@ -297,6 +299,7 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
         }, year, month, day)
         dpd.show()
     }
+
 
 
 

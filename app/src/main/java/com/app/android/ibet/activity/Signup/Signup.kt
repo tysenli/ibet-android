@@ -2,6 +2,7 @@ package com.app.android.ibet.activity.Signup
 
 import android.content.Intent
 import android.os.Bundle
+
 import android.os.StrictMode
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -28,6 +29,7 @@ class Signup : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_signup)
+
 
         if (android.os.Build.VERSION.SDK_INT > 9) {
             var policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
@@ -65,6 +67,7 @@ class Signup : AppCompatActivity() {
         btnLoginEmail.setOnClickListener {
             startActivity(Intent(applicationContext, emailAuthP1::class.java))
         }
+
         btnOneClick.setOnClickListener {
 
             val visitorJson = JSONObject()
@@ -103,6 +106,7 @@ class Signup : AppCompatActivity() {
         println(response.request())
         //println("this is:" + response.body()!!.string())
         return response.body()!!.string()
+
 
     }
 
