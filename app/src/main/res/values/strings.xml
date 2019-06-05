@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ibet</string>
+    <string name="app_name">ibet</string>
     <string name="facebook_app_id" translatable="false">599263050578163</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb599263050578163</string>
     <string name="password_strength_weak">Weak</string>
@@ -9,33 +9,33 @@
     <string name="selected_item" translatable="false">Selected item:</string>
     <string name="sign_up_1_of_3">Sign up (1 of 3)</string>
     <string name="show">Show</string>
-    <string name="user_name">User name</string>
+    <string name="user_name">User name *</string>
     <string name="this_will_be_used_to_log_in">This will be used to log in</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="email">Email *</string>
+    <string name="password">Password *</string>
     <string name="at_least_8_characters">At least 8 characters</string>
     <string name="weak">Weak</string>
     <string name="tips_for_a_strong_password_n_use_letters_and_numbers_n_use_special_characters_eg_n_mix_lower_and_uppercase"
             translatable="false">
         Tips for a strong password: - Use letters and numbers - Use special characters (eg.!@) - Mix lower and uppercase
     </string>
-    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_password">Confirm Password *</string>
     <string name="continue_">Continue</string>
     <string name="sign_up_2_of_3">Sign up (2 of 3)</string>
     <string name="personal_details">Personal details</string>
-    <string name="phone_number">Phone number</string>
+    <string name="phone_number">Phone number *</string>
     <string name="select">select</string>
     <string name="address_line_2">Address line 2</string>
     <string name="we_ll_send_you_an_sms_to_confirm">We\'ll send you an SMS to confirm</string>
-    <string name="first_name">First name</string>
-    <string name="last_name">Last name</string>
+    <string name="first_name">First name *</string>
+    <string name="last_name">Last name *</string>
     <string name="gender">Gender</string>
-    <string name="date_of_birth">Date of birth</string>
-    <string name="city">City</string>
+    <string name="date_of_birth">Date of birth *</string>
+    <string name="city">City *</string>
     <string name="address">Address</string>
-    <string name="country">Country</string>
+    <string name="country">Country *</string>
     <string name="address_line_1">Address line 1</string>
-    <string name="postcodes">Postcodes</string>
+    <string name="postcodes">Zipcode *</string>
     <string name="preferences">Preferences</string>
     <string name="promo_code">Promo code</string>
     <string name="deposit_limit_amount">Deposit limit - amount</string>
@@ -75,10 +75,21 @@
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="home">Home</string>
-    <string name="game">Game</string>
+    <string name="game">Games</string>
     <string name="user">User</string>
     <string name="language">Language</string>
     <string name="title">Title</string>
+    <string name="knowledge_center">Knowledge Center</string>
+    <string name="about_ibet">About Ibet</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="responsible_gaming">Responsible Gaming</string>
+    <string name="terms_conditions">Terms / Conditions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="support">Support</string>
+    <string name="search_ibet">Search iBet</string>
+    <string name="log_in">Log in</string>
+    <string name="state">State *</string>
+    <string name="log_out">log out</string>
 
 
 </resources>
