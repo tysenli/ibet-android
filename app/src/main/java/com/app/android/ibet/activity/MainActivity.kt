@@ -1,6 +1,7 @@
 package com.app.android.ibet.activity
 
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -17,6 +18,7 @@ import com.app.android.ibet.fragment.*
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.app_bar_main.view.*
 import kotlinx.android.synthetic.main.content_main.*
 
 
@@ -40,6 +42,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         */
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        toolbar.setTitleTextColor(Color.RED)
+        //toolbar.
+        toolbar.setTitleMargin(52,12,232,11)
 
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
@@ -54,13 +59,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        /*
         if (!isLogin) {
             menu!!.findItem(R.id.user).isVisible = false
             menu.findItem(R.id.login).isVisible = true
         } else {
             menu!!.findItem(R.id.user).isVisible = true
             menu.findItem(R.id.login).isVisible = false
-        }
+        }*/
         return super.onPrepareOptionsMenu(menu)
     }
 
@@ -93,6 +99,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 ft.commit()
                 return true
             }
+            /*
             R.id.user -> {
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
@@ -100,7 +107,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 ft.replace(R.id.frag_placeholder, UserInfo(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit()
                 return true
-            }
+            } */
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -120,23 +127,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 ft.commit()
             }
 
-            R.id.sportsbook_a -> {
-                title = "Sportsbook A"
-                val fm = supportFragmentManager
-                val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder, SportsA(this@MainActivity), "FAVORITES_FRAG")
-                ft.commit()
-            }
-            R.id.sportsbook_b -> {
-                title = "Sportsbook B"
-            }
-            R.id.sportsbook_c -> {
-                title = "Sportsbook C"
-            }
+
             R.id.live_casino -> {
                 title ="Live Casino"
+
             }
-            R.id.game -> {
+            R.id.slots -> {
                 title = "Games"
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
