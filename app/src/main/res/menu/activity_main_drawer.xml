@@ -4,7 +4,7 @@
       xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
       tools:showIn="navigation_view">
 
-
+<!--
     <group android:checkableBehavior="single">
 
         <item
@@ -12,37 +12,59 @@
                 android:icon="@drawable/home_icon"
                 android:title="@string/home"
         />
+    </group>
+-->
+
+    <group android:checkableBehavior="single"
+           android:id="@+id/group1"
+    >
         <item
                 android:id="@+id/app_bar_search"
-                android:icon="@drawable/ic_search_black_24dp"
-                android:title="@string/search_ibet"
-                app:actionViewClass="android.widget.SearchView"/>
+                android:icon="@drawable/search"
+                android:title="@string/search"
+                app:showAsAction="collapseActionView|ifRoom"
+                app:actionViewClass="android.support.v7.widget.SearchView"/>
+    </group>
 
+    <group android:checkableBehavior="single"
+           android:id="@+id/group2"
+    >
 
         <item
                 android:id="@+id/sports"
-                android:title="SPORTS"
+                android:title="@string/sports"
                 android:icon="@drawable/soccer"
+
+                
         />
+    </group>
+    <group android:checkableBehavior="single"
+           android:id="@+id/group3"
+    >
         <item
                 android:id="@+id/live_casino"
                 android:icon="@drawable/casino"
-                android:title="LIVE CASINO"/>
+                android:title="@string/live_casino"/>
+    </group>
+    <group android:checkableBehavior="single"
+           android:id="@+id/group4"
+    >
         <item
                 android:id="@+id/slots"
                 android:icon="@drawable/slots"
-                android:title="SLOTS"/>
+                android:title="@string/slots"/>
+    </group>
+    <group android:checkableBehavior="single"
+           android:id="@+id/group5"
+    >
         <item
                 android:id="@+id/lottery"
                 android:icon="@drawable/lottery"
-                android:title="Lottery"/>
-        <item
-                android:id="@+id/language"
-                android:title="@string/language"/>
-
-
+                android:title="@string/lottery"/>
 
     </group>
+
+
 
 
 

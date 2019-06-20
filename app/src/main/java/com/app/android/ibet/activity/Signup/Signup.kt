@@ -68,6 +68,7 @@ class Signup : AppCompatActivity() {
             startActivity(Intent(applicationContext, emailAuthP1::class.java))
         }
 
+
         btnOneClick.setOnClickListener {
 
             val visitorJson = JSONObject()
@@ -86,6 +87,7 @@ class Signup : AppCompatActivity() {
             startActivity(res)
 
         }
+
 
 
     }

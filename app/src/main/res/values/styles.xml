@@ -12,14 +12,34 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="drawerArrowStyle">@style/homeButton</item>
+
 
     </style>
+
     <style name="toolbarPopupTheme">
-        <item name="android:colorBackground">#2d2d2d</item>
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownVerticalOffset">?attr/actionBarSize</item>
+        <!--
+        <item name="android:colorBackground">#ffffff</item>
+        -->
+
+
+    </style>
+    <style name="homeButton" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/title</item>
+
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    </style>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="NavigationView" >
+        <item name="android:listDivider">@color/line</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
 
 </resources>

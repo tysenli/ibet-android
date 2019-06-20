@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+    <Button
+            android:id="@+id/send_email"
+            android:layout_width="272dp"
+            android:layout_height="52dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:background="@drawable/btn_red"
+            android:text="send email"
+            android:textColor="#ffffff"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="16sp"
+            android:layout_marginTop="89dp" app:layout_constraintTop_toBottomOf="@+id/textView25"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
+    <EditText
+            android:layout_width="325dp"
+            android:layout_height="47dp"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/email_id2"
+            android:hint=" EMAIL ADDRESS"
+            android:textColorHint="#212121"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/border"
+            android:singleLine="false" android:selectAllOnFocus="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:autofillHints=""
+            android:layout_marginTop="46dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView24"/>
+    <TextView
+            android:layout_width="312dp"
+            android:layout_height="113dp"
+            android:textSize="24sp"
+            android:textColor="#212121"
+            android:lineSpacingExtra="12sp"
+            android:gravity="center_horizontal"
+            android:text="Enter your email and use your verification code to confirm your identity."
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="26dp"
+            android:id="@+id/textView24"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#747175"
+            android:lineSpacingExtra="6.3sp"
+            android:text="This will be used to log in."
+            android:layout_marginStart="40dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="40dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@+id/email_id2" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.015" android:id="@+id/textView25"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -13,6 +13,7 @@
             android:id="@+id/frag_placeholder"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
+        <!--
         <Button
                 android:text="On boarding"
                 android:layout_width="123dp"
@@ -24,6 +25,7 @@
                 android:background="@color/com_facebook_button_login_silver_background_color"
                 android:layout_marginBottom="36dp"
                 app:layout_constraintBottom_toBottomOf="parent"/>
+                -->
     </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
