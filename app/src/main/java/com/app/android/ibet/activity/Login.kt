@@ -16,7 +16,7 @@ class Login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
         setContentView(R.layout.activity_login)
         forgot_password.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         sign_up_here.paintFlags = Paint.UNDERLINE_TEXT_FLAG

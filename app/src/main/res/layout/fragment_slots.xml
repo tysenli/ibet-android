@@ -28,7 +28,7 @@
             app:stl_dividerThickness="1dp"
             app:stl_defaultTabBackground="?attr/selectableItemBackground"
             app:stl_defaultTabTextAllCaps="true"
-            app:stl_defaultTabTextColor="#979797"
+            app:stl_defaultTabTextColor="@color/custom_tab"
             app:stl_defaultTabTextSize="14sp"
             app:stl_defaultTabTextHorizontalPadding="16dp"
             app:stl_defaultTabTextMinWidth="0dp"
