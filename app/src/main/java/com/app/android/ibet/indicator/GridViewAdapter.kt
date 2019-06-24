@@ -1,5 +1,7 @@
 package com.app.android.ibet.indicator
 
+import android.content.Context
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,24 +44,42 @@ internal class GridViewAdapter(datas: List<DataBean>, page: Int) : BaseAdapter()
     }
 
     override fun getView(i: Int, itemView: View?, viewGroup: ViewGroup): View {
-        val view :View
+        var view = itemView
         var holder: ViewHolder
+        if (view == null) {
+            val inflater = viewGroup.context?.
+                getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            view = inflater.inflate(R.layout.slot_item,null)
+            holder = ViewHolder()
+            holder.iv_img = itemView!!.findViewById<View>(R.id.iv_img) as ImageView
+        } else {
+            holder = itemView!!.tag as ViewHolder
+        }
+
+        /*
         if (itemView == null) {
 
-            view = LayoutInflater.from(viewGroup.context).inflate(R.layout.slot_item, viewGroup, false)
+            itemView = LayoutInflater.from(viewGroup.context).inflate(R.layout.slot_item, viewGroup, false)
             holder = ViewHolder()
             holder.iv_img = itemView!!.findViewById<View>(R.id.iv_img) as ImageView
             //mHolder.tv_text = (TextView) itemView.findViewById(R.id.tv_text);
             itemView.tag = holder
         } else {
-            holder = itemView.tag as ViewHolder
+
         }
-        val bean = dataList[i]
-        if (bean != null) {
-            holder.iv_img!!.setImageResource(R.mipmap.gameitem)
+        */
+        //val bean = dataList[i]
+
+
+
+        holder.iv_img!!.setImageResource(R.mipmap.gameitem)
+        //mHolder.tv_text = (TextView) itemView.findViewById(R.id.tv_text);
+
+       // if (bean != null) {
+          //  holder.iv_img!!.setImageResource(R.mipmap.gameitem)
             //mHolder.tv_text.setText(bean.name);
-        }
-        return itemView
+        //}
+        return view!!
     }
 
     inner class ViewHolder {

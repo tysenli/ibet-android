@@ -19,9 +19,15 @@ import com.app.android.ibet.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.*
+import android.support.v4.view.MenuItemCompat
+import android.view.View.OnFocusChangeListener
+import android.content.ComponentName
 
-
-
+import android.content.Context.SEARCH_SERVICE
+import android.app.SearchManager
+import android.content.Context
+import android.support.v7.widget.SearchView
+import android.view.View
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {

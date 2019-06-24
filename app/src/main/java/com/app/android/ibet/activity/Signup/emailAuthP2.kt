@@ -29,6 +29,13 @@ import java.util.*
 
 class emailAuthP2: AppCompatActivity() {
     //CountryCodePicker.OnCountryChangeListener  {
+    companion object {
+        val USER = "user"
+        val FIRST = "first"
+        val LAST = "last"
+        val BIRTH = "birth"
+
+    }
     private var ccp: CountryCodePicker?=null
     private var countryCode:String?=null
     private var countryName:String?=null
@@ -60,7 +67,22 @@ class emailAuthP2: AppCompatActivity() {
 
         })
         signup2.setOnClickListener {
-            startActivity(Intent(applicationContext, emailAuthP3::class.java))
+            val user = username_id.text.toString()
+            val first = first_name.text.toString()
+            val last = last_name.text.toString()
+            val birth =  mm.text.toString() + "/" + dd.text.toString() +"/" + yy.text.toString()
+            println(birth)
+            val res = Intent(applicationContext, emailAuthP3::class.java)
+            //res.putExtra(emailAuthP1.MAIL, )
+
+            println (intent.getStringExtra(emailAuthP1.MAIL))
+            res.putExtra(emailAuthP1.MAIL,intent.getStringExtra(emailAuthP1.MAIL))
+            res.putExtra(emailAuthP1.PASS1, intent.getStringExtra(emailAuthP1.PASS1))
+            res.putExtra(USER,user)
+            res.putExtra(FIRST,first)
+            res.putExtra(LAST, last)
+            res.putExtra(BIRTH,birth)
+            startActivity(res)
         }
         /*
         //phone_area

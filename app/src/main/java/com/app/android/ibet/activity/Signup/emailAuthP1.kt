@@ -1,5 +1,6 @@
 package com.app.android.ibet.activity.Signup
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -8,9 +9,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import com.app.android.ibet.R
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
@@ -20,16 +20,24 @@ import com.app.android.ibet.activity.MainActivity
 import com.wajahatkarim3.easyvalidation.core.view_ktx.minLength
 import com.ybs.passwordstrengthmeter.PasswordStrength
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
+import android.widget.TextView
+import android.view.ViewGroup
+import android.view.LayoutInflater
+import android.widget.BaseAdapter
+
+
+
 
 
 
 
 class emailAuthP1 : AppCompatActivity() {
     companion object {
-        val USER = "user"
+
         var MAIL = "mail"
         var PASS1 = "pass1"
-        var PASS2 = "pass2"
+        var LAN = "lan"
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -133,6 +141,27 @@ class emailAuthP1 : AppCompatActivity() {
             }
 
         })
+        var language = arrayOf("English", "Chinese", "Thai")
+       // var flag[] = {R.drawable.gb, R.drawable.cn, R.drawable.th}
+        var lanSpinner = findViewById<Spinner>(R.id.lang)
+        if (lanSpinner != null) {
+            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,language)
+                //CusAdapter(this, flag, language)
+            lanSpinner.adapter = arrayAdapter
+
+            lanSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    //Toast.makeText(this, getString(R.string.selected_item) + " " + gender[position], Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // Code to perform some action when nothing is selected
+                }
+            }
+
+        }
+
+
         /*
         conPasswordtxt.addTextChangedListener (object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
@@ -178,13 +207,13 @@ class emailAuthP1 : AppCompatActivity() {
             //val user = username_id.text.toString()
             val mail = email_id.text.toString()
             val pass1 = password_id.text.toString()
-            //val pass2 = con_password_id.text.toString()
+            val lan = lang.selectedItem.toString()
             val res = Intent(applicationContext, emailAuthP2::class.java)
-            //println("user name:" + user)
-            //res.putExtra(emailAuthP1.USER,user)
-            res.putExtra(emailAuthP1.MAIL,mail)
-            res.putExtra(emailAuthP1.PASS1,pass1)
-            res.putExtra(emailAuthP1.PASS2,pass1)
+
+            res.putExtra(MAIL,mail)
+            res.putExtra(PASS1,pass1)
+            res.putExtra(LAN, lan)
+            //res.putExtra(emailAuthP1.PASS2,pass1)
             //startActivity(res)
            // setResult(Activity.RESULT_OK, res)
             startActivity(res)
@@ -227,6 +256,38 @@ class emailAuthP1 : AppCompatActivity() {
             progressBar.progress = 75
         } else {
             progressBar.progress = 100
+        }
+    }
+    class CusAdapter (
+        internal var context: Context,
+        internal var flags: Array<Int>,
+        internal var language: Array<String>
+    ) : BaseAdapter() {
+        internal var inflter: LayoutInflater
+
+        init {
+            inflter = LayoutInflater.from(context)
+        }
+
+        override fun getCount(): Int {
+            return flags.size
+        }
+
+        override fun getItem(i: Int): Any? {
+            return null
+        }
+
+        override fun getItemId(i: Int): Long {
+            return 0
+        }
+
+        override fun getView(i: Int, view: View, viewGroup: ViewGroup): View {
+            val view = inflter.inflate(R.layout.custom_spinner_items, null)
+            val icon = view.findViewById<View>(R.id.imageView) as ImageView
+            val names = view.findViewById<View>(R.id.textView) as TextView
+            icon.setImageResource(flags[i])
+            names.text = language[i]
+            return view
         }
     }
 
