@@ -95,7 +95,7 @@ class Signup : AppCompatActivity() {
 
 
     }
-    fun post(json : String, url : String):  String{
+    fun post(json : String, url : String):  String {
 
         val client = OkHttpClient()
 
@@ -110,7 +110,7 @@ class Signup : AppCompatActivity() {
         val response = client.newCall(request).execute()
 
         println(response.request())
-        println("this is:" + response.body()!!.string())
+        //println("this is:" + response.body()!!.string())
         return response.body()!!.string()
 
 

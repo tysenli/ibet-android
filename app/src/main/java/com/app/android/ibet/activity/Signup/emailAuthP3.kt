@@ -69,7 +69,6 @@ class emailAuthP3: AppCompatActivity() {
             signupJson.put("street_address_1" , address.text.toString())
             signupJson.put("city"             , city.text.toString())
             signupJson.put("zipcode"          , zip_code.text.toString())
-
             signupJson.put("over_eighteen"    , true)
 
             //val url = "http://10.0.2.2:8000/users/api/signup/"
