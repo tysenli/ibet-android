@@ -22,7 +22,11 @@ class Verify: AppCompatActivity() {
 
         }
         via_phone.setOnClickListener {
-            startActivity(Intent(applicationContext, VeriPhone::class.java))
+            val res = Intent(applicationContext, VeriPhone::class.java)
+            res.putExtra("user", intent.getStringExtra(emailAuthP2.USER))
+            res.putExtra("email",intent.getStringExtra(emailAuthP1.MAIL))
+            startActivity(res)
+            //startActivity(Intent(applicationContext, VeriPhone::class.java))
 
         }
     }

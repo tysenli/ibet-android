@@ -19,6 +19,9 @@ android {
         debug {
             buildConfigField 'String','SIGNUP_URL','"http://10.0.2.2:8000/users/api/signup/"'
             buildConfigField 'String','ONE_CLICK_SIGNUP_URL','"http://10.0.2.2:8000/users/api/oneclicksignup/"'
+            buildConfigField 'String','GENERATE_CODE',' "http://10.0.2.2:8000/users/api/generateactivationcode/" '
+            buildConfigField 'String','VERI_CODE',' "http://10.0.2.2:8000/users/api/verifyactivationcode/" '
+            buildConfigField 'String','LOGIN',' "http://10.0.2.2:8000/users/api/login/" '
 
         }
         release {

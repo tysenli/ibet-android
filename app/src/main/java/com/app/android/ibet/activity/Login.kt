@@ -3,13 +3,16 @@ package com.app.android.ibet.activity
 import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
+import android.os.StrictMode
 import android.support.v7.app.AppCompatActivity
+import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.MainActivity.Companion.isLogin
 import com.app.android.ibet.activity.Signup.Signup
+import com.app.android.ibet.activity.Signup.emailAuthP3
 
 import kotlinx.android.synthetic.main.activity_login.*
-
+import org.json.JSONObject
 
 
 class Login : AppCompatActivity() {
@@ -18,6 +21,11 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
+
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+
+        StrictMode.setThreadPolicy(policy)
+
         forgot_password.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         sign_up_here.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         /*
@@ -33,19 +41,17 @@ class Login : AppCompatActivity() {
             var intent = Intent(this, Signup::class.java)
             startActivity(intent)
         }
-        userlogin.setOnClickListener { view ->
-            /*
+        userlogin.setOnClickListener {
+
             val loginJson = JSONObject()
-            loginJson.put("username", "Jennie")
-            loginJson.put("email", "jiaqi.hu17@gmail.com")
-            loginJson.put("password", "lub13080")
+            loginJson.put("username", "tester")
+            loginJson.put("email", login_email.text.toString())
+            loginJson.put("password", login_password.text.toString())
 
-            val url = "http://10.0.2.2:8000/users/api/login/"
+            //val url = "http://10.0.2.2:8000/users/api/login/"
 
-            emailAuthP2().post(loginJson.toString(), url)
-            */
-
-            isLogin = true
+            emailAuthP3().post(loginJson.toString(), BuildConfig.LOGIN)
+            //isLogin = true
             startActivity(Intent(this, MainActivity::class.java))
 
         }

@@ -71,7 +71,6 @@ class Signup : AppCompatActivity() {
         btnOneClick.setOnClickListener {
 
             val visitorJson = JSONObject()
-
             //val url = "http://10.0.2.2:8000/users/api/oneclicksignup/"
 
             val info = post(visitorJson.toString(),BuildConfig.ONE_CLICK_SIGNUP_URL)

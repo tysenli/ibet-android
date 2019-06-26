@@ -17,11 +17,17 @@ import okhttp3.RequestBody
 import org.json.JSONObject
 import java.util.*
 import kotlin.collections.ArrayList
+import android.os.StrictMode
+
+
+
 
 class emailAuthP3: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_auth_p3)
+
+
         /*
         close3.setOnClickListener {
             startActivity(Intent(applicationContext, MainActivity::class.java))
@@ -61,7 +67,7 @@ class emailAuthP3: AppCompatActivity() {
             signupJson.put("username"         , intent.getStringExtra(emailAuthP2.USER))
             signupJson.put("password"        ,  intent.getStringExtra(emailAuthP1.PASS1))
             signupJson.put("email"            , intent.getStringExtra(emailAuthP1.MAIL))
-            signupJson.put("phone"            , (0..10).random().toString())
+            signupJson.put("phone"            , phone1.text.toString())
             signupJson.put("first_name"       , intent.getStringExtra(emailAuthP2.FIRST))
             signupJson.put("last_name"        , intent.getStringExtra(emailAuthP2.LAST))
             signupJson.put("date_of_birth"    , intent.getStringExtra(emailAuthP2.BIRTH))
@@ -81,6 +87,7 @@ class emailAuthP3: AppCompatActivity() {
 
         }
     }
+
     //http://10.0.2.2:8000/users/api/sendemail/?case=signup&username=test&to_email_address=jiaqi@claymore.com...
     fun post(json : String, url : String){
 
