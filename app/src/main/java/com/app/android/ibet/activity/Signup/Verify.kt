@@ -9,13 +9,16 @@ import kotlinx.android.synthetic.main.activity_verify.*
 class Verify: AppCompatActivity() {
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_verify)
         via_email.setOnClickListener {
-            startActivity(Intent(applicationContext, VeriEmail::class.java))
+            val res = Intent(applicationContext, VeriEmail::class.java)
+            res.putExtra("user", intent.getStringExtra(emailAuthP2.USER))
+            res.putExtra("email",intent.getStringExtra(emailAuthP1.MAIL))
+            startActivity(res)
+
 
         }
         via_phone.setOnClickListener {

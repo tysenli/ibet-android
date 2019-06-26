@@ -73,10 +73,15 @@ class emailAuthP3: AppCompatActivity() {
 
             //val url = "http://10.0.2.2:8000/users/api/signup/"
             post(signupJson.toString(), BuildConfig.SIGNUP_URL)
-            startActivity(Intent(applicationContext, Verify::class.java))
+            val res = Intent(applicationContext, Verify::class.java)
+            res.putExtra("user", intent.getStringExtra(emailAuthP2.USER))
+            res.putExtra("email",intent.getStringExtra(emailAuthP1.MAIL))
+            startActivity(res)
+
 
         }
     }
+    //http://10.0.2.2:8000/users/api/sendemail/?case=signup&username=test&to_email_address=jiaqi@claymore.com...
     fun post(json : String, url : String){
 
         val client = OkHttpClient()
