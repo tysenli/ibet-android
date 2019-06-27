@@ -44,13 +44,14 @@ class Login : AppCompatActivity() {
         userlogin.setOnClickListener {
 
             val loginJson = JSONObject()
-            loginJson.put("username", "tester")
-            loginJson.put("email", login_email.text.toString())
+            loginJson.put("username", login_user.text.toString())
+            //loginJson.put("email", login_email.text.toString())
             loginJson.put("password", login_password.text.toString())
 
             //val url = "http://10.0.2.2:8000/users/api/login/"
 
-            emailAuthP3().post(loginJson.toString(), BuildConfig.LOGIN)
+            var log = Signup().post(loginJson.toString(), BuildConfig.LOGIN)
+            println (log)
             //isLogin = true
             startActivity(Intent(this, MainActivity::class.java))
 
