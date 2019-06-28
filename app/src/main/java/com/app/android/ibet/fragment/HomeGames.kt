@@ -35,9 +35,9 @@ import kotlinx.android.synthetic.main.game_list_item.view.*
  *
  */
 @SuppressLint("ValidFragment")
-class HomeGames(context: Context) : Fragment() {
+class HomeGames : Fragment() {
     private var adapter = GameAdapter()
-    private var parentContext: Context = context
+   // private var parentContext: Context = context
     private lateinit var viewModel: GameViewModel
 
     private var GameList: ArrayList<GameModel> = ArrayList()
@@ -48,7 +48,7 @@ class HomeGames(context: Context) : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        game_list.layoutManager = GridLayoutManager(this.context,2)
+        game_list.layoutManager = GridLayoutManager(this.context,3)
         //game_list.layoutManager = LinearLayoutManager(this.context)
         game_list.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
@@ -102,7 +102,7 @@ class HomeGames(context: Context) : Fragment() {
             val gameImages =
                 game.getImage()
 
-            Picasso.with(this@HomeGames.parentContext).load(gameImages).into(p0.gameImg)
+            Picasso.with(context).load(gameImages).into(p0.gameImg)
 
             p0.gameTitle.text =
                 game.getName()

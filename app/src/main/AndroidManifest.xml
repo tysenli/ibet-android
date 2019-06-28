@@ -71,6 +71,24 @@
         </activity>
         <activity android:name=".activity.Signup.oneClickIntro">
         </activity>
+        <activity android:name=".activity.Login"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Login"
+        >
+
+        </activity>
+        <activity android:name=".activity.Signup.Verify">
+
+        </activity>
+        <activity android:name=".activity.Signup.VeriEmail">
+
+        </activity>
+        <activity android:name=".activity.Signup.VeriPhone">
+
+        </activity>
+        <activity android:name=".activity.ForgotPass"></activity>
+        <activity android:name=".activity.Signup.Verified"></activity>
+        <activity android:name=".activity.Signup.PhoneCode"></activity>
 
 
     </application>

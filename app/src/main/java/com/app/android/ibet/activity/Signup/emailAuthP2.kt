@@ -15,7 +15,10 @@ import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.MainActivity
 import com.hbb20.CountryCodePicker
+import com.wajahatkarim3.easyvalidation.core.view_ktx.maxLength
+import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
+import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 import kotlinx.android.synthetic.main.activity_email_auth_p2.*
 
 import org.json.JSONObject
@@ -24,7 +27,15 @@ import java.util.*
 //import com.sun.xml.internal.ws.streaming.XMLStreamWriterUtil.getOutputStream
 
 
-class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener  {
+class emailAuthP2: AppCompatActivity() {
+    //CountryCodePicker.OnCountryChangeListener  {
+    companion object {
+        val USER = "user"
+        val FIRST = "first"
+        val LAST = "last"
+        val BIRTH = "birth"
+
+    }
     private var ccp: CountryCodePicker?=null
     private var countryCode:String?=null
     private var countryName:String?=null
@@ -32,8 +43,48 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_auth_p2)
-        val policy   = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
+        signup2.isEnabled = false
+        yy.addTextChangedListener (object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (username_id.nonEmpty() && first_name.nonEmpty() && last_name.nonEmpty() &&
+                    dd.maxLength(2) && mm.maxLength(2) && yy.maxLength(4)) {
+
+                    signup2.isEnabled = true
+                    signup2.setBackgroundResource(R.drawable.btn_red)
+                } else {
+                    signup2.isEnabled = false
+                    signup2.setBackgroundResource(R.drawable.btn_red2)
+                }
+            }
+
+        })
+        signup2.setOnClickListener {
+            val user = username_id.text.toString()
+            val first = first_name.text.toString()
+            val last = last_name.text.toString()
+            val birth =  mm.text.toString() + "/" + dd.text.toString() +"/" + yy.text.toString()
+            println(birth)
+            val res = Intent(applicationContext, emailAuthP3::class.java)
+            //res.putExtra(emailAuthP1.MAIL, )
+
+            println (intent.getStringExtra(emailAuthP1.MAIL))
+            res.putExtra(emailAuthP1.MAIL,intent.getStringExtra(emailAuthP1.MAIL))
+            res.putExtra(emailAuthP1.PASS1, intent.getStringExtra(emailAuthP1.PASS1))
+            res.putExtra(USER,user)
+            res.putExtra(FIRST,first)
+            res.putExtra(LAST, last)
+            res.putExtra(BIRTH,birth)
+            startActivity(res)
+        }
+        /*
         //phone_area
         ccp = findViewById<com.hbb20.CountryCodePicker>(R.id.country_code_picker)
         ccp!!.setOnCountryChangeListener(this)
@@ -299,7 +350,8 @@ class emailAuthP2: AppCompatActivity(),CountryCodePicker.OnCountryChangeListener
         }, year, month, day)
         dpd.show()
     }
-
+*/
+    }
 
 
 

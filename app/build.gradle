@@ -19,6 +19,9 @@ android {
         debug {
             buildConfigField 'String','SIGNUP_URL','"http://10.0.2.2:8000/users/api/signup/"'
             buildConfigField 'String','ONE_CLICK_SIGNUP_URL','"http://10.0.2.2:8000/users/api/oneclicksignup/"'
+            buildConfigField 'String','GENERATE_CODE',' "http://10.0.2.2:8000/users/api/generateactivationcode/" '
+            buildConfigField 'String','VERI_CODE',' "http://10.0.2.2:8000/users/api/verifyactivationcode/" '
+            buildConfigField 'String','LOGIN',' "http://10.0.2.2:8000/users/api/login/" '
 
         }
         release {
@@ -60,6 +63,10 @@ dependencies {
     implementation 'com.github.kittinunf.fuel:fuel:2.0.0'
     implementation 'com.hbb20:ccp:2.2.2'
     implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.14.1'
+    implementation 'com.ogaclejapan.smarttablayout:library:1.7.0@aar'
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:1.7.0@aar'
+    implementation 'com.chabbal:slidingdotsplash:1.0.2'
+
 
 
 }

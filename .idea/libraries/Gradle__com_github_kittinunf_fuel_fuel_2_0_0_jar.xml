@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.kittinunf.fuel:fuel:2.0.0@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.kittinunf.fuel/fuel/2.0.0/eaaa6cebba466cfe81e7dbb9ecd45395f696149f/fuel-2.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.kittinunf.fuel/fuel/2.0.0/e94b835af38bb7dad56645a81898ec361d18ee97/fuel-2.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

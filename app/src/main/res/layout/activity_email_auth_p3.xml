@@ -4,6 +4,123 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
                                              xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.hbb20.CountryCodePicker
+            app:ccp_hintExampleNumber="true"
+            app:ccp_showFlag="false"
+            app:ccp_showNameCode="false"
+            app:ccp_showArrow="false"
+            android:background="@drawable/spinner_border"
+            android:id="@+id/country_code_picker1"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="80dp"
+            android:layout_height="44dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="40dp" android:layout_marginStart="40dp" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/country_id">
+
+    </com.hbb20.CountryCodePicker>
+
+    <EditText
+            android:layout_width="243dp"
+            android:layout_height="44dp"
+            android:inputType="phone"
+            android:ems="10"
+            android:textColorHint="#212121"
+            android:lineSpacingExtra="8.6sp"
+            android:hint=" Phone Number"
+            android:background="@drawable/border"
+            android:id="@+id/phone1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/country_id"
+            app:layout_constraintStart_toEndOf="@+id/country_code_picker1"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <TextView android:layout_width="325dp"
+              android:layout_height="16dp"
+              android:background="@drawable/step_bar3"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              android:layout_marginTop="24dp" app:layout_constraintStart_toStartOf="parent"
+              android:id="@+id/textView16"/>
+    <TextView
+            android:background="@drawable/contact_details"
+            android:layout_width="322dp"
+            android:layout_height="39dp"
+            android:id="@+id/tv_contact_detalis"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494" app:layout_constraintTop_toBottomOf="@+id/textView16"
+            android:layout_marginTop="20dp"/>
+    <EditText
+            android:layout_width="325dp"
+            android:layout_height="47dp"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/address"
+            android:hint=" ADDRESS"
+            android:textColorHint="#212121"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/border"
+            android:singleLine="false" android:selectAllOnFocus="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:autofillHints=""
+            android:layout_marginTop="22dp" app:layout_constraintTop_toBottomOf="@+id/tv_contact_detalis"/>
+    <EditText
+            android:layout_width="152dp"
+            android:layout_height="48dp"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/city"
+            android:hint=" CITY"
+            android:textColorHint="#212121"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/border"
+            android:singleLine="false" android:selectAllOnFocus="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:autofillHints=""
+            app:layout_constraintHorizontal_bias="0.166" android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@+id/address"/>
+    <EditText
+            android:layout_width="152dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/zip_code"
+            android:hint=" ZIP CODE"
+            android:textColorHint="#212121"
+            android:background="@drawable/border"
+            android:singleLine="false" android:selectAllOnFocus="false"
+            android:autofillHints=""
+            android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@+id/address" app:layout_constraintStart_toEndOf="@+id/city"
+            android:layout_marginStart="20dp" android:layout_marginLeft="20dp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.027"/>
+    <Spinner
+            android:layout_width="324dp"
+            android:layout_height="48dp"
+            android:background="@drawable/spinner_border"
+            android:id="@+id/country_id" android:spinnerMode="dropdown"
+            android:dropDownWidth="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@+id/city"/>
+    <Button
+            android:text="sign up"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:id="@+id/signup3" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/btn_red"
+            android:textSize="15sp"
+            android:textColor="#f3f3f3"
+            android:letterSpacing="0.04"
+            app:layout_constraintHorizontal_bias="0.494"
+            android:layout_marginTop="132dp" app:layout_constraintTop_toBottomOf="@+id/country_id"/>
+    <!--
     <Button
             android:layout_width="48dp"
             android:layout_height="43dp"
@@ -52,5 +169,5 @@
             android:background="@color/com_facebook_button_login_silver_background_color"
             app:layout_constraintHorizontal_bias="0.495"
             android:textSize="18sp" android:layout_marginTop="72dp" app:layout_constraintTop_toBottomOf="@+id/con_sms"/>
-
+    -->
 </android.support.constraint.ConstraintLayout>
