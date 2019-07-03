@@ -83,14 +83,14 @@
         <activity android:name=".activity.Signup.VeriEmail">
 
         </activity>
-        <activity android:name=".activity.Signup.VeriPhone">
-
-        </activity>
+        <activity android:name=".activity.Signup.VeriPhone"></activity>
         <activity android:name=".activity.ForgotPass"></activity>
         <activity android:name=".activity.Signup.Verified"></activity>
         <activity android:name=".activity.Signup.PhoneCode"></activity>
-
-
+        <activity android:name=".activity.UserProfile.UserProfile"></activity>
+        <activity android:name=".activity.UserProfile.edit"></activity>
+        <activity android:name=".activity.UserProfile.Bets"></activity>
+        <activity android:name=".activity.UserProfile.Money"></activity>
     </application>
 
 </manifest>

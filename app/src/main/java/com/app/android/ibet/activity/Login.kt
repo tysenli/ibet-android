@@ -16,7 +16,9 @@ import org.json.JSONObject
 
 
 class Login : AppCompatActivity() {
-
+    companion object {
+        var token = ""
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -52,7 +54,11 @@ class Login : AppCompatActivity() {
 
             var log = Signup().post(loginJson.toString(), BuildConfig.LOGIN)
             println (log)
-            //isLogin = true
+            var key = log.split(":")[1]
+            // println(key.substring(1,key.length - 2))
+            token = key.substring(1,key.length - 2)
+            println(token)
+            isLogin = true
             startActivity(Intent(this, MainActivity::class.java))
 
         }

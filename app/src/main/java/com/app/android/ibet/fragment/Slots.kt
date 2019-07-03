@@ -26,7 +26,6 @@ class Slots (context: Context): Fragment() {
     override fun onStart() {
         super.onStart()
 
-
         val adapter = FragmentPagerItemAdapter(
             fragmentManager, FragmentPagerItems.with(parentContext)
                 .add("TOP RATED", Home().javaClass)

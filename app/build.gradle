@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.app.android.ibet"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -44,6 +44,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -66,6 +67,7 @@ dependencies {
     implementation 'com.ogaclejapan.smarttablayout:library:1.7.0@aar'
     implementation 'com.ogaclejapan.smarttablayout:utils-v4:1.7.0@aar'
     implementation 'com.chabbal:slidingdotsplash:1.0.2'
+    implementation 'com.github.Idtk:SmallChart:v0.1.1'
 
 
 
