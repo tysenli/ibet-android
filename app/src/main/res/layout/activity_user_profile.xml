@@ -108,7 +108,7 @@
                         android:textSize="15.8sp"
                         android:textColor="#212121"
                         android:letterSpacing="0.04"
-                        android:paddingTop="23sp"
+                        android:paddingTop="24sp"
                         android:drawableTop="@drawable/withdraw"
                         android:background="@drawable/border"
                         android:layout_height="90dp"
