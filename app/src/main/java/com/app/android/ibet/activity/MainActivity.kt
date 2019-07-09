@@ -28,6 +28,7 @@ import android.app.SearchManager
 import android.content.Context
 import android.support.v7.widget.SearchView
 import android.view.View
+import com.app.android.ibet.activity.UserProfile.UserProfile
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -72,14 +73,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        /*
+
         if (!isLogin) {
-            menu!!.findItem(R.id.user).isVisible = false
+            menu!!.findItem(R.id.logged).isVisible = false
             menu.findItem(R.id.login).isVisible = true
         } else {
-            menu!!.findItem(R.id.user).isVisible = true
+            menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
-        }*/
+        }
         return super.onPrepareOptionsMenu(menu)
     }
 
@@ -112,6 +113,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 ft.replace(R.id.frag_placeholder, Login(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit() */
                 startActivity(Intent(this, Login::class.java))
+                return true
+            }
+            R.id.logged -> {
+                startActivity(Intent(this, UserProfile::class.java))
                 return true
             }
             R.id.chinese -> {

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="#f1f1f1"
+>
+    <include
+            layout="@layout/app_bar_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="260dp"
+            android:background="#ffffff"
+            android:orientation="vertical" android:layout_marginTop="66dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="43dp"
+            app:layout_constraintHorizontal_bias="0.485" android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:textSize="15sp"
+                android:paddingLeft="18dp"
+                android:textColor="#212121"
+                android:gravity="center_vertical"
+                android:text="Contact Us"
+        />
+        <View
+                android:id="@+id/divider2"
+                android:layout_width="324dp"
+                android:layout_height="1dp"
+                android:background="#e4e4e4"
+                android:layout_gravity="center"
+        />
+        <TextView
+                android:layout_width="360dp"
+                android:layout_height="53dp"
+                android:textSize="14sp"
+                android:textColor="#212121"
+                android:gravity="center_vertical"
+                android:paddingLeft="18dp"
+                android:paddingRight="40dp"
+                android:drawableRight="@drawable/phone"
+                android:text="Call Us           (000) 000-000"
+        />
+        <View
+                android:id="@+id/divider3"
+                android:layout_width="324dp"
+                android:layout_height="1dp"
+                android:background="#e4e4e4"
+                android:layout_gravity="center"
+        />
+        <View
+                android:id="@+id/divider4"
+                android:layout_width="324dp"
+                android:layout_height="1dp"
+                android:background="#e4e4e4"
+                android:layout_gravity="center"
+        />
+        <TextView
+                android:layout_width="360dp"
+                android:layout_height="53dp"
+                android:textSize="14sp"
+                android:textColor="#212121"
+                android:gravity="center_vertical"
+                android:paddingLeft="18dp"
+                android:paddingRight="40dp"
+                android:drawableRight="@drawable/email"
+                android:text="Email Us         contactus@email.com"
+        />
+        <TextView
+                android:layout_width="360dp"
+                android:layout_height="96dp"
+                android:textSize="14sp"
+                android:textColor="#212121"
+                android:gravity="center_vertical"
+                android:paddingLeft="18dp"
+                android:paddingTop="20dp"
+                android:paddingRight="18dp"
+                android:text="Our friendly customer service team is on hand  to answer any questions you may have 24 hours  a day, 7 days a week."
+        />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

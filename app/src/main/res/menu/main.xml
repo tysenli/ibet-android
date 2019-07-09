@@ -47,6 +47,11 @@
           android:icon="@drawable/user"
           android:orderInCategory="2"
           app:showAsAction="always"/>
+    <item android:id="@+id/logged"
+          android:title=""
+          android:icon="@drawable/user3"
+          android:orderInCategory="2"
+          app:showAsAction="ifRoom"/>
 
 
 
