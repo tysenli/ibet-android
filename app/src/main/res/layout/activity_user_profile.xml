@@ -36,7 +36,7 @@
                         android:id="@+id/user"
                 />
                 <TextView
-                        android:text="                       Balance: $345.00"
+                        android:text="                 Balance: $345.00"
                         android:textSize="15.8sp"
                         android:textColor="#212121"
                         android:letterSpacing="0.04"
@@ -58,7 +58,7 @@
             </LinearLayout>
 
             <ImageView android:layout_width="360dp"
-                       android:layout_height="wrap_content"
+                       android:layout_height="82dp"
                        android:layout_marginTop="20dp"
                        android:background="@drawable/cash_100_345_00"
             />
@@ -80,7 +80,7 @@
             </LinearLayout>
 
             <ImageView android:layout_width="360dp"
-                       android:layout_height="wrap_content"
+                       android:layout_height="91dp"
                        android:layout_marginTop="20dp"
                        android:background="@drawable/info_bar"
             />

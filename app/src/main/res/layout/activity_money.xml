@@ -31,12 +31,14 @@
             app:stl_defaultTabTextColor="@color/custom_tab"
             app:stl_defaultTabTextSize="14sp"
             app:stl_defaultTabTextHorizontalPadding="16dp"
-            app:stl_defaultTabTextMinWidth="140dp"
+            app:stl_defaultTabTextMinWidth="200dp"
             app:stl_distributeEvenly="false"
             app:stl_clickable="true"
             app:stl_titleOffset="24dp"
             app:stl_drawDecorationAfterTab="true"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"/>
 
     <android.support.v4.view.ViewPager
             android:id="@+id/money_viewpager"

@@ -1,6 +1,5 @@
 package com.app.android.ibet.activity.UserProfile
 
-import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -19,7 +18,6 @@ import com.idtk.smallchart.data.PointShape
 import android.support.v4.content.ContextCompat
 import android.util.DisplayMetrics
 import android.util.TypedValue
-import java.security.AccessController.getContext
 
 
 class UserProfile : AppCompatActivity() {
@@ -62,7 +60,14 @@ class UserProfile : AppCompatActivity() {
 
         initData()
         curveChart.setDataList(mDataList)
+        deposit.setOnClickListener {
+            startActivity(Intent(this, Money::class.java))
 
+        }
+        withdraw.setOnClickListener {
+            startActivity(Intent(this, Money::class.java))
+
+        }
         open_bets.setOnClickListener {
             startActivity(Intent(this, Bets::class.java))
         }
@@ -70,9 +75,24 @@ class UserProfile : AppCompatActivity() {
         settled_bets.setOnClickListener {
             startActivity(Intent(this, Bets::class.java))
         }
+        promotions.setOnClickListener {
+            startActivity(Intent(this, Promotion::class.java))
 
+        }
+        settings.setOnClickListener {
+            startActivity(Intent(this, Settings::class.java))
+
+        }
+        help.setOnClickListener {
+            startActivity(Intent(this, Help::class.java))
+
+        }
+        responsible.setOnClickListener {
+            startActivity(Intent(this, Responsible::class.java))
+
+        }
         edit_profile.setOnClickListener {
-            startActivity(Intent(this, edit::class.java))
+            startActivity(Intent(this, Edit::class.java))
 
         }
         logout.setOnClickListener {
