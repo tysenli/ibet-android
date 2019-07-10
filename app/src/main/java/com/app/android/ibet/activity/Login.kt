@@ -91,7 +91,7 @@ class Login : AppCompatActivity() {
                 isLogin = true
                 startActivity(Intent(this, MainActivity::class.java))
             } else {
-                forgot_password.text = "Incorrect Username or Password\n Forgot Password"
+                forgot_password.text = "Incorrect Username or Password\n Forgot Password?"
                 forgot_password.setTextColor(Color.RED)
             }
 

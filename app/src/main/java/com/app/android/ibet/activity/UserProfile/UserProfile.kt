@@ -100,6 +100,9 @@ class UserProfile : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
 
         }
+        change_password.setOnClickListener {
+            startActivity(Intent(this, ChangePass::class.java))
+        }
     }
 
     private fun initData() {

@@ -12,6 +12,7 @@ import com.app.android.ibet.activity.Login
 import com.wajahatkarim3.easyvalidation.core.view_ktx.maxLength
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 import kotlinx.android.synthetic.main.activity_email_auth_p2.*
+import kotlinx.android.synthetic.main.activity_newpass.*
 import kotlinx.android.synthetic.main.activity_phone_code.*
 import kotlinx.android.synthetic.main.activity_veri_phone.*
 import org.json.JSONObject
@@ -22,6 +23,54 @@ class PhoneCode : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_code)
         phone_num.text = intent.getStringExtra("phone_num")
+        code1.addTextChangedListener (object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(code1.text.toString().length == 1) {
+                    code2.requestFocus()
+                }
+
+            }
+
+        })
+        code2.addTextChangedListener (object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(code2.text.toString().length == 1) {
+                    code3.requestFocus()
+                }
+
+            }
+
+        })
+        code3.addTextChangedListener (object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(code3.text.toString().length == 1) {
+                    code4.requestFocus()
+                }
+
+            }
+
+        })
         code4.addTextChangedListener (object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val veriCodeJson = JSONObject()

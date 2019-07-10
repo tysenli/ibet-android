@@ -97,6 +97,8 @@
         ></activity>
         <activity android:name=".activity.UserProfile.Responsible"></activity>
         <activity android:name=".activity.UserProfile.Promotion"></activity>
+        <activity android:name=".activity.UserProfile.ChangePass"></activity>
+        <activity android:name=".activity.NewPass"></activity>
     </application>
 
 </manifest>
