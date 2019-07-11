@@ -28,6 +28,7 @@ import android.app.SearchManager
 import android.content.Context
 import android.support.v7.widget.SearchView
 import android.view.View
+import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.UserProfile
 
 
@@ -103,6 +104,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
+            R.id.deposit -> {
+                startActivity(Intent(this, Signup::class.java))
+                return true
+            }
             R.id.login -> {
                 /*
                 val fm = supportFragmentManager

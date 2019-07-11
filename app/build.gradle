@@ -25,6 +25,8 @@ android {
             buildConfigField 'String','FORGET_CODE',' "http://10.0.2.2:8000/users/api/generatepasswordcode/" '
             buildConfigField 'String','FORGET_SEND_EMAIL',' "http://10.0.2.2:8000/users/api/sendresetpasswordcode/" '
             buildConfigField 'String','VERI_PASS_CODE',' "http://10.0.2.2:8000/users/api/verifyresetpasswordcode/" '
+            buildConfigField 'String','CHANGE_PASS',' "http://10.0.2.2:8000/users/api/validateandresetpassword/" '
+
 
 
 
