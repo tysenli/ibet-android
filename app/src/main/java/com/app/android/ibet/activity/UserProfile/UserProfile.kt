@@ -18,6 +18,8 @@ import com.idtk.smallchart.data.PointShape
 import android.support.v4.content.ContextCompat
 import android.util.DisplayMetrics
 import android.util.TypedValue
+import com.app.android.ibet.BuildConfig
+import com.app.android.ibet.activity.Login
 
 
 class UserProfile : AppCompatActivity() {
@@ -51,7 +53,7 @@ class UserProfile : AppCompatActivity() {
 
         val request = Request.Builder()
             .header("Authorization", "Token "+ token)
-            .url("http://10.0.2.2:8000/users/api/user/")
+            .url(BuildConfig.USER)
             .build()
         val response = OkHttpClient().newCall(request).execute()
         println(response.body()!!.string())
@@ -97,6 +99,7 @@ class UserProfile : AppCompatActivity() {
         }
         logout.setOnClickListener {
             isLogin = false
+            token = ""
             startActivity(Intent(this, MainActivity::class.java))
 
         }

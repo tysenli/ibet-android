@@ -26,7 +26,10 @@ android {
             buildConfigField 'String','FORGET_SEND_EMAIL',' "http://10.0.2.2:8000/users/api/sendresetpasswordcode/" '
             buildConfigField 'String','VERI_PASS_CODE',' "http://10.0.2.2:8000/users/api/verifyresetpasswordcode/" '
             buildConfigField 'String','CHANGE_PASS',' "http://10.0.2.2:8000/users/api/validateandresetpassword/" '
-
+            buildConfigField 'String','USER',' "http://10.0.2.2:8000/users/api/user/" '
+            buildConfigField 'String','PAYPAL',' "http://10.0.2.2:8000/accounting/api/paypal/create_payment" '
+            buildConfigField 'String','PAYPAL_ORDER',' "http://10.0.2.2:8000/accounting/api/paypal/get_order" '
+            buildConfigField 'String','WECHAT_ORDER',' "http://10.0.2.2:8000/accounting/api/qaicash/submit_deposit" '
 
 
 

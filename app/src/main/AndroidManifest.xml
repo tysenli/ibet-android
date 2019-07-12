@@ -99,6 +99,8 @@
         <activity android:name=".activity.UserProfile.Promotion"></activity>
         <activity android:name=".activity.UserProfile.ChangePass"></activity>
         <activity android:name=".activity.NewPass"></activity>
+        <activity android:name=".activity.UserProfile.Paypal"></activity>
+        <activity android:name=".activity.UserProfile.Wechat"></activity>
     </application>
 
 </manifest>
