@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.ForgotPass
-import com.app.android.ibet.activity.Login
+import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_change_pass.*
 import okhttp3.MediaType
@@ -22,45 +21,54 @@ class ChangePass : AppCompatActivity() {
         setContentView(R.layout.activity_change_pass)
 
         change_pass.setOnClickListener {
+
+            var correctNewPass = false
+            var notsame = false
             if (cur_pass.text.toString().equals(new_pass.text.toString())) {
                 new_pass_error.text = "new password cannot be same as the past."
                 new_pass_error.setTextColor(Color.RED)
             } else {
                 new_pass_error.text = ""
-
+                notsame = true
             }
             if (!new_pass.text.toString().equals(confirm_pass.text.toString())) {
                 new_pass_error.text = "two new password is not same."
                 new_pass_error.setTextColor(Color.RED)
             } else {
                 new_pass_error.text = ""
+                correctNewPass = true
             }
 
-            var changeJson = JSONObject()
-            changeJson.put("current_password", cur_pass.text.toString())
-            changeJson.put("new_password", new_pass.text.toString())
+            if (notsame && correctNewPass) {
 
-            val client = OkHttpClient()
+                var changeJson = JSONObject()
+                changeJson.put("current_password", cur_pass.text.toString())
+                changeJson.put("new_password", new_pass.text.toString())
 
-            val JSON = MediaType.get("application/json; charset=utf-8")
-            val body = RequestBody.create(JSON, changeJson.toString())
-            val request = Request.Builder()
-                .addHeader("Authorization", "token " + Login.token)
-                .url(BuildConfig.CHANGE_PASS)
-                .post(body)
-                .build()
+                val client = OkHttpClient()
 
-            val response = client.newCall(request).execute()
+                val JSON = MediaType.get("application/json; charset=utf-8")
+                val body = RequestBody.create(JSON, changeJson.toString())
+                val request = Request.Builder()
+                    .addHeader("Authorization", "token " + Login.token)
+                    .url(BuildConfig.CHANGE_PASS)
+                    .post(body)
+                    .build()
 
-            val status = response.body()!!.string().split(":")[1]
-            println(status.substring(1,status.length - 2))
-            if (status.substring(1,status.length - 2) == "Failed") {
-                cur_pass_error.text = "current password not correct."
-                cur_pass_error.setTextColor(Color.RED)
-            } else {
-                cur_pass_error.text = ""
-                startActivity(Intent(this, MainActivity::class.java))
+                val response = client.newCall(request).execute()
 
+                val status = response.body()!!.string().split(":")[1]
+                println(status.substring(1, status.length - 2))
+                if (status.substring(1, status.length - 2) == "Failed") {
+                    cur_pass_error.text = "current password not correct."
+                    cur_pass_error.setTextColor(Color.RED)
+                    println("check cur")
+
+                } else {
+                    cur_pass_error.text = ""
+                    println("check cur2")
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
 
             }
 

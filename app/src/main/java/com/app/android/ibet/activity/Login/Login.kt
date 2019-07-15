@@ -1,4 +1,4 @@
-package com.app.android.ibet.activity
+package com.app.android.ibet.activity.Login
 
 import android.content.Intent
 import android.graphics.Color
@@ -10,12 +10,10 @@ import android.text.Editable
 import android.text.TextWatcher
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.MainActivity.Companion.isLogin
 import com.app.android.ibet.activity.Signup.Signup
-import com.app.android.ibet.activity.Signup.emailAuthP3
-import com.wajahatkarim3.easyvalidation.core.view_ktx.minLength
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
-import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject

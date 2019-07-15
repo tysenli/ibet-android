@@ -8,13 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.Login
-import com.wajahatkarim3.easyvalidation.core.view_ktx.maxLength
-import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
-import kotlinx.android.synthetic.main.activity_email_auth_p2.*
-import kotlinx.android.synthetic.main.activity_newpass.*
 import kotlinx.android.synthetic.main.activity_phone_code.*
-import kotlinx.android.synthetic.main.activity_veri_phone.*
 import org.json.JSONObject
 
 class PhoneCode : AppCompatActivity() {

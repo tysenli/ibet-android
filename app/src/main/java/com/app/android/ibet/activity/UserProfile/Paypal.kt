@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.Login
 import kotlinx.android.synthetic.main.activity_paypal.*
 import okhttp3.*
 import org.json.JSONObject

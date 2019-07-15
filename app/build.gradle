@@ -29,7 +29,8 @@ android {
             buildConfigField 'String','USER',' "http://10.0.2.2:8000/users/api/user/" '
             buildConfigField 'String','PAYPAL',' "http://10.0.2.2:8000/accounting/api/paypal/create_payment" '
             buildConfigField 'String','PAYPAL_ORDER',' "http://10.0.2.2:8000/accounting/api/paypal/get_order" '
-            buildConfigField 'String','WECHAT_ORDER',' "http://10.0.2.2:8000/accounting/api/qaicash/submit_deposit" '
+            buildConfigField 'String','WECHAT',' "http://10.0.2.2:8000/accounting/api/qaicash/submit_deposit" '
+            buildConfigField 'String','WECHAT_ORDER',' "http://10.0.2.2:8000/accounting/api/qaicash/deposit_transaction" '
 
 
 

@@ -1,4 +1,4 @@
-package com.app.android.ibet.activity
+package com.app.android.ibet.activity.Login
 
 import android.content.Intent
 import android.graphics.Color
@@ -7,14 +7,10 @@ import android.support.v7.app.AppCompatActivity
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Signup.Signup
-import com.app.android.ibet.activity.Signup.emailAuthP1
-import com.app.android.ibet.activity.Signup.emailAuthP2
 import kotlinx.android.synthetic.main.activity_forgot_pass.*
 import org.json.JSONObject
 
 class ForgotPass : AppCompatActivity() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +30,8 @@ class ForgotPass : AppCompatActivity() {
                 res.putExtra("mail",email_id2.text.toString())
                 startActivity(res)
             } else {
-                textView25.text = "No email found."
-                textView25.setTextColor(Color.RED)
+                email_error1.text = "No email found."
+                email_error1.setTextColor(Color.RED)
             }
 
 

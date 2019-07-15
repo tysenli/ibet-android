@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.Login.Companion.token
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.MainActivity.Companion.isLogin
 import kotlinx.android.synthetic.main.activity_user_profile.*
@@ -19,7 +18,7 @@ import android.support.v4.content.ContextCompat
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import com.app.android.ibet.BuildConfig
-import com.app.android.ibet.activity.Login
+import com.app.android.ibet.activity.Login.Login.Companion.token
 
 
 class UserProfile : AppCompatActivity() {

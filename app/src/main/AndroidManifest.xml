@@ -71,7 +71,7 @@
         </activity>
         <activity android:name=".activity.Signup.oneClickIntro">
         </activity>
-        <activity android:name=".activity.Login"
+        <activity android:name=".activity.Login.Login"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Login"
         >
@@ -84,7 +84,7 @@
 
         </activity>
         <activity android:name=".activity.Signup.VeriPhone"></activity>
-        <activity android:name=".activity.ForgotPass"></activity>
+        <activity android:name=".activity.Login.ForgotPass"></activity>
         <activity android:name=".activity.Signup.Verified"></activity>
         <activity android:name=".activity.Signup.PhoneCode"></activity>
         <activity android:name=".activity.UserProfile.UserProfile"></activity>
@@ -98,7 +98,7 @@
         <activity android:name=".activity.UserProfile.Responsible"></activity>
         <activity android:name=".activity.UserProfile.Promotion"></activity>
         <activity android:name=".activity.UserProfile.ChangePass"></activity>
-        <activity android:name=".activity.NewPass"></activity>
+        <activity android:name=".activity.Login.NewPass"></activity>
         <activity android:name=".activity.UserProfile.Paypal"></activity>
         <activity android:name=".activity.UserProfile.Wechat"></activity>
     </application>
