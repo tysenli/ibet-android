@@ -41,14 +41,31 @@ class Edit : AppCompatActivity() {
             val editJson = JSONObject()
 
             editJson.put("email"            , JSONObject(jsonData).getString("email"))
-            editJson.put("phone"            , phone_edit.text.toString())
+            if (phone_edit.text.isEmpty()) {
+                editJson.put("phone"        , JSONObject(jsonData).getString("phone"))
+            } else {
+                editJson.put("phone"        , phone_edit.text.toString())
+            }
             editJson.put("first_name"       , JSONObject(jsonData).getString("first_name"))
             editJson.put("last_name"        , JSONObject(jsonData).getString("last_name"))
             editJson.put("date_of_birth"    , JSONObject(jsonData).getString("date_of_birth"))
             editJson.put("country"          , JSONObject(jsonData).getString("country"))
-            editJson.put("street_address_1" , edit_address.text.toString())
-            editJson.put("city"             , city_edit.text.toString())
-            editJson.put("zipcode"          , zip_code_edit.text.toString())
+            if (edit_address.text.isEmpty()) {
+                editJson.put("street_address_1", JSONObject(jsonData).getString("street_address_1"))
+            } else {
+                editJson.put("street_address_1", edit_address.text.toString())
+            }
+            if (city_edit.text.isEmpty()) {
+                editJson.put("city", JSONObject(jsonData).getString("city"))
+
+            } else {
+                editJson.put("city", city_edit.text.toString())
+            }
+            if (zip_code_edit.text.isEmpty()) {
+                editJson.put("zipcode", JSONObject(jsonData).getString("zipcode"))
+            } else {
+                editJson.put("zipcode", zip_code_edit.text.toString())
+            }
             //editJson.put("over_eighteen"    , true)
             val client = OkHttpClient()
 
