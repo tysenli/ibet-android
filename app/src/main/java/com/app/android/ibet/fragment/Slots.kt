@@ -28,9 +28,8 @@ class Slots (context: Context): Fragment() {
 
         val adapter = FragmentPagerItemAdapter(
             fragmentManager, FragmentPagerItems.with(parentContext)
-                .add("TOP RATED", Home().javaClass)
+                .add("TOP RATED", Live().javaClass)
                 .add("NEW",Live().javaClass)
-
                 .add("SLOTS",Live().javaClass)
                 .add("JACKPOTS",Live().javaClass)
                 .add("TABLE GAMES", Live().javaClass)

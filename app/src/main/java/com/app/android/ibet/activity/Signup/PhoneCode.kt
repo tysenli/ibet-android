@@ -17,7 +17,7 @@ class PhoneCode : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_code)
         phone_num.text = intent.getStringExtra("phone_num")
-        code1.addTextChangedListener (object : TextWatcher {
+        phone_code1.addTextChangedListener (object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
 
             }
@@ -26,14 +26,14 @@ class PhoneCode : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(code1.text.toString().length == 1) {
-                    code2.requestFocus()
+                if(phone_code1.text.toString().length == 1) {
+                    phone_code2.requestFocus()
                 }
 
             }
 
         })
-        code2.addTextChangedListener (object : TextWatcher {
+        phone_code2.addTextChangedListener (object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
 
             }
@@ -42,14 +42,14 @@ class PhoneCode : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(code2.text.toString().length == 1) {
-                    code3.requestFocus()
+                if(phone_code2.text.toString().length == 1) {
+                    phone_code3.requestFocus()
                 }
 
             }
 
         })
-        code3.addTextChangedListener (object : TextWatcher {
+        phone_code3.addTextChangedListener (object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
 
             }
@@ -58,18 +58,18 @@ class PhoneCode : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(code3.text.toString().length == 1) {
-                    code4.requestFocus()
+                if(phone_code3.text.toString().length == 1) {
+                    phone_code4.requestFocus()
                 }
 
             }
 
         })
-        code4.addTextChangedListener (object : TextWatcher {
+        phone_code4.addTextChangedListener (object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val veriCodeJson = JSONObject()
                 veriCodeJson.put("username",intent.getStringExtra("user"))
-                veriCodeJson.put("code",code1.text.toString() + code2.text.toString() + code3.text.toString() + code4.text.toString())
+                veriCodeJson.put("code",phone_code1.text.toString() + phone_code2.text.toString() + phone_code3.text.toString() + phone_code4.text.toString())
                 //http://10.0.2.2:8000/users/api/generateactivationcode/
                 val info = Signup().post(veriCodeJson.toString(), BuildConfig.VERI_CODE )
                 //println(info)

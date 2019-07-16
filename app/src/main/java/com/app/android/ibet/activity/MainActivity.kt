@@ -30,25 +30,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var isLogin = false
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*
-        actionBar = actionBar
-        val titleId = Resources.getSystem().getIdentifier(
-            "action_bar_title",
-            "id", "android"
-        )
-        tvTitle =  findViewById<TextView>(titleId)
-        tvTitle.gravity = Gravity.CENTER
-        */
+
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
-
-
-       // toolbar.
-
+        val fm = supportFragmentManager
+        val ft = fm.beginTransaction()
+        ft.add(R.id.frag_placeholder, Slots(this), "HOME_FRAG")
+        ft.commit()
 
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
@@ -59,6 +49,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //toolbar.setTitleTextColor(Color.RED)
 
         nav_view.setNavigationItemSelectedListener(this)
+
         /*
         on_board.setOnClickListener {
             startActivity(Intent(applicationContext, IntroOne::class.java))
@@ -116,6 +107,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(Intent(this, UserProfile::class.java))
                 return true
             }
+            /*
             R.id.chinese -> {
                 val locale = Locale("zh")
                 val config = Configuration()
@@ -140,6 +132,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(Intent( this,MainActivity::class.java))
                 return true
             }
+            */
             /*
             R.id.user -> {
                 val fm = supportFragmentManager
@@ -172,33 +165,37 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.sports -> {
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder, Sports(this@MainActivity), "FAVORITES_FRAG")
+                ft.replace(R.id.frag_placeholder, Sports(this@MainActivity), "SPORT_FRAG")
                 ft.commit()
+                //Sports(this)
             }
 
             R.id.live_casino -> {
                 //title ="Live Casino"
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder,Casino(this@MainActivity),"FAVORITES_FRAG")
+                ft.replace(R.id.frag_placeholder,Casino(this@MainActivity),"LIVE_FRAG")
                 ft.commit()
+                //Casino(this)
             }
             R.id.slots -> {
                 //title = "Slots"
+
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder, Slots(this@MainActivity), "FAVORITES_FRAG")
+                ft.replace(R.id.frag_placeholder, Slots(this@MainActivity), "SLOT_FRAG")
                 ft.commit()
+                //Slots(this)
             }
             R.id.lottery -> {
                 //title = "Lottery"
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder, Lottery(this@MainActivity), "FAVORITES_FRAG")
+                ft.replace(R.id.frag_placeholder, Lottery(this@MainActivity), "LOTTERY_FRAG")
                 ft.commit()
+                //Lottery(this)
 
             }
-
 
         }
 

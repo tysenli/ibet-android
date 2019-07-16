@@ -13,26 +13,26 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //local  "http://10.0.2.2:8000/"
     }
     buildTypes {
+        def local = "http://10.0.2.2:8000/"
 
         debug {
-            buildConfigField 'String','SIGNUP_URL','"http://10.0.2.2:8000/users/api/signup/"'
-            buildConfigField 'String','ONE_CLICK_SIGNUP_URL','"http://10.0.2.2:8000/users/api/oneclicksignup/"'
-            buildConfigField 'String','GENERATE_CODE',' "http://10.0.2.2:8000/users/api/generateactivationcode/" '
-            buildConfigField 'String','VERI_CODE',' "http://10.0.2.2:8000/users/api/verifyactivationcode/" '
-            buildConfigField 'String','LOGIN',' "http://10.0.2.2:8000/users/api/login/" '
-            buildConfigField 'String','FORGET_CODE',' "http://10.0.2.2:8000/users/api/generatepasswordcode/" '
-            buildConfigField 'String','FORGET_SEND_EMAIL',' "http://10.0.2.2:8000/users/api/sendresetpasswordcode/" '
-            buildConfigField 'String','VERI_PASS_CODE',' "http://10.0.2.2:8000/users/api/verifyresetpasswordcode/" '
-            buildConfigField 'String','CHANGE_PASS',' "http://10.0.2.2:8000/users/api/validateandresetpassword/" '
-            buildConfigField 'String','USER',' "http://10.0.2.2:8000/users/api/user/" '
-            buildConfigField 'String','PAYPAL',' "http://10.0.2.2:8000/accounting/api/paypal/create_payment" '
-            buildConfigField 'String','PAYPAL_ORDER',' "http://10.0.2.2:8000/accounting/api/paypal/get_order" '
-            buildConfigField 'String','WECHAT',' "http://10.0.2.2:8000/accounting/api/qaicash/submit_deposit" '
-            buildConfigField 'String','WECHAT_ORDER',' "http://10.0.2.2:8000/accounting/api/qaicash/deposit_transaction" '
-
-
+            buildConfigField 'String','SIGNUP_URL',"\"$local/users/api/signup/\""
+            buildConfigField 'String','ONE_CLICK_SIGNUP_URL',"\"$local/users/api/oneclicksignup/\""
+            buildConfigField 'String','GENERATE_CODE',"\"$local/users/api/generateactivationcode/\""
+            buildConfigField 'String','VERI_CODE',"\"$local/users/api/verifyactivationcode/\""
+            buildConfigField 'String','LOGIN', "\"$local/users/api/login/\""
+            buildConfigField 'String','FORGET_CODE',"\"$local/users/api/generatepasswordcode/\""
+            buildConfigField 'String','FORGET_SEND_EMAIL',"\"$local/users/api/sendresetpasswordcode/\""
+            buildConfigField 'String','VERI_PASS_CODE',"\"$local/users/api/verifyresetpasswordcode/\""
+            buildConfigField 'String','CHANGE_PASS',"\"$local/users/api/validateandresetpassword/\""
+            buildConfigField 'String','USER',"\"$local/users/api/user/\""
+            buildConfigField 'String','PAYPAL',"\"$local/accounting/api/paypal/create_payment\""
+            buildConfigField 'String','PAYPAL_ORDER',"\"$local/accounting/api/paypal/get_order\""
+            buildConfigField 'String','WECHAT',"\"$local/accounting/api/qaicash/submit_deposit\""
+            buildConfigField 'String','WECHAT_ORDER',"\"$local/accounting/api/qaicash/deposit_transaction\""
 
         }
         release {

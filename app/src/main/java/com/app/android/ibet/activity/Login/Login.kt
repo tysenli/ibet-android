@@ -77,14 +77,12 @@ class Login : AppCompatActivity() {
             //val url = "http://10.0.2.2:8000/users/api/login/"
 
             var log = Signup().post(loginJson.toString(), BuildConfig.LOGIN)
-            println (log)
             var hint = log.split(":")[0]
             var key = log.split(":")[1]
             // println(key.substring(1,key.length - 2))
             var success = hint.substring(2,hint.length - 1)
             token = key.substring(1,key.length - 2)
-            println(token)
-            println(success)
+
             if (success == "key") {
                 isLogin = true
                 startActivity(Intent(this, MainActivity::class.java))

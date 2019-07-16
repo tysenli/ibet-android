@@ -60,11 +60,10 @@ class emailAuthP2: AppCompatActivity() {
             val first = first_name.text.toString()
             val last = last_name.text.toString()
             val birth =  mm_edit.text.toString() + "/" + dd.text.toString() +"/" + yy_edit.text.toString()
-            println(birth)
             val res = Intent(applicationContext, emailAuthP3::class.java)
             //res.putExtra(emailAuthP1.MAIL, )
 
-            println (intent.getStringExtra(emailAuthP1.MAIL))
+            //println (intent.getStringExtra(emailAuthP1.MAIL))
             res.putExtra(emailAuthP1.MAIL,intent.getStringExtra(emailAuthP1.MAIL))
             res.putExtra(emailAuthP1.PASS1, intent.getStringExtra(emailAuthP1.PASS1))
             res.putExtra(USER,user)
