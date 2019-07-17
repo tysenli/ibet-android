@@ -14,9 +14,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //local  "http://10.0.2.2:8000/"
+        //"http://10.0.2.2:8000/users/api/login/
     }
     buildTypes {
-        def local = "http://10.0.2.2:8000/"
+        def local = "http://10.0.2.2:8000"
 
         debug {
             buildConfigField 'String','SIGNUP_URL',"\"$local/users/api/signup/\""
@@ -33,7 +34,6 @@ android {
             buildConfigField 'String','PAYPAL_ORDER',"\"$local/accounting/api/paypal/get_order\""
             buildConfigField 'String','WECHAT',"\"$local/accounting/api/qaicash/submit_deposit\""
             buildConfigField 'String','WECHAT_ORDER',"\"$local/accounting/api/qaicash/deposit_transaction\""
-
         }
         release {
             minifyEnabled false

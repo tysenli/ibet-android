@@ -24,7 +24,7 @@ class VeriEmail : AppCompatActivity() {
         //http://10.0.2.2:8000/users/api/sendemail/?case=signup&username=test&to_email_address=jiaqi@claymore.com...
 
         veri_email.setOnClickListener {
-            var urlBuilder = HttpUrl.parse("http://10.0.2.2:8000/users/api/sendemail/?case=signup")!!.newBuilder()
+            var urlBuilder = HttpUrl.parse("http://10.0.2.2:8000/users/Api/sendemail/?case=signup")!!.newBuilder()
             println(email_verify.text.toString())
             urlBuilder.addQueryParameter("username", intent.getStringExtra("user"))
             urlBuilder.addQueryParameter("to_email_address",email_verify.text.toString())

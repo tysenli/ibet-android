@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_phone_code.*
 import org.json.JSONObject
 
@@ -71,9 +72,9 @@ class PhoneCode : AppCompatActivity() {
                 veriCodeJson.put("username",intent.getStringExtra("user"))
                 veriCodeJson.put("code",phone_code1.text.toString() + phone_code2.text.toString() + phone_code3.text.toString() + phone_code4.text.toString())
                 //http://10.0.2.2:8000/users/api/generateactivationcode/
-                val info = Signup().post(veriCodeJson.toString(), BuildConfig.VERI_CODE )
+                val info = Api().post(veriCodeJson.toString(), BuildConfig.VERI_CODE )
                 //println(info)
-                val status = info.split(":")[1]
+                val status = info!!.split(":")[1]
                 println (status)
                 if (status.substring(1,status.length - 2) == "Success") {
                     startActivity(Intent(applicationContext, Verified::class.java))

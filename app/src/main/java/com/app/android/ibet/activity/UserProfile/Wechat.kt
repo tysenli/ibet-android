@@ -7,11 +7,13 @@ import android.support.v7.app.AppCompatActivity
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
+import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_wechat.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
+import java.lang.Exception
 
 class Wechat : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,15 +21,18 @@ class Wechat : AppCompatActivity() {
 
         setContentView(R.layout.activity_wechat)
 
-        val request = Request.Builder()
-            .header("Authorization", "Token "+ Login.token)
-            .url(BuildConfig.USER)
-            .build()
-        val response = OkHttpClient().newCall(request).execute()
-        //println(response.body()!!.string())
-        var jsonData = response.body()!!.string()
-        var pk = JSONObject(jsonData).getString("pk")
-        println( pk)
+        /*
+    val request = Request.Builder()
+        .header("Authorization", "Token " + Login.token)
+        //  .url(Filename/....)
+        .url(BuildConfig.USER)
+        .build()
+    val response = OkHttpClient().newCall(request).execute()
+    */
+
+        var jsonData = Api().get(BuildConfig.USER)
+
+        var pk =  JSONObject(jsonData).getString("pk")
 
         btn_wechat_dep.setOnClickListener {
             val client = OkHttpClient()
@@ -39,35 +44,25 @@ class Wechat : AppCompatActivity() {
                 .add("method","WECHAT_PAY")
                 .build()
             val request = Request.Builder()
-                //.addHeader("Authorization", "token " + Login.token)
                 .url(BuildConfig.WECHAT)
                 .post(formBody)
                 .build()
             val response = client.newCall(request).execute()
             var jsonData = response.body()!!.string()
-            println(jsonData)
+
             var wechat_url = JSONObject(jsonData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
-            println(wechat_url)
+
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(wechat_url)))
-            //println(link)
-            println(JSONObject(jsonData).getJSONObject("depositTransaction").getString("orderId"))
 
 
-            //while (!JSONObject(jsonData).getJSONObject("depositTransaction").getString("status").equals("SUCCESS")) {
-
-                val orderBody = FormBody.Builder()
+            val orderBody = FormBody.Builder()
                     .add("order_id", JSONObject(jsonData).getJSONObject("depositTransaction").getString("orderId"))
                     .build()
-                val request2 = Request.Builder()
-                    //.addHeader("Authorization", "token " + Login.token)
+            val request2 = Request.Builder()
                     .url(BuildConfig.WECHAT_ORDER)
                     .post(orderBody)
                     .build()
-                val response2 = client.newCall(request2).execute()
-                println("hahahah" + response2.body()!!.string())
-            //}
-
-
+            val response2 = client.newCall(request2).execute()
 
 
         }

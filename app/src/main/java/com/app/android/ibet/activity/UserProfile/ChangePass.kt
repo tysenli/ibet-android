@@ -61,7 +61,7 @@ class ChangePass : AppCompatActivity() {
                 val response = client.newCall(request).execute()
 
                 val status = response.body()!!.string().split(":")[1]
-                println(status.substring(1, status.length - 2))
+                //println(status.substring(1, status.length - 2))
                 if (status.substring(1, status.length - 2) == "Failed") {
                     cur_pass_error.text = "current password is wrong."
                     cur_pass_error.setTextColor(Color.RED)

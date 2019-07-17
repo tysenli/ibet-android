@@ -13,6 +13,7 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.MainActivity.Companion.isLogin
 import com.app.android.ibet.activity.Signup.Signup
+import com.app.android.ibet.api.Api
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 
 import kotlinx.android.synthetic.main.activity_login.*
@@ -76,9 +77,9 @@ class Login : AppCompatActivity() {
 
             //val url = "http://10.0.2.2:8000/users/api/login/"
 
-            var log = Signup().post(loginJson.toString(), BuildConfig.LOGIN)
-            var hint = log.split(":")[0]
-            var key = log.split(":")[1]
+            var log = Api().post(loginJson.toString(), BuildConfig.LOGIN)
+            var hint = log!!.split(":")[0]
+            var key = log!!.split(":")[1]
             // println(key.substring(1,key.length - 2))
             var success = hint.substring(2,hint.length - 1)
             token = key.substring(1,key.length - 2)
