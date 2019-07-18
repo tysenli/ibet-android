@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
         val fm = supportFragmentManager
         val ft = fm.beginTransaction()
-        ft.add(R.id.frag_placeholder, Slots(this), "HOME_FRAG")
+        ft.add(R.id.frag_placeholder, Display(), "HOME_FRAG")
         ft.commit()
 
         val toggle = ActionBarDrawerToggle(
@@ -194,6 +194,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 ft.replace(R.id.frag_placeholder, Lottery(this@MainActivity), "LOTTERY_FRAG")
                 ft.commit()
                 //Lottery(this)
+
+            }
+            R.id.cookie -> {
+
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Cookie(), "cookie")
+                ft.commit()
+
+            }
+            R.id.privacy -> {
+
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Privacy(), "privacy")
+                ft.commit()
+
+            }
+            R.id.terms -> {
+
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Terms(), "terms")
+                ft.commit()
 
             }
 

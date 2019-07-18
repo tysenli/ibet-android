@@ -7,7 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.Signup.oneClickIntro
+import com.app.android.ibet.activity.UserProfile.DepositMethod.Paypal
+import com.app.android.ibet.activity.UserProfile.DepositMethod.QaiWechat
 import kotlinx.android.synthetic.main.frag_deposit.*
 
 class Deposit : Fragment() {
@@ -25,7 +26,7 @@ class Deposit : Fragment() {
 
         }
         wechat.setOnClickListener {
-            startActivity(Intent(activity, Wechat::class.java))
+            startActivity(Intent(activity, QaiWechat::class.java))
 
         }
     }

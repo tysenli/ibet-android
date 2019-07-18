@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Privacy Policy"
+              android:textColor="#000000"
+              app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+              android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:id="@+id/textView25"
+              android:textSize="18sp"/>
+    <TextView android:layout_width="372dp"
+              android:layout_height="593dp"
+              android:text="Like many other websites, Mr Green utilises ‘cookies’ to improve your gaming experience.\n\nCookies are small text files stored on your computer by your browser. They're used for many things, such as remembering whether you've visited the site before, so that you remain logged in - or to help us work out how many new website visitors we get each month. They contain information about the use of your computer but don't include personal information about you (they don't store your name, for instance).
+\n\nMr Green’s Casino Cookies\n\n
+Our cookies allow you to navigate through our website efficiently, they remember your preferences to enhance your user experience and they help us pick the most relevant promotions and offers that match your interests.
+\n\nMr Green recommends that you do not change your cookie setting, as this may affect the quality of your user experience, performance and special features of the site.
+\n\nYou can easily adjust the settings of your browser to block all cookies. You can also delete the cookies through your browser, but please bear in mind that this will delete ALL cookies including those for other webpages. Please note that we cannot be held responsible for the cookie content of webpages outside of the Mr Green domain.
+\n\nBy accessing the Website, you agree that this Cookie Policy will apply, as stated in item 5.8 of our general terms and conditions, whenever you access the Website on any device."
+              android:textColor="#000000"
+              app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+              app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
+              app:layout_constraintBottom_toBottomOf="parent" android:textSize="15sp" android:layout_marginTop="8dp"
+              app:layout_constraintTop_toBottomOf="@+id/textView25"
+              app:layout_constraintVertical_bias="0.088"/>
+
+</android.support.constraint.ConstraintLayout>

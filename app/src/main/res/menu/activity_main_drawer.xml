@@ -64,5 +64,18 @@
 
     </group>
 
+    <group android:id="@+id/policy">
+        <item
+            android:id="@+id/terms"
+            android:title="Terms and Conditions"/>
+        <item
+            android:id="@+id/cookie"
+            android:title="Cookie Policy"/>
+        <item
+            android:id="@+id/privacy"
+            android:title="Privacy Policy"/>
+
+    </group>
+
 
 </menu>

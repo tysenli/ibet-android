@@ -32,7 +32,7 @@ class ForgotPass : AppCompatActivity() {
                 res.putExtra("mail",email_id2.text.toString())
                 startActivity(res)
             } else {
-                email_error1.text = "No email exist."
+                email_error1.text = "No such email exists."
                 email_error1.setTextColor(Color.RED)
             }
 

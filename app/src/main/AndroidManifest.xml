@@ -102,8 +102,9 @@
         <activity android:name=".activity.UserProfile.ChangePass"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Change Password"></activity>
-        <activity android:name=".activity.UserProfile.Paypal"></activity>
-        <activity android:name=".activity.UserProfile.Wechat"></activity>
+        <activity android:name=".activity.UserProfile.DepositMethod.Paypal"></activity>
+        <activity android:name=".activity.UserProfile.DepositMethod.QaiWechat"></activity>
+
     </application>
 
 </manifest>

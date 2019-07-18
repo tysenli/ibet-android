@@ -18,7 +18,7 @@ import java.nio.charset.Charset
 class QueryUtils {
     companion object {
         private val  LogTag = this::class.java.simpleName
-        private const val BaseURL = "http://10.0.2.2:8000/users/Api/games/?term="
+        private const val BaseURL = "http://10.0.2.2:8000/users/api/games/?term="
 
 
         fun fetchGameData(jsonQueryString: String): ArrayList<GameModel>? {

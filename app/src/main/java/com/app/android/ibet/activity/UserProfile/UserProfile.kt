@@ -68,6 +68,7 @@ class UserProfile : AppCompatActivity() {
         println(jsonData)
 
         user.text = "Hi " + JSONObject(jsonData).getString("username") + "                      "
+        balance.text="              Balance: $" + JSONObject(jsonData).getString("main_wallet")
         initData()
         curveChart.setDataList(mDataList)
         deposit.setOnClickListener {
