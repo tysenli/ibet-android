@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -22,6 +23,7 @@ import java.util.*
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.UserProfile
+import com.zhangke.zlog.ZLog
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -49,7 +51,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //toolbar.setTitleTextColor(Color.RED)
 
         nav_view.setNavigationItemSelectedListener(this)
-
+        /*
+        val filePath = Environment.getExternalStorageDirectory().toString() + "/logcat.txt"
+        println(filePath)
+        Runtime.getRuntime().exec(arrayOf("logcat","-f",filePath,"MyAppTAG:V", "*:S")) */
+        ZLog.Init(String.format("%s/log/", getExternalFilesDir(null).getPath()))
+        //ZLog.e("TAG", "Internet Error");
         /*
         on_board.setOnClickListener {
             startActivity(Intent(applicationContext, IntroOne::class.java))

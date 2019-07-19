@@ -82,7 +82,7 @@ dependencies {
     implementation 'com.ogaclejapan.smarttablayout:utils-v4:1.7.0@aar'
     implementation 'com.chabbal:slidingdotsplash:1.0.2'
     implementation 'com.github.Idtk:SmallChart:v0.1.1'
-
+    implementation 'com.github.0xZhangKe:ZLog:3.0'
 
 
 }
