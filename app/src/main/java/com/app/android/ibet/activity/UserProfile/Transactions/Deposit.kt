@@ -1,23 +1,35 @@
-package com.app.android.ibet.activity.UserProfile
+package com.app.android.ibet.activity.UserProfile.Transactions
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.view.*
+import android.view.Menu
+import android.view.MenuItem
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.Signup.Signup
+import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.Paypal
+import com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.QaiWechat
+import kotlinx.android.synthetic.main.activity_deposit.*
 
-class Settings : AppCompatActivity() {
+class Deposit : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_setting)
+        setContentView(R.layout.activity_deposit)
+        paypal.setOnClickListener {
+            startActivity(Intent(this, Paypal::class.java))
+
+        }
+        wechat.setOnClickListener {
+            startActivity(Intent(this, QaiWechat::class.java))
+        }
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
+        title = "Deposit Method"
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
@@ -51,6 +63,7 @@ class Settings : AppCompatActivity() {
             }
             else -> return super.onOptionsItemSelected(item)
         }
+
 
     }
 }

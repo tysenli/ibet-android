@@ -22,7 +22,8 @@ import java.util.*
 
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.Signup.Signup
-import com.app.android.ibet.activity.UserProfile.UserProfile
+import com.app.android.ibet.activity.UserProfile.MyAccount
+//import com.app.android.ibet.activity.UserProfile.UserProfile
 import com.zhangke.zlog.ZLog
 
 
@@ -111,7 +112,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 return true
             }
             R.id.logged -> {
-                startActivity(Intent(this, UserProfile::class.java))
+                startActivity(Intent(this, MyAccount::class.java))
                 return true
             }
             /*

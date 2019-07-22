@@ -1,4 +1,4 @@
-package com.app.android.ibet.activity.UserProfile
+/* package com.app.android.ibet.activity.UserProfile
 
 import android.content.Intent
 import android.graphics.Color
@@ -170,4 +170,4 @@ class UserProfile : AppCompatActivity() {
         mDataList.add(mCurveData)
     }
 
-}
+} */

@@ -108,7 +108,7 @@ class ChangePass : AppCompatActivity() {
                 return true
             }
             R.id.logged -> {
-                startActivity(Intent(this, UserProfile::class.java))
+                startActivity(Intent(this, MyAccount::class.java))
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

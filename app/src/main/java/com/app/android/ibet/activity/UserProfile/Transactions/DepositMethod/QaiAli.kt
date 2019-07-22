@@ -1,4 +1,4 @@
-package com.app.android.ibet.activity.UserProfile.DepositMethod
+package com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod
 
 import android.content.Intent
 import android.net.Uri
@@ -8,19 +8,19 @@ import android.support.v7.app.AppCompatActivity
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.api.Api
-import kotlinx.android.synthetic.main.activity_wechat.*
+import kotlinx.android.synthetic.main.activity_amount_input.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 
-class QaiWechat : AppCompatActivity() {
+class QaiAli : AppCompatActivity() {
     var userData = Api().get(BuildConfig.USER)
     var orderId = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_wechat)
+        setContentView(R.layout.activity_amount_input)
         var pk =  JSONObject(userData).getString("pk")
 
 
@@ -31,7 +31,7 @@ class QaiWechat : AppCompatActivity() {
                 .add("user_id",pk)
                 .add("currency","0")
                 .add("language","zh-Hans")
-                .add("method","WECHAT_PAY_H5")
+                .add("method","ALIPAY_H5")
                 .build()
             val request = Request.Builder()
                 .url(BuildConfig.WECHAT)

@@ -1,4 +1,4 @@
-package com.app.android.ibet.activity.UserProfile
+/*package com.app.android.ibet.activity.UserProfile
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,7 +16,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import kotlinx.android.synthetic.main.activity_bets.*
 import kotlinx.android.synthetic.main.activity_money.*
-
+/*
 class Money : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,4 +82,4 @@ class Money : AppCompatActivity() {
         }
 
     }
-}
+} */

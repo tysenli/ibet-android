@@ -76,18 +76,20 @@
         <activity android:name=".activity.Login.NewPass"></activity>
 
 
-        <activity android:name=".activity.UserProfile.UserProfile"
+        <activity android:name=".activity.UserProfile.MyAccount"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="My Account"></activity>
+
         <activity android:name=".activity.UserProfile.Edit"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Edit"></activity>
         <activity android:name=".activity.UserProfile.Bets"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Bets"></activity>
-        <activity android:name=".activity.UserProfile.Money"
+        <activity android:name=".activity.UserProfile.Transactions.Deposit"
                   android:theme="@style/Theme.AppCompat.Light"
-                  android:label="Money"></activity>
+                  android:label="Bets"></activity>
+
         <activity android:name=".activity.UserProfile.Settings"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Settings"></activity>
@@ -104,8 +106,8 @@
         <activity android:name=".activity.UserProfile.ChangePass"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Change Password"></activity>
-        <activity android:name=".activity.UserProfile.DepositMethod.Paypal"></activity>
-        <activity android:name=".activity.UserProfile.DepositMethod.QaiWechat"></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.Paypal"></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.QaiWechat"></activity>
 
     </application>
 

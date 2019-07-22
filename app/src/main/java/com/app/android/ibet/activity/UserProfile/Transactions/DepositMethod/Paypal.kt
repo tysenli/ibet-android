@@ -1,4 +1,4 @@
-package com.app.android.ibet.activity.UserProfile.DepositMethod
+package com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod
 
 import android.content.Intent
 import android.net.Uri
