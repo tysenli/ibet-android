@@ -4,7 +4,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!--supports-screens
         android:smallScreens="true"
         android:normalScreens="true"
@@ -29,18 +31,21 @@
 
         </activity>
 
-        <activity android:name=".activity.Signup.Signup">
-        </activity>
-
-        <activity android:name=".activity.Signup.fbAuthenticatedActivity">
-        </activity>
-
-        <activity android:name=".activity.Signup.emailAuthP1">
-        </activity>
+        <activity android:name=".activity.Signup.Signup"></activity>
+        <activity android:name=".activity.Signup.fbAuthenticatedActivity"></activity>
+        <activity android:name=".activity.Signup.emailAuthP1"></activity>
+        <activity android:name=".activity.Signup.emailAuthP2"/>
+        <activity android:name=".activity.Signup.emailAuthP3"></activity>
+        <activity android:name=".activity.Signup.oneClick"></activity>
+        <activity android:name=".activity.Signup.oneClickIntro"></activity>
+        <activity android:name=".activity.Signup.Verify"></activity>
+        <activity android:name=".activity.Signup.VeriEmail"></activity>
+        <activity android:name=".activity.Signup.VeriPhone"></activity>
+        <activity android:name=".activity.Signup.Verified"></activity>
+        <activity android:name=".activity.Signup.PhoneCode"></activity>
 
         <meta-data android:name="com.facebook.sdk.ApplicationId"
                    android:value="@string/facebook_app_id"/>
-
         <activity android:name="com.facebook.FacebookActivity"
                   android:configChanges=
                           "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -55,23 +60,54 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Signup.emailAuthP2"/>
 
-        <activity android:name=".activity.Signup.emailAuthP3">
-        </activity>
-        <activity android:name=".activity.OnBoarding.IntroOne">
-        </activity>
-        <activity android:name=".activity.OnBoarding.IntroTwo">
-        </activity>
-        <activity android:name=".activity.OnBoarding.IntroThree">
-        </activity>
-        <activity android:name=".activity.OnBoarding.IntroFour">
-        </activity>
-        <activity android:name=".activity.Signup.oneClick">
-        </activity>
-        <activity android:name=".activity.Signup.oneClickIntro">
-        </activity>
 
+        <activity android:name=".activity.OnBoarding.IntroOne"></activity>
+        <activity android:name=".activity.OnBoarding.IntroTwo"></activity>
+        <activity android:name=".activity.OnBoarding.IntroThree"></activity>
+        <activity android:name=".activity.OnBoarding.IntroFour"></activity>
+
+
+        <activity android:name=".activity.Login.Login"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Login">
+        </activity>
+        <activity android:name=".activity.Login.ForgotPass"></activity>
+        <activity android:name=".activity.Login.NewPass"></activity>
+
+
+        <activity android:name=".activity.UserProfile.MyAccount"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="My Account"></activity>
+
+        <activity android:name=".activity.UserProfile.Edit"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Edit"></activity>
+        <activity android:name=".activity.UserProfile.Bets"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Bets"></activity>
+        <activity android:name=".activity.UserProfile.Transactions.Deposit"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Bets"></activity>
+
+        <activity android:name=".activity.UserProfile.Settings"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Settings"></activity>
+        <activity android:name=".activity.UserProfile.Help"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Help"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Responsible"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Responsible"></activity>
+        <activity android:name=".activity.UserProfile.Promotion"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Promotion"></activity>
+        <activity android:name=".activity.UserProfile.ChangePass"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Change Password"></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.Paypal"></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.QaiWechat"></activity>
 
     </application>
 

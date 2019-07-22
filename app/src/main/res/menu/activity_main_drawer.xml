@@ -4,71 +4,78 @@
       xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
       tools:showIn="navigation_view">
 
-
+<!--
     <group android:checkableBehavior="single">
+
         <item
                 android:id="@+id/home"
                 android:icon="@drawable/home_icon"
-                android:title="@string/home"/>
+                android:title="@string/home"
+        />
+    </group>
+-->
+
+    <group android:checkableBehavior="single"
+           android:id="@+id/group1"
+    >
         <item
                 android:id="@+id/app_bar_search"
-                android:icon="@drawable/ic_search_black_24dp"
-                android:title="@string/search_ibet"
-                app:actionViewClass="android.widget.SearchView"/>
-
-        <item android:title="iBet" >
-            <menu>
-                <item
-                    android:id="@+id/sportsbook_a"
-                    android:title="Sportsbook A"/>
-                <item
-                    android:id="@+id/sportsbook_b"
-                    android:title="Sportsbook B"/>
-                <item
-                    android:id="@+id/sportsbook_c"
-                    android:title="Sportsbook C"/>
-                <item
-                    android:id="@+id/live_casino"
-                    android:title="Live Casino"/>
-                <item
-                        android:id="@+id/game"
-                        android:title="@string/game"/>
-                <item
-                        android:id="@+id/lottery"
-                        android:title="Lottery"/>
-                 <item
-                         android:id="@+id/language"
-                    android:title="@string/language"/>
-            </menu>
-
-        </item>
+                android:icon="@drawable/search"
+                android:title="@string/search"
+                app:showAsAction="collapseActionView|ifRoom"
+                app:actionViewClass="android.support.v7.widget.SearchView"/>
     </group>
 
-    <item android:title="About">
-        <menu>
-            <item
-                android:id="@+id/support"
-                android:title="@string/support"/>
-             <item
-                android:id="@+id/knowledge_center"
-                android:title="@string/knowledge_center"/>
-            <item
-                android:id="@+id/about_ibet"
-                android:title="@string/about_ibet"/>
-            <item
-                android:id="@+id/contact_us"
-                android:title="@string/contact_us"/>
-             <item
-                android:id="@+id/responsible_gaming"
-                android:title="@string/responsible_gaming"/>
-             <item
-                android:id="@+id/terms_conditions"
-                android:title="@string/terms_conditions"/>
-             <item
-                android:id="@+id/privacy_policy"
-                android:title="@string/privacy_policy"/>
-        </menu>
-    </item>
+    <group android:checkableBehavior="single"
+           android:id="@+id/group2"
+    >
+
+        <item
+                android:id="@+id/sports"
+                android:title="@string/sports"
+                android:icon="@drawable/soccer"
+
+                
+        />
+    </group>
+    <group android:checkableBehavior="single"
+           android:id="@+id/group3"
+    >
+        <item
+                android:id="@+id/live_casino"
+                android:icon="@drawable/casino"
+                android:title="@string/live_casino"/>
+    </group>
+    <group android:checkableBehavior="single"
+           android:id="@+id/group4"
+    >
+        <item
+                android:id="@+id/slots"
+                android:icon="@drawable/slots"
+                android:title="@string/slots"/>
+    </group>
+    <group android:checkableBehavior="single"
+           android:id="@+id/group5"
+    >
+        <item
+                android:id="@+id/lottery"
+                android:icon="@drawable/lottery"
+                android:title="@string/lottery"/>
+
+    </group>
+
+    <group android:id="@+id/policy">
+        <item
+            android:id="@+id/terms"
+            android:title="Terms and Conditions"/>
+        <item
+            android:id="@+id/cookie"
+            android:title="Cookie Policy"/>
+        <item
+            android:id="@+id/privacy"
+            android:title="Privacy Policy"/>
+
+    </group>
 
 
 </menu>

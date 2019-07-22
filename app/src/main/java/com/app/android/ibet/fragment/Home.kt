@@ -16,8 +16,8 @@ import com.app.android.ibet.HomeGames
 import kotlinx.android.synthetic.main.fragment_home.*
 
 @SuppressLint("ValidFragment")
-class Home (context: Context): Fragment() {
-    private var parentContext = context
+class Home : Fragment() {
+   // private var parentContext = context
     private var initialized: Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -30,9 +30,10 @@ class Home (context: Context): Fragment() {
         if (!this.initialized) {
             val fm = fragmentManager
             val ft = fm?.beginTransaction()
-            ft?.add(R.id.list_holder, HomeGames(this.parentContext), "NEW_FRAG") //frag 1: load top track
+            ft?.add(R.id.list_holder, HomeGames(), "NEW_FRAG") //frag 1: load top track
             ft?.commit()
             //search
+            /*
             search_edit_text.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     val searchText = search_edit_text.text
@@ -50,7 +51,7 @@ class Home (context: Context): Fragment() {
                 }
 
                 return@setOnEditorActionListener false
-            }
+            }*/
 
             this.initialized = true
         }

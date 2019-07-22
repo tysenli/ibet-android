@@ -8,14 +8,14 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.api.Api
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.github.kittinunf.fuel.core.Body
 import kotlinx.android.synthetic.main.activity_signup.*
-import okhttp3.MediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
+import okhttp3.*
+import org.json.JSONArray
 import org.json.JSONObject
 
 import java.util.*
@@ -68,28 +68,35 @@ class Signup : AppCompatActivity() {
             startActivity(Intent(applicationContext, emailAuthP1::class.java))
         }
 
+
         btnOneClick.setOnClickListener {
 
             val visitorJson = JSONObject()
-
             //val url = "http://10.0.2.2:8000/users/api/oneclicksignup/"
 
-            val info = post(visitorJson.toString(),BuildConfig.ONE_CLICK_SIGNUP_URL)
-            var info1 = info.split("-")
-           // println(info1[1])
+            val info = Api().post(visitorJson.toString(),BuildConfig.ONE_CLICK_SIGNUP_URL)
+            println (info)
+            var info1 = info!!.split(",")
+            var info2 = info1[0].split(":")[1]
+            var info3 = info1[1].split(":")[1]
+            var name = info2.substring(1,info2.length - 1)
+            var pass = info3.substring(1, info3.length - 2)
+            println(name)
            // println(info1[0])
 
             var res = Intent(applicationContext, oneClick::class.java)
-            res.putExtra("username",info1[0])
-            res.putExtra("password", info1[1])
+            res.putExtra("username",name)
+            res.putExtra("password",pass)
 
             startActivity(res)
 
         }
 
 
+
     }
-    fun post(json : String, url : String):String{
+    /*
+    fun post(json : String, url : String):  String {
 
         val client = OkHttpClient()
 
@@ -108,7 +115,7 @@ class Signup : AppCompatActivity() {
         return response.body()!!.string()
 
 
-    }
+    } */
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

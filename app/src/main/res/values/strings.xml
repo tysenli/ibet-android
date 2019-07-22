@@ -2,10 +2,10 @@
     <string name="app_name">ibet</string>
     <string name="facebook_app_id" translatable="false">599263050578163</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb599263050578163</string>
-    <string name="password_strength_weak">Weak</string>
-    <string name="password_strength_medium">Medium</string>
-    <string name="password_strength_strong">Strong</string>
-    <string name="password_strength_very_strong">Very Strong</string>
+    <string name="password_strength_weak">Password Strength: Too Weak</string>
+    <string name="password_strength_medium">Password Strength: Weak</string>
+    <string name="password_strength_strong">Password Strength: Great</string>
+    <string name="password_strength_very_strong">Password Strength: Perfect</string>
     <string name="selected_item" translatable="false">Selected item:</string>
     <string name="sign_up_1_of_3">Sign up (1 of 3)</string>
     <string name="show">Show</string>
@@ -14,7 +14,7 @@
     <string name="email">Email *</string>
     <string name="password">Password *</string>
     <string name="at_least_8_characters">At least 8 characters</string>
-    <string name="weak">Weak</string>
+    <string name="weak">Password Strength: Too Weak</string>
     <string name="tips_for_a_strong_password_n_use_letters_and_numbers_n_use_special_characters_eg_n_mix_lower_and_uppercase"
             translatable="false">
         Tips for a strong password: - Use letters and numbers - Use special characters (eg.!@) - Mix lower and uppercase
@@ -33,7 +33,7 @@
     <string name="date_of_birth">Date of birth *</string>
     <string name="city">City *</string>
     <string name="address">Address</string>
-    <string name="country">Country *</string>
+    <string name="country">COUNTRY</string>
     <string name="address_line_1">Address line 1</string>
     <string name="postcodes">Zipcode *</string>
     <string name="preferences">Preferences</string>
@@ -63,9 +63,8 @@
     <string name="i_ll_use_email_and_password">I\'ll use email and password</string>
     <string name="we_will_sometimes_send_you_emails_with_offers_n_regarding_our_services_you_can_unsubscribe_n_from_receiving_these_emails_at_any_time_free_n_of_charge_n_nby_signing_up_you_agree_to_ibet_s_terms_and_conditions_and_confirm_that_you_ve_read_and_understood_the_privacy_policy"
             translatable="false">
-        We will sometimes send you emails with offers regarding our services.You can unsubscribe from receiving these
-        emails at any time, free of charge. By signing up you agree to ibet’s terms and conditions and confirm that
-        you’ve read and understood the privacy policy.
+        We sometimes send you emails with offers regarding our services.You can <b>unsubscribe</b> from receiving these
+        emails at any time, free of charge.
     </string>
     <string name="login">Login</string>
     <string name="sign">Sign Up</string>
@@ -86,10 +85,36 @@
     <string name="terms_conditions">Terms / Conditions</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="support">Support</string>
-    <string name="search_ibet">Search iBet</string>
+    <string name="search_ibet">Search</string>
     <string name="log_in">Log in</string>
     <string name="state">State *</string>
     <string name="log_out">log out</string>
+    <string name="forget_password"><u>FORGOT PASSWORD</u></string>
+    <string name="signup_now">NOT A MEMBER? <u>SIGN UP NOW</u></string>
+    <string name="sports">SPORTS</string>
+    <string name="search">Search</string>
+    <string name="live_casino">LIVE CASINO</string>
+    <string name="slots">SLOTS</string>
+    <string name="lottery">LOTTERY</string>
+    <string name="policy">
+        By signing up you agree to ibet’s <b>terms and conditions</b> and confirm you’ve read and understood the <b>privacy</b>
+        policy.
+    </string>
+    <string name="check1">The <u>Terms &amp; Conditions</u> &amp; confirm that I am 18+</string>
+    <string name="check2">Having my personal data handled according to the <u>Privacy and Cookie Policy</u></string>
+    <string name="check3">Getting exclusive offers and promotions from ibet</string>
+    <string name="i_m_done"><u>I\'M DONE</u></string>
 
+    <integer-array name="img_id_arr">
+
+
+        <item>@drawable/gift</item>
+        <item>@drawable/gift</item>
+        <item>@drawable/gift</item>
+
+
+
+
+    </integer-array>
 
 </resources>

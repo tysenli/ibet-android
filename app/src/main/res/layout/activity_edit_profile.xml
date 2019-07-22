@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+    <ScrollView
+            android:layout_width="390dp"
+            android:layout_height="597dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:fillViewport="false"
+            android:id="@+id/scroll_edit"
+            android:layout_marginStart="8dp"
+            android:scrollbars="none"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.0"
+    >
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="vertical">
+            <TextView android:layout_width="322dp" android:layout_height="39dp"
+                      android:background="@drawable/registration_details"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      android:layout_marginTop="19dp" app:layout_constraintTop_toBottomOf="@+id/textView16"
+            />
+            <EditText
+                    android:layout_width="325dp"
+                    android:layout_height="47dp"
+                    android:inputType="none"
+                    android:enabled="false"
+                    android:ems="10"
+                    android:id="@+id/username_edit"
+                    android:hint=" USER NAME"
+                    android:textColorHint="#212121"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/border"
+                    android:singleLine="false" android:selectAllOnFocus="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:autofillHints=""
+                    app:layout_constraintHorizontal_bias="0.523" android:layout_marginTop="22dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_contact_detalis"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#747175"
+                    android:lineSpacingExtra="7.3sp"
+                    android:text="This is used to log in. Limit 15 characters."
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="6dp"
+                    app:layout_constraintTop_toBottomOf="@+id/username_id" app:layout_constraintHorizontal_bias="0.299"
+                    android:id="@+id/textView8"/>
+            <EditText
+                    android:layout_width="325dp"
+                    android:layout_height="47dp"
+                    android:inputType="none"
+                    android:ems="10"
+                    android:id="@+id/first_name_edit"
+                    android:hint=" FIRST NAME"
+                    android:enabled="false"
+                    android:textColorHint="#212121"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/border"
+                    android:singleLine="false" android:selectAllOnFocus="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:autofillHints=""
+                    app:layout_constraintHorizontal_bias="0.511"
+                    android:layout_marginTop="28dp" app:layout_constraintTop_toBottomOf="@+id/textView8"/>
+            <EditText
+                    android:layout_width="325dp"
+                    android:layout_height="47dp"
+                    android:inputType="none"
+                    android:ems="10"
+                    android:id="@+id/last_name_edit"
+                    android:hint=" LAST NAME"
+                    android:enabled="false"
+                    android:textColorHint="#212121"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/border"
+                    android:singleLine="false" android:selectAllOnFocus="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:autofillHints=""
+                    android:layout_marginTop="18dp" app:layout_constraintTop_toBottomOf="@+id/first_name"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#212121"
+                    android:letterSpacing="0.04"
+                    android:text="DATE OF BIRTH"
+                    android:layout_marginTop="18dp"
+                    app:layout_constraintTop_toBottomOf="@+id/last_name" android:id="@+id/textView18"
+                    android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"/>
+            <LinearLayout
+                    android:layout_width="323dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <EditText
+                        android:layout_width="78.4dp"
+                        android:layout_height="58dp"
+                        android:inputType="none"
+                        android:ems="10"
+                        android:id="@+id/dd_edit"
+                        android:hint=" DD"
+                        android:enabled="false"
+                        android:maxLength="2"
+                        android:textColor="#212121"
+                        android:gravity="center"
+                        android:textColorHint="#747175"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:singleLine="false" android:selectAllOnFocus="false"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:autofillHints=""
+                        app:layout_constraintHorizontal_bias="0.129"
+                        app:layout_constraintTop_toBottomOf="@+id/textView18"/>
+                <EditText
+                        android:layout_width="78.4dp"
+                        android:layout_height="58dp"
+                        android:inputType="number"
+                        android:ems="10"
+                        android:id="@+id/mm_edit"
+                        android:enabled="false"
+                        android:maxLength="2"
+                        android:hint=" MM"
+                        android:gravity="center"
+                        android:textColor="#212121"
+                        android:textColorHint="#747175"
+                        android:singleLine="false" android:selectAllOnFocus="false"
+                        android:autofillHints=""
+                        app:layout_constraintTop_toBottomOf="@+id/textView18"
+                        app:layout_constraintStart_toEndOf="@+id/dd"
+                        android:layout_marginStart="8dp" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/yy_edit" android:layout_marginRight="8dp"
+                        app:layout_constraintHorizontal_bias="0.474"/>
+                <EditText
+                        android:layout_width="78.4dp"
+                        android:layout_height="58dp"
+                        android:inputType="number"
+                        android:ems="10"
+                        android:id="@+id/yy_edit"
+                        android:hint=" YYYY"
+                        android:enabled="false"
+                        android:maxLength="4"
+                        android:gravity="center"
+                        android:textColor="#212121"
+                        android:textColorHint="#747175"
+                        android:singleLine="false" android:selectAllOnFocus="false"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:autofillHints=""
+                        app:layout_constraintTop_toBottomOf="@+id/textView18" android:layout_marginEnd="52dp"
+                        android:layout_marginRight="52dp"/>
+            </LinearLayout>
+            <TextView android:layout_width="322dp" android:layout_height="39dp"
+                      android:background="@drawable/contact_details"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      android:layout_marginTop="19dp" app:layout_constraintTop_toBottomOf="@+id/textView16"
+            />
+
+            <EditText
+                    android:layout_width="325dp"
+                    android:layout_height="47dp"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/edit_address"
+                    android:hint=" ADDRESS"
+                    android:textColorHint="#212121"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/border"
+                    android:singleLine="false" android:selectAllOnFocus="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:autofillHints=""
+                    android:layout_marginTop="22dp" app:layout_constraintTop_toBottomOf="@+id/tv_contact_detalis"/>
+            <LinearLayout
+                    android:layout_width="323dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <EditText
+                        android:layout_width="152dp"
+                        android:layout_height="48dp"
+                        android:inputType="textEmailAddress"
+                        android:ems="10"
+                        android:id="@+id/city_edit"
+                        android:hint=" CITY"
+                        android:textColorHint="#212121"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:background="@drawable/border"
+                        android:singleLine="false" android:selectAllOnFocus="false"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:autofillHints=""
+                        app:layout_constraintHorizontal_bias="0.166" android:layout_marginTop="18dp"
+                        app:layout_constraintTop_toBottomOf="@+id/address_edit"/>
+                <EditText
+                        android:layout_width="152dp"
+                        android:layout_height="48dp"
+                        android:inputType="number"
+                        android:ems="10"
+                        android:id="@+id/zip_code_edit"
+                        android:hint=" ZIP CODE"
+                        android:textColorHint="#212121"
+                        android:background="@drawable/border"
+                        android:singleLine="false" android:selectAllOnFocus="false"
+                        android:autofillHints=""
+                        android:layout_marginTop="18dp"
+                        app:layout_constraintTop_toBottomOf="@+id/address_edit"
+                        app:layout_constraintStart_toEndOf="@+id/city_edit"
+                        android:layout_marginStart="20dp" android:layout_marginLeft="20dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+                        app:layout_constraintHorizontal_bias="0.027"/>
+            </LinearLayout>
+            <TextView android:layout_width="322dp" android:layout_height="39dp"
+                      android:background="@drawable/mobile_details"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      android:layout_marginTop="19dp" app:layout_constraintTop_toBottomOf="@+id/textView16"
+            />
+            <LinearLayout
+                    android:layout_width="323dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <EditText
+                        android:layout_width="242dp"
+                        android:layout_height="match_parent"
+                        android:inputType="phone"
+                        android:ems="10"
+                        android:textColorHint="#212121"
+                        android:lineSpacingExtra="8.6sp"
+                        android:hint=" Phone Number"
+                        android:background="@drawable/border"
+                        android:id="@+id/phone_edit"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/country_code_picker"
+                        app:layout_constraintTop_toBottomOf="@+id/textView23"
+                        app:layout_constraintHorizontal_bias="0.0"/>
+            </LinearLayout>
+            <TextView android:layout_width="322dp" android:layout_height="39dp"
+                      android:background="@drawable/email_details"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      android:layout_marginTop="19dp" app:layout_constraintTop_toBottomOf="@+id/textView16">
+
+            </TextView>
+            <EditText
+                    android:layout_width="325dp"
+                    android:layout_height="47dp"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/email_edit"
+                    android:hint=" EMAIL ADDRESS"
+                    android:enabled="false"
+                    android:textColorHint="#212121"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/border"
+                    android:singleLine="false" android:selectAllOnFocus="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:autofillHints=""
+                    app:layout_constraintTop_toBottomOf="@+id/textView17"/>
+
+            <Button android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:id="@+id/btn_save"
+            />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
