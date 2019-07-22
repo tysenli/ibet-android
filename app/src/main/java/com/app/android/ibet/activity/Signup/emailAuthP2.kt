@@ -1,28 +1,17 @@
 package com.app.android.ibet.activity.Signup
 
-import android.app.DatePickerDialog
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.StrictMode
-import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
-import android.widget.*
-import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.MainActivity
 import com.hbb20.CountryCodePicker
 import com.wajahatkarim3.easyvalidation.core.view_ktx.maxLength
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
-import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
-import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 import kotlinx.android.synthetic.main.activity_email_auth_p2.*
 
-import org.json.JSONObject
-import java.util.*
 //import jdk.nashorn.internal.runtime.ScriptingFunctions.readLine
 //import com.sun.xml.internal.ws.streaming.XMLStreamWriterUtil.getOutputStream
 
@@ -46,7 +35,7 @@ class emailAuthP2: AppCompatActivity() {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         signup2.isEnabled = false
-        yy.addTextChangedListener (object : TextWatcher {
+        yy_edit.addTextChangedListener (object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
 
             }
@@ -55,7 +44,7 @@ class emailAuthP2: AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (username_id.nonEmpty() && first_name.nonEmpty() && last_name.nonEmpty() &&
-                    dd.maxLength(2) && mm.maxLength(2) && yy.maxLength(4)) {
+                    dd.maxLength(2) && mm_edit.maxLength(2) && yy_edit.maxLength(4)) {
 
                     signup2.isEnabled = true
                     signup2.setBackgroundResource(R.drawable.btn_red)
@@ -70,12 +59,11 @@ class emailAuthP2: AppCompatActivity() {
             val user = username_id.text.toString()
             val first = first_name.text.toString()
             val last = last_name.text.toString()
-            val birth =  mm.text.toString() + "/" + dd.text.toString() +"/" + yy.text.toString()
-            println(birth)
+            val birth =  mm_edit.text.toString() + "/" + dd.text.toString() +"/" + yy_edit.text.toString()
             val res = Intent(applicationContext, emailAuthP3::class.java)
             //res.putExtra(emailAuthP1.MAIL, )
 
-            println (intent.getStringExtra(emailAuthP1.MAIL))
+            //println (intent.getStringExtra(emailAuthP1.MAIL))
             res.putExtra(emailAuthP1.MAIL,intent.getStringExtra(emailAuthP1.MAIL))
             res.putExtra(emailAuthP1.PASS1, intent.getStringExtra(emailAuthP1.PASS1))
             res.putExtra(USER,user)

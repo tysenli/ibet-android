@@ -9,7 +9,12 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_email_auth_p3.*
+import kotlinx.android.synthetic.main.activity_email_auth_p3.city_edit
+import kotlinx.android.synthetic.main.activity_email_auth_p3.country_id
+import kotlinx.android.synthetic.main.activity_email_auth_p3.edit_address
+import kotlinx.android.synthetic.main.activity_email_auth_p3.zip_code_edit
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -17,9 +22,6 @@ import okhttp3.RequestBody
 import org.json.JSONObject
 import java.util.*
 import kotlin.collections.ArrayList
-import android.os.StrictMode
-
-
 
 
 class emailAuthP3: AppCompatActivity() {
@@ -72,9 +74,9 @@ class emailAuthP3: AppCompatActivity() {
             signupJson.put("last_name"        , intent.getStringExtra(emailAuthP2.LAST))
             signupJson.put("date_of_birth"    , intent.getStringExtra(emailAuthP2.BIRTH))
             signupJson.put("country"          , country_id.selectedItem.toString())
-            signupJson.put("street_address_1" , address.text.toString())
-            signupJson.put("city"             , city.text.toString())
-            signupJson.put("zipcode"          , zip_code.text.toString())
+            signupJson.put("street_address_1" , edit_address.text.toString())
+            signupJson.put("city"             , city_edit.text.toString())
+            signupJson.put("zipcode"          , zip_code_edit.text.toString())
             signupJson.put("over_eighteen"    , true)
 
             //val url = "http://10.0.2.2:8000/users/api/signup/"

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.api.Api
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -73,9 +74,9 @@ class Signup : AppCompatActivity() {
             val visitorJson = JSONObject()
             //val url = "http://10.0.2.2:8000/users/api/oneclicksignup/"
 
-            val info = post(visitorJson.toString(),BuildConfig.ONE_CLICK_SIGNUP_URL)
+            val info = Api().post(visitorJson.toString(),BuildConfig.ONE_CLICK_SIGNUP_URL)
             println (info)
-            var info1 = info.split(",")
+            var info1 = info!!.split(",")
             var info2 = info1[0].split(":")[1]
             var info3 = info1[1].split(":")[1]
             var name = info2.substring(1,info2.length - 1)
@@ -94,6 +95,7 @@ class Signup : AppCompatActivity() {
 
 
     }
+    /*
     fun post(json : String, url : String):  String {
 
         val client = OkHttpClient()
@@ -113,7 +115,7 @@ class Signup : AppCompatActivity() {
         return response.body()!!.string()
 
 
-    }
+    } */
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

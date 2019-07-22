@@ -2,9 +2,9 @@ package com.app.android.ibet.activity
 
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -19,16 +19,12 @@ import com.app.android.ibet.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.*
-import android.support.v4.view.MenuItemCompat
-import android.view.View.OnFocusChangeListener
-import android.content.ComponentName
 
-import android.content.Context.SEARCH_SERVICE
-import android.app.SearchManager
-import android.content.Context
-import android.support.v7.widget.SearchView
-import android.view.View
-import com.app.android.ibet.activity.UserProfile.UserProfile
+import com.app.android.ibet.activity.Login.Login
+import com.app.android.ibet.activity.Signup.Signup
+import com.app.android.ibet.activity.UserProfile.MyAccount
+//import com.app.android.ibet.activity.UserProfile.UserProfile
+import com.zhangke.zlog.ZLog
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -37,25 +33,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var isLogin = false
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*
-        actionBar = actionBar
-        val titleId = Resources.getSystem().getIdentifier(
-            "action_bar_title",
-            "id", "android"
-        )
-        tvTitle =  findViewById<TextView>(titleId)
-        tvTitle.gravity = Gravity.CENTER
-        */
+
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
-
-
-       // toolbar.
-
+        val fm = supportFragmentManager
+        val ft = fm.beginTransaction()
+        ft.add(R.id.frag_placeholder, Display(), "HOME_FRAG")
+        ft.commit()
 
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
@@ -66,6 +52,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //toolbar.setTitleTextColor(Color.RED)
 
         nav_view.setNavigationItemSelectedListener(this)
+        /*
+        val filePath = Environment.getExternalStorageDirectory().toString() + "/logcat.txt"
+        println(filePath)
+        Runtime.getRuntime().exec(arrayOf("logcat","-f",filePath,"MyAppTAG:V", "*:S")) */
+        ZLog.Init(String.format("%s/log/", getExternalFilesDir(null).getPath()))
+        //ZLog.e("TAG", "Internet Error");
         /*
         on_board.setOnClickListener {
             startActivity(Intent(applicationContext, IntroOne::class.java))
@@ -103,6 +95,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
+            R.id.deposit -> {
+                startActivity(Intent(this, Signup::class.java))
+                return true
+            }
             R.id.login -> {
                 /*
                 val fm = supportFragmentManager
@@ -116,9 +112,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 return true
             }
             R.id.logged -> {
-                startActivity(Intent(this, UserProfile::class.java))
+                startActivity(Intent(this, MyAccount::class.java))
                 return true
             }
+            /*
             R.id.chinese -> {
                 val locale = Locale("zh")
                 val config = Configuration()
@@ -143,6 +140,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(Intent( this,MainActivity::class.java))
                 return true
             }
+            */
             /*
             R.id.user -> {
                 val fm = supportFragmentManager
@@ -175,33 +173,61 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.sports -> {
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder, Sports(this@MainActivity), "FAVORITES_FRAG")
+                ft.replace(R.id.frag_placeholder, Sports(this@MainActivity), "SPORT_FRAG")
                 ft.commit()
+                //Sports(this)
             }
 
             R.id.live_casino -> {
                 //title ="Live Casino"
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder,Casino(this@MainActivity),"FAVORITES_FRAG")
+                ft.replace(R.id.frag_placeholder,Casino(this@MainActivity),"LIVE_FRAG")
                 ft.commit()
+                //Casino(this)
             }
             R.id.slots -> {
                 //title = "Slots"
+
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder, Slots(this@MainActivity), "FAVORITES_FRAG")
+                ft.replace(R.id.frag_placeholder, Slots(this@MainActivity), "SLOT_FRAG")
                 ft.commit()
+                //Slots(this)
             }
             R.id.lottery -> {
                 //title = "Lottery"
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder, Lottery(this@MainActivity), "FAVORITES_FRAG")
+                ft.replace(R.id.frag_placeholder, Lottery(this@MainActivity), "LOTTERY_FRAG")
+                ft.commit()
+                //Lottery(this)
+
+            }
+            R.id.cookie -> {
+
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Cookie(), "cookie")
                 ft.commit()
 
             }
+            R.id.privacy -> {
 
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Privacy(), "privacy")
+                ft.commit()
+
+            }
+            R.id.terms -> {
+
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Terms(), "terms")
+                ft.commit()
+
+            }
 
         }
 

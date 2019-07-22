@@ -43,10 +43,9 @@ class emailAuthP1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(com.app.android.ibet.R.layout.activity_email_auth_p1)
-       // var usertxt = findViewById<EditText>(com.app.android.ibet.R.id.username_id)
-        var emailtxt = findViewById<EditText>(com.app.android.ibet.R.id.email_id)
-        var passwordtxt = findViewById<EditText>(com.app.android.ibet.R.id.password_id)
+        setContentView(R.layout.activity_email_auth_p1)
+        var emailtxt = findViewById<EditText>(R.id.email_id)
+        var passwordtxt = findViewById<EditText>(R.id.password_id)
         //var conPasswordtxt = findViewById<EditText>(com.app.android.ibet.R.id.con_password_id)
 
         var isValidUser = false
@@ -183,25 +182,6 @@ class emailAuthP1 : AppCompatActivity() {
             }
 
         }) */
-/*
-        checkBox1.setOnCheckedChangeListener() { buttonView, isChecked ->
-            if (!isChecked) {
-                password_id.transformationMethod = PasswordTransformationMethod.getInstance()
-            } else {
-                password_id.transformationMethod = HideReturnsTransformationMethod.getInstance()
-
-            }
-        } */
-        /*
-
-        checkBox2.setOnCheckedChangeListener() { buttonView, isChecked ->
-            if (!isChecked) {
-                con_password_id.transformationMethod = PasswordTransformationMethod.getInstance()
-            } else {
-                con_password_id.transformationMethod = HideReturnsTransformationMethod.getInstance()
-
-            }
-        } */
 
         continue1.setOnClickListener {
             //val user = username_id.text.toString()
@@ -213,27 +193,18 @@ class emailAuthP1 : AppCompatActivity() {
             res.putExtra(MAIL,mail)
             res.putExtra(PASS1,pass1)
             res.putExtra(LAN, lan)
-            //res.putExtra(emailAuthP1.PASS2,pass1)
-            //startActivity(res)
-           // setResult(Activity.RESULT_OK, res)
+
             startActivity(res)
 
         }
-
-        /*
-        close1.setOnClickListener {
-            startActivity(Intent(applicationContext, MainActivity::class.java))
-
-        }
-        */
 
 
 
     }
 
     private fun updatePasswordStrenth(password : String) {
-        var progressBar = findViewById<ProgressBar>(com.app.android.ibet.R.id.progressBar)
-        var strengthView = findViewById<TextView>(com.app.android.ibet.R.id.password_strength)
+        var progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        var strengthView = findViewById<TextView>(R.id.password_strength)
         if (TextView.VISIBLE != strengthView.visibility) {
             return
         }

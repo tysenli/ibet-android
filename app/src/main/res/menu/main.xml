@@ -13,12 +13,11 @@
           -->
 
     <item android:id="@+id/deposit"
-          android:title=""
           android:orderInCategory="1"
           android:icon="@drawable/open_account"
-          app:showAsAction="always" />
+          app:showAsAction="always"/>
 
-
+<!--
     <item android:id="@+id/language"
           android:icon="@drawable/gb"
           android:title=""
@@ -41,6 +40,7 @@
 
          </menu>
     </item>
+    -->
     <item android:id="@+id/login"
 
           android:title="@string/log_in"
