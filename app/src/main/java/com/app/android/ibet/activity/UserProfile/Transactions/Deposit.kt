@@ -10,23 +10,47 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
-import com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.Paypal
-import com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.QaiWechat
+import com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.*
 import kotlinx.android.synthetic.main.activity_deposit.*
 
 class Deposit : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_deposit)
         paypal.setOnClickListener {
             startActivity(Intent(this, Paypal::class.java))
-
         }
         wechat.setOnClickListener {
             startActivity(Intent(this, QaiWechat::class.java))
         }
+        ali.setOnClickListener {
+            startActivity(Intent(this, QaiAli::class.java))
+        }
+        line_pay.setOnClickListener {
+            startActivity(Intent(this, LinePay::class.java))
+        }
+        visa.setOnClickListener {
+            startActivity(Intent(this, VisaInfo::class.java))
+        }
+        jdpay.setOnClickListener {
+            startActivity(Intent(this, JDPay::class.java))
+        }
+        unionpay.setOnClickListener {
+            startActivity(Intent(this, UnionPay::class.java))
+        }
+        bank.setOnClickListener {
+            startActivity(Intent(this, BankDep::class.java))
+        }
+        quickpay.setOnClickListener {
+            startActivity(Intent(this, QuickPay::class.java))
+        }
     }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         title = "Deposit Method"
@@ -49,6 +73,11 @@ class Deposit : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
+            android.R.id.home -> {
+                // startActivity(Intent(this, MyAccount::class.java))
+                onBackPressed()
+                return true
+            }
             R.id.deposit -> {
                 startActivity(Intent(this, Signup::class.java))
                 return true

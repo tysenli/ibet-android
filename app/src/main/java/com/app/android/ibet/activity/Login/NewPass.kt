@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuItem
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.MainActivity
@@ -17,6 +18,10 @@ import org.json.JSONObject
 class NewPass : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_newpass)
@@ -85,6 +90,22 @@ class NewPass : AppCompatActivity() {
                 code_error2.setTextColor(Color.RED)
             }
 
+        }
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        when (item.itemId) {
+            android.R.id.home -> {
+                // startActivity(Intent(this, MyAccount::class.java))
+                onBackPressed()
+                return true
+            }
+
+            else -> return super.onOptionsItemSelected(item)
         }
 
     }

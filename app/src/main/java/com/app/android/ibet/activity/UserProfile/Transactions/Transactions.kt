@@ -23,5 +23,13 @@ class Transactions : Fragment() {
             startActivity(Intent(activity, Deposit::class.java))
 
         }
+        withdraw.setOnClickListener {
+            startActivity(Intent(activity, Withdraw::class.java))
+
+        }
+        total.setOnClickListener {
+            startActivity(Intent(activity, Total::class.java))
+
+        }
     }
 }
