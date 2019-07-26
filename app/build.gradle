@@ -39,6 +39,8 @@ android {
             buildConfigField 'String','WITHDRAW',"\"$local/accounting/api/qaicash/submit_payout\""
             buildConfigField 'String','WITHDRAW_ORDER',"\"$local/accounting/api/qaicash/payout_transaction\""
             buildConfigField 'String','LINE',"\"$local/accounting/api/linepay/reserve_payment\""
+            buildConfigField 'String','QUICKPAY',"\"$local/accounting/api/asiapay/deposit\""
+
 
 
 

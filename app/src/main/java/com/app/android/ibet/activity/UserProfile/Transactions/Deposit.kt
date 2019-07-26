@@ -10,6 +10,7 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amtShow
 import com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.*
 import kotlinx.android.synthetic.main.activity_deposit.*
 
@@ -65,6 +66,14 @@ class Deposit : AppCompatActivity() {
         } else {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
+        }
+        val menuItem = menu.findItem(R.id.deposit)
+        val rootView = menuItem.actionView
+
+        amtShow = rootView.findViewById(R.id.balance_icon)
+        amtShow.text = MyAccount.amt.split(".")[0]
+        amtShow.setOnClickListener {
+            startActivity(Intent(this, Deposit::class.java))
         }
         return super.onPrepareOptionsMenu(menu)
     }

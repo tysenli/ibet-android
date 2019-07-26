@@ -10,6 +10,8 @@ import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.TextView
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
@@ -17,6 +19,8 @@ import com.app.android.ibet.activity.Login.Login.Companion.token
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amt
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amtShow
 import com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.Paypal
 import com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.QaiWechat
 import com.idtk.smallchart.data.CurveData
@@ -32,7 +36,8 @@ class Total : AppCompatActivity() {
     private val mDataList = ArrayList<ICurveData>()
     private val mCurveData = CurveData()
     private val mPointArrayList = ArrayList<PointF>()
-
+    //lateinit var  amtShow :Button
+    //private var amt = ""
     protected var points = arrayOf(
         floatArrayOf(1f, 2f),
         floatArrayOf(2f, 20f),
@@ -66,8 +71,9 @@ class Total : AppCompatActivity() {
         //println(response.body()!!.string())
 
         var jsonData = response.body()!!.string()
+        amt = JSONObject(jsonData).getString("main_wallet")
         user.text = "Hi " + JSONObject(jsonData).getString("username") + "                      "
-        balance.text="       Balance: $" + JSONObject(jsonData).getString("main_wallet")
+        balance.text="       Balance: $" + amt
         initData()
         curveChart.setDataList(mDataList)
 
@@ -92,7 +98,14 @@ class Total : AppCompatActivity() {
             //menu.findItem(R.id.balance).isVisible = true
 
         }
-        menu!!.findItem(R.id.deposit).title = "100"
+        val menuItem = menu.findItem(R.id.deposit)
+        val rootView = menuItem.actionView
+
+        amtShow = rootView.findViewById(R.id.balance_icon)
+        amtShow.text = amt.split(".")[0]
+        amtShow.setOnClickListener {
+            startActivity(Intent(this, Signup::class.java))
+        }
         return super.onPrepareOptionsMenu(menu)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -103,10 +116,6 @@ class Total : AppCompatActivity() {
             android.R.id.home -> {
                 // startActivity(Intent(this, MyAccount::class.java))
                 onBackPressed()
-                return true
-            }
-            R.id.deposit -> {
-                startActivity(Intent(this, Signup::class.java))
                 return true
             }
             R.id.login -> {

@@ -178,6 +178,10 @@
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
+        <activity android:name=".activity.UserProfile.Transactions.DepositMethod.Test"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
         <activity android:name=".activity.UserProfile.Transactions.Withdraw"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Withdraw Method"

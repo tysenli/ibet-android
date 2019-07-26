@@ -10,6 +10,7 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.activity.UserProfile.Transactions.Deposit
 import com.app.android.ibet.activity.UserProfile.Transactions.Total
 import kotlinx.android.synthetic.main.activity_success.*
 
@@ -48,6 +49,14 @@ class SuccessWithdraw: AppCompatActivity() {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
         }
+        val menuItem = menu.findItem(R.id.deposit)
+        val rootView = menuItem.actionView
+
+        MyAccount.amtShow = rootView.findViewById(R.id.balance_icon)
+        MyAccount.amtShow.text = MyAccount.amt.split(".")[0]
+        MyAccount.amtShow.setOnClickListener {
+            startActivity(Intent(this, Deposit::class.java))
+        }
         return super.onPrepareOptionsMenu(menu)
     }
 
@@ -59,10 +68,6 @@ class SuccessWithdraw: AppCompatActivity() {
             android.R.id.home -> {
                 // startActivity(Intent(this, MyAccount::class.java))
                 onBackPressed()
-                return true
-            }
-            R.id.deposit -> {
-                startActivity(Intent(this, Signup::class.java))
                 return true
             }
             R.id.login -> {

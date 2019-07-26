@@ -15,10 +15,10 @@
           -->
 
     <item android:id="@+id/deposit"
-          android:title="100"
+          android:title=""
           android:orderInCategory="1"
-          android:icon="@drawable/open_account"
-          app:showAsAction="always|withText"/>
+          app:actionLayout="@layout/dep_actionlayout"
+          app:showAsAction="always"/>
 
 
 <!--

@@ -12,6 +12,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.webkit.WebView
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
@@ -39,6 +40,7 @@ class QaiWechat : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_amount_input)
         var pk =  JSONObject(userData).getString("pk")
+
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201,199,199))
             money_50.setBackgroundColor(Color.rgb(239,239,239))
@@ -111,7 +113,11 @@ class QaiWechat : AppCompatActivity() {
             dialogView.diposit_display.text = amount_display.text.toString() + " Wechat"
             dialogView.confirm.setOnClickListener {
                 dialog.dismiss()
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(wechat_url)))
+                //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(wechat_url)))
+                val res = Intent(this, Test::class.java)
+                res.putExtra("url", wechat_url)
+                startActivity(res)
+
 
             }
             dialogView.cancel.setOnClickListener {

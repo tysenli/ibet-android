@@ -15,6 +15,8 @@ import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.MainActivity.Companion.isLogin
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amt
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.app.android.ibet.api.Api
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 
@@ -84,19 +86,22 @@ class Login : AppCompatActivity() {
             //val url = "http://10.0.2.2:8000/users/api/login/"
 
             var log = Api().post(loginJson.toString(), BuildConfig.LOGIN)
-            var hint = log!!.split(":")[0]
-            var key = log!!.split(":")[1]
-            // println(key.substring(1,key.length - 2))
-            var success = hint.substring(2,hint.length - 1)
-            token = key.substring(1,key.length - 2)
-
-            if (success == "key") {
-                isLogin = true
-                startActivity(Intent(this, MainActivity::class.java))
-            } else {
+            //println("jh" + log)
+            if (log.toString().equals("null")) {
                 forgot_password.text = "Incorrect Username or Password\n Forgot Password?"
                 forgot_password.setTextColor(Color.RED)
+            } else {
+               // var hint = log!!.split(":")[0]
+                //var key = log!!.split(":")[1]
+                // println(key.substring(1,key.length - 2))
+                //var success = hint.substring(2, hint.length - 1)
+                token = JSONObject(log).getString("key")
+                isLogin = true
+                userData = Api().get(BuildConfig.USER)!!
+                amt = JSONObject(userData).getString("main_wallet")
+                startActivity(Intent(this, MainActivity::class.java))
             }
+
 
         }
         forgot_password.setOnClickListener {
