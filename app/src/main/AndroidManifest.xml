@@ -178,9 +178,17 @@
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
-        <activity android:name=".activity.UserProfile.Transactions.DepositMethod.Test"
+        <activity android:name=".activity.UserProfile.Transactions.DepositMethod.WechatOpenPage"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Transactions.DepositMethod.AliOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Transactions.WithdrawMethod.BankOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Withdraw"
         ></activity>
         <activity android:name=".activity.UserProfile.Transactions.Withdraw"
                   android:theme="@style/Theme.AppCompat.Light"

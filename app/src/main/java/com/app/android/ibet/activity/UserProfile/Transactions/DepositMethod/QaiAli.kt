@@ -108,7 +108,10 @@ class QaiAli : AppCompatActivity() {
             dialogView.diposit_display.text = amount_display.text.toString() + " AliPay"
             dialogView.confirm.setOnClickListener {
                 dialog.dismiss()
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(ali_url)))
+               // startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(ali_url)))
+                val res = Intent(this, AliOpenPage::class.java)
+                res.putExtra("aliurl", ali_url)
+                startActivity(res)
 
             }
             dialogView.cancel.setOnClickListener {
@@ -136,6 +139,14 @@ class QaiAli : AppCompatActivity() {
         } else {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
+        }
+        val menuItem = menu.findItem(R.id.deposit)
+        val rootView = menuItem.actionView
+
+        MyAccount.amtShow = rootView.findViewById(R.id.balance_icon)
+        MyAccount.amtShow.text = MyAccount.amt.split(".")[0]
+        MyAccount.amtShow.setOnClickListener {
+            startActivity(Intent(this, Deposit::class.java))
         }
         return super.onPrepareOptionsMenu(menu)
     }
@@ -186,16 +197,20 @@ class QaiAli : AppCompatActivity() {
             println(JSONObject(statusData).getString("status"))
 
             if (JSONObject(statusData).getString("status") == "SUCCESS") {
+                /*
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Success")
                 builder.setMessage("success payment!!")
                 val dialog = builder.create()
-                dialog.show()
+                dialog.show() */
                 val depositJson = JSONObject()
                 depositJson.put("type", "add")
                 depositJson.put("username", user)
                 depositJson.put("balance", amount_display.text.toString())
                 val info = Api().post(depositJson.toString(), BuildConfig.BALANCE)
+                val res = Intent(this, Success::class.java)
+                res.putExtra("amount",amount_display.text.toString())
+                startActivity(res)
             } else {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Wrong")

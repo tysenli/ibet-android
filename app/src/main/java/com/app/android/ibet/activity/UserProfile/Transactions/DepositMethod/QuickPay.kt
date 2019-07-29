@@ -140,6 +140,14 @@ class QuickPay : AppCompatActivity() {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
         }
+        val menuItem = menu.findItem(R.id.deposit)
+        val rootView = menuItem.actionView
+
+        MyAccount.amtShow = rootView.findViewById(R.id.balance_icon)
+        MyAccount.amtShow.text = MyAccount.amt.split(".")[0]
+        MyAccount.amtShow.setOnClickListener {
+            startActivity(Intent(this, Deposit::class.java))
+        }
         return super.onPrepareOptionsMenu(menu)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

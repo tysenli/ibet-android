@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.MainActivity
@@ -14,6 +15,9 @@ import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.Transactions.Deposit
 import com.app.android.ibet.activity.UserProfile.Transactions.Total
 import kotlinx.android.synthetic.main.activity_success.*
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONObject
 
 class Success : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +29,17 @@ class Success : AppCompatActivity() {
 
         setContentView(R.layout.activity_success)
         dep_amount.text = "Deposit " + intent.getStringExtra("amount") + " completed"
+        val request = Request.Builder()
+            .header("Authorization", "Token "+ Login.token)
+            .url(BuildConfig.USER)
+            .build()
+        val response = OkHttpClient().newCall(request).execute()
+
+        var jsonData = response.body()!!.string()
+
+        MyAccount.amt = JSONObject(jsonData).getString("main_wallet")
         done_depo.setOnClickListener {
+
             startActivity(Intent(this, MyAccount::class.java))
         }
         check_balance.setOnClickListener {

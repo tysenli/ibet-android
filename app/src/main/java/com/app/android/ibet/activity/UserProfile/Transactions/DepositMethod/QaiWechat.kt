@@ -1,9 +1,7 @@
 package com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -12,7 +10,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.webkit.WebView
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
@@ -22,7 +19,6 @@ import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.Transactions.Deposit
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_amount_input.*
-import kotlinx.android.synthetic.main.activity_newpass.*
 import kotlinx.android.synthetic.main.dialog.view.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
@@ -114,8 +110,8 @@ class QaiWechat : AppCompatActivity() {
             dialogView.confirm.setOnClickListener {
                 dialog.dismiss()
                 //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(wechat_url)))
-                val res = Intent(this, Test::class.java)
-                res.putExtra("url", wechat_url)
+                val res = Intent(this, WechatOpenPage::class.java)
+                res.putExtra("wechaturl", wechat_url)
                 startActivity(res)
 
 
@@ -148,6 +144,14 @@ class QaiWechat : AppCompatActivity() {
         } else {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
+        }
+        val menuItem = menu.findItem(R.id.deposit)
+        val rootView = menuItem.actionView
+
+        MyAccount.amtShow = rootView.findViewById(R.id.balance_icon)
+        MyAccount.amtShow.text = MyAccount.amt.split(".")[0]
+        MyAccount.amtShow.setOnClickListener {
+            startActivity(Intent(this, Deposit::class.java))
         }
         return super.onPrepareOptionsMenu(menu)
     }

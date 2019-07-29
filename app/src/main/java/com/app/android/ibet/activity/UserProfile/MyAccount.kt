@@ -12,6 +12,7 @@ import android.widget.Button
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
+import com.app.android.ibet.activity.Login.Login.Companion.token
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.Transactions.Deposit
@@ -22,6 +23,8 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import kotlinx.android.synthetic.main.activity_bets.*
 import kotlinx.android.synthetic.main.activity_my_account.*
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import org.json.JSONObject
 
 class MyAccount : AppCompatActivity() {
@@ -39,7 +42,15 @@ class MyAccount : AppCompatActivity() {
         actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_account)
+        val request = Request.Builder()
+            .header("Authorization", "Token "+ token)
+            .url(BuildConfig.USER)
+            .build()
+        val response = OkHttpClient().newCall(request).execute()
 
+        var jsonData = response.body()!!.string()
+
+        amt = JSONObject(jsonData).getString("main_wallet")
         val adapter = FragmentPagerItemAdapter(
             supportFragmentManager, FragmentPagerItems.with(this)
                 .add("Transactions", Transactions().javaClass)

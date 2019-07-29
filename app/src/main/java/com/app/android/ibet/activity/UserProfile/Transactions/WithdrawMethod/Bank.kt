@@ -19,6 +19,7 @@ import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.Transactions.Deposit
 import com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.Success
+import com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.WechatOpenPage
 import com.app.android.ibet.activity.UserProfile.Transactions.Withdraw
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_amount_input.*
@@ -128,7 +129,10 @@ class Bank : AppCompatActivity() {
                 dialogView.diposit_display.text = amount_display.text.toString() + " bank"
                 dialogView.confirm.setOnClickListener {
                     dialog.dismiss()
-                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(withdraw_url)))
+                    //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(withdraw_url)))
+                    val res = Intent(this, BankOpenPage::class.java)
+                    res.putExtra("bankurl", withdraw_url)
+                    startActivity(res)
                 }
                 dialogView.cancel.setOnClickListener {
                     dialog.dismiss()
