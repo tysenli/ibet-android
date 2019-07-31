@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionMenuTextColor">@color/title</item>
 
     </style>
     <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
@@ -46,6 +47,7 @@
         <item name="android:listDivider">@color/line</item>
         <item name="android:dividerHeight">1dp</item>
         <item name="android:textSize">16sp</item>
+
     </style>
 
 

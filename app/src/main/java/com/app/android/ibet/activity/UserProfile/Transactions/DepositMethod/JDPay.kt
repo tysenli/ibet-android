@@ -2,6 +2,7 @@ package com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod
 
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -25,7 +26,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 
-class QaiWechat : AppCompatActivity() {
+class JDPay : AppCompatActivity() {
     var userData = Api().get(BuildConfig.USER)
     var orderId = ""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +35,7 @@ class QaiWechat : AppCompatActivity() {
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_amount_input)
         var pk =  JSONObject(userData).getString("pk")
 
@@ -82,54 +84,29 @@ class QaiWechat : AppCompatActivity() {
             }
 
         })
-
         btn_wechat_dep.setOnClickListener {
             val client = OkHttpClient()
             val formBody = FormBody.Builder()
                 .add("amount", amount_display.text.toString())
-                .add("user_id", pk)
+                .add("userid", pk)
                 .add("currency", "0")
-                .add("language", "zh-Hans")
-                .add("method", "WECHAT_PAY_H5")
+                .add("PayWay", "42")
+                .add("method", "49")
                 .build()
 
             val request = Request.Builder()
-                .url(BuildConfig.WECHAT)
+                .url(BuildConfig.QUICKPAY)
                 .post(formBody)
                 .build()
             val response = client.newCall(request).execute()
-            var wechatData = response.body()!!.string()
-            orderId = JSONObject(wechatData).getJSONObject("depositTransaction").getString("orderId")
-            var wechat_url = JSONObject(wechatData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
-            val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog,null)
-            val builder = AlertDialog.Builder(this)
-            builder.setView(dialogView)
-            val dialog = builder.show()
-            dialogView.text.text = "Confirm Deposit"
-            dialogView.diposit_display.text = amount_display.text.toString() + " Wechat"
-            dialogView.confirm.setOnClickListener {
-                dialog.dismiss()
-                //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(wechat_url)))
-                val res = Intent(this, WechatOpenPage::class.java)
-                res.putExtra("wechaturl", wechat_url)
-                startActivity(res)
-
-
-            }
-            dialogView.cancel.setOnClickListener {
-                dialog.dismiss()
-            }
-
+            var quickData = response.body()!!.string()
+            println(quickData)
 
         }
-
-
         change_method.setOnClickListener {
             startActivity(Intent(this, Deposit::class.java))
         }
-
     }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         title = "Deposit"
@@ -144,14 +121,6 @@ class QaiWechat : AppCompatActivity() {
         } else {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
-        }
-        val menuItem = menu.findItem(R.id.deposit)
-        val rootView = menuItem.actionView
-
-        MyAccount.amtShow = rootView.findViewById(R.id.balance_icon)
-        MyAccount.amtShow.text = MyAccount.amt.split(".")[0]
-        MyAccount.amtShow.setOnClickListener {
-            startActivity(Intent(this, Deposit::class.java))
         }
         return super.onPrepareOptionsMenu(menu)
     }
@@ -182,48 +151,4 @@ class QaiWechat : AppCompatActivity() {
 
 
     }
-
-    override fun onResume() {
-        super.onResume()
-        //println("HHAHHAHHAHAH")
-        val user = JSONObject(userData).getString("username")
-        if (orderId.isNotEmpty()) {
-            val orderBody = FormBody.Builder()
-                .add("order_id", orderId)
-                .build()
-            val request = Request.Builder()
-                .url(BuildConfig.WECHAT_ORDER)
-                .post(orderBody)
-                .build()
-            val response = OkHttpClient().newCall(request).execute()
-            //println("hhh" + response2.body()!!.string())
-            val statusData = response.body()!!.string()
-            println(JSONObject(statusData).getString("status"))
-
-            if (JSONObject(statusData).getString("status") == "SUCCESS") {
-                /*
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("Success")
-                builder.setMessage("success payment!!")
-                val dialog = builder.create()
-                dialog.show() */
-                val depositJson = JSONObject()
-                depositJson.put("type", "add")
-                depositJson.put("username", user)
-                depositJson.put("balance", amount_display.text.toString())
-                val info = Api().post(depositJson.toString(), BuildConfig.BALANCE)
-                val res = Intent(this, Success::class.java)
-                res.putExtra("amount",amount_display.text.toString())
-                startActivity(res)
-
-            } else {
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("Wrong")
-                builder.setMessage("wrong payment!!")
-                val dialog = builder.create()
-                dialog.show()
-            }
-        }
-    }
-
 }

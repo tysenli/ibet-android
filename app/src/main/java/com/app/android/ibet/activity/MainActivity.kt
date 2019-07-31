@@ -23,6 +23,8 @@ import java.util.*
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amtShow
+import com.app.android.ibet.activity.UserProfile.Transactions.Deposit
 //import com.app.android.ibet.activity.UserProfile.UserProfile
 import com.zhangke.zlog.ZLog
 
@@ -69,9 +71,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (!isLogin) {
             menu!!.findItem(R.id.logged).isVisible = false
             menu.findItem(R.id.login).isVisible = true
+            val menuItem = menu.findItem(R.id.deposit)
+            val rootView = menuItem.actionView
+
+            amtShow = rootView.findViewById(R.id.balance_icon)
+            amtShow.setOnClickListener {
+                startActivity(Intent(this, Signup::class.java))
+            }
+
         } else {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
+            val menuItem = menu.findItem(R.id.deposit)
+            val rootView = menuItem.actionView
+
+            amtShow = rootView.findViewById(R.id.balance_icon)
+            amtShow.text = MyAccount.amt.split(".")[0]
+            amtShow.setOnClickListener {
+                startActivity(Intent(this, Deposit::class.java))
+            }
         }
         return super.onPrepareOptionsMenu(menu)
     }

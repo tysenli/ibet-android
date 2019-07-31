@@ -1,4 +1,4 @@
-package com.app.android.ibet.activity.UserProfile.Transactions
+package com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,11 +10,10 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
-import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amtShow
-import com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.*
-import kotlinx.android.synthetic.main.activity_deposit.*
+import com.app.android.ibet.activity.UserProfile.Transactions.Deposit
+import kotlinx.android.synthetic.main.activity_amount_input.*
 
-class Deposit : AppCompatActivity() {
+class BankDep : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val actionBar = supportActionBar
         actionBar!!.setHomeButtonEnabled(true)
@@ -22,39 +21,14 @@ class Deposit : AppCompatActivity() {
         actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_deposit)
-        paypal.setOnClickListener {
-            startActivity(Intent(this, Paypal::class.java))
-        }
-        wechat.setOnClickListener {
-            startActivity(Intent(this, QaiWechat::class.java))
-        }
-        ali.setOnClickListener {
-            startActivity(Intent(this, QaiAli::class.java))
-        }
-        line_pay.setOnClickListener {
-            startActivity(Intent(this, LinePay::class.java))
-        }
-        visa.setOnClickListener {
-            startActivity(Intent(this, VisaInfo::class.java))
-        }
-        jdpay.setOnClickListener {
-            startActivity(Intent(this, JDPay::class.java))
-        }
-        unionpay.setOnClickListener {
-            startActivity(Intent(this, UnionPay::class.java))
-        }
-        bank.setOnClickListener {
-            startActivity(Intent(this, BankDep::class.java))
-        }
-        quickpay.setOnClickListener {
-            startActivity(Intent(this, QuickPay::class.java))
+        setContentView(R.layout.activity_amount_input)
+        change_method.setOnClickListener {
+            startActivity(Intent(this, Deposit::class.java))
         }
     }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        title = "Deposit Method"
+        title = "Deposit"
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
@@ -66,14 +40,6 @@ class Deposit : AppCompatActivity() {
         } else {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
-        }
-        val menuItem = menu.findItem(R.id.deposit)
-        val rootView = menuItem.actionView
-
-        amtShow = rootView.findViewById(R.id.balance_icon)
-        amtShow.text = MyAccount.amt.split(".")[0]
-        amtShow.setOnClickListener {
-            startActivity(Intent(this, Deposit::class.java))
         }
         return super.onPrepareOptionsMenu(menu)
     }
