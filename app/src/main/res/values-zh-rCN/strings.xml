@@ -55,4 +55,9 @@
     <string name="language">语言</string>
     <string name="title">称呼</string>
     <string name="search">查找</string>
+    <string name="about_us">关于我们</string>
+    <string name="contact_us">联系我们</string>
+    <string name="help_and_faq">帮助和问题</string>
+    <string name="terms_and_conditions">条件</string>
+    <string name="sports_betting_guides">指南</string>
 </resources>

@@ -100,7 +100,7 @@ class JDPay : AppCompatActivity() {
                 .build()
             val response = client.newCall(request).execute()
             var quickData = response.body()!!.string()
-            println(quickData)
+
 
         }
         change_method.setOnClickListener {

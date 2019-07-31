@@ -194,7 +194,7 @@ class QaiAli : AppCompatActivity() {
             val response = OkHttpClient().newCall(request).execute()
             //println("hhh" + response2.body()!!.string())
             val statusData = response.body()!!.string()
-            println(JSONObject(statusData).getString("status"))
+           // println(JSONObject(statusData).getString("status"))
 
             if (JSONObject(statusData).getString("status") == "SUCCESS") {
                 /*
