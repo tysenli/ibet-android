@@ -10,7 +10,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:orientation="vertical"
         android:gravity="bottom">
-
+<!--
 
     <TextView
             android:id="@+id/username_navi"
@@ -23,8 +23,27 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.571" app:layout_constraintVertical_bias="0.84"/>
+            app:layout_constraintHorizontal_bias="0.571" app:layout_constraintVertical_bias="0.84"/> -->
+    <EditText
+            android:layout_width="179dp"
+            android:layout_height="36dp"
+            android:textSize="10sp"
 
+            android:textColor="#b0b0b0"
+            android:textColorHint="#b0b0b0"
+            android:letterSpacing="0.02"
+            android:hint="Search Sprort, Casino, Slot, Lottery "
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp" app:layout_constraintTop_toTopOf="parent" android:id="@+id/editText"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    <Button android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/search"
+            app:layout_constraintStart_toEndOf="@+id/editText"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="44dp"
+            app:layout_constraintTop_toTopOf="parent"/>
 
 
 </android.support.constraint.ConstraintLayout>

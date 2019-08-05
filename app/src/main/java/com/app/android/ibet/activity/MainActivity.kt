@@ -26,7 +26,8 @@ import com.app.android.ibet.activity.Navigation.SampleMenu
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amtShow
-import com.app.android.ibet.activity.UserProfile.Transactions.Deposit
+import com.app.android.ibet.activity.UserProfile.Banking.Deposit
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
 import com.app.android.ibet.fragment.Display
 //import com.app.android.ibet.activity.UserProfile.UserProfile
 import com.zhangke.zlog.ZLog
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
 
         //nav_view.setNavigationItemSelectedListener(this)
         var language = arrayOf("Language", "English", "Chinese", "Thai")
-        var lanImg = arrayOf(R.drawable.chat, R.drawable.gb, R.drawable.cn, R.drawable.th)
+        var lanImg = arrayOf(R.drawable.lan_bng, R.drawable.gb, R.drawable.cn, R.drawable.th)
         // var flag[] = {R.drawable.gb, R.drawable.cn, R.drawable.th}
         var lanSpinner = findViewById<Spinner>(R.id.language_navi)
         var lan: String = ""
@@ -164,6 +165,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             amtShow = rootView.findViewById(R.id.balance_icon)
             amtShow.setOnClickListener {
                 startActivity(Intent(this, Signup::class.java))
+                overridePendingTransition(0, 0)
             }
 
         } else {
@@ -224,10 +226,13 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
                 ft.replace(R.id.frag_placeholder, Login(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit() */
                 startActivity(Intent(this, Login::class.java))
+                overridePendingTransition(0, 0)
                 return true
             }
             R.id.logged -> {
+                info = "deposit"
                 startActivity(Intent(this, MyAccount::class.java))
+                overridePendingTransition(0, 0)
                 return true
             }
            else -> return super.onOptionsItemSelected(item)

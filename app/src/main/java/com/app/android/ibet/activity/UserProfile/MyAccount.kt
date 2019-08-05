@@ -14,14 +14,17 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.Login.Login.Companion.token
 import com.app.android.ibet.activity.MainActivity
-import com.app.android.ibet.activity.Signup.Signup
-import com.app.android.ibet.activity.UserProfile.Transactions.Deposit
-import com.app.android.ibet.activity.UserProfile.Transactions.Total
-import com.app.android.ibet.activity.UserProfile.Transactions.Transactions
-import com.app.android.ibet.api.Api
+import com.app.android.ibet.activity.UserProfile.Account.Account
+import com.app.android.ibet.activity.UserProfile.Analysis.Analysis
+import com.app.android.ibet.activity.UserProfile.Banking.Deposit
+import com.app.android.ibet.activity.UserProfile.Banking.BankingDepo
+import com.app.android.ibet.activity.UserProfile.Banking.BankingWith
+import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.*
+import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.Bank
+import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.SuccessWithdraw
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
-import kotlinx.android.synthetic.main.activity_bets.*
 import kotlinx.android.synthetic.main.activity_my_account.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -32,8 +35,12 @@ class MyAccount : AppCompatActivity() {
         var amt = ""
         lateinit var  amtShow : Button
         lateinit var userData :String
+        lateinit var pages : FragmentPagerItems
+        lateinit var adapter: FragmentPagerItemAdapter
+        var info = "deposit"
+        var depo_amt = ""
+        var with_amt = ""
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val actionBar = supportActionBar
@@ -51,16 +58,34 @@ class MyAccount : AppCompatActivity() {
         var jsonData = response.body()!!.string()
 
         amt = JSONObject(jsonData).getString("main_wallet")
-        val adapter = FragmentPagerItemAdapter(
-            supportFragmentManager, FragmentPagerItems.with(this)
-                .add("Transactions", Transactions().javaClass)
-                .add("History",Transactions().javaClass)
-                .add("Account",Transactions().javaClass)
-                .add("Affiliates",Transactions().javaClass)
+
+        pages =  FragmentPagerItems.with(this)
+                .add("Banking", BankingDepo().javaClass)
+                .add("Analysis",Analysis().javaClass)
+                .add("Account",Account().javaClass)
+                .add("Agency",BankingDepo().javaClass)
                 .create()
-        )
+        when (info) {
+            "withdraw"   -> pages[0] = FragmentPagerItem.of("Banking", BankingWith().javaClass)
+            "visainfo"   -> pages[0] = FragmentPagerItem.of("Banking", VisaInfo().javaClass)
+            "visa_input" -> pages[0] = FragmentPagerItem.of("Banking", Visa().javaClass)
+            "ali"        -> pages[0] = FragmentPagerItem.of("Banking", QaiAli().javaClass)
+            "wechat"     -> pages[0] = FragmentPagerItem.of("Banking", QaiWechat().javaClass)
+            "success"    -> pages[0] = FragmentPagerItem.of("Banking", Success().javaClass)
+            "success_with"->pages[0] = FragmentPagerItem.of("Banking", SuccessWithdraw().javaClass)
+            "fail"       -> pages[0] = FragmentPagerItem.of("Banking", Failed().javaClass)
+            "bankwith"   -> pages[0] = FragmentPagerItem.of("Banking", Bank().javaClass)
+
+        }
+
+
+        adapter = FragmentPagerItemAdapter(supportFragmentManager,pages)
+        adapter.notifyDataSetChanged()
 
         account_viewpager.adapter = adapter
+        when (info) {
+            "check_bnc"  -> account_viewpager.setCurrentItem(1, true)
+        }
         account_pagertab.setViewPager(account_viewpager)
 
         account_pagertab.setOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
@@ -108,16 +133,20 @@ class MyAccount : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
             android.R.id.home -> {
-                // startActivity(Intent(this, MyAccount::class.java))
-                onBackPressed()
+                startActivity(Intent(this, MainActivity::class.java))
+                //onBackPressed()
+                overridePendingTransition(0, 0)
                 return true
             }
             R.id.login -> {
                 startActivity(Intent(this, Login::class.java))
+                overridePendingTransition(0, 0)
                 return true
             }
             R.id.logged -> {
+                info = "deposit"
                 startActivity(Intent(this, MyAccount::class.java))
+                overridePendingTransition(0, 0)
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

@@ -29,7 +29,7 @@ class ForgotPass : AppCompatActivity() {
             forgetCodeJson.put("email",email_id2.text.toString())
             //http://10.0.2.2:8000/users/api/generateactivationcode/
             val info = Api().post(forgetCodeJson.toString(), BuildConfig.FORGET_CODE )
-            //Log.e("status",info)
+            println("hhh   " + info)
             if (info!!.substring(1,info!!.length - 1) == "Success") {
                 val info2 = Api().post(forgetCodeJson.toString(), BuildConfig.FORGET_SEND_EMAIL)
 

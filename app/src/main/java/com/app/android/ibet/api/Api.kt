@@ -24,6 +24,8 @@ class Api {
                 .build()
 
             val response = client.newCall(request).execute()
+            //println(response.code())
+
             if (response.isSuccessful) {
                 val res = response.body()!!.string()
                 //println(response.request())

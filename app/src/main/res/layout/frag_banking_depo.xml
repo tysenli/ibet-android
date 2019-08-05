@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <Button
+            android:text=""
+            android:layout_width="136dp"
+            android:layout_height="26dp"
+            android:background="@drawable/depo_select"
+            android:id="@+id/deposit" android:layout_marginTop="20dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="48dp" app:layout_constraintStart_toStartOf="parent"
+    />
+    <Button
+            android:text=""
+            android:layout_width="136dp"
+            android:layout_height="26dp"
+            android:background="@drawable/withdraw_btn"
+            android:id="@+id/withdraw"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="48dp" android:layout_marginTop="20dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/deposit" android:layout_marginStart="8dp"
+            app:layout_constraintHorizontal_bias="0.645"/>
+    <Button android:id="@+id/wechat"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/wechatpay"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            android:layout_marginTop="20dp" app:layout_constraintStart_toEndOf="@+id/line_pay"
+            android:layout_marginStart="28dp"/>
+    <TextView
+            android:layout_width="222dp"
+            android:layout_height="25dp"
+            android:textSize="15sp"
+            android:textColor="#212121"
+            android:text="Add Payment method"
+            android:id="@+id/textView33"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.092" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/deposit"/>
+    <View
+            android:id="@+id/divider"
+            android:layout_width="360dp"
+            android:layout_height="1dp"
+            android:background="#e4e4e4"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView33" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+    />
+    <Button android:id="@+id/paypal"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/paypal"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/divider" android:layout_marginTop="20dp"/>
+
+    <Button android:id="@+id/line_pay"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/linepay"
+            app:layout_constraintTop_toBottomOf="@+id/divider" app:layout_constraintStart_toEndOf="@+id/paypal"
+            android:layout_marginStart="28dp" android:layout_marginTop="20dp"/>
+    <Button android:id="@+id/bank_with"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bank"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/wechat" app:layout_constraintStart_toEndOf="@+id/unionpay"
+            android:layout_marginStart="28dp"/>
+
+    <Button android:id="@+id/ali"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/alipay"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            android:layout_marginTop="20dp" app:layout_constraintStart_toEndOf="@+id/wechat"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+    />
+
+    <Button android:id="@+id/unionpay"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/unionpay"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/line_pay" app:layout_constraintStart_toEndOf="@+id/jdpay"
+            android:layout_marginStart="28dp"/>
+
+    <Button android:id="@+id/jdpay"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/jdpay"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/paypal" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"/>
+
+    <Button android:id="@+id/quickpay"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/quickpay"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/unionpay" app:layout_constraintStart_toEndOf="@+id/bitcoin"
+            android:layout_marginStart="28dp"/>
+
+    <Button android:id="@+id/bitcoin"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bitcoin"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/jdpay" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"/>
+
+    <Button android:id="@+id/visa"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/cards"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/ali" app:layout_constraintStart_toEndOf="@+id/bank_with"
+            android:layout_marginStart="24dp"/>
+</android.support.constraint.ConstraintLayout>

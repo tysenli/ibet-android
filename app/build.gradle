@@ -90,6 +90,6 @@ dependencies {
     implementation 'com.chabbal:slidingdotsplash:1.0.2'
     implementation 'com.github.Idtk:SmallChart:v0.1.1'
     implementation 'com.github.0xZhangKe:ZLog:3.0'
-
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
 }
