@@ -15,7 +15,7 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.Login.Login.Companion.token
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.UserProfile.Account.Account
-import com.app.android.ibet.activity.UserProfile.Analysis.Analysis
+import com.app.android.ibet.activity.UserProfile.Analysis.*
 import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.activity.UserProfile.Banking.BankingDepo
 import com.app.android.ibet.activity.UserProfile.Banking.BankingWith
@@ -63,7 +63,7 @@ class MyAccount : AppCompatActivity() {
                 .add("Banking", BankingDepo().javaClass)
                 .add("Analysis",Analysis().javaClass)
                 .add("Account",Account().javaClass)
-                .add("Agency",BankingDepo().javaClass)
+                .add("Responsible",BankingDepo().javaClass)
                 .create()
         when (info) {
             "withdraw"   -> pages[0] = FragmentPagerItem.of("Banking", BankingWith().javaClass)
@@ -76,6 +76,11 @@ class MyAccount : AppCompatActivity() {
             "fail"       -> pages[0] = FragmentPagerItem.of("Banking", Failed().javaClass)
             "bankwith"   -> pages[0] = FragmentPagerItem.of("Banking", Bank().javaClass)
 
+            "sports"     -> pages[1] = FragmentPagerItem.of("Analysis", SportsAly().javaClass)
+            "depo&with"  -> pages[1] = FragmentPagerItem.of("Analysis", DepoWithAly().javaClass)
+            "slots"      -> pages[1] = FragmentPagerItem.of("Analysis", SlotsAly().javaClass)
+            "casino"     -> pages[1] = FragmentPagerItem.of("Analysis", CasinoAly().javaClass)
+
         }
 
 
@@ -85,6 +90,11 @@ class MyAccount : AppCompatActivity() {
         account_viewpager.adapter = adapter
         when (info) {
             "check_bnc"  -> account_viewpager.setCurrentItem(1, true)
+            "sports"     -> account_viewpager.setCurrentItem(1, true)
+            "depo&with"  -> account_viewpager.setCurrentItem(1, true)
+            "slots"      -> account_viewpager.setCurrentItem(1, true)
+            "casino"     -> account_viewpager.setCurrentItem(1, true)
+
         }
         account_pagertab.setViewPager(account_viewpager)
 

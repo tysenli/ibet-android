@@ -45,7 +45,11 @@ class Bank: Fragment() {
         super.onStart()
         var user = JSONObject(userData).getString("username")
         val balance = JSONObject(userData).getString("main_wallet")
-
+        cancel_withdraw_method.setOnClickListener {
+            MyAccount.info = "withdraw"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
         btn_bank_withdraw.setOnClickListener {
             //println(balance < amount_display.text.toString())
             if (balance.toFloat() < amount_display.text.toString().toFloat() ) {

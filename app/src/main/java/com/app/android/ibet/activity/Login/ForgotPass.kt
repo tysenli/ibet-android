@@ -12,6 +12,10 @@ import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_forgot_pass.*
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
 import org.json.JSONObject
 
 class ForgotPass : AppCompatActivity() {
@@ -27,10 +31,22 @@ class ForgotPass : AppCompatActivity() {
         send_email.setOnClickListener {
             val forgetCodeJson = JSONObject()
             forgetCodeJson.put("email",email_id2.text.toString())
+            val client = OkHttpClient()
+
+            val JSON = MediaType.get("application/json; charset=utf-8")
+            val body = RequestBody.create(JSON, forgetCodeJson.toString())
+
+            val request = Request.Builder()
+                    // .addHeader("Authorization", "Bearer $token")
+                    .url(BuildConfig.FORGET_CODE)
+                    .post(body)
+                    .build()
+
+            val response = client.newCall(request).execute()
             //http://10.0.2.2:8000/users/api/generateactivationcode/
-            val info = Api().post(forgetCodeJson.toString(), BuildConfig.FORGET_CODE )
-            println("hhh   " + info)
-            if (info!!.substring(1,info!!.length - 1) == "Success") {
+            //val info = Api().post(forgetCodeJson.toString(), BuildConfig.FORGET_CODE )
+            println(response.code())
+            if (response.code() == 200) {
                 val info2 = Api().post(forgetCodeJson.toString(), BuildConfig.FORGET_SEND_EMAIL)
 
                 val res = Intent(this, NewPass::class.java)

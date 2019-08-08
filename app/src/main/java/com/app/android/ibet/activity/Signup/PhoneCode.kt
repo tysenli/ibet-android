@@ -11,6 +11,10 @@ import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_phone_code.*
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
 import org.json.JSONObject
 
 class PhoneCode : AppCompatActivity() {
@@ -77,11 +81,23 @@ class PhoneCode : AppCompatActivity() {
                 veriCodeJson.put("username",intent.getStringExtra("user"))
                 veriCodeJson.put("code",phone_code1.text.toString() + phone_code2.text.toString() + phone_code3.text.toString() + phone_code4.text.toString())
                 //http://10.0.2.2:8000/users/api/generateactivationcode/
-                val info = Api().post(veriCodeJson.toString(), BuildConfig.VERI_CODE )
+                //val info = Api().post(veriCodeJson.toString(), BuildConfig.VERI_CODE )
                 //println(info)
-                val status = info!!.split(":")[1]
-                println (status)
-                if (status.substring(1,status.length - 2) == "Success") {
+
+                val client = OkHttpClient()
+
+                val JSON = MediaType.get("application/json; charset=utf-8")
+                val body = RequestBody.create(JSON, veriCodeJson.toString())
+
+                val request = Request.Builder()
+                    // .addHeader("Authorization", "Bearer $token")
+                    .url(BuildConfig.VERI_CODE)
+                    .post(body)
+                    .build()
+
+                val response = client.newCall(request).execute()
+                println(response.code())
+                if (response.code() == 200) {
                     startActivity(Intent(applicationContext, Verified::class.java))
                 } else {
                     code_error.text = "Sorry, that's not the code we're looking for. Please check and try again."

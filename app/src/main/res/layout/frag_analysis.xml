@@ -117,7 +117,7 @@
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:drawableTop="@drawable/soccer"
-                  android:paddingTop="8dp"
+                  android:paddingTop="10dp"
                   android:text="Sports bets"
                   android:textSize="10sp"
         />
@@ -168,6 +168,7 @@
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:drawableTop="@drawable/casino"
+                  android:paddingTop="10sp"
                   android:text="Live Casino bets"
                   android:textSize="10sp"
         />

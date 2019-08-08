@@ -115,6 +115,7 @@ class emailAuthP1 : AppCompatActivity() {
                 if (passwordtxt.minLength(8) && passwordtxt.atleastOneUpperCase() && passwordtxt.atleastOneLowerCase() && passwordtxt.atleastOneSpecialCharacters()) {
                     tv_password2.text = "At least 8 character."
                     tv_password2.setTextColor(Color.rgb(116,113,117))
+                    isValidPassword = true
 
                 } else {
                     tv_password2.text = "Password too simple"
@@ -127,7 +128,7 @@ class emailAuthP1 : AppCompatActivity() {
                     passwordtxt.error = it
                 }.check() */
                 updatePasswordStrenth(s.toString())
-                if (isValidEmail && passwordtxt.minLength(8)) {
+                if (isValidEmail && isValidPassword) {
                     continue1.setBackgroundResource(R.drawable.btn_red)
                     continue1.setEnabled(true)
                 } else {

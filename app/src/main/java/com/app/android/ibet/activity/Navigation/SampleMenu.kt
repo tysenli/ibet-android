@@ -14,47 +14,47 @@ object SampleMenu {
                 NaviMenuItem(
                         id = 1,
                         title = "SPORTS",
-                        iconRes = R.drawable.soccer,
+                        iconRes = R.drawable.trophy,
                         subMenus = mutableListOf(
                                 NaviMenuItem(
                                         id = 11,
                                         title = "Football",
-                                        iconRes = R.drawable.ic_menu_gallery
+                                        iconRes = R.drawable.soccer
                                 ),
                                 NaviMenuItem(
                                         id = 12,
                                         title = "Basketball",
-                                        iconRes = R.drawable.ic_menu_gallery
+                                        iconRes = R.drawable.basketball
                                 ),
                                 NaviMenuItem(
                                         id = 13,
                                         title = "Tennis",
-                                        iconRes = R.drawable.ic_menu_gallery
+                                        iconRes = R.drawable.tennis
                                 ),
                                 NaviMenuItem(
                                         id = 14,
                                         title = "Ice Hockey",
-                                        iconRes = R.drawable.ic_menu_gallery
+                                        iconRes = R.drawable.ice
                                 ),
                                 NaviMenuItem(
                                         id = 15,
                                         title = "Golf",
-                                        iconRes = R.drawable.ic_menu_gallery
+                                        iconRes = R.drawable.combined_shape
                                 ),
                                 NaviMenuItem(
                                         id = 16,
                                         title = "Baseball",
-                                        iconRes = R.drawable.ic_menu_gallery
+                                        iconRes = R.drawable.baseball
                                 ),
                                 NaviMenuItem(
                                         id = 17,
                                         title = "American Football",
-                                        iconRes = R.drawable.ic_menu_gallery
+                                        iconRes = R.drawable.football
                                 ),
                                 NaviMenuItem(
                                         id = 18,
                                         title = "Badminton",
-                                        iconRes = R.drawable.ic_menu_gallery
+                                        iconRes = R.drawable.badminton
                                 )
                         )
                 )
@@ -64,7 +64,7 @@ object SampleMenu {
                 NaviMenuItem(
                         id = 2,
                         title = "LIVE CASINO",
-                        iconRes = R.drawable.soccer,
+                        iconRes = R.drawable.casino,
                         subMenus = mutableListOf(
                                 NaviMenuItem(
                                         id = 21,
@@ -89,7 +89,7 @@ object SampleMenu {
                 NaviMenuItem(
                         id = 3,
                         title = "SLOTS",
-                        iconRes = R.drawable.soccer,
+                        iconRes = R.drawable.slots,
                         subMenus = mutableListOf(
                                 NaviMenuItem(
                                         id = 31,
@@ -114,7 +114,7 @@ object SampleMenu {
                 NaviMenuItem(
                         id = 4,
                         title = "LOTTERY",
-                        iconRes = R.drawable.soccer,
+                        iconRes = R.drawable.lottery,
                         subMenus = mutableListOf(
                                 NaviMenuItem(
                                         id = 31,

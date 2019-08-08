@@ -23,7 +23,10 @@ import com.github.mikephil.charting.data.LineData
 import kotlinx.android.synthetic.main.frag_analysis.*
 
 import android.content.Context
+import android.content.Intent
 import android.widget.TextView
+import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
 import com.github.mikephil.charting.components.MarkerView
 import com.github.mikephil.charting.highlight.Highlight
 
@@ -122,6 +125,31 @@ class Analysis : Fragment() {
             aly_depo.visibility = View.VISIBLE
             aly_with.visibility = View.VISIBLE
 
+        }
+        aly_sport.setOnClickListener {
+            info = "sports"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+        aly_slot.setOnClickListener {
+            info = "slots"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+        aly_casino.setOnClickListener {
+            info = "casino"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+        aly_depo.setOnClickListener {
+            info = "depo&with"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+        aly_with.setOnClickListener {
+            info = "depo&with"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
         }
 
     }
