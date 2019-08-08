@@ -53,7 +53,9 @@
     <string name="confirm_with_sms">Confirm with SMS</string>
     <string name="confirm_with_email">Confirm with email</string>
     <string name="sign_up">Sign up</string>
-    <string name="welcome_to_the_best_n_betting_on_the_planet_n" translatable="false">Welcome to the best betting on the planet.</string>
+    <string name="welcome_to_the_best_n_betting_on_the_planet_n" translatable="false">Welcome to the best betting on the
+        planet.
+    </string>
     <string name="we_mean_it_ibet_is_the_mutt_s_nuts_n_soon_you_ll_see_why_n_n_so_how_would_you_like_to_log_in_to_n_your_ibet_account"
             translatable="false">
         We mean it. ibet is the mutt’s nuts. Soon you’ll see why. So, how would you like to log in to your ibet account?
@@ -89,21 +91,31 @@
     <string name="log_in">Log in</string>
     <string name="state">State *</string>
     <string name="log_out">log out</string>
-    <string name="forget_password"><u>FORGOT PASSWORD</u></string>
-    <string name="signup_now">NOT A MEMBER? <u>SIGN UP NOW</u></string>
+    <string name="forget_password">
+        <u>FORGOT PASSWORD</u>
+    </string>
+    <string name="signup_now">NOT A MEMBER?
+        <u>SIGN UP NOW</u>
+    </string>
     <string name="sports">SPORTS</string>
     <string name="search">Search</string>
     <string name="live_casino">LIVE CASINO</string>
     <string name="slots">SLOTS</string>
     <string name="lottery">LOTTERY</string>
     <string name="policy">
-        By signing up you agree to ibet’s <b>terms and conditions</b> and confirm you’ve read and understood the <b>privacy</b>
+        By signing up you agree to ibet’s <b>terms and conditions</b> and confirm you’ve read and understood the
+        <b>privacy</b>
         policy.
     </string>
-    <string name="check1">The <u>Terms &amp; Conditions</u> &amp; confirm that I am 18+</string>
-    <string name="check2">Having my personal data handled according to the <u>Privacy and Cookie Policy</u></string>
+    <string name="check1">The <u>Terms &amp; Conditions</u> &amp; confirm that I am 18+
+    </string>
+    <string name="check2">Having my personal data handled according to the
+        <u>Privacy and Cookie Policy</u>
+    </string>
     <string name="check3">Getting exclusive offers and promotions from ibet</string>
-    <string name="i_m_done"><u>I\'M DONE</u></string>
+    <string name="i_m_done">
+        <u>I\'M DONE</u>
+    </string>
 
     <integer-array name="img_id_arr">
 
@@ -113,8 +125,10 @@
         <item>@drawable/gift</item>
 
 
-
-
     </integer-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="game_image">game image</string>
 
 </resources>

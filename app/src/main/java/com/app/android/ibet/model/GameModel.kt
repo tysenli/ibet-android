@@ -6,13 +6,13 @@ class GameModel(): Serializable {
     private var name: String = ""
     private var image: String = ""
 
-
-
     constructor(
+
         name: String,
         image: String
 
     ): this() {
+
         this.name = name
         this.image = image
 
