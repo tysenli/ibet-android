@@ -198,12 +198,39 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
     }
 
     override fun onMenuClick(position: Int, menuItem: NaviMenuItem) {
+        when (position) {
+            0 -> {
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Sports(this), "sports")
+                ft.commit()
+            }
+            1 -> {
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Casino(this), "casino")
+                ft.commit()
+            }
+            2 -> {
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Slots(this), "casino")
+                ft.commit()
+            }
+            3 -> {
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Lottery(this), "casino")
+                ft.commit()
+            }
+
+        }
 
         //Toast.makeText(this, "Click on Menu ${menuItem.title}", Toast.LENGTH_LONG).show()
     }
 
     override fun onSubMenuClick(position: Int, menuItem: NaviMenuItem) {
-        //Toast.makeText(this, "Click on SubMenu ${menuItem.title}", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Click on SubMenu ${menuItem.title}", Toast.LENGTH_LONG).show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
