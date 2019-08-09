@@ -40,7 +40,7 @@ android {
             buildConfigField 'String','WITHDRAW_ORDER',"\"$local/accounting/api/qaicash/payout_transaction\""
             buildConfigField 'String','LINE',"\"$local/accounting/api/linepay/reserve_payment\""
             buildConfigField 'String','ASIAPAY',"\"$local/accounting/api/asiapay/deposit\""
-
+            buildConfigField 'String','TRANSACTION_RECODE',"\"$local/accounting/api/transactions/get_transactions?userid=\""
 
 
 

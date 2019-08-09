@@ -63,7 +63,8 @@ class MyAccount : AppCompatActivity() {
                 .add("Banking", BankingDepo().javaClass)
                 .add("Analysis",Analysis().javaClass)
                 .add("Account",Account().javaClass)
-                .add("Responsible",BankingDepo().javaClass)
+                .add("Responsible Gaming",BankingDepo().javaClass)
+                .add("Settings",BankingDepo().javaClass)
                 .create()
         when (info) {
             "withdraw"   -> pages[0] = FragmentPagerItem.of("Banking", BankingWith().javaClass)
@@ -72,6 +73,7 @@ class MyAccount : AppCompatActivity() {
             "ali"        -> pages[0] = FragmentPagerItem.of("Banking", QaiAli().javaClass)
             "wechat"     -> pages[0] = FragmentPagerItem.of("Banking", QaiWechat().javaClass)
             "quickpay"   -> pages[0] = FragmentPagerItem.of("Banking", QuickPay().javaClass)
+            "jdpay"      -> pages[0] = FragmentPagerItem.of("Banking", JDPay().javaClass)
             "success"    -> pages[0] = FragmentPagerItem.of("Banking", Success().javaClass)
             "success_with"->pages[0] = FragmentPagerItem.of("Banking", SuccessWithdraw().javaClass)
             "fail"       -> pages[0] = FragmentPagerItem.of("Banking", Failed().javaClass)

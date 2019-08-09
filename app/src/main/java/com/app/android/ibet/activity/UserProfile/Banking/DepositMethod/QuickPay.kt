@@ -37,7 +37,7 @@ class QuickPay : Fragment() {
     override fun onStart() {
         super.onStart()
         var pk =  JSONObject(userData).getString("pk")
-
+        println(pk)
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201,199,199))
             money_50.setBackgroundColor(Color.rgb(239,239,239))
@@ -97,7 +97,7 @@ class QuickPay : Fragment() {
             val client = OkHttpClient()
             val formBody = FormBody.Builder()
                 .add("amount", amount_display.text.toString())
-                .add("user_id", pk)
+                .add("userid", pk)
                 .add("currency", "0")
                 .add("PayWay", "30")
                 .add("method", "39")
@@ -109,7 +109,7 @@ class QuickPay : Fragment() {
                 .build()
             val response = client.newCall(request).execute()
             var quickData = response.body()!!.string()
-            //println(quickData)
+            println(quickData)
             orderId = JSONObject(quickData).getString("order_id")
             var url = JSONObject(quickData).getString("url")
             var quickpay_url = "$url?cid=BRANDCQNGHUA3&oid=$orderId"

@@ -60,6 +60,11 @@ class BankingDepo : Fragment() {
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
+        jdpay.setOnClickListener {
+            info = "jdpay"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
         visa.setOnClickListener {
             info = "visainfo"
             startActivity(Intent(activity, MyAccount::class.java))
