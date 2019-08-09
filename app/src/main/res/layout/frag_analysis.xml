@@ -53,6 +53,7 @@
                   app:layout_constraintTop_toBottomOf="@+id/textView50">
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
+                  android:id="@+id/total_text"
                   android:text="Total Win/Loss"
                   android:textStyle="bold"
                   android:textSize="18sp"
@@ -62,6 +63,7 @@
         />
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
+                  android:id="@+id/total_amt"
                   android:layout_marginLeft="8dp"
                   android:text="$395"
                   android:textSize="20sp"

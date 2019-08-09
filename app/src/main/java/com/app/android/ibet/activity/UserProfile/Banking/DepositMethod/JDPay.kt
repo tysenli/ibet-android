@@ -91,7 +91,7 @@ class JDPay : AppCompatActivity() {
                 .build()
 
             val request = Request.Builder()
-                .url(BuildConfig.QUICKPAY)
+                .url(BuildConfig.ASIAPAY)
                 .post(formBody)
                 .build()
             val response = client.newCall(request).execute()

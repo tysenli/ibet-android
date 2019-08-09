@@ -108,6 +108,8 @@ class Analysis : Fragment() {
         chart.invalidate()
 
         aly_bet.setOnClickListener {
+            total_text.text = "Total Win/Loss"
+            total_amt.text = "$395"
             aly_bet.background = resources.getDrawable(R.color.btn_d)
             aly_bank.background = resources.getDrawable(R.color.btn_l)
             aly_sport.visibility = View.VISIBLE
@@ -117,6 +119,8 @@ class Analysis : Fragment() {
             aly_with.visibility = View.GONE
         }
         aly_bank.setOnClickListener {
+            total_text.text = "Total Net Position"
+            total_amt.text = "$250"
             aly_bet.background = resources.getDrawable(R.color.btn_l)
             aly_bank.background = resources.getDrawable(R.color.btn_d)
             aly_sport.visibility = View.GONE

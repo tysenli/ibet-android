@@ -65,6 +65,12 @@ class BankingDepo : Fragment() {
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
+        quickpay.setOnClickListener {
+            info = "quickpay"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+
         /*
         total.setOnClickListener {
             startActivity(Intent(activity, Total::class.java))
