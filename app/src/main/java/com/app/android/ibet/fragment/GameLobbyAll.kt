@@ -1,12 +1,15 @@
 package com.app.android.ibet.fragment
 
+import android.app.SearchManager
+import android.content.ComponentName
+import android.content.Context
+import android.content.Context.SEARCH_SERVICE
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.SearchView
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.app.android.ibet.R
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.model.GameModelResponse
@@ -17,15 +20,28 @@ import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
+import android.support.v7.widget.Toolbar
+import android.support.v7.app.AppCompatActivity
+import android.view.*
+import android.view.MenuInflater
+import io.reactivex.disposables.CompositeDisposable
+
+
 
 
 class GameLobbyAll : Fragment() {
+
+    val dataList: MutableList<GameModelResponse> = ArrayList()
+    var searchView: SearchView?=null
+    val compoiteDisposable = CompositeDisposable()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.game_lobby_fragment, container, false)
+        (activity as AppCompatActivity).supportActionBar!!.setTitle("Filter")
+        return inflater.inflate(R.layout.game_lobby_fragment, container, false);
+
     }
 
 
@@ -66,6 +82,10 @@ class GameLobbyAll : Fragment() {
             }
         })
     }
+
+
+
+
 //    private fun fetchGames() {
 //        refreshLayout.isRefreshing = true
 //        val type = "live-casino"

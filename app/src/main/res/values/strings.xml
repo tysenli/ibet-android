@@ -130,5 +130,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="game_image">game image</string>
+    <string name="api_error">Problems getting Photos</string>
+    <string name="game_category">Game Category</string>
+    <string name="jackpot">Jackpot</string>
+    <string name="provider">Provider</string>
+    <string name="feature">Feature</string>
+    <string name="theme">Theme</string>
+    <string name="sort_by">Sort by</string>
+
 
 </resources>
