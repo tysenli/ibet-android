@@ -22,6 +22,8 @@ import com.app.android.ibet.activity.UserProfile.Banking.BankingWith
 import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.*
 import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.Bank
 import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.SuccessWithdraw
+import com.app.android.ibet.activity.UserProfile.ResponsibleGame.Lock
+import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
@@ -63,7 +65,7 @@ class MyAccount : AppCompatActivity() {
                 .add("Banking", BankingDepo().javaClass)
                 .add("Analysis",Analysis().javaClass)
                 .add("Account",Account().javaClass)
-                .add("Responsible Gaming",BankingDepo().javaClass)
+                .add("Responsible Gaming",ResponsibleGame().javaClass)
                 .add("Settings",BankingDepo().javaClass)
                 .create()
         when (info) {
@@ -73,6 +75,8 @@ class MyAccount : AppCompatActivity() {
             "ali"        -> pages[0] = FragmentPagerItem.of("Banking", QaiAli().javaClass)
             "wechat"     -> pages[0] = FragmentPagerItem.of("Banking", QaiWechat().javaClass)
             "quickpay"   -> pages[0] = FragmentPagerItem.of("Banking", QuickPay().javaClass)
+            "unionpay"   -> pages[0] = FragmentPagerItem.of("Banking", UnionPay().javaClass)
+            "online"     -> pages[0] = FragmentPagerItem.of("Banking", BankDep().javaClass)
             "jdpay"      -> pages[0] = FragmentPagerItem.of("Banking", JDPay().javaClass)
             "success"    -> pages[0] = FragmentPagerItem.of("Banking", Success().javaClass)
             "success_with"->pages[0] = FragmentPagerItem.of("Banking", SuccessWithdraw().javaClass)
@@ -83,6 +87,8 @@ class MyAccount : AppCompatActivity() {
             "depo&with"  -> pages[1] = FragmentPagerItem.of("Analysis", DepoWithAly().javaClass)
             "slots"      -> pages[1] = FragmentPagerItem.of("Analysis", SlotsAly().javaClass)
             "casino"     -> pages[1] = FragmentPagerItem.of("Analysis", CasinoAly().javaClass)
+
+            "lock_account"-> pages[3] = FragmentPagerItem.of("Responsible Game", Lock().javaClass)
 
         }
 
@@ -97,6 +103,8 @@ class MyAccount : AppCompatActivity() {
             "depo&with"  -> account_viewpager.setCurrentItem(1, true)
             "slots"      -> account_viewpager.setCurrentItem(1, true)
             "casino"     -> account_viewpager.setCurrentItem(1, true)
+
+            "lock_account"-> account_viewpager.setCurrentItem(3, true)
 
         }
         account_pagertab.setViewPager(account_viewpager)

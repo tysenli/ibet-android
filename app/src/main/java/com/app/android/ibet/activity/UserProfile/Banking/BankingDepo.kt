@@ -75,6 +75,16 @@ class BankingDepo : Fragment() {
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
+        unionpay.setOnClickListener {
+            info = "unionpay"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+        bank.setOnClickListener {
+            info = "online"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
 
         /*
         total.setOnClickListener {

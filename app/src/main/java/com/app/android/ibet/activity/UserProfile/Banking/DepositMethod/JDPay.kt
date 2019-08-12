@@ -107,6 +107,11 @@ class JDPay : Fragment() {
                 .post(formBody)
                 .build()
             val response = client.newCall(request).execute()
+            if (response.code() != 200) {
+                MyAccount.info = "fail"
+                val res = Intent(context, MyAccount::class.java)
+                startActivity(res)
+            }
             //println(response.code())
             //var quickData = response.body()!!.string()
             //println(quickData)

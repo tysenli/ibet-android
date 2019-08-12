@@ -44,7 +44,7 @@ class Deposit : AppCompatActivity() {
         unionpay.setOnClickListener {
             startActivity(Intent(this, UnionPay::class.java))
         }
-        bank_with.setOnClickListener {
+        bank.setOnClickListener {
             startActivity(Intent(this, BankDep::class.java))
         }
         quickpay.setOnClickListener {

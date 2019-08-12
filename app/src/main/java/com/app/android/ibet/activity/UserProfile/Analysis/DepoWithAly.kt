@@ -58,7 +58,7 @@ class DepoWithAly : Fragment() {
 
         for (i in 0 until records.length()) {
 
-            if (records.getJSONObject(i).getString("transaction_id") != "0") {
+            if (records.getJSONObject(i).getString("transaction_id") != "0" && records.getJSONObject(i).getString("transaction_id")[0].isDigit()) {
                 real_cnt++
                 date += records.getJSONObject(i).getString("request_time").split("T")[0]
                 time += records.getJSONObject(i).getString("request_time").split("T")[1]

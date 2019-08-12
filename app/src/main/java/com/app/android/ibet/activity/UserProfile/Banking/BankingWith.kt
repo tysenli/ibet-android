@@ -8,11 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
-import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.pages
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
-import kotlinx.android.synthetic.main.activity_my_account.*
 import kotlinx.android.synthetic.main.frag_banking_depo.*
+import kotlinx.android.synthetic.main.frag_banking_depo.deposit
+import kotlinx.android.synthetic.main.frag_banking_depo.withdraw
+import kotlinx.android.synthetic.main.frag_banking_with.*
 
 class BankingWith : Fragment() {
     //private var parentContext = context
