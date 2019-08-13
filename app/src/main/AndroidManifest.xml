@@ -150,7 +150,7 @@
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
-        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.Astropay"
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AstropayInfo"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
