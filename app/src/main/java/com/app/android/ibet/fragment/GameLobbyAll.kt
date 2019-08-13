@@ -94,8 +94,6 @@ class GameLobbyAll : Fragment() {
 
     private fun fetchFilter(){
 
-//        val LabelText = game_label
-//        val spinner = game_spinner
         val url = BuildConfig.GAME_FILTER
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
