@@ -24,9 +24,15 @@ import android.support.v7.widget.Toolbar
 import android.support.v7.app.AppCompatActivity
 import android.view.*
 import android.view.MenuInflater
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.TextView
 import io.reactivex.disposables.CompositeDisposable
-
-
+import okhttp3.Call
+import okhttp3.Response
+import org.json.JSONArray
+import org.json.JSONObject
 
 
 class GameLobbyAll : Fragment() {
@@ -50,6 +56,8 @@ class GameLobbyAll : Fragment() {
         game_recycler_list.layoutManager = LinearLayoutManager(this.context)
         //game_recycler_list.adapter = GameLobbyAdapter(GameList)
         fetchGames()
+
+        fetchFilter()
     }
 
 
@@ -63,7 +71,7 @@ class GameLobbyAll : Fragment() {
         client.newCall(request).enqueue(object: okhttp3.Callback {
             override fun onResponse(call: okhttp3.Call?, response: okhttp3.Response?) {
                 val body = response?.body()?.string()
-                print(body)
+                //print(body)
                 Log.e("Success", body)
 
                 val gson = GsonBuilder().create()
@@ -83,7 +91,68 @@ class GameLobbyAll : Fragment() {
         })
     }
 
+    private fun fetchFilter(){
 
+        val LabelText = game_label1
+        val spinner = game_spinner
+        val url = BuildConfig.GAME_FILTER
+        val request = Request.Builder().url(url).build()
+        val client = OkHttpClient()
+        client.newCall(request).enqueue((object: okhttp3.Callback{
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("TAG", "onFailure: "+e.toString() );
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+
+                val body = JSONArray(response?.body()?.string())
+                //val body = response?.body()?.string()
+                println(body)
+                val filterMap = mutableMapOf<String, Array<String>>()
+                //val dataArray = arrayOf<String>()
+                for(i in 0..(body.length() - 1)){
+                    val name = body.getJSONObject(i).getString("name")
+                    println(name)
+                    val data = body.getJSONObject(i).getString("data")
+                    println(data)
+                    val dataArray = arrayOf(data)
+
+                    println(dataArray)
+                    filterMap.put(name, dataArray)
+                    this@GameLobbyAll.activity!!.runOnUiThread {
+                        LabelText.text = name
+
+                        if(spinner != null){
+                            var arrayAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, dataArray)
+                            spinner.adapter = arrayAdapter
+                            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                                }
+
+                                override fun onItemSelected(
+                                    parent: AdapterView<*>?,
+                                    view: View?,
+                                    position: Int,
+                                    id: Long
+                                ) {
+
+                                }
+
+                            }
+                        }
+                    }
+
+
+
+                }
+
+
+
+            }
+
+        }))
+    }
 
 
 //    private fun fetchGames() {

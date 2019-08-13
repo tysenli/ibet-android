@@ -42,6 +42,7 @@ android {
             buildConfigField 'String', 'QUICKPAY', "\"$local/accounting/api/asiapay/deposit\""
             buildConfigField 'String', 'GAME_URL', "\"$local/games/api/games/?type=\""
             buildConfigField('String', 'GAME_URL_CATEGORY', "\"&category=\"")
+            buildConfigField('String', 'GAME_FILTER', "\"$local/games/api/filter/\"")
 
 
         }
