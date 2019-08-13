@@ -115,97 +115,12 @@ class GameLobbyAll : Fragment() {
                 this@GameLobbyAll.activity!!.runOnUiThread {
                     filter_recycler_list.adapter = FilterAdapter(filterModel)
                 }
-//                for(i in 0..(body.length() - 1)){
-//                    val name = body.getJSONObject(i).getString("name").toString()
-//                    println(name)
-//                    val data = body.getJSONObject(i).getString("data").toString()
-//                    println(data)
-//                    val dataArray = data.replace("\"", " ").replace("[", "").replace("]", "").split(",").toTypedArray()
-//
-//                    println(dataArray)
-//                    filterMap.put(name, dataArray)
-//                    this@GameLobbyAll.activity!!.runOnUiThread {
-//                        LabelText.text = name
-//
-//                        if(spinner != null){
-//                            var arrayAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, dataArray)
-//                            spinner.adapter = arrayAdapter
-//                            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-//                                override fun onNothingSelected(parent: AdapterView<*>?) {
-//
-//                                }
-//
-//                                override fun onItemSelected(
-//                                    parent: AdapterView<*>?,
-//                                    view: View?,
-//                                    position: Int,
-//                                    id: Long
-//                                ) {
-//
-//                                }
-//
-//                            }
-//                        }
-//                    }
-//
-//
-//
-//                }
-
-
-
             }
 
         }))
     }
 
 
-//    private fun fetchGames() {
-//        refreshLayout.isRefreshing = true
-//        val type = "live-casino"
-//
-//
-//        GameAPI().run {
-//
-//            getGames(type).enqueue(object :Callback<List<GameModelResponse>>{
-//                override fun onFailure(call: Call<List<GameModelResponse>>, t: Throwable) {
-//                    refreshLayout.isRefreshing = false
-//                    Toast.makeText(activity, t.message, Toast.LENGTH_LONG).show();
-//                    Log.e("TAG", "onFailure: "+t.toString() );
-//                }
-//
-//
-//                override fun onResponse(call: Call<List<GameModelResponse>>, response: Response<List<GameModelResponse>>) {
-//                    refreshLayout.isRefreshing = false
-//
-//
-//
-//                    if (response.isSuccessful()){
-//                        Log.e("Success", Gson().toJson(response.body()))
-//                        var games = response.body()!!
-//
-//                        games?.let{
-//                            showGames(games)
-//                        }
-//
-//                    }else{
-//                        Log.e("unSuccess", Gson().toJson(response.errorBody()))
-//                    }
-//
-//                }
-//
-//            })
-//        }
-//
-//
-//    }
 
-//    private fun showGames(games: List<GameModelResponse>) {
-//        println(games)
-//
-//        game_recycler_list.layoutManager = LinearLayoutManager(activity)
-//        game_recycler_list.adapter = GameLobbyAdapter(games)
-//
-//    }
 }
 
