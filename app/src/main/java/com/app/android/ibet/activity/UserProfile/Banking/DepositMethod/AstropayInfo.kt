@@ -28,10 +28,17 @@ class AstropayInfo: Fragment() {
 
     override fun onStart() {
         super.onStart()
+
         visa_continue.setOnClickListener {
             cardnum = card_num.text.toString()
             carddate = card_time.text.toString()
             cvv = card_code.text.toString()
+/*
+            if (cardnum == "") {
+
+            } else if (carddate == "") {
+
+            } else if (cvv == "") */
             MyAccount.info = "astropay_input"
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)

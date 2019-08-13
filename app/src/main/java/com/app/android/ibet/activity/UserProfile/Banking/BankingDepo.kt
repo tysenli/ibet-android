@@ -90,6 +90,16 @@ class BankingDepo : Fragment() {
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
+        fgate.setOnClickListener {
+            info = "fgate"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+        help2pay.setOnClickListener {
+            info = "help2pay"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
 
         /*
         total.setOnClickListener {

@@ -108,12 +108,18 @@ class QuickPay : Fragment() {
                 .post(formBody)
                 .build()
             val response = client.newCall(request).execute()
-            var quickData = response.body()!!.string()
-            println(quickData)
-            orderId = JSONObject(quickData).getString("order_id")
-            var url = JSONObject(quickData).getString("url")
-            var quickpay_url = "$url?cid=BRANDCQNGHUA3&oid=$orderId"
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(quickpay_url)))
+            if (response.code() != 200) {
+                MyAccount.info = "fail"
+                val res = Intent(context, MyAccount::class.java)
+                startActivity(res)
+            } else {
+                var quickData = response.body()!!.string()
+                println(quickData)
+                orderId = JSONObject(quickData).getString("order_id")
+                var url = JSONObject(quickData).getString("url")
+                var quickpay_url = "$url?cid=BRANDCQNGHUA3&oid=$orderId"
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(quickpay_url)))
+            }
 /*
             val res = Intent(activity, WechatOpenPage::class.java)
             res.putExtra("wechaturl", wechat_url)

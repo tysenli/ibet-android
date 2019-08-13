@@ -80,6 +80,8 @@ class MyAccount : AppCompatActivity() {
             "jdpay"      -> pages[0] = FragmentPagerItem.of("Banking", JDPay().javaClass)
             "astropayinfo"->pages[0] = FragmentPagerItem.of("Banking", AstropayInfo().javaClass)
             "astropay_input"->pages[0] = FragmentPagerItem.of("Banking", Astropay().javaClass)
+            "fgate"      -> pages[0] = FragmentPagerItem.of("Banking", Fgo().javaClass)
+            "help2pay"   -> pages[0] = FragmentPagerItem.of("Banking", Help2pay().javaClass)
             "success"    -> pages[0] = FragmentPagerItem.of("Banking", Success().javaClass)
             "success_with"->pages[0] = FragmentPagerItem.of("Banking", SuccessWithdraw().javaClass)
             "fail"       -> pages[0] = FragmentPagerItem.of("Banking", Failed().javaClass)

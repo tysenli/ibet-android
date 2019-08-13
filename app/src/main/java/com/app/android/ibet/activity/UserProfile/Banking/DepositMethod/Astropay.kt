@@ -91,11 +91,12 @@ class Astropay : Fragment() {
 
 
         btn_wechat_dep.setOnClickListener {
+
             val client = OkHttpClient()
 
             val astroJson = JSONObject()
             val JSON = MediaType.get("application/json; charset=utf-8")
-            println("hhh" + cardnum)
+            //println("hhh" + cardnum)
             astroJson.put("card_num", cardnum)
             astroJson.put("card_code", cvv)
             astroJson.put("exp_date", carddate)
@@ -114,7 +115,7 @@ class Astropay : Fragment() {
                 startActivity(res)
             } else {
                 val statusData = response.body()!!.string()
-                println(JSONObject(statusData).getString("response_msg").substring(0,6))
+                //println(JSONObject(statusData).getString("response_msg").substring(0,6))
 
                 if (JSONObject(statusData).getString("response_msg").substring(0,6) == "1|1|1|") {
                     val user = JSONObject(MyAccount.userData).getString("username")
