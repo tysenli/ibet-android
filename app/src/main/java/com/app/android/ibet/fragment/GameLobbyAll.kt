@@ -71,20 +71,16 @@ class GameLobbyAll : Fragment() {
     private  fun fetchGames(){
         val position = FragmentPagerItem.getPosition(arguments)
         Log.e("position", position.toString())
-        var tabName : String = ""
-        if(position == 0){
-            tabName = "all"
-        }else if(position == 1){
-            tabName = "roulette"
-        }else if(position == 2){
-            tabName = "blackjack"
-        }else if(position == 3){
-            tabName = "baccarat"
-        }else if(position == 4){
-            tabName = "poker"
-        }else if(position == 5){
-            tabName = "tournaments"
+        var tabName = ""
+        when(position){
+            0 -> tabName = "all"
+            1 -> tabName = "roulette"
+            2 -> tabName = "blackjack"
+            3 -> tabName = "baccarat"
+            4 -> tabName = "poker"
+            5 -> tabName = "tournaments"
         }
+
         val url = BuildConfig.GAME_URL+ "live-casino" + BuildConfig.GAME_URL_CATEGORY + tabName
 
         val request = Request.Builder().url(url).build()
@@ -93,7 +89,7 @@ class GameLobbyAll : Fragment() {
         client.newCall(request).enqueue(object: okhttp3.Callback {
             override fun onResponse(call: okhttp3.Call?, response: okhttp3.Response?) {
                 val body = response?.body()?.string()
-                //print(body)
+
                 Log.e("Success", body)
 
                 val gson = GsonBuilder().create()

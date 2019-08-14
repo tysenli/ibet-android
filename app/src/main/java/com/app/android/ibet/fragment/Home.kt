@@ -31,7 +31,6 @@ class Home : Fragment() {
             val fm = fragmentManager
             val ft = fm?.beginTransaction()
             ft?.add(R.id.list_holder, GameLobbyAll(), "NEW_FRAG")
-            ft?.add(R.id.list_holder, GameLobbyRoulette(), "NEW_FRAG")//frag 1: load top track
             ft?.commit()
             //search
             /*
