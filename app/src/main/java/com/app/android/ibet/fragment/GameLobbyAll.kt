@@ -7,6 +7,7 @@ import android.content.Context.SEARCH_SERVICE
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat.getSystemService
+import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.util.Log
@@ -27,7 +28,9 @@ import android.view.*
 import android.view.MenuInflater
 import android.widget.*
 import com.app.android.ibet.model.FilterModel
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.fragment_casino.*
 import kotlinx.android.synthetic.main.game_filter_item.*
 import okhttp3.Call
 import okhttp3.Response
@@ -41,11 +44,13 @@ class GameLobbyAll : Fragment() {
     var searchView: SearchView?=null
     val compoiteDisposable = CompositeDisposable()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         (activity as AppCompatActivity).supportActionBar!!.setTitle("Filter")
+
         return inflater.inflate(R.layout.game_lobby_fragment, container, false);
 
     }
@@ -64,7 +69,23 @@ class GameLobbyAll : Fragment() {
 
 
     private  fun fetchGames(){
-        val url = BuildConfig.GAME_URL+ "live-casino"
+        val position = FragmentPagerItem.getPosition(arguments)
+        Log.e("position", position.toString())
+        var tabName : String = ""
+        if(position == 0){
+            tabName = "all"
+        }else if(position == 1){
+            tabName = "roulette"
+        }else if(position == 2){
+            tabName = "blackjack"
+        }else if(position == 3){
+            tabName = "baccarat"
+        }else if(position == 4){
+            tabName = "poker"
+        }else if(position == 5){
+            tabName = "tournaments"
+        }
+        val url = BuildConfig.GAME_URL+ "live-casino" + BuildConfig.GAME_URL_CATEGORY + tabName
 
         val request = Request.Builder().url(url).build()
 

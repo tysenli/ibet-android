@@ -12,6 +12,10 @@ import com.app.android.ibet.R
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import kotlinx.android.synthetic.main.fragment_casino.*
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
+
+
+
 
 @SuppressLint("ValidFragment")
 class Casino (context: Context): Fragment() {
@@ -28,15 +32,18 @@ class Casino (context: Context): Fragment() {
             fragmentManager, FragmentPagerItems.with(parentContext)
 
                 .add("ALL", GameLobbyAll().javaClass)
-                .add("ROULETTE", GameLobbyRoulette().javaClass)
-                .add("BLACKJACK", GameLobbyBlackjack().javaClass)
-                .add("BACCARAT", GameLobbyBaccarat().javaClass)
-                .add("POKER", GameLobbyPoker().javaClass)
-                .add("TOURNAMENTS", GameLobbyTournaments().javaClass)
+                .add("ROULETTE", GameLobbyAll().javaClass)
+                .add("BLACKJACK", GameLobbyAll().javaClass)
+                .add("BACCARAT", GameLobbyAll().javaClass)
+                .add("POKER", GameLobbyAll().javaClass)
+                .add("TOURNAMENTS", GameLobbyAll().javaClass)
                 .create()
         )
         casino_viewpager.adapter = adapter
         casino_viewpagertab.setViewPager(casino_viewpager)
+
+
+
     }
 
 }
