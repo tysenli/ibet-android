@@ -100,7 +100,10 @@ class MyAccount : AppCompatActivity() {
         adapter = FragmentPagerItemAdapter(supportFragmentManager,pages)
         adapter.notifyDataSetChanged()
 
+
         account_viewpager.adapter = adapter
+
+
         when (info) {
             "check_bnc"  -> account_viewpager.setCurrentItem(1, true)
             "sports"     -> account_viewpager.setCurrentItem(1, true)

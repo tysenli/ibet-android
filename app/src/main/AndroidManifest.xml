@@ -170,6 +170,10 @@
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.Help2payOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
         <activity android:name=".activity.UserProfile.Banking.Total"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Total Wealth"
@@ -190,6 +194,7 @@
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Withdraw"
         ></activity>
+
         <activity android:name=".activity.UserProfile.Banking.Withdraw"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Withdraw Method"

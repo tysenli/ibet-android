@@ -42,6 +42,8 @@ android {
             buildConfigField 'String','ASIAPAY',"\"$local/accounting/api/asiapay/deposit\""
             buildConfigField 'String','ASTROPAY',"\"$local/accounting/api/astropay/capture_transaction\""
             buildConfigField 'String','TRANSACTION_RECODE',"\"$local/accounting/api/transactions/get_transactions?userid=\""
+            buildConfigField 'String','Fgate',"\"$local/accounting/api/fgate/chargeCard\""
+            buildConfigField 'String','Help2pay',"\"$local/accounting/api/help2pay/deposit\""
 
 
 

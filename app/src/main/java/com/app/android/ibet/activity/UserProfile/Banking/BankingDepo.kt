@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
@@ -51,6 +52,7 @@ class BankingDepo : Fragment() {
 
         }
         wechat.setOnClickListener {
+
             info = "wechat"
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)

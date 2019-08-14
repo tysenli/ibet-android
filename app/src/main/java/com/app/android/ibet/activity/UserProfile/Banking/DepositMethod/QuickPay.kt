@@ -119,6 +119,7 @@ class QuickPay : Fragment() {
                 var url = JSONObject(quickData).getString("url")
                 var quickpay_url = "$url?cid=BRANDCQNGHUA3&oid=$orderId"
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(quickpay_url)))
+
             }
 /*
             val res = Intent(activity, WechatOpenPage::class.java)
