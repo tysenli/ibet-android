@@ -161,7 +161,7 @@ class UserProfile : AppCompatActivity() {
         mCurveData.value = mPointArrayList
         mCurveData.color = Color.rgb(64,190,165)
 
-        val drawable = ContextCompat.getDrawable(this, R.drawable.fade_green)
+        val drawable = ContextCompat.getDrawable(this, R.drawable.fade_blue)
         mCurveData.drawable = drawable
 
         mCurveData.pointShape = PointShape.CIRCLE

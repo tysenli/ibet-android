@@ -82,7 +82,6 @@
     <string name="title">Title</string>
     <string name="knowledge_center">Knowledge Center</string>
     <string name="about_ibet">About Ibet</string>
-    <string name="contact_us">Contact Us</string>
     <string name="responsible_gaming">Responsible Gaming</string>
     <string name="terms_conditions">Terms / Conditions</string>
     <string name="privacy_policy">Privacy Policy</string>
@@ -113,9 +112,16 @@
         <u>Privacy and Cookie Policy</u>
     </string>
     <string name="check3">Getting exclusive offers and promotions from ibet</string>
-    <string name="i_m_done">
-        <u>I\'M DONE</u>
-    </string>
+
+    <string name="i_m_done"><u>I\'M DONE</u></string>
+    <string name="about_us">About Us</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="help_and_faq">Help and FAQ</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="sportsbook_rules">Sportsbook Rules</string>
+    <string name="sports_betting_guides">Sports Betting Guides</string>
+    <string name="ibet_corporate">Ibet Corporate</string>
+    <string name="menu">Menu</string>
 
     <integer-array name="img_id_arr">
 

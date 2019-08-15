@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center_vertical"
+            android:paddingLeft="24dp"
+            android:drawableRight="@drawable/close"
+            android:paddingRight="20dp"
+            android:text="Sports Bets - Jul 2019"
+            android:background="#d8d8d8"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout android:layout_width="310dp" android:layout_height="225dp"
+                  android:id="@+id/sports_detail"
+                  android:orientation="vertical"
+                  android:background="@drawable/shadow"
+                  android:layout_marginTop="22dp"
+                  app:layout_constraintTop_toBottomOf="@+id/title" app:layout_constraintStart_toStartOf="parent"
+                  android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                  android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
+                  app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.494"
+                  app:layout_constraintVertical_bias="0.0">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="3dp"
+                  android:text="Placed"
+                  android:textSize="12sp"
+                  android:textColor="#000000"
+                  android:lineSpacingExtra="14sp"/>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="ID"
+                  android:padding="3dp"
+                  android:textSize="12sp"
+                  android:textColor="#000000"
+                  android:lineSpacingExtra="14sp"/>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Type"
+                  android:padding="3dp"
+                  android:textSize="12sp"
+                  android:textColor="#000000"
+                  android:lineSpacingExtra="14sp"/>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Event"
+                  android:padding="3dp"
+                  android:textSize="12sp"
+                  android:textColor="#000000"
+                  android:lineSpacingExtra="14sp"/>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Line"
+                  android:padding="3dp"
+                  android:textSize="12sp"
+                  android:textColor="#000000"
+                  android:lineSpacingExtra="14sp"/>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Settled"
+                  android:padding="3dp"
+                  android:textSize="12sp"
+                  android:textColor="#000000"
+                  android:lineSpacingExtra="14sp"/>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Result"
+                  android:padding="3dp"
+                  android:textSize="12sp"
+                  android:textColor="#000000"
+                  android:lineSpacingExtra="14sp"/>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Stake"
+                  android:padding="3dp"
+                  android:textSize="12sp"
+                  android:textColor="#000000"
+                  android:lineSpacingExtra="14sp"/>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Return"
+                  android:padding="3dp"
+                  android:textSize="12sp"
+                  android:textColor="#000000"
+                  android:lineSpacingExtra="14sp"/>
+
+    </LinearLayout>
+
+    <ListView
+            android:id="@+id/sports_bets_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0" android:layout_marginTop="22dp"/>
+
+
+</android.support.constraint.ConstraintLayout>

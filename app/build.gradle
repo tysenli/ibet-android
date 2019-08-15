@@ -20,29 +20,35 @@ android {
         def local = "http://10.0.2.2:8000"
 
         debug {
-            buildConfigField 'String', 'SIGNUP_URL', "\"$local/users/api/signup/\""
-            buildConfigField 'String', 'ONE_CLICK_SIGNUP_URL', "\"$local/users/api/oneclicksignup/\""
-            buildConfigField 'String', 'GENERATE_CODE', "\"$local/users/api/generateactivationcode/\""
-            buildConfigField 'String', 'VERI_CODE', "\"$local/users/api/verifyactivationcode/\""
-            buildConfigField 'String', 'LOGIN', "\"$local/users/api/login/\""
-            buildConfigField 'String', 'FORGET_CODE', "\"$local/users/api/generatepasswordcode/\""
-            buildConfigField 'String', 'FORGET_SEND_EMAIL', "\"$local/users/api/sendresetpasswordcode/\""
-            buildConfigField 'String', 'VERI_PASS_CODE', "\"$local/users/api/verifyresetpasswordcode/\""
-            buildConfigField 'String', 'CHANGE_PASS', "\"$local/users/api/validateandresetpassword/\""
-            buildConfigField 'String', 'USER', "\"$local/users/api/user/\""
-            buildConfigField 'String', 'PAYPAL', "\"$local/accounting/api/paypal/create_payment\""
-            buildConfigField 'String', 'PAYPAL_ORDER', "\"$local/accounting/api/paypal/get_order\""
-            buildConfigField 'String', 'WECHAT', "\"$local/accounting/api/qaicash/submit_deposit\""
-            buildConfigField 'String', 'WECHAT_ORDER', "\"$local/accounting/api/qaicash/deposit_transaction\""
-            buildConfigField 'String', 'BALANCE', "\"$local/users/api/addorwithdrawbalance/\""
-            buildConfigField 'String', 'VERI_SIGNUP', "\"$local/users/api/sendemail/?case=signup\""
-            buildConfigField 'String', 'WITHDRAW', "\"$local/accounting/api/qaicash/submit_payout\""
-            buildConfigField 'String', 'WITHDRAW_ORDER', "\"$local/accounting/api/qaicash/payout_transaction\""
-            buildConfigField 'String', 'LINE', "\"$local/accounting/api/linepay/reserve_payment\""
-            buildConfigField 'String', 'QUICKPAY', "\"$local/accounting/api/asiapay/deposit\""
+
+            buildConfigField 'String','SIGNUP_URL',"\"$local/users/api/signup/\""
+            buildConfigField 'String','ONE_CLICK_SIGNUP_URL',"\"$local/users/api/oneclicksignup/\""
+            buildConfigField 'String','GENERATE_CODE',"\"$local/users/api/generateactivationcode/\""
+            buildConfigField 'String','VERI_CODE',"\"$local/users/api/verifyactivationcode/\""
+            buildConfigField 'String','LOGIN', "\"$local/users/api/login/\""
+            buildConfigField 'String','FORGET_CODE',"\"$local/users/api/generatepasswordcode/\""
+            buildConfigField 'String','FORGET_SEND_EMAIL',"\"$local/users/api/sendresetpasswordcode/\""
+            buildConfigField 'String','VERI_PASS_CODE',"\"$local/users/api/verifyresetpasswordcode/\""
+            buildConfigField 'String','CHANGE_PASS',"\"$local/users/api/validateandresetpassword/\""
+            buildConfigField 'String','USER',"\"$local/users/api/user/\""
+            buildConfigField 'String','PAYPAL',"\"$local/accounting/api/paypal/create_payment\""
+            buildConfigField 'String','PAYPAL_ORDER',"\"$local/accounting/api/paypal/get_order\""
+            buildConfigField 'String','WECHAT',"\"$local/accounting/api/qaicash/submit_deposit\""
+            buildConfigField 'String','WECHAT_ORDER',"\"$local/accounting/api/qaicash/deposit_transaction\""
+            buildConfigField 'String','BALANCE',"\"$local/users/api/addorwithdrawbalance/\""
+            buildConfigField 'String','VERI_SIGNUP',"\"$local/users/api/sendemail/?case=signup\""
+            buildConfigField 'String','WITHDRAW',"\"$local/accounting/api/qaicash/submit_payout\""
+            buildConfigField 'String','WITHDRAW_ORDER',"\"$local/accounting/api/qaicash/payout_transaction\""
+            buildConfigField 'String','LINE',"\"$local/accounting/api/linepay/reserve_payment\""
+            buildConfigField 'String','ASIAPAY',"\"$local/accounting/api/asiapay/deposit\""
+            buildConfigField 'String','ASTROPAY',"\"$local/accounting/api/astropay/capture_transaction\""
+            buildConfigField 'String','TRANSACTION_RECODE',"\"$local/accounting/api/transactions/get_transactions?userid=\""
+            buildConfigField 'String','Fgate',"\"$local/accounting/api/fgate/chargeCard\""
+            buildConfigField 'String','Help2pay',"\"$local/accounting/api/help2pay/deposit\""
             buildConfigField 'String', 'GAME_URL', "\"$local/games/api/games/?type=\""
             buildConfigField('String', 'GAME_URL_CATEGORY', "\"&category=\"")
             buildConfigField('String', 'GAME_FILTER', "\"$local/games/api/filter/\"")
+
 
 
         }
@@ -91,6 +97,7 @@ dependencies {
     implementation 'com.chabbal:slidingdotsplash:1.0.2'
     implementation 'com.github.Idtk:SmallChart:v0.1.1'
     implementation 'com.github.0xZhangKe:ZLog:3.0'
+
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
@@ -98,8 +105,11 @@ dependencies {
     implementation 'io.reactivex:rxjava:1.0.14'
     implementation 'com.github.ReactiveX:RxKotlin:2.x-SNAPSHOT'
     implementation 'com.google.code.gson:gson:2.8.5'
-
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    implementation 'com.google.firebase:firebase-core:17.0.0'
 
 
 
 }
+
+apply plugin: 'com.google.gms.google-services'

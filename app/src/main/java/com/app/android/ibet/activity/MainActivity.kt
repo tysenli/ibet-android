@@ -1,15 +1,14 @@
 package com.app.android.ibet.activity
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
-import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
+import android.widget.*
 
 
 import com.app.android.ibet.R
@@ -21,16 +20,24 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.*
 
 import com.app.android.ibet.activity.Login.Login
+import com.app.android.ibet.activity.Navigation.MenuExpandableAdapter
+import com.app.android.ibet.activity.Navigation.NaviMenuItem
+import com.app.android.ibet.activity.Navigation.SampleMenu
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amtShow
-import com.app.android.ibet.activity.UserProfile.Transactions.Deposit
+import com.app.android.ibet.activity.UserProfile.Banking.Deposit
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
+import com.app.android.ibet.fragment.Display
 //import com.app.android.ibet.activity.UserProfile.UserProfile
 import com.zhangke.zlog.ZLog
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick {
     //private actionBar:ActionBar
+    private lateinit var navigationBody: ExpandableListView
+    private lateinit var navigationBodyAdapter: MenuExpandableAdapter
+
     companion object {
         var isLogin = false
     }
@@ -51,9 +58,90 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         toolbar.setNavigationIcon(R.drawable.menu)
+
+        navigationBody = findViewById(R.id.navigation_body)
+
+        navigationBodyAdapter = MenuExpandableAdapter(this)
+        navigationBodyAdapter.setOnMenuItemClickListener(this)
+
+        navigationBody.setAdapter(navigationBodyAdapter)
+
+        navigationBody.setOnGroupClickListener(navigationBodyAdapter)
+        navigationBody.setOnChildClickListener(navigationBodyAdapter)
+
+        navigationBodyAdapter.showItems(SampleMenu.getMenu())
         //toolbar.setTitleTextColor(Color.RED)
 
-        nav_view.setNavigationItemSelectedListener(this)
+        //nav_view.setNavigationItemSelectedListener(this)
+        var language = arrayOf("Language", "English", "Chinese", "Thai")
+        var lanImg = arrayOf(R.drawable.lan_bng, R.drawable.gb, R.drawable.cn, R.drawable.th)
+        // var flag[] = {R.drawable.gb, R.drawable.cn, R.drawable.th}
+        var lanSpinner = findViewById<Spinner>(R.id.language_navi)
+        var lan: String = ""
+        if (lanSpinner != null) {
+            val arrayAdapter = CustomDropDownAdapter(this, lanImg, language)
+            //CusAdapter(this, flag, language)
+            lanSpinner.adapter = arrayAdapter
+
+            lanSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    //Toast.makeText(this, getString(R.string.selected_item) + " " + gender[position], Toast.LENGTH_SHORT).show()
+
+                    when (position) {
+                        1 -> {
+                            val locale = Locale("en")
+                            val config = Configuration()
+                            config.locale = locale
+                            baseContext.resources.updateConfiguration(
+                                config,
+                                baseContext.resources.displayMetrics
+                            )
+                            startActivity(Intent(baseContext, MainActivity::class.java))
+                        }
+                        2 -> {
+
+                            val locale = Locale("zh")
+                            val config = Configuration()
+                            config.locale = locale
+                            baseContext.resources.updateConfiguration(
+                                config,
+                                baseContext.resources.displayMetrics
+                            )
+                            startActivity(Intent(baseContext, MainActivity::class.java))
+                        }
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // Code to perform some action when nothing is selected
+                }
+            }
+
+        }
+
+        rules.setOnClickListener {
+            val fm = supportFragmentManager
+            val ft = fm.beginTransaction()
+            ft.replace(R.id.frag_placeholder, Cookie(), "cookie")
+            ft.commit()
+        }
+
+        guides.setOnClickListener {
+
+            val fm = supportFragmentManager
+            val ft = fm.beginTransaction()
+            ft.replace(R.id.frag_placeholder, Privacy(), "privacy")
+            ft.commit()
+
+        }
+        terms.setOnClickListener {
+
+            val fm = supportFragmentManager
+            val ft = fm.beginTransaction()
+            ft.replace(R.id.frag_placeholder, Terms(), "terms")
+            ft.commit()
+
+        }
         /*
         val filePath = Environment.getExternalStorageDirectory().toString() + "/logcat.txt"
         println(filePath)
@@ -77,6 +165,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             amtShow = rootView.findViewById(R.id.balance_icon)
             amtShow.setOnClickListener {
                 startActivity(Intent(this, Signup::class.java))
+                overridePendingTransition(0, 0)
             }
 
         } else {
@@ -108,10 +197,47 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
+    override fun onMenuClick(position: Int, menuItem: NaviMenuItem) {
+        when (position) {
+            0 -> {
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Sports(this), "sports")
+                ft.commit()
+            }
+            1 -> {
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Casino(this), "casino")
+                ft.commit()
+            }
+            2 -> {
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Slots(this), "casino")
+                ft.commit()
+            }
+            3 -> {
+                val fm = supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.frag_placeholder, Lottery(this), "casino")
+                ft.commit()
+            }
+
+        }
+
+        //Toast.makeText(this, "Click on Menu ${menuItem.title}", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onSubMenuClick(position: Int, menuItem: NaviMenuItem) {
+        Toast.makeText(this, "Click on SubMenu ${menuItem.title}", Toast.LENGTH_LONG).show()
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         when (item.itemId) {
             R.id.deposit -> {
                 startActivity(Intent(this, Signup::class.java))
@@ -127,38 +253,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 ft.replace(R.id.frag_placeholder, Login(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit() */
                 startActivity(Intent(this, Login::class.java))
+                overridePendingTransition(0, 0)
                 return true
             }
             R.id.logged -> {
+                info = "deposit"
                 startActivity(Intent(this, MyAccount::class.java))
+                overridePendingTransition(0, 0)
                 return true
             }
-            /*
-            R.id.chinese -> {
-                val locale = Locale("zh")
-                val config = Configuration()
-                config.locale = locale
-                baseContext.resources.updateConfiguration(
-                    config,
-                    baseContext.resources.displayMetrics
+           else -> return super.onOptionsItemSelected(item)
+        }
+    }
 
-                )
-                startActivity(Intent( this,MainActivity::class.java))
-                return true
-            }
-            R.id.english -> {
-                val locale1 = Locale("en")//fr is the code for french language
-                Locale.setDefault(locale1)
-                val config1 = Configuration()
-                config1.locale = locale1
-                baseContext.resources.updateConfiguration(
-                    config1,
-                    baseContext.resources.displayMetrics
-                )
-                startActivity(Intent( this,MainActivity::class.java))
-                return true
-            }
-            */
             /*
             R.id.user -> {
                 val fm = supportFragmentManager
@@ -168,9 +275,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 ft.commit()
                 return true
             } */
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
+
+
+    /*
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
@@ -222,35 +329,68 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 //Lottery(this)
 
             }
-            R.id.cookie -> {
 
-                val fm = supportFragmentManager
-                val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder, Cookie(), "cookie")
-                ft.commit()
-
-            }
-            R.id.privacy -> {
-
-                val fm = supportFragmentManager
-                val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder, Privacy(), "privacy")
-                ft.commit()
-
-            }
-            R.id.terms -> {
-
-                val fm = supportFragmentManager
-                val ft = fm.beginTransaction()
-                ft.replace(R.id.frag_placeholder, Terms(), "terms")
-                ft.commit()
-
-            }
 
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }  */
+}
+
+class CustomDropDownAdapter(val context: Context,var image : Array<Int>, var listItemsTxt: Array<String>) : BaseAdapter() {
+
+
+    val mInflater: LayoutInflater = LayoutInflater.from(context)
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val view: View
+        val vh: ItemRowHolder
+        if (convertView == null) {
+            view = mInflater.inflate(R.layout.custom_spinner_items, parent, false)
+            vh = ItemRowHolder(view)
+            view?.tag = vh
+        } else {
+            view = convertView
+            vh = view.tag as ItemRowHolder
+        }
+
+        // setting adapter item height programatically.
+
+        val params = view.layoutParams
+        params.height = 80
+        view.layoutParams = params
+
+        vh.label.text = listItemsTxt.get(position)
+        vh.img.setImageResource(image[position])
+        return view
+    }
+
+    override fun getItem(position: Int): Any? {
+
+        return null
+
+    }
+
+    override fun getItemId(position: Int): Long {
+
+        return 0
+
+    }
+
+    override fun getCount(): Int {
+        return listItemsTxt.size
+    }
+
+    private class ItemRowHolder(row: View?) {
+
+        val label: TextView
+        val img : ImageView
+
+        init {
+            this.label = row?.findViewById(R.id.language_txt) as TextView
+            this.img = row?.findViewById(R.id.language_img) as ImageView
+        }
     }
 }
 
