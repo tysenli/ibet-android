@@ -102,6 +102,11 @@ class BankingDepo : Fragment() {
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
+        ciclepay.setOnClickListener {
+            info = "ciclepay"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
 
         /*
         total.setOnClickListener {

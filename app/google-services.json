@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "531500246610",
+    "firebase_url": "https://ibet-notification-78ea9.firebaseio.com",
+    "project_id": "ibet-notification-78ea9",
+    "storage_bucket": "ibet-notification-78ea9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531500246610:android:0e5f8f3e993c9a4a",
+        "android_client_info": {
+          "package_name": "com.app.android.ibet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531500246610-pihpjkc7gt90q374rdr59mml8tnmpbbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDmtf9etMj0oyChzwt7ZifmZynqyj13-A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531500246610-pihpjkc7gt90q374rdr59mml8tnmpbbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
