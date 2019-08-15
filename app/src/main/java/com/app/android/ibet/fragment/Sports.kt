@@ -4,20 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.app.FragmentStatePagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.android.ibet.R
-import com.facebook.internal.FacebookDialogFragment
-import com.ogaclejapan.smarttablayout.utils.ViewPagerItemAdapter
-import com.ogaclejapan.smarttablayout.utils.ViewPagerItems
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import kotlinx.android.synthetic.main.fragment_sports.*
-import kotlinx.android.synthetic.main.fragment_sports.view.*
 
 @SuppressLint("ValidFragment")
 class Sports (context: Context): Fragment() {
@@ -43,7 +36,7 @@ class Sports (context: Context): Fragment() {
 
         val adapter = FragmentPagerItemAdapter(
             fragmentManager,FragmentPagerItems.with(parentContext)
-                .add("LIVE",Live().javaClass).create()
+                .add("LIVE",GameLobbySlots().javaClass).create()
         )
         sports_viewpager.adapter = adapter
         sports_viewpagertab.setViewPager(sports_viewpager)
