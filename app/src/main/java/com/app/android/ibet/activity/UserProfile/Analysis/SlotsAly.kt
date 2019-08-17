@@ -2,8 +2,8 @@ package com.app.android.ibet.activity.UserProfile.Analysis
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -112,7 +112,7 @@ class SlotsAdapter(private val context: FragmentActivity, private val game: Arra
 }
 
 class SlotsDayAdapter(private val context: FragmentActivity, private val day: Array<String>, private val spins: Array<String>, private val rtp: Array<String>, private val bet: Array<String>, private val win: Array<String>,
-                      private val pl: Array<String>,private val biggest: Array<String>,private val bonus: Array<String>)
+                      private val pl: Array<String>, private val biggest: Array<String>, private val bonus: Array<String>)
     : ArrayAdapter<String>(context, R.layout.frag_slot_byday_item, day) {
 
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {

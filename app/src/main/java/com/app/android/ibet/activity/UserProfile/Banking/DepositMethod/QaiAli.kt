@@ -3,9 +3,9 @@ package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
@@ -93,29 +93,34 @@ class QaiAli : Fragment() {
 
 
         btn_wechat_dep.setOnClickListener {
-            val client = OkHttpClient()
-            val formBody = FormBody.Builder()
-                .add("amount", amount_display.text.toString())
-                .add("user_id", pk)
-                .add("currency", "0")
-                .add("language", "zh-Hans")
-                .add("method", "ALIPAY_H5")
-                .build()
+            if (amount_display.text.toString() == "0") {
+                amt_input_err.visibility = View.VISIBLE
+            } else {
+                amt_input_err.visibility = View.GONE
+                val client = OkHttpClient()
+                val formBody = FormBody.Builder()
+                    .add("amount", amount_display.text.toString())
+                    .add("user_id", pk)
+                    .add("currency", "0")
+                    .add("language", "zh-Hans")
+                    .add("method", "ALIPAY_H5")
+                    .build()
 
-            val request = Request.Builder()
-                .url(BuildConfig.WECHAT)
-                .post(formBody)
-                .build()
-            val response = client.newCall(request).execute()
-            var aliData = response.body()!!.string()
-            orderId = JSONObject(aliData).getJSONObject("depositTransaction").getString("orderId")
-            var ali_url = JSONObject(aliData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
+                val request = Request.Builder()
+                    .url(BuildConfig.WECHAT)
+                    .post(formBody)
+                    .build()
+                val response = client.newCall(request).execute()
+                var aliData = response.body()!!.string()
+                orderId = JSONObject(aliData).getJSONObject("depositTransaction").getString("orderId")
+                var ali_url = JSONObject(aliData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
 
-            val res = Intent(activity, AliOpenPage::class.java)
-            res.putExtra("aliurl", ali_url)
-            res.putExtra("aliorderId",orderId)
-            res.putExtra("alibalance",amount_display.text.toString())
-            startActivity(res)
+                val res = Intent(activity, AliOpenPage::class.java)
+                res.putExtra("aliurl", ali_url)
+                res.putExtra("aliorderId", orderId)
+                res.putExtra("alibalance", amount_display.text.toString())
+                startActivity(res)
+            }
 
         }
 

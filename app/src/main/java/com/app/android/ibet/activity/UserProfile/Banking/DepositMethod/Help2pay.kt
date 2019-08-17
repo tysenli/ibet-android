@@ -2,7 +2,7 @@ package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.text.format.Time
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +19,7 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.app.android.ibet.api.Api
+import kotlinx.android.synthetic.main.activity_amount_input.*
 import kotlinx.android.synthetic.main.frag_fgo.*
 import kotlinx.android.synthetic.main.frag_help2pay.*
 import okhttp3.FormBody
@@ -95,36 +96,37 @@ class Help2pay : Fragment() {
 
         btn_help2pay.setOnClickListener {
 
-            val client = OkHttpClient()
-            val formBody = FormBody.Builder()
-                .add("amount", help2pay_amt.text.toString())
-                .add("user_id", JSONObject(userData).getString("pk"))
-                .add("currency", cur)
-                .add("bank",bank)
-                .add("language","en-Us")
-                .add("order_id",orderId)
-                .build()
+                val client = OkHttpClient()
+                val formBody = FormBody.Builder()
+                    .add("amount", help2pay_amt.text.toString())
+                    .add("user_id", JSONObject(userData).getString("pk"))
+                    .add("currency", cur)
+                    .add("bank", bank)
+                    .add("language", "en-Us")
+                    .add("order_id", orderId)
+                    .build()
 
-            val request = Request.Builder()
-                .addHeader("Authorization", "Token " + Login.token)
-                .url(BuildConfig.Help2pay)
-                .post(formBody)
-                .build()
-            val response = client.newCall(request).execute()
-            println(response)
-            if (response.code() != 200) {
-                MyAccount.info = "fail"
-                val res = Intent(context, MyAccount::class.java)
-                startActivity(res)
-            } else {
-                val statusData = response.body()!!.string()
-                val res = Intent(activity, Help2payOpenPage::class.java)
-                res.putExtra("help2pay", statusData)
-                startActivity(res)
-                //println(statusData)
+                val request = Request.Builder()
+                    .addHeader("Authorization", "Token " + Login.token)
+                    .url(BuildConfig.Help2pay)
+                    .post(formBody)
+                    .build()
+                val response = client.newCall(request).execute()
+                //println(response)
+                if (response.code() != 200) {
+                    MyAccount.info = "fail"
+                    val res = Intent(context, MyAccount::class.java)
+                    startActivity(res)
+                } else {
+                    val statusData = response.body()!!.string()
+                    val res = Intent(activity, Help2payOpenPage::class.java)
+                    res.putExtra("help2pay", statusData)
+                    startActivity(res)
+                    //println(statusData)
 
+                }
             }
-        }
+
 
 
     }

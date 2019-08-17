@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.renderscript.Element
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -84,17 +84,22 @@ class Circlepay : Fragment() {
             }
 
         })
-        val key = "Kiy4O3IAvPpHxXJ9ht1mBfZs"
-        val transId = JSONObject(MyAccount.userData).getString("username") + "CirclePay" + Calendar.getInstance().time
-        val message = "jennyto@ibet.com$transId" + amount_display.text.toString()
-        var hasher = Mac.getInstance("HmacSHA256")
-        hasher.init(SecretKeySpec(key.toByteArray(),"HmacSHA256"))
-        val hash = hasher.doFinal(message.toByteArray())
-        //println(BigInteger(1,hash).toString(16))
-        val ciclepay_url = "https://gateway.circlepay.ph/payment/" + "297802061195" + "/?partner_tran_id=$transId" +"&amount="+
-                amount_display.text.toString() + "&token=" + BigInteger(1,hash).toString(16)
-        //println(ciclepay_url)
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(ciclepay_url)))
+        btn_wechat_dep.setOnClickListener {
+
+            val key = "Kiy4O3IAvPpHxXJ9ht1mBfZs"
+            val transId =
+                JSONObject(MyAccount.userData).getString("username") + "CirclePay" + Calendar.getInstance().time
+            val message = "jennyto@ibet.com$transId" + amount_display.text.toString()
+            var hasher = Mac.getInstance("HmacSHA256")
+            hasher.init(SecretKeySpec(key.toByteArray(), "HmacSHA256"))
+            val hash = hasher.doFinal(message.toByteArray())
+            //println(BigInteger(1,hash).toString(16))
+            val ciclepay_url =
+                "https://gateway.circlepay.ph/payment/" + "297802061195" + "/?partner_tran_id=$transId" + "&amount=" +
+                        amount_display.text.toString() + "&token=" + BigInteger(1, hash).toString(16)
+
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(ciclepay_url)))
+        }
 
 
     }

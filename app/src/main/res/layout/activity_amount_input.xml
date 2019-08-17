@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-                                             android:layout_height="match_parent"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto">
     <Button
             android:text="$100"
             android:layout_width="72dp"
@@ -59,7 +59,7 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/deposit_amount2"
-            android:hint=" Deposit $10 - $2,000"
+            android:hint=" Deposit $10 - $2,000                        Other"
             android:layout_marginStart="8dp"
             android:textColorHint="#4e4e4e"
             app:layout_constraintStart_toStartOf="parent"
@@ -151,5 +151,13 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toEndOf="@+id/fee" android:layout_marginStart="8dp"
             app:layout_constraintHorizontal_bias="0.85"/>
+    <TextView
+            android:text="Please deposit between 20 - 2000"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:id="@+id/amt_input_err"
+            android:textColor="#c90000"
+            app:layout_constraintTop_toBottomOf="@+id/deposit_amount2" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"/>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

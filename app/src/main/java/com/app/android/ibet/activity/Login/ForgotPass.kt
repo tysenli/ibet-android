@@ -3,7 +3,7 @@ package com.app.android.ibet.activity.Login
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
 import com.app.android.ibet.BuildConfig
@@ -45,7 +45,7 @@ class ForgotPass : AppCompatActivity() {
             val response = client.newCall(request).execute()
             //http://10.0.2.2:8000/users/api/generateactivationcode/
             //val info = Api().post(forgetCodeJson.toString(), BuildConfig.FORGET_CODE )
-            println(response.code())
+           // println(response.code())
             if (response.code() == 200) {
                 val info2 = Api().post(forgetCodeJson.toString(), BuildConfig.FORGET_SEND_EMAIL)
 

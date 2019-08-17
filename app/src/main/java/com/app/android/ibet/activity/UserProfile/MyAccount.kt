@@ -2,8 +2,8 @@ package com.app.android.ibet.activity.UserProfile
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
@@ -87,6 +87,7 @@ class MyAccount : AppCompatActivity() {
             "success_with"->pages[0] = FragmentPagerItem.of("Banking", SuccessWithdraw().javaClass)
             "fail"       -> pages[0] = FragmentPagerItem.of("Banking", Failed().javaClass)
             "bankwith"   -> pages[0] = FragmentPagerItem.of("Banking", Bank().javaClass)
+            "payzod"     -> pages[0] = FragmentPagerItem.of("Banking", Payzod().javaClass)
 
             "sports"     -> pages[1] = FragmentPagerItem.of("Analysis", SportsAly().javaClass)
             "depo&with"  -> pages[1] = FragmentPagerItem.of("Analysis", DepoWithAly().javaClass)
