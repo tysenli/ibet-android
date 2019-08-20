@@ -55,7 +55,7 @@ class GameLobbySlots: Fragment() {
 
                 val gson = GsonBuilder().create()
 
-                val gameModelResponse: List<GameModelResponse> = gson.fromJson(body, object : TypeToken<List<GameModelResponse>>() { }.type)
+                val gameModelResponse: ArrayList<GameModelResponse> = gson.fromJson(body, object : TypeToken<ArrayList<GameModelResponse>>() { }.type)
 
 
                 this@GameLobbySlots.activity!!.runOnUiThread {
@@ -86,7 +86,7 @@ class GameLobbySlots: Fragment() {
 
                 val filterMap = mutableMapOf<String, Array<String>>()
                 val gson = GsonBuilder().create()
-                val filterModel: List<FilterModel> = gson.fromJson(body, object :TypeToken<List<FilterModel>>() { }.type)
+                val filterModel: ArrayList<FilterModel> = gson.fromJson(body, object :TypeToken<ArrayList<FilterModel>>() { }.type)
                 this@GameLobbySlots.activity!!.runOnUiThread {
                     filter_recycler_list.adapter = FilterAdapter(filterModel)
                 }

@@ -46,8 +46,14 @@ android {
             buildConfigField 'String','Fgate',"\"$local/accounting/api/fgate/chargeCard\""
             buildConfigField 'String','Help2pay',"\"$local/accounting/api/help2pay/deposit\""
             buildConfigField 'String', 'GAME_URL', "\"$local/games/api/games/?type=\""
-            buildConfigField('String', 'GAME_URL_CATEGORY', "\"&category=\"")
-            buildConfigField('String', 'GAME_FILTER', "\"$local/games/api/filter/\"")
+            buildConfigField 'String', 'GAME_URL_CATEGORY', "\"&category=\""
+            buildConfigField 'String', 'GAME_URL_FILTER', "\"&filtercategory=\""
+            buildConfigField 'String', 'GAME_URL_JACKPOT', "\"&jackpot=\""
+            buildConfigField 'String', 'GAME_URL_PROVIDER', "\"&provider=\""
+            buildConfigField 'String', 'GAME_URL_FEATURE', "\"&feature=\""
+            buildConfigField 'String', 'GAME_URL_THEME', "\"&theme=\""
+            buildConfigField 'String', 'GAME_URL_SORT', "\"&sort=\""
+            buildConfigField 'String', 'GAME_FILTER', "\"$local/games/api/filter/\""
 
 
 
