@@ -36,6 +36,7 @@ class QaiWechat : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        depo_method_show.text = "Wechat"
         amt_input_err.visibility = View.GONE
         var pk =  JSONObject(userData).getString("pk")
 

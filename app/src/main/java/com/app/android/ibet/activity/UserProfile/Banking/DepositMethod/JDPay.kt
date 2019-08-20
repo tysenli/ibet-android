@@ -34,6 +34,7 @@ class JDPay : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        depo_method_show.text = "JDpay"
         var pk = JSONObject(userData).getString("pk")
         println(pk)
         money_25.setOnClickListener {

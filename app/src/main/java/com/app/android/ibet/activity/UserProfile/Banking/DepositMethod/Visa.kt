@@ -21,6 +21,7 @@ class Visa : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        depo_method_show.text = "Visa"
 
     }
 }

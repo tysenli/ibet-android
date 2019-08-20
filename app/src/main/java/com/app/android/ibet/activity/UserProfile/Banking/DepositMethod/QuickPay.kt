@@ -36,6 +36,7 @@ class QuickPay : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        depo_method_show.text = "QuickPay"
         var pk =  JSONObject(userData).getString("pk")
         println(pk)
         money_25.setOnClickListener {

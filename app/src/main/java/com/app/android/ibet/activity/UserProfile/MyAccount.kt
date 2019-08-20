@@ -36,6 +36,7 @@ class MyAccount : AppCompatActivity() {
     companion object {
         var amt = ""
         lateinit var  amtShow : Button
+        lateinit var loginShow : Button
         lateinit var userData :String
         lateinit var pages : FragmentPagerItems
         lateinit var adapter: FragmentPagerItemAdapter
@@ -88,6 +89,7 @@ class MyAccount : AppCompatActivity() {
             "fail"       -> pages[0] = FragmentPagerItem.of("Banking", Failed().javaClass)
             "bankwith"   -> pages[0] = FragmentPagerItem.of("Banking", Bank().javaClass)
             "payzod"     -> pages[0] = FragmentPagerItem.of("Banking", Payzod().javaClass)
+            "scratch"    -> pages[0] = FragmentPagerItem.of("Banking", ScratchCard().javaClass)
 
             "sports"     -> pages[1] = FragmentPagerItem.of("Analysis", SportsAly().javaClass)
             "depo&with"  -> pages[1] = FragmentPagerItem.of("Analysis", DepoWithAly().javaClass)

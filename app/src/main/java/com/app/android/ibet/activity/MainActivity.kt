@@ -28,9 +28,11 @@ import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amtShow
 import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.loginShow
 import com.app.android.ibet.fragment.Display
 //import com.app.android.ibet.activity.UserProfile.UserProfile
 import com.zhangke.zlog.ZLog
+import kotlinx.android.synthetic.main.login_actionlayout.*
 
 
 class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick {
@@ -71,7 +73,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
 
         navigationBodyAdapter.showItems(SampleMenu.getMenu())
         //toolbar.setTitleTextColor(Color.RED)
-
+/*
         //nav_view.setNavigationItemSelectedListener(this)
         var language = arrayOf("Language", "English", "Chinese", "Thai")
         var lanImg = arrayOf(R.drawable.lan_bng, R.drawable.gb, R.drawable.cn, R.drawable.th)
@@ -117,8 +119,9 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
                 }
             }
 
-        }
+        }*/
 
+/*
         rules.setOnClickListener {
             val fm = supportFragmentManager
             val ft = fm.beginTransaction()
@@ -141,7 +144,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             ft.replace(R.id.frag_placeholder, Terms(), "terms")
             ft.commit()
 
-        }
+        } */
         /*
         val filePath = Environment.getExternalStorageDirectory().toString() + "/logcat.txt"
         println(filePath)
@@ -159,18 +162,25 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
         if (!isLogin) {
             menu!!.findItem(R.id.logged).isVisible = false
             menu.findItem(R.id.login).isVisible = true
-            val menuItem = menu.findItem(R.id.deposit)
+            menu.findItem(R.id.deposit).isVisible = false
+            val menuItem = menu.findItem(R.id.login)
             val rootView = menuItem.actionView
-
+            loginShow = rootView.findViewById(R.id.login_btn)
+            loginShow.setOnClickListener {
+                startActivity(Intent(this, Login::class.java))
+                overridePendingTransition(0, 0)
+            }
+            /*
             amtShow = rootView.findViewById(R.id.balance_icon)
             amtShow.setOnClickListener {
                 startActivity(Intent(this, Signup::class.java))
                 overridePendingTransition(0, 0)
-            }
+            } */
 
         } else {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
+            menu.findItem(R.id.deposit).isVisible = true
             val menuItem = menu.findItem(R.id.deposit)
             val rootView = menuItem.actionView
 
@@ -239,10 +249,12 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
         // as you specify a parent activity in AndroidManifest.xml.
 
         when (item.itemId) {
+            /*
             R.id.deposit -> {
                 startActivity(Intent(this, Signup::class.java))
                 return true
-            }
+            } */
+
             R.id.login -> {
                 /*
                 val fm = supportFragmentManager

@@ -30,6 +30,7 @@ class Circlepay : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        depo_method_show.text = "Circlepay"
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201, 199, 199))
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))

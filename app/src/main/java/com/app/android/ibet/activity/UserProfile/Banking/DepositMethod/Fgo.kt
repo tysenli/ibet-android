@@ -30,6 +30,7 @@ class Fgo : Fragment() {
         super.onStart()
         //var userData = Api().get(BuildConfig.USER)
 
+
         fgo_deposit.setOnClickListener {
 
             val client = OkHttpClient()

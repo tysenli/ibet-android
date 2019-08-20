@@ -35,6 +35,7 @@ class QaiAli : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        depo_method_show.text = "Alipay"
         var pk =  JSONObject(userData).getString("pk")
 
         money_25.setOnClickListener {

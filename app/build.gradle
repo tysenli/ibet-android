@@ -42,9 +42,11 @@ android {
             buildConfigField 'String','LINE',"\"$local/accounting/api/linepay/reserve_payment\""
             buildConfigField 'String','ASIAPAY',"\"$local/accounting/api/asiapay/deposit\""
             buildConfigField 'String','ASTROPAY',"\"$local/accounting/api/astropay/capture_transaction\""
+            buildConfigField 'String','PAYZOD',"\"$local/accounting/api/payzod/deposit\""
             buildConfigField 'String','TRANSACTION_RECODE',"\"$local/accounting/api/transactions/get_transactions?userid=\""
             buildConfigField 'String','Fgate',"\"$local/accounting/api/fgate/chargeCard\""
             buildConfigField 'String','Help2pay',"\"$local/accounting/api/help2pay/deposit\""
+            buildConfigField 'String','Scratch',"\"$local/accounting/api/scratchcard/deposit\""
             buildConfigField 'String', 'GAME_URL', "\"$local/games/api/games/?type=\""
             buildConfigField('String', 'GAME_URL_CATEGORY', "\"&category=\"")
             buildConfigField('String', 'GAME_FILTER', "\"$local/games/api/filter/\"")
@@ -97,6 +99,8 @@ dependencies {
     implementation 'com.chabbal:slidingdotsplash:1.0.2'
     implementation 'com.github.Idtk:SmallChart:v0.1.1'
     implementation 'com.github.0xZhangKe:ZLog:3.0'
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
+
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'

@@ -112,6 +112,12 @@ class BankingDepo : Fragment() {
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
+        scratch.setOnClickListener {
+            info = "scratch"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+
+        }
 
         /*
         total.setOnClickListener {
