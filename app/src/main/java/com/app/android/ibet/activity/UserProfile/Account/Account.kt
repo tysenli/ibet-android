@@ -1,8 +1,8 @@
 package com.app.android.ibet.activity.UserProfile.Account
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +19,7 @@ class Account : Fragment() {
     override fun onStart() {
         super.onStart()
         val recyclerDataAdapter = RecyclerViewAdapter(getAccDataToPass())
-        recyclerView.layoutManager = LinearLayoutManager(parentContext)
+        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(parentContext)
         recyclerView.adapter = recyclerDataAdapter
         recyclerView.setHasFixedSize(true)
     }

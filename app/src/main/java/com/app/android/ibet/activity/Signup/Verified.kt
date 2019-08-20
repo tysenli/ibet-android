@@ -2,7 +2,7 @@ package com.app.android.ibet.activity.Signup
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
 import kotlinx.android.synthetic.main.activity_verified.*

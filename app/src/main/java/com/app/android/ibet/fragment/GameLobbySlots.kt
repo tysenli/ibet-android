@@ -1,9 +1,9 @@
 package com.app.android.ibet.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -32,9 +32,9 @@ class GameLobbySlots: Fragment() {
 
     override fun onStart() {
         super.onStart()
-        game_recycler_list.layoutManager = LinearLayoutManager(this.context)
+        game_recycler_list.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
         //game_recycler_list.adapter = GameLobbyAdapter(GameList)
-        filter_recycler_list.layoutManager = GridLayoutManager(this.context, 2)
+        filter_recycler_list.layoutManager = androidx.recyclerview.widget.GridLayoutManager(this.context, 2)
         fetchGames()
         fetchFilter()
     }
@@ -55,7 +55,7 @@ class GameLobbySlots: Fragment() {
 
                 val gson = GsonBuilder().create()
 
-                val gameModelResponse: List<GameModelResponse> = gson.fromJson(body, object : TypeToken<List<GameModelResponse>>() { }.type)
+                val gameModelResponse: ArrayList<GameModelResponse> = gson.fromJson(body, object : TypeToken<ArrayList<GameModelResponse>>() { }.type)
 
 
                 this@GameLobbySlots.activity!!.runOnUiThread {
@@ -86,7 +86,7 @@ class GameLobbySlots: Fragment() {
 
                 val filterMap = mutableMapOf<String, Array<String>>()
                 val gson = GsonBuilder().create()
-                val filterModel: List<FilterModel> = gson.fromJson(body, object :TypeToken<List<FilterModel>>() { }.type)
+                val filterModel: ArrayList<FilterModel> = gson.fromJson(body, object :TypeToken<ArrayList<FilterModel>>() { }.type)
                 this@GameLobbySlots.activity!!.runOnUiThread {
                     filter_recycler_list.adapter = FilterAdapter(filterModel)
                 }

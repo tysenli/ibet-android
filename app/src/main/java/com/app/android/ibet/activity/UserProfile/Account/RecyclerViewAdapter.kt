@@ -1,8 +1,8 @@
 package com.app.android.ibet.activity.UserProfile.Account
 
 import android.content.Context
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.frag_account_parent_list.view.*
 /**
  * @author Ankit Kumar on 14/09/2018
  */
-class RecyclerViewAdapter(val dummyParentDataItems: MutableList<ParentDataItem>) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
+class RecyclerViewAdapter(val dummyParentDataItems: MutableList<ParentDataItem>) : androidx.recyclerview.widget.RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): RecyclerViewAdapter.MyViewHolder {
@@ -37,7 +37,7 @@ class RecyclerViewAdapter(val dummyParentDataItems: MutableList<ParentDataItem>)
         holder.bind(dummyParentDataItem)
     }
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class MyViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         private var context: Context? = null
 

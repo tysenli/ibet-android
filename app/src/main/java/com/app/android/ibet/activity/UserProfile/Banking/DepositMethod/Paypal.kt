@@ -3,7 +3,7 @@ package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import kotlinx.android.synthetic.main.activity_paypal.*
