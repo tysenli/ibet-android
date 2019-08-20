@@ -107,6 +107,7 @@ class GameLobbyAll : Fragment() {
                 val gameModelResponse: ArrayList<GameModelResponse> = gson.fromJson(body, object : TypeToken<ArrayList<GameModelResponse>>() { }.type)
 
                 activity?.runOnUiThread{
+
                     game_recycler_list.adapter = GameLobbyAdapter(gameModelResponse)
 
                 }
