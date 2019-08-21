@@ -63,18 +63,18 @@ class GameLobbyAdapter(private var games: ArrayList<GameModelResponse>): Recycle
         var gameTitle: TextView = itemView.findViewById((R.id.game_title))
     }
 //    private fun clearFilter() {
-//        filtering = false
+//        //filtering = false
 //        games.clear()
 //    }
 
-//    fun updateGames(newGames : ArrayList<GameModelResponse>) {
-//        DiffUtil.calculateDiff(GameRowDiffCallback(newGames, games), false).dispatchUpdatesTo(this)
-//        clearFilter()
-//        games.addAll(newGames)
-//        notifyDataSetChanged()
-//
-//
-//    }
+    fun updateGames(newGames : ArrayList<GameModelResponse>) {
+        //DiffUtil.calculateDiff(GameRowDiffCallback(newGames, games), false).dispatchUpdatesTo(this)
+        games.clear()
+        games.addAll(newGames)
+        notifyDataSetChanged()
+
+
+    }
 
     class GameRowDiffCallback(private val newRows : List<GameModelResponse>, private val oldRows : List<GameModelResponse>) : DiffUtil.Callback() {
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

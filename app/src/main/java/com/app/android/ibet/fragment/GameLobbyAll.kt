@@ -25,6 +25,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
 import com.app.android.ibet.ViewModel.GameViewModel
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.adapter
 
@@ -40,7 +42,7 @@ import org.json.JSONObject
 
 
 class GameLobbyAll : Fragment() {
-
+    private var parentContext = context
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,8 +50,16 @@ class GameLobbyAll : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.game_lobby_fragment, container, false)
-        //val spinner = view.findViewById<Spinner>(R.id.filter_spinner)
-        //setupSpinner(spinner)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.game_recycler_list)
+        recyclerView.layoutManager = LinearLayoutManager(parentContext)
+        recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        fetchGames(recyclerView,"", "", "", "", "", "")
+        val filterView = view.findViewById<RecyclerView>(R.id.filter_recycler_list)
+        filterView.layoutManager = GridLayoutManager(parentContext, 2)
+        fetchFilter(filterView)
+//        val spinner = view.findViewById<Spinner>(R.id.game_spinner)
+//        setupSpinner(spinner, recyclerView)
+
         return view
 
     }
@@ -58,16 +68,21 @@ class GameLobbyAll : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        game_recycler_list.layoutManager = LinearLayoutManager(this.context)
-        game_recycler_list.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+//            game_recycler_list.layoutManager = LinearLayoutManager(this.context)
+//            game_recycler_list.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
-        filter_recycler_list.layoutManager = GridLayoutManager(this.context, 2)
-        fetchGames("", "", "", "", "", "")
 
-        fetchFilter()
+//            val game = view?.findViewById<RecyclerView>(R.id.game_recycler_list)
+//            game?.layoutManager = LinearLayoutManager(parentContext)
+//            game?.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+//            Log.e("game adapter", game?.adapter.toString())
+//            fetchGames(game,"", "", "", "", "", "")
+
+            //setupSpinner()
+
     }
 
-//    fun setupSpinner(spinner: Spinner) {
+//    fun setupSpinner(spinner: Spinner, gameRec: RecyclerView) {
 //        var filters = ArrayList<String>()
 //        val url = BuildConfig.GAME_FILTER
 //        val request = Request.Builder().url(url).build()
@@ -99,13 +114,15 @@ class GameLobbyAll : Fragment() {
 //
 //                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 //
-//                                val filter = if (position > 0) {
+//                                var filter = ""
+//                                if (position > 0) {
 //                                    filters[position - 1]
+//                                    fetchGames(gameRec, filter, "", "", "", "", "")
 //                                } else {
-//                                    filters[position]
+//                                    ""
 //                                }
 //
-//                                //fetchGames(filter, "", "", "", "", "")
+//
 //
 //
 //                            }
@@ -124,7 +141,9 @@ class GameLobbyAll : Fragment() {
 
 
 
-    fun fetchGames( filter: String, jackpot: String, provider: String, feature: String, theme: String, sort: String){
+    fun fetchGames(gameRecycler: RecyclerView?, filter: String, jackpot: String, provider: String, feature: String, theme: String, sort: String){
+
+
         val position = FragmentPagerItem.getPosition(arguments)
         Log.e("position", position.toString())
         var tabName = ""
@@ -138,7 +157,7 @@ class GameLobbyAll : Fragment() {
         }
 
         var url = BuildConfig.GAME_URL+ "live-casino" + BuildConfig.GAME_URL_CATEGORY + tabName
-        println(filter)
+//        println(filter)
 
         if (filter != "") {
             url = url + BuildConfig.GAME_URL_FILTER + filter
@@ -160,12 +179,12 @@ class GameLobbyAll : Fragment() {
         }
 
         val request = Request.Builder().url(url).build()
-        println(request)
+        Log.e("request", request.toString())
 
         val client = OkHttpClient()
         client.newCall(request).enqueue(object: okhttp3.Callback {
             override fun onResponse(call: Call?, response: Response?) {
-                if (response!!.isSuccessful()) {
+
                     val body = response?.body()?.string()
 
                     Log.e("Success", body)
@@ -175,17 +194,27 @@ class GameLobbyAll : Fragment() {
                     val gameModelResponse: ArrayList<GameModelResponse> =
                         gson.fromJson(body, object : TypeToken<ArrayList<GameModelResponse>>() {}.type)
 
+//                    this@GameLobbyAll.activity?.runOnUiThread {
 
-                    this@GameLobbyAll.activity?.runOnUiThread {
 
-                        game_recycler_list.adapter = GameLobbyAdapter(gameModelResponse)
+                        val adapter = GameLobbyAdapter(gameModelResponse)
+                        Log.e("adapter", gameRecycler?.adapter.toString())
+                        gameRecycler?.adapter = adapter
+//                        if (gameRecycler?.adapter == null) {
+//
+//                            gameRecycler?.adapter = adapter
+//                            adapter.notifyDataSetChanged()
+//
+//
+//                        } else {
+//                            println("hahaha")
+//                            (gameRecycler.adapter as GameLobbyAdapter).updateGames(gameModelResponse)
+//
+//                        }
 
-                    }
-//                    gameModelResponse.clear()
-//                    gameModelResponse.addAll(gson.fromJson(body, object : TypeToken<ArrayList<GameModelResponse>>() {}.type))
-//                    (game_recycler_list.adapter as GameLobbyAdapter).notifyDataSetChanged()
 
-                }
+
+
 
 
 
@@ -201,9 +230,10 @@ class GameLobbyAll : Fragment() {
                 Log.e("TAG", "onFailure: "+e.toString() );
             }
         })
+
     }
 
-    fun fetchFilter(){
+    fun fetchFilter(filterRecycler: RecyclerView){
 
         val url = BuildConfig.GAME_FILTER
         val request = Request.Builder().url(url).build()
@@ -216,13 +246,13 @@ class GameLobbyAll : Fragment() {
             override fun onResponse(call: Call, response: Response) {
 
                 val body = response?.body()?.string()
-                Log.e("Success", body)
+//                Log.e("Success", body)
 
                 val gson = GsonBuilder().create()
                 val filterModel: ArrayList<FilterModel> = gson.fromJson(body, object :TypeToken<ArrayList<FilterModel>>() { }.type)
                 this@GameLobbyAll.activity?.runOnUiThread {
 
-                    filter_recycler_list.adapter = FilterAdapter(filterModel)
+                    filterRecycler.adapter = FilterAdapter(filterModel)
                 }
             }
 

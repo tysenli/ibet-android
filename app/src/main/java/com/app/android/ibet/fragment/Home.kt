@@ -30,7 +30,7 @@ class Home : Fragment() {
         if (!this.initialized) {
             val fm = fragmentManager
             val ft = fm?.beginTransaction()
-            ft?.add(R.id.list_holder, GameLobbyAll(), "NEW_FRAG")
+            ft?.add(R.id.list_holder, HomeGames(), "NEW_FRAG")
             ft?.commit()
             //search
             /*

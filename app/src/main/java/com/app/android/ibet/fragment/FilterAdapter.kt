@@ -39,17 +39,14 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                println("HAHAHAHA")
-                val filter = if(position > 0) {
-                    element.data[position - 1]
-                }else {
-                    element.data[position]
+
+                val game = view?.findViewById<RecyclerView>(R.id.game_recycler_list)
+
+                var filter = ""
+                if(position > 0) {
+                    filter = element.data[position - 1]
+                    fragment.fetchGames(game, filter, "", "", "", "", "")
                 }
-                println(filter)
-
-                fragment.fetchGames(filter, "","","", "", "")
-
-
 
             }
         }
@@ -59,10 +56,11 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
 
         return elements.size
     }
-    inner class FilterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class FilterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         //        var eleName: TextView = itemView.findViewById(R.id.game_label)
         var spinner: Spinner = itemView.findViewById((R.id.game_spinner))
+
 
     }
 
