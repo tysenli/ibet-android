@@ -10,6 +10,7 @@ import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.frag_account.*
+import org.json.JSONObject
 
 class Account : Fragment() {
     private var parentContext = context
@@ -22,6 +23,13 @@ class Account : Fragment() {
         super.onStart()
         var userData = Api().get(BuildConfig.USER)
         //println(userData)
+        acc_first_name.text = JSONObject(userData).getString("first_name")
+        acc_last_name.text = JSONObject(userData).getString("last_name")
+        acc_username.text = JSONObject(userData).getString("username")
+        acc_email.text = JSONObject(userData).getString("email")
+        acc_address.text= JSONObject(userData).getString("street_address_1") + ", " +
+                JSONObject(userData).getString("city") + ", " + JSONObject(userData).getString("country")
+        acc_phone.text = JSONObject(userData).getString("phone")
 
     }
 
