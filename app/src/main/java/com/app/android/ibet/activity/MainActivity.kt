@@ -270,6 +270,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             }
             R.id.logged -> {
                 info = "deposit"
+
                 startActivity(Intent(this, MyAccount::class.java))
                 overridePendingTransition(0, 0)
                 return true

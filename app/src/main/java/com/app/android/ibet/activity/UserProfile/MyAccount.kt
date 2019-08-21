@@ -15,6 +15,7 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.Login.Login.Companion.token
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.UserProfile.Account.Account
+import com.app.android.ibet.activity.UserProfile.Account.EditAcc
 import com.app.android.ibet.activity.UserProfile.Analysis.*
 import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.activity.UserProfile.Banking.BankingDepo
@@ -96,6 +97,8 @@ class MyAccount : AppCompatActivity() {
             "slots"      -> pages[1] = FragmentPagerItem.of("Analysis", SlotsAly().javaClass)
             "casino"     -> pages[1] = FragmentPagerItem.of("Analysis", CasinoAly().javaClass)
 
+            "acc_edit"   -> pages[2] = FragmentPagerItem.of("Account", EditAcc().javaClass)
+
             "lock_account"-> pages[3] = FragmentPagerItem.of("Responsible Game", Lock().javaClass)
 
         }
@@ -114,6 +117,8 @@ class MyAccount : AppCompatActivity() {
             "depo&with"  -> account_viewpager.setCurrentItem(1, true)
             "slots"      -> account_viewpager.setCurrentItem(1, true)
             "casino"     -> account_viewpager.setCurrentItem(1, true)
+
+            "acc_edit"   -> account_viewpager.setCurrentItem(2, true)
 
             "lock_account"-> account_viewpager.setCurrentItem(3, true)
 

@@ -207,7 +207,7 @@
                           android:layout_height="wrap_content"
                           android:orientation="horizontal">
                 <Button
-                        android:text="Edit Profile"
+                        android:text="EditAcc Profile"
                         android:layout_width="180dp"
                         android:textAllCaps="false"
                         android:textSize="15.8sp"

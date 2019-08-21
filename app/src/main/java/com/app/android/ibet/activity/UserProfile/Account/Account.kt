@@ -1,5 +1,6 @@
 package com.app.android.ibet.activity.UserProfile.Account
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.frag_account.*
 import org.json.JSONObject
@@ -30,6 +33,11 @@ class Account : Fragment() {
         acc_address.text= JSONObject(userData).getString("street_address_1") + ", " +
                 JSONObject(userData).getString("city") + ", " + JSONObject(userData).getString("country")
         acc_phone.text = JSONObject(userData).getString("phone")
+        acc_edit.setOnClickListener {
+            info = "acc_edit"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
 
     }
 
