@@ -138,26 +138,26 @@ class GameLobbyAll : Fragment() {
         }
 
         var url = BuildConfig.GAME_URL+ "live-casino" + BuildConfig.GAME_URL_CATEGORY + tabName
-//        println(filter)
-//
-//        if (filter != "") {
-//            url = url + BuildConfig.GAME_URL_FILTER + filter
-//        }
-//        if(jackpot != ""){
-//            url = url + BuildConfig.GAME_URL_JACKPOT + jackpot
-//        }
-//        if(provider != ""){
-//            url = url + BuildConfig.GAME_URL_PROVIDER + provider
-//        }
-//        if(feature != ""){
-//            url = url + BuildConfig.GAME_URL_FEATURE + feature
-//        }
-//        if(theme != ""){
-//            url = url + BuildConfig.GAME_URL_THEME + theme
-//        }
-//        if(sort != ""){
-//            url = url + BuildConfig.GAME_URL_SORT + sort
-//        }
+        println(filter)
+
+        if (filter != "") {
+            url = url + BuildConfig.GAME_URL_FILTER + filter
+        }
+        if(jackpot != ""){
+            url = url + BuildConfig.GAME_URL_JACKPOT + jackpot
+        }
+        if(provider != ""){
+            url = url + BuildConfig.GAME_URL_PROVIDER + provider
+        }
+        if(feature != ""){
+            url = url + BuildConfig.GAME_URL_FEATURE + feature
+        }
+        if(theme != ""){
+            url = url + BuildConfig.GAME_URL_THEME + theme
+        }
+        if(sort != ""){
+            url = url + BuildConfig.GAME_URL_SORT + sort
+        }
 
         val request = Request.Builder().url(url).build()
         println(request)
