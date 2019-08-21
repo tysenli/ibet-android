@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.app.android.ibet.R
 import com.app.android.ibet.model.FilterModel
+import kotlinx.android.synthetic.main.game_lobby_fragment.*
 
 class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
     val fragment = GameLobbyAll()
@@ -25,14 +26,12 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
         val fragment = GameLobbyAll()
         val element = elements[position]
 
-//        p0.eleName.text = element.name
         var ele = ArrayList<String>()
 
         for(i in element.data){
             ele.add(i)
         }
         ele.add(0, element.name)
-        println(ele)
 
         var arrayAdapter = ArrayAdapter(p0.spinner.context, android.R.layout.simple_spinner_dropdown_item, ele)
         p0.spinner.adapter = arrayAdapter
@@ -40,14 +39,14 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
+                println("HAHAHAHA")
                 val filter = if(position > 0) {
                     element.data[position - 1]
-                }else{
+                }else {
                     element.data[position]
                 }
-
                 println(filter)
+
                 fragment.fetchGames(filter, "","","", "", "")
 
 

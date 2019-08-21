@@ -21,30 +21,30 @@ android {
 
         debug {
 
-            buildConfigField 'String','SIGNUP_URL',"\"$local/users/api/signup/\""
-            buildConfigField 'String','ONE_CLICK_SIGNUP_URL',"\"$local/users/api/oneclicksignup/\""
-            buildConfigField 'String','GENERATE_CODE',"\"$local/users/api/generateactivationcode/\""
-            buildConfigField 'String','VERI_CODE',"\"$local/users/api/verifyactivationcode/\""
-            buildConfigField 'String','LOGIN', "\"$local/users/api/login/\""
-            buildConfigField 'String','FORGET_CODE',"\"$local/users/api/generatepasswordcode/\""
-            buildConfigField 'String','FORGET_SEND_EMAIL',"\"$local/users/api/sendresetpasswordcode/\""
-            buildConfigField 'String','VERI_PASS_CODE',"\"$local/users/api/verifyresetpasswordcode/\""
-            buildConfigField 'String','CHANGE_PASS',"\"$local/users/api/validateandresetpassword/\""
-            buildConfigField 'String','USER',"\"$local/users/api/user/\""
-            buildConfigField 'String','PAYPAL',"\"$local/accounting/api/paypal/create_payment\""
-            buildConfigField 'String','PAYPAL_ORDER',"\"$local/accounting/api/paypal/get_order\""
-            buildConfigField 'String','WECHAT',"\"$local/accounting/api/qaicash/submit_deposit\""
-            buildConfigField 'String','WECHAT_ORDER',"\"$local/accounting/api/qaicash/deposit_transaction\""
-            buildConfigField 'String','BALANCE',"\"$local/users/api/addorwithdrawbalance/\""
-            buildConfigField 'String','VERI_SIGNUP',"\"$local/users/api/sendemail/?case=signup\""
-            buildConfigField 'String','WITHDRAW',"\"$local/accounting/api/qaicash/submit_payout\""
-            buildConfigField 'String','WITHDRAW_ORDER',"\"$local/accounting/api/qaicash/payout_transaction\""
-            buildConfigField 'String','LINE',"\"$local/accounting/api/linepay/reserve_payment\""
-            buildConfigField 'String','ASIAPAY',"\"$local/accounting/api/asiapay/deposit\""
-            buildConfigField 'String','ASTROPAY',"\"$local/accounting/api/astropay/capture_transaction\""
-            buildConfigField 'String','TRANSACTION_RECODE',"\"$local/accounting/api/transactions/get_transactions?userid=\""
-            buildConfigField 'String','Fgate',"\"$local/accounting/api/fgate/chargeCard\""
-            buildConfigField 'String','Help2pay',"\"$local/accounting/api/help2pay/deposit\""
+            buildConfigField 'String', 'SIGNUP_URL', "\"$local/users/api/signup/\""
+            buildConfigField 'String', 'ONE_CLICK_SIGNUP_URL', "\"$local/users/api/oneclicksignup/\""
+            buildConfigField 'String', 'GENERATE_CODE', "\"$local/users/api/generateactivationcode/\""
+            buildConfigField 'String', 'VERI_CODE', "\"$local/users/api/verifyactivationcode/\""
+            buildConfigField 'String', 'LOGIN', "\"$local/users/api/login/\""
+            buildConfigField 'String', 'FORGET_CODE', "\"$local/users/api/generatepasswordcode/\""
+            buildConfigField 'String', 'FORGET_SEND_EMAIL', "\"$local/users/api/sendresetpasswordcode/\""
+            buildConfigField 'String', 'VERI_PASS_CODE', "\"$local/users/api/verifyresetpasswordcode/\""
+            buildConfigField 'String', 'CHANGE_PASS', "\"$local/users/api/validateandresetpassword/\""
+            buildConfigField 'String', 'USER', "\"$local/users/api/user/\""
+            buildConfigField 'String', 'PAYPAL', "\"$local/accounting/api/paypal/create_payment\""
+            buildConfigField 'String', 'PAYPAL_ORDER', "\"$local/accounting/api/paypal/get_order\""
+            buildConfigField 'String', 'WECHAT', "\"$local/accounting/api/qaicash/submit_deposit\""
+            buildConfigField 'String', 'WECHAT_ORDER', "\"$local/accounting/api/qaicash/deposit_transaction\""
+            buildConfigField 'String', 'BALANCE', "\"$local/users/api/addorwithdrawbalance/\""
+            buildConfigField 'String', 'VERI_SIGNUP', "\"$local/users/api/sendemail/?case=signup\""
+            buildConfigField 'String', 'WITHDRAW', "\"$local/accounting/api/qaicash/submit_payout\""
+            buildConfigField 'String', 'WITHDRAW_ORDER', "\"$local/accounting/api/qaicash/payout_transaction\""
+            buildConfigField 'String', 'LINE', "\"$local/accounting/api/linepay/reserve_payment\""
+            buildConfigField 'String', 'ASIAPAY', "\"$local/accounting/api/asiapay/deposit\""
+            buildConfigField 'String', 'ASTROPAY', "\"$local/accounting/api/astropay/capture_transaction\""
+            buildConfigField 'String', 'TRANSACTION_RECODE', "\"$local/accounting/api/transactions/get_transactions?userid=\""
+            buildConfigField 'String', 'Fgate', "\"$local/accounting/api/fgate/chargeCard\""
+            buildConfigField 'String', 'Help2pay', "\"$local/accounting/api/help2pay/deposit\""
             buildConfigField 'String', 'GAME_URL', "\"$local/games/api/games/?type=\""
             buildConfigField 'String', 'GAME_URL_CATEGORY', "\"&category=\""
             buildConfigField 'String', 'GAME_URL_FILTER', "\"&filtercategory=\""
@@ -54,7 +54,6 @@ android {
             buildConfigField 'String', 'GAME_URL_THEME', "\"&theme=\""
             buildConfigField 'String', 'GAME_URL_SORT', "\"&sort=\""
             buildConfigField 'String', 'GAME_FILTER', "\"$local/games/api/filter/\""
-
 
 
         }
@@ -90,6 +89,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
     testImplementation 'junit:junit:4.12'
     implementation 'com.github.yesterselga:password-strength-checker-android:v1.0'
     androidTestImplementation 'androidx.test:runner:1.1.0'
@@ -113,7 +113,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.google.firebase:firebase-core:17.0.0'
-
 
 
 }

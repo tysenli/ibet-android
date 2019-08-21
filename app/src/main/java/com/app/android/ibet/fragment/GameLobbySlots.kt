@@ -34,9 +34,9 @@ class GameLobbySlots: Fragment() {
         super.onStart()
         game_recycler_list.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
         //game_recycler_list.adapter = GameLobbyAdapter(GameList)
-        filter_recycler_list.layoutManager = androidx.recyclerview.widget.GridLayoutManager(this.context, 2)
+        //filter_recycler_list.layoutManager = androidx.recyclerview.widget.GridLayoutManager(this.context, 2)
         fetchGames()
-        fetchFilter()
+        //fetchFilter()
     }
 
 
@@ -69,29 +69,29 @@ class GameLobbySlots: Fragment() {
             }
         })
     }
-    private fun fetchFilter(){
-
-        val url = BuildConfig.GAME_FILTER
-        val request = Request.Builder().url(url).build()
-        val client = OkHttpClient()
-        client.newCall(request).enqueue((object: okhttp3.Callback{
-            override fun onFailure(call: Call, e: IOException) {
-                Log.e("TAG", "onFailure: "+e.toString() );
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-
-                val body = response?.body()?.string()
-                Log.e("Success", body)
-
-                val filterMap = mutableMapOf<String, Array<String>>()
-                val gson = GsonBuilder().create()
-                val filterModel: ArrayList<FilterModel> = gson.fromJson(body, object :TypeToken<ArrayList<FilterModel>>() { }.type)
-                this@GameLobbySlots.activity!!.runOnUiThread {
-                    filter_recycler_list.adapter = FilterAdapter(filterModel)
-                }
-            }
-
-        }))
-    }
+//    private fun fetchFilter(){
+//
+//        val url = BuildConfig.GAME_FILTER
+//        val request = Request.Builder().url(url).build()
+//        val client = OkHttpClient()
+//        client.newCall(request).enqueue((object: okhttp3.Callback{
+//            override fun onFailure(call: Call, e: IOException) {
+//                Log.e("TAG", "onFailure: "+e.toString() );
+//            }
+//
+//            override fun onResponse(call: Call, response: Response) {
+//
+//                val body = response?.body()?.string()
+//                Log.e("Success", body)
+//
+//                val filterMap = mutableMapOf<String, Array<String>>()
+//                val gson = GsonBuilder().create()
+//                val filterModel: ArrayList<FilterModel> = gson.fromJson(body, object :TypeToken<ArrayList<FilterModel>>() { }.type)
+//                this@GameLobbySlots.activity!!.runOnUiThread {
+//                    filter_recycler_list.adapter = FilterAdapter(filterModel)
+//                }
+//            }
+//
+//        }))
+//    }
 }

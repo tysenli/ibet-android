@@ -392,5 +392,6 @@ class CustomDropDownAdapter(val context: Context,var image : Array<Int>, var lis
             this.img = row?.findViewById(R.id.language_img) as ImageView
         }
     }
+
 }
 

@@ -21,10 +21,10 @@ import android.content.Context as ContentContext
 
 class GameLobbyAdapter(private var games: ArrayList<GameModelResponse>): RecyclerView.Adapter<GameLobbyAdapter.GameViewHolder>() {
 
-    private var filterListResult = ArrayList<GameModelResponse>()
-
-
-    private var filtering = false
+//    private var filterListResult = ArrayList<GameModelResponse>()
+//
+//
+//    private var filtering = false
 
 
 
@@ -35,12 +35,12 @@ class GameLobbyAdapter(private var games: ArrayList<GameModelResponse>): Recycle
 
 
     override fun onBindViewHolder(p0: GameViewHolder, position: Int) {
-        val game = if(filtering){
-            filterListResult[position]
-        }else{
-            games[position]
-        }
-
+//        val game = if(filtering){
+//            filterListResult[position]
+//        }else{
+//            games[position]
+//        }
+        val game = games[position]
         val gameImg = game.fields.imageURL
 
         Picasso.with(p0.itemView.context).load(gameImg).into(p0.gameImg)
@@ -52,9 +52,9 @@ class GameLobbyAdapter(private var games: ArrayList<GameModelResponse>): Recycle
 
     }
     override fun getItemCount(): Int {
-        if(filtering){
-            return filterListResult.size
-        }
+//        if(filtering){
+//            return filterListResult.size
+//        }
         return games.size
     }
     inner class GameViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -62,19 +62,19 @@ class GameLobbyAdapter(private var games: ArrayList<GameModelResponse>): Recycle
         var gameImg: ImageView = itemView.findViewById(R.id.game_img)
         var gameTitle: TextView = itemView.findViewById((R.id.game_title))
     }
-    private fun clearFilter() {
-        filtering = false
-        games.clear()
-    }
+//    private fun clearFilter() {
+//        filtering = false
+//        games.clear()
+//    }
 
-    fun updateGames(newGames : ArrayList<GameModelResponse>) {
-        DiffUtil.calculateDiff(GameRowDiffCallback(newGames, games), false).dispatchUpdatesTo(this)
-        clearFilter()
-        games.addAll(newGames)
-        notifyDataSetChanged()
-
-
-    }
+//    fun updateGames(newGames : ArrayList<GameModelResponse>) {
+//        DiffUtil.calculateDiff(GameRowDiffCallback(newGames, games), false).dispatchUpdatesTo(this)
+//        clearFilter()
+//        games.addAll(newGames)
+//        notifyDataSetChanged()
+//
+//
+//    }
 
     class GameRowDiffCallback(private val newRows : List<GameModelResponse>, private val oldRows : List<GameModelResponse>) : DiffUtil.Callback() {
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

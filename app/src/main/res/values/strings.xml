@@ -80,6 +80,7 @@
     <string name="user">User</string>
     <string name="language">Language</string>
     <string name="title">Title</string>
+    <string name="filter" translatable="false">Filter</string>
     <string name="knowledge_center">Knowledge Center</string>
     <string name="about_ibet">About Ibet</string>
     <string name="responsible_gaming">Responsible Gaming</string>
@@ -113,7 +114,9 @@
     </string>
     <string name="check3">Getting exclusive offers and promotions from ibet</string>
 
-    <string name="i_m_done"><u>I\'M DONE</u></string>
+    <string name="i_m_done">
+        <u>I\'M DONE</u>
+    </string>
     <string name="about_us">About Us</string>
     <string name="contact_us">Contact Us</string>
     <string name="help_and_faq">Help and FAQ</string>
@@ -137,12 +140,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="game_image">game image</string>
     <string name="api_error">Problems getting Photos</string>
-    <string name="game_category">Game Category</string>
-    <string name="jackpot">Jackpot</string>
-    <string name="provider">Provider</string>
-    <string name="feature">Feature</string>
-    <string name="theme">Theme</string>
-    <string name="sort_by">Sort by</string>
+
 
 
 </resources>
