@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.activity.Login.Login.Companion.token
+import com.app.android.ibet.activity.MainActivity
+import com.app.android.ibet.activity.MainActivity.Companion.isLogin
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
 import com.app.android.ibet.api.Api
@@ -31,11 +34,18 @@ class Account : Fragment() {
         acc_username.text = JSONObject(userData).getString("username")
         acc_email.text = JSONObject(userData).getString("email")
         acc_address.text= JSONObject(userData).getString("street_address_1") + ", " +
-                JSONObject(userData).getString("city") + ", " + JSONObject(userData).getString("country")
+                JSONObject(userData).getString("city") + ", " + JSONObject(userData).getString("country")+
+                "," + JSONObject(userData).getString("zipcode")
         acc_phone.text = JSONObject(userData).getString("phone")
         acc_edit.setOnClickListener {
             info = "acc_edit"
             startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+        logout.setOnClickListener {
+            isLogin = false
+            token = ""
+            startActivity(Intent(activity, MainActivity::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
 

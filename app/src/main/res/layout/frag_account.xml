@@ -12,7 +12,7 @@
             android:letterSpacing="0.07"
             android:lineSpacingExtra="10sp"
             android:text="FirstName"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="14dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="10dp"
             android:layout_marginStart="29dp" app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/acc_first_name"/>
     <TextView
@@ -34,7 +34,7 @@
             android:letterSpacing="0.07"
             android:lineSpacingExtra="10sp"
             android:text="LastName"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="14dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="10dp"
             android:id="@+id/acc_last_name" app:layout_constraintStart_toEndOf="@+id/acc_first_name"
             android:layout_marginStart="8dp"/>
     <Button android:layout_width="100dp"
@@ -55,7 +55,7 @@
                android:layout_height="wrap_content"
                android:src="@drawable/profile"
                app:layout_constraintTop_toBottomOf="@+id/acc_id" app:layout_constraintStart_toStartOf="parent"
-               android:layout_marginStart="28dp" android:layout_marginTop="30dp" android:id="@+id/imageView10"/>
+               android:layout_marginStart="28dp" android:layout_marginTop="15dp" android:id="@+id/imageView10"/>
     <ImageView android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/email"
@@ -64,15 +64,16 @@
     <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
                android:src="@drawable/lock"
                app:layout_constraintTop_toBottomOf="@+id/imageView11" app:layout_constraintStart_toStartOf="parent"
-               android:layout_marginStart="28dp" android:layout_marginTop="35dp" android:id="@+id/imageView12"/>
+               android:layout_marginStart="28dp" android:layout_marginTop="30dp" android:id="@+id/imageView12"/>
     <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
                android:src="@drawable/marker"
                app:layout_constraintTop_toBottomOf="@+id/imageView12" app:layout_constraintStart_toStartOf="parent"
-               android:layout_marginTop="35dp" android:layout_marginStart="28dp" android:id="@+id/imageView13"/>
+               android:layout_marginTop="20dp" android:layout_marginStart="28dp" android:id="@+id/imageView13"/>
     <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
                android:src="@drawable/phone_call"
-               app:layout_constraintTop_toBottomOf="@+id/imageView13" app:layout_constraintStart_toStartOf="parent"
-               android:layout_marginStart="28dp" android:layout_marginTop="35dp" android:id="@+id/imageView14"/>
+               app:layout_constraintStart_toStartOf="parent"
+               android:layout_marginStart="28dp" android:id="@+id/imageView14"
+               app:layout_constraintTop_toBottomOf="@+id/imageView13" android:layout_marginTop="44dp"/>
     <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
                android:src="@drawable/clock"
                app:layout_constraintTop_toBottomOf="@+id/imageView14" app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +87,7 @@
             android:lineSpacingExtra="10sp"
             android:text="Username"
             app:layout_constraintTop_toBottomOf="@+id/acc_first_name"
-            android:layout_marginTop="56dp" app:layout_constraintStart_toEndOf="@+id/imageView10"
+            android:layout_marginTop="40dp" app:layout_constraintStart_toEndOf="@+id/imageView10"
             android:layout_marginStart="36dp" android:id="@+id/textView59"/>
     <TextView
             android:layout_width="wrap_content"
@@ -118,7 +119,7 @@
             android:letterSpacing="0.03"
             android:lineSpacingExtra="10sp"
             android:text="Address"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/textView61" app:layout_constraintStart_toEndOf="@+id/imageView13"
             android:layout_marginStart="40dp" android:id="@+id/textView62"/>
     <TextView
@@ -129,9 +130,9 @@
             android:letterSpacing="0.03"
             android:lineSpacingExtra="10sp"
             android:text="Phone"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="56dp"
             app:layout_constraintTop_toBottomOf="@+id/textView62" app:layout_constraintStart_toEndOf="@+id/imageView14"
-            android:layout_marginStart="36dp" android:id="@+id/textView63"/>
+            android:layout_marginStart="32dp" android:id="@+id/textView63"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -142,7 +143,7 @@
             android:text="Member Since"
             app:layout_constraintStart_toEndOf="@+id/imageView15"
             android:layout_marginStart="32dp" android:id="@+id/textView64"
-            app:layout_constraintTop_toBottomOf="@+id/acc_phone" android:layout_marginTop="16dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/acc_phone" android:layout_marginTop="8dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -166,8 +167,8 @@
             app:layout_constraintTop_toBottomOf="@+id/textView60" android:layout_marginStart="84dp"
             app:layout_constraintStart_toStartOf="parent"/>
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="275dp"
+            android:layout_height="53dp"
             android:id="@+id/acc_address"
             android:textSize="18sp"
             android:textColor="#000000"
@@ -176,7 +177,7 @@
             tools:text="221B Baker Street, London, NW1 6XE UK"
             app:layout_constraintTop_toBottomOf="@+id/textView62" android:layout_marginStart="84dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.0"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -188,14 +189,14 @@
             android:text="+44 132829***89"
             app:layout_constraintTop_toBottomOf="@+id/textView63" android:layout_marginStart="84dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="4dp"/>
-    <LinearLayout android:layout_width="145dp" android:layout_height="95dp"
+    <LinearLayout android:layout_width="130dp" android:layout_height="80dp"
                   android:background="@drawable/shadow"
                   android:gravity="center_horizontal"
                   android:orientation="vertical"
                   android:visibility="visible"
                   android:id="@+id/acc_support"
-                  android:layout_marginStart="28dp"
-                  app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="30dp"
+                  android:layout_marginStart="64dp"
+                  app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="15dp"
                   app:layout_constraintTop_toBottomOf="@+id/textView64">
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -208,17 +209,17 @@
 
     </LinearLayout>
 
-    <LinearLayout android:layout_width="145dp" android:layout_height="95dp"
+    <LinearLayout android:layout_width="130dp" android:layout_height="80dp"
                   android:background="@drawable/shadow"
                   android:gravity="center_horizontal"
                   android:orientation="vertical"
                   android:visibility="visible"
                   android:id="@+id/acc_inbox"
-                  android:layout_marginTop="30dp"
+                  android:layout_marginTop="15dp"
                   app:layout_constraintTop_toBottomOf="@+id/textView64"
                   app:layout_constraintStart_toEndOf="@+id/acc_support" android:layout_marginStart="8dp"
                   android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintHorizontal_bias="0.35">
+                  app:layout_constraintHorizontal_bias="0.098">
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:drawableTop="@drawable/inbox"
@@ -229,6 +230,14 @@
         />
 
     </LinearLayout>
+    <Button android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:id="@+id/logout"
+            android:background="@drawable/logout"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/acc_support" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.496"/>
 
 
 

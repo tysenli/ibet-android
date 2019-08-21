@@ -97,6 +97,7 @@ class MyAccount : AppCompatActivity() {
             "slots"      -> pages[1] = FragmentPagerItem.of("Analysis", SlotsAly().javaClass)
             "casino"     -> pages[1] = FragmentPagerItem.of("Analysis", CasinoAly().javaClass)
 
+            "acc"        -> pages[2] = FragmentPagerItem.of("Account", Account().javaClass)
             "acc_edit"   -> pages[2] = FragmentPagerItem.of("Account", EditAcc().javaClass)
 
             "lock_account"-> pages[3] = FragmentPagerItem.of("Responsible Game", Lock().javaClass)
@@ -118,6 +119,7 @@ class MyAccount : AppCompatActivity() {
             "slots"      -> account_viewpager.setCurrentItem(1, true)
             "casino"     -> account_viewpager.setCurrentItem(1, true)
 
+            "acc"        -> account_viewpager.setCurrentItem(2, true)
             "acc_edit"   -> account_viewpager.setCurrentItem(2, true)
 
             "lock_account"-> account_viewpager.setCurrentItem(3, true)
