@@ -154,8 +154,8 @@ class EditAcc : Fragment() {
                 .build()
 
             val response = client.newCall(request).execute()
-            println(response.code())
-            println("this is:" + response.body()!!.string())
+           // println(response.code())
+           // println("this is:" + response.body()!!.string())
 
             //change pass
             if (acc_edit_curpass.text.isNotEmpty()) {
