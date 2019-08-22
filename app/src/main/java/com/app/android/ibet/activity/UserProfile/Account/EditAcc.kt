@@ -43,16 +43,32 @@ class EditAcc : Fragment() {
         new_pass_error.text = ""
         match_error.text = ""
         var userData = Api().get(BuildConfig.USER)
-        println(userData)
+        //println(userData)
         acc_first_name.text = JSONObject(userData).getString("first_name")
         acc_last_name.text = JSONObject(userData).getString("last_name")
         acc_edit_username.hint = JSONObject(userData).getString("username")
         acc_edit_email.text = JSONObject(userData).getString("email")
         acc_edit_phone.hint = JSONObject(userData).getString("phone")
-        acc_edit_country.hint = JSONObject(userData).getString("country")
-        acc_edit_street.hint = JSONObject(userData).getString("street_address_1")
-        acc_edit_city.hint = JSONObject(userData).getString("city")
-        acc_edit_code.hint = JSONObject(userData).getString("zipcode")
+        if (JSONObject(userData).getString("country").isEmpty()) {
+            acc_edit_country.hint = "Country"
+        } else {
+            acc_edit_country.hint = JSONObject(userData).getString("country")
+        }
+        if (JSONObject(userData).getString("street_address_1").isEmpty()) {
+            acc_edit_street.hint = "Street "
+        } else {
+            acc_edit_street.hint = JSONObject(userData).getString("street_address_1")
+        }
+        if (JSONObject(userData).getString("city").isEmpty()) {
+            acc_edit_city.hint = "City"
+        } else {
+            acc_edit_city.hint = JSONObject(userData).getString("city")
+        }
+        if (JSONObject(userData).getString("city").isEmpty()) {
+            acc_edit_code.hint = "Zipcode"
+        } else {
+            acc_edit_code.hint = JSONObject(userData).getString("zipcode")
+        }
 
         btn_cancel.setOnClickListener {
             info = "acc"
@@ -73,11 +89,23 @@ class EditAcc : Fragment() {
             } else {
                 editJson.put("phone"        , acc_edit_phone.text.toString())
             }
-            editJson.put("first_name"       , JSONObject(userData).getString("first_name"))
-            editJson.put("last_name"        , JSONObject(userData).getString("last_name"))
-            editJson.put("date_of_birth"    , JSONObject(userData).getString("date_of_birth"))
+            if (JSONObject(userData).getString("first_name").isEmpty()) {
+                editJson.put("first_name","first name")
+            } else {
+                editJson.put("first_name", JSONObject(userData).getString("first_name"))
+            }
+            if (JSONObject(userData).getString("last_name").isEmpty()) {
+                editJson.put("last_name","last name")
+            } else {
+                editJson.put("last_name", JSONObject(userData).getString("last_name"))
+            }
+            if (JSONObject(userData).getString("date_of_birth").isEmpty()) {
+                editJson.put("date_of_birth", "12/12/1996")
+            } else {
+                editJson.put("date_of_birth", JSONObject(userData).getString("date_of_birth"))
+            }
             if (acc_edit_country.text.isEmpty()) {
-                editJson.put("country", JSONObject(userData).getString("country"))
+                editJson.put("country", "Country")
             } else {
                 editJson.put("country", acc_edit_country.text.toString())
             }
@@ -87,13 +115,13 @@ class EditAcc : Fragment() {
                 editJson.put("street_address_1", acc_edit_street.text.toString())
             }
             if (acc_edit_city.text.isEmpty()) {
-                editJson.put("city", JSONObject(userData).getString("city"))
+                editJson.put("city", "City")
 
             } else {
                 editJson.put("city", acc_edit_city.text.toString())
             }
             if (acc_edit_code.text.isEmpty()) {
-                editJson.put("zipcode", JSONObject(userData).getString("zipcode"))
+                editJson.put("zipcode", "Zipcode")
             } else {
                 editJson.put("zipcode", acc_edit_code.text.toString())
             }
@@ -109,7 +137,7 @@ class EditAcc : Fragment() {
                 .build()
 
             val response = client.newCall(request).execute()
-
+            println(response.code())
             println("this is:" + response.body()!!.string())
 
             //change pass

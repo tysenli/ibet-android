@@ -53,9 +53,9 @@ class Account : Fragment() {
         acc_last_name.text = JSONObject(userData).getString("last_name")
         acc_username.text = JSONObject(userData).getString("username")
         acc_email.text = JSONObject(userData).getString("email")
-        acc_address.text= JSONObject(userData).getString("street_address_1") + ", " +
-                JSONObject(userData).getString("city") + ", " + JSONObject(userData).getString("country")+
-                "," + JSONObject(userData).getString("zipcode")
+        acc_address.text= JSONObject(userData).getString("street_address_1") + " " +
+                JSONObject(userData).getString("city") + " " + JSONObject(userData).getString("country")+
+                " " + JSONObject(userData).getString("zipcode")
         acc_phone.text = JSONObject(userData).getString("phone")
         acc_edit.setOnClickListener {
             info = "acc_edit"

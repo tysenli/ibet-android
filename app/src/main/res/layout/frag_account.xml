@@ -48,31 +48,33 @@
                         app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="14dp"
                         android:id="@+id/acc_last_name" app:layout_constraintStart_toEndOf="@+id/acc_first_name"
                         />
-                <Button android:layout_width="100dp"
-                        android:layout_height="32dp"
-                        android:background="#b3000000"
-                        android:textSize="16sp"
-                        android:textColor="#ffffff"
-                        android:letterSpacing="0.06"
-                        android:textAllCaps="false"
-                        android:text="Edit"
-                        android:id="@+id/acc_edit"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="140dp"
-                        app:layout_constraintHorizontal_bias="0.887"/>
-            </LinearLayout>
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="#000000"
-                    android:letterSpacing="0.07"
-                    android:lineSpacingExtra="10sp"
-                    android:text="ID:"
-                    android:id="@+id/acc_id"
-                    app:layout_constraintTop_toBottomOf="@+id/acc_first_name" android:layout_marginStart="28dp"
-                    app:layout_constraintStart_toStartOf="parent"/>
+            </LinearLayout>
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="10sp"
+            android:text="ID:"
+            android:id="@+id/acc_id"
+            app:layout_constraintTop_toBottomOf="@+id/acc_first_name" android:layout_marginStart="28dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <Button android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:background="#b3000000"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:letterSpacing="0.06"
+            android:textAllCaps="false"
+            android:text="Edit"
+            android:id="@+id/acc_edit"
+            android:layout_marginStart="200dp"
+            app:layout_constraintHorizontal_bias="0.887"/>
+</LinearLayout>
+
             <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
                 <ImageView android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
