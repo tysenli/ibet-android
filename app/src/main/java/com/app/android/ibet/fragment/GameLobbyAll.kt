@@ -33,6 +33,7 @@ import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.adapter
 import com.app.android.ibet.model.FilterModel
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.frag_account.*
 import kotlinx.android.synthetic.main.game_list_item.view.*
 
 import okhttp3.Call
@@ -53,10 +54,13 @@ class GameLobbyAll : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.game_recycler_list)
         recyclerView.layoutManager = LinearLayoutManager(parentContext)
         recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        FilterAdapter.recycler = recyclerView
         fetchGames(recyclerView,"", "", "", "", "", "")
         val filterView = view.findViewById<RecyclerView>(R.id.filter_recycler_list)
         filterView.layoutManager = GridLayoutManager(parentContext, 2)
         fetchFilter(filterView)
+
+
 //        val spinner = view.findViewById<Spinner>(R.id.game_spinner)
 //        setupSpinner(spinner, recyclerView)
 
@@ -253,7 +257,11 @@ class GameLobbyAll : Fragment() {
                 this@GameLobbyAll.activity?.runOnUiThread {
 
                     filterRecycler.adapter = FilterAdapter(filterModel)
+                   // fetchGames(,FilterAdapter.Filter, "", "", "", "", "")
+
+
                 }
+
             }
 
         }))

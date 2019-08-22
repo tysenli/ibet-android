@@ -16,7 +16,9 @@ import kotlinx.android.synthetic.main.game_lobby_fragment.*
 
 class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
     val fragment = GameLobbyAll()
-
+    companion object {
+        lateinit var recycler: RecyclerView
+    }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): FilterAdapter.FilterViewHolder {
         val itemView = LayoutInflater.from(p0.context).inflate(R.layout.game_filter_item, p0, false)
@@ -45,7 +47,7 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
                 var filter = ""
                 if(position > 0) {
                     filter = element.data[position - 1]
-                    fragment.fetchGames(game, filter, "", "", "", "", "")
+                    fragment.fetchGames(recycler, filter, "", "", "", "", "")
                 }
 
             }
