@@ -37,21 +37,115 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
 
         var arrayAdapter = ArrayAdapter(p0.spinner.context, android.R.layout.simple_spinner_dropdown_item, ele)
         p0.spinner.adapter = arrayAdapter
-        p0.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
-                val game = view?.findViewById<RecyclerView>(R.id.game_recycler_list)
-
-                var filter = ""
-                if(position > 0) {
-                    filter = element.data[position - 1]
-                    fragment.fetchGames(recycler, filter, "", "", "", "", "")
+        if (ele[0] == "Games Category"){
+            p0.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onNothingSelected(parent: AdapterView<*>?) {
                 }
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
+//                val game = view?.findViewById<RecyclerView>(R.id.game_recycler_list)
+
+                    var filter = ""
+                    if(position > 0) {
+                        println("position:" + position)
+                        filter = element.data[position - 1]
+                        fragment.fetchGames(recycler, filter, "", "", "", "", "")
+                    }
+
+                }
             }
         }
+        if (ele[0] == "Jackpot"){
+            p0.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+//                val game = view?.findViewById<RecyclerView>(R.id.game_recycler_list)
+
+                    var filter = ""
+                    if(position > 0) {
+                        println("position:" + position)
+                        filter = element.data[position - 1]
+                        fragment.fetchGames(recycler, "", filter, "", "", "", "")
+                    }
+
+                }
+            }
+        }
+        if (ele[0] == "Provider"){
+            p0.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+//                val game = view?.findViewById<RecyclerView>(R.id.game_recycler_list)
+
+                    var filter = ""
+                    if(position > 0) {
+                        println("position:" + position)
+                        filter = element.data[position - 1]
+                        fragment.fetchGames(recycler, "", "", filter, "", "", "")
+                    }
+
+                }
+            }
+        }
+        if (ele[0] == "Feature"){
+            p0.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+//                val game = view?.findViewById<RecyclerView>(R.id.game_recycler_list)
+
+                    var filter = ""
+                    if(position > 0) {
+                        println("position:" + position)
+                        filter = element.data[position - 1]
+                        fragment.fetchGames(recycler, "", "", "", filter, "", "")
+                    }
+
+                }
+            }
+        }
+        if (ele[0] == "Theme"){
+            p0.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+//                val game = view?.findViewById<RecyclerView>(R.id.game_recycler_list)
+
+                    var filter = ""
+                    if(position > 0) {
+                        println("position:" + position)
+                        filter = element.data[position - 1]
+                        fragment.fetchGames(recycler, "", "", "", "", filter, "")
+                    }
+
+                }
+            }
+        }
+        if (ele[0] == "Sort by"){
+            p0.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+//                val game = view?.findViewById<RecyclerView>(R.id.game_recycler_list)
+
+                    var filter = ""
+                    if(position > 0) {
+                        println("position:" + position)
+                        filter = element.data[position - 1]
+                        fragment.fetchGames(recycler, "", "", "", "", "", filter)
+                    }
+
+                }
+            }
+        }
+
 
     }
     override fun getItemCount(): Int {
@@ -65,11 +159,5 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
 
 
     }
-
-
-
-
-
-
 
 }

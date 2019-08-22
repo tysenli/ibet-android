@@ -2,6 +2,7 @@ package com.app.android.ibet.fragment
 
 
 
+import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 
@@ -20,6 +21,7 @@ import java.io.IOException
 
 import android.view.*
 import android.widget.*
+import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -28,6 +30,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.app.android.ibet.ViewModel.GameViewModel
+import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.adapter
 
 import com.app.android.ibet.model.FilterModel
@@ -203,18 +206,24 @@ class GameLobbyAll : Fragment() {
 
                         val adapter = GameLobbyAdapter(gameModelResponse)
                         Log.e("adapter", gameRecycler?.adapter.toString())
-                        gameRecycler?.adapter = adapter
-//                        if (gameRecycler?.adapter == null) {
-//
-//                            gameRecycler?.adapter = adapter
-//                            adapter.notifyDataSetChanged()
-//
-//
-//                        } else {
-//                            println("hahaha")
-//                            (gameRecycler.adapter as GameLobbyAdapter).updateGames(gameModelResponse)
-//
-//                        }
+                        //gameRecycler?.adapter = adapter
+                        if (gameRecycler?.adapter == null) {
+
+                            gameRecycler?.adapter = adapter
+                            adapter.notifyDataSetChanged()
+
+
+                        } else {
+                            gameRecycler.post(object :Runnable{
+                                override fun run() {
+
+                                    Log.e("Array size", gameModelResponse.size.toString())
+                                    (gameRecycler.adapter as GameLobbyAdapter).updateGames(gameModelResponse)
+                                }
+                            })
+
+
+                        }
 
 
 
@@ -266,7 +275,6 @@ class GameLobbyAll : Fragment() {
 
         }))
     }
-
 
 
 
