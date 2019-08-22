@@ -12,13 +12,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.app.android.ibet.R
 import com.app.android.ibet.model.FilterModel
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import kotlinx.android.synthetic.main.game_lobby_fragment.*
 
-class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
+class FilterAdapter(private var elements: ArrayList<FilterModel>, pp: Int): RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
     val fragment = GameLobbyAll()
     companion object {
         lateinit var recycler: RecyclerView
     }
+    val fragPosition = pp
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): FilterAdapter.FilterViewHolder {
         val itemView = LayoutInflater.from(p0.context).inflate(R.layout.game_filter_item, p0, false)
@@ -37,6 +39,8 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
 
         var arrayAdapter = ArrayAdapter(p0.spinner.context, android.R.layout.simple_spinner_dropdown_item, ele)
         p0.spinner.adapter = arrayAdapter
+//        val arguments  = fragment.arguments
+//        val fragPosition = FragmentPagerItem.getPosition(arguments) - 1
         if (ele[0] == "Games Category"){
             p0.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -47,9 +51,8 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
 
                     var filter = ""
                     if(position > 0) {
-                        println("position:" + position)
                         filter = element.data[position - 1]
-                        fragment.fetchGames(recycler, filter, "", "", "", "", "")
+                        fragment.fetchGames(fragPosition, recycler, filter, "", "", "", "", "")
                     }
 
                 }
@@ -65,9 +68,9 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
 
                     var filter = ""
                     if(position > 0) {
-                        println("position:" + position)
+
                         filter = element.data[position - 1]
-                        fragment.fetchGames(recycler, "", filter, "", "", "", "")
+                        fragment.fetchGames(fragPosition, recycler, "", filter, "", "", "", "")
                     }
 
                 }
@@ -83,9 +86,9 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
 
                     var filter = ""
                     if(position > 0) {
-                        println("position:" + position)
+
                         filter = element.data[position - 1]
-                        fragment.fetchGames(recycler, "", "", filter, "", "", "")
+                        fragment.fetchGames(fragPosition, recycler, "", "", filter, "", "", "")
                     }
 
                 }
@@ -101,9 +104,9 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
 
                     var filter = ""
                     if(position > 0) {
-                        println("position:" + position)
+
                         filter = element.data[position - 1]
-                        fragment.fetchGames(recycler, "", "", "", filter, "", "")
+                        fragment.fetchGames(fragPosition, recycler, "", "", "", filter, "", "")
                     }
 
                 }
@@ -119,9 +122,8 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
 
                     var filter = ""
                     if(position > 0) {
-                        println("position:" + position)
                         filter = element.data[position - 1]
-                        fragment.fetchGames(recycler, "", "", "", "", filter, "")
+                        fragment.fetchGames(fragPosition, recycler, "", "", "", "", filter, "")
                     }
 
                 }
@@ -137,9 +139,8 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>): RecyclerView.
 
                     var filter = ""
                     if(position > 0) {
-                        println("position:" + position)
                         filter = element.data[position - 1]
-                        fragment.fetchGames(recycler, "", "", "", "", "", filter)
+                        fragment.fetchGames(fragPosition, recycler, "", "", "", "", "", filter)
                     }
 
                 }
