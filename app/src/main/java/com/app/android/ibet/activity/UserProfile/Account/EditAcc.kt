@@ -143,6 +143,7 @@ class EditAcc : Fragment() {
                     }
                     else {
                         info = "acc"
+                        Account.isChange = true
                         startActivity(Intent(activity, MyAccount::class.java))
                         activity!!.overridePendingTransition(0, 0)
                     }
@@ -151,6 +152,7 @@ class EditAcc : Fragment() {
                 }
             } else {
                 info = "acc"
+                Account.isChange = true
                 startActivity(Intent(activity, MyAccount::class.java))
                 activity!!.overridePendingTransition(0, 0)
             }

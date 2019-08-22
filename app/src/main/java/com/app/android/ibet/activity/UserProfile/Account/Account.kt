@@ -1,12 +1,16 @@
 package com.app.android.ibet.activity.UserProfile.Account
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login.Companion.token
@@ -20,13 +24,29 @@ import org.json.JSONObject
 
 class Account : Fragment() {
     private var parentContext = context
-
+    companion object {
+        var isChange = false
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.frag_account, container, false)
     }
     override fun onStart() {
         super.onStart()
+        if (isChange) {
+            val toast = Toast.makeText(
+                context,
+                "Changes are successfully updated", Toast.LENGTH_SHORT
+            )
+            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 260)
+            val view = toast.view
+            view.setBackgroundResource(R.color.toast)
+            val text = view.findViewById<TextView>(android.R.id.message)
+            text.setTextColor(Color.parseColor("#ffffff"))
+            toast.show()
+            isChange = false
+        }
+
         var userData = Api().get(BuildConfig.USER)
         //println(userData)
         acc_first_name.text = JSONObject(userData).getString("first_name")
