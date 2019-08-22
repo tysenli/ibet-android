@@ -113,6 +113,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.google.firebase:firebase-core:17.0.0'
+    implementation 'co.metalab.asyncawait:asyncawait:1.0.0'
 
 
 }

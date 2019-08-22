@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.game_lobby_fragment.*
 
 class FilterAdapter(private var elements: ArrayList<FilterModel>, pp: Int): RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
     val fragment = GameLobbyAll()
+    val fragmentSlot = GameLobbySlots()
     companion object {
         lateinit var recycler: RecyclerView
     }
@@ -53,6 +54,7 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>, pp: Int): Recy
                     if(position > 0) {
                         filter = element.data[position - 1]
                         fragment.fetchGames(fragPosition, recycler, filter, "", "", "", "", "")
+                        fragmentSlot.fetchGames(fragPosition, recycler, filter, "", "", "", "", "")
                     }
 
                 }
@@ -71,6 +73,7 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>, pp: Int): Recy
 
                         filter = element.data[position - 1]
                         fragment.fetchGames(fragPosition, recycler, "", filter, "", "", "", "")
+                        fragmentSlot.fetchGames(fragPosition, recycler, "", filter, "", "", "", "")
                     }
 
                 }
@@ -89,6 +92,7 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>, pp: Int): Recy
 
                         filter = element.data[position - 1]
                         fragment.fetchGames(fragPosition, recycler, "", "", filter, "", "", "")
+                        fragmentSlot.fetchGames(fragPosition, recycler, "", "", filter, "", "", "")
                     }
 
                 }
@@ -107,6 +111,7 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>, pp: Int): Recy
 
                         filter = element.data[position - 1]
                         fragment.fetchGames(fragPosition, recycler, "", "", "", filter, "", "")
+                        fragmentSlot.fetchGames(fragPosition, recycler, "", "", "", filter, "", "")
                     }
 
                 }
@@ -124,6 +129,7 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>, pp: Int): Recy
                     if(position > 0) {
                         filter = element.data[position - 1]
                         fragment.fetchGames(fragPosition, recycler, "", "", "", "", filter, "")
+                        fragmentSlot.fetchGames(fragPosition, recycler, "", "", "", "", filter, "")
                     }
 
                 }
@@ -141,6 +147,7 @@ class FilterAdapter(private var elements: ArrayList<FilterModel>, pp: Int): Recy
                     if(position > 0) {
                         filter = element.data[position - 1]
                         fragment.fetchGames(fragPosition, recycler, "", "", "", "", "", filter)
+                        fragmentSlot.fetchGames(fragPosition, recycler, "", "", "", "", "", filter)
                     }
 
                 }
