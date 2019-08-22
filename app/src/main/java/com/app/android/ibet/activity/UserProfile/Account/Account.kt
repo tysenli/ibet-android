@@ -49,6 +49,7 @@ class Account : Fragment() {
 
         var userData = Api().get(BuildConfig.USER)
         //println(userData)
+        acc_id.text = "ID: " + JSONObject(userData).getString("pk")
         acc_first_name.text = JSONObject(userData).getString("first_name")
         acc_last_name.text = JSONObject(userData).getString("last_name")
         acc_username.text = JSONObject(userData).getString("username")

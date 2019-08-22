@@ -44,6 +44,7 @@ class EditAcc : Fragment() {
         match_error.text = ""
         var userData = Api().get(BuildConfig.USER)
         //println(userData)
+        acc_editid.text = "ID: " + JSONObject(userData).getString("pk")
         acc_first_name.text = JSONObject(userData).getString("first_name")
         acc_last_name.text = JSONObject(userData).getString("last_name")
         acc_edit_username.hint = JSONObject(userData).getString("username")
@@ -55,7 +56,7 @@ class EditAcc : Fragment() {
             acc_edit_country.hint = JSONObject(userData).getString("country")
         }
         if (JSONObject(userData).getString("street_address_1").isEmpty()) {
-            acc_edit_street.hint = "Street "
+            acc_edit_street.hint = "Street"
         } else {
             acc_edit_street.hint = JSONObject(userData).getString("street_address_1")
         }
@@ -105,23 +106,39 @@ class EditAcc : Fragment() {
                 editJson.put("date_of_birth", JSONObject(userData).getString("date_of_birth"))
             }
             if (acc_edit_country.text.isEmpty()) {
-                editJson.put("country", "Country")
+                if (JSONObject(userData).getString("country").isEmpty()) {
+                    editJson.put("country","Country")
+                } else {
+                    editJson.put("country", JSONObject(userData).getString("country"))
+                }
             } else {
                 editJson.put("country", acc_edit_country.text.toString())
             }
             if (acc_edit_street.text.isEmpty()) {
-                editJson.put("street_address_1", JSONObject(userData).getString("street_address_1"))
+                if (JSONObject(userData).getString("street_address_1").isEmpty()) {
+                    editJson.put("street_address_1","street")
+                } else {
+                    editJson.put("street_address_1", JSONObject(userData).getString("street_address_1"))
+                }
             } else {
                 editJson.put("street_address_1", acc_edit_street.text.toString())
             }
             if (acc_edit_city.text.isEmpty()) {
-                editJson.put("city", "City")
+                if (JSONObject(userData).getString("city").isEmpty()) {
+                    editJson.put("city","City")
+                } else {
+                    editJson.put("city", JSONObject(userData).getString("city"))
+                }
 
             } else {
                 editJson.put("city", acc_edit_city.text.toString())
             }
             if (acc_edit_code.text.isEmpty()) {
-                editJson.put("zipcode", "Zipcode")
+                if (JSONObject(userData).getString("zipcode").isEmpty()) {
+                    editJson.put("zipcode","Zipcode")
+                } else {
+                    editJson.put("zipcode", JSONObject(userData).getString("zipcode"))
+                }
             } else {
                 editJson.put("zipcode", acc_edit_code.text.toString())
             }
