@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import co.metalab.asyncawait.async
 
 import com.app.android.ibet.ViewModel.GameViewModel
 import com.app.android.ibet.activity.MainActivity
@@ -59,6 +60,7 @@ class GameLobbyAll : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.game_recycler_list)
         recyclerView.layoutManager = LinearLayoutManager(parentContext)
         recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+
         FilterAdapter.recycler = recyclerView
         fetchGames(position, recyclerView,"", "", "", "", "", "")
 
@@ -179,7 +181,8 @@ class GameLobbyAll : Fragment() {
         Log.e("request", request.toString())
 
         val client = OkHttpClient()
-
+        gameRecycler.post(object : Runnable{
+            override fun run(){
                 client.newCall(request).enqueue(object: okhttp3.Callback {
                     override fun onResponse(call: Call?, response: Response?) {
 
@@ -198,22 +201,15 @@ class GameLobbyAll : Fragment() {
                         val adapter = GameLobbyAdapter(gameModelResponse)
                         Log.e("adapter", gameRecycler?.adapter.toString())
                         //gameRecycler?.adapter = adapter
-
                         gameRecycler.post(object : Runnable{
                             override fun run(){
-                                if (gameRecycler?.adapter == null) {
-
-                                    gameRecycler?.adapter = adapter
-                                    adapter.notifyDataSetChanged()
-
+                                if (gameRecycler.adapter == null) {
+                                    gameRecycler.adapter = adapter
 
                                 } else {
 
-
                                     Log.e("Array size", gameModelResponse.size.toString())
                                     (gameRecycler.adapter as GameLobbyAdapter).updateGames(gameModelResponse)
-
-
 
                                 }
                             }
@@ -226,7 +222,8 @@ class GameLobbyAll : Fragment() {
                     }
                 })
 
-
+            }
+        })
 
     }
 
@@ -247,8 +244,9 @@ class GameLobbyAll : Fragment() {
 
                 val gson = GsonBuilder().create()
                 val filterModel: ArrayList<FilterModel> = gson.fromJson(body, object :TypeToken<ArrayList<FilterModel>>() { }.type)
-                filterRecycler?.post(object :Runnable{
+                filterRecycler.post(object :Runnable{
                     override fun run() {
+                        //filterRecycler.adapter = FilterAdapter(filterModel, position + 1)
                         filterRecycler.adapter = FilterAdapter(filterModel, position + 1)
                         // fetchGames(,FilterAdapter.Filter, "", "", "", "", "")
                     }

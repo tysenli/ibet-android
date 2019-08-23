@@ -34,11 +34,11 @@ class Casino (context: Context): Fragment() {
         val adapter = FragmentPagerItemAdapter(
             fragmentManager, FragmentPagerItems.with(parentContext)
                 .add("ALL", GameLobbyAll().javaClass)
-                .add("ROULETTE", GameLobbyAll().javaClass)
-                .add("BLACKJACK", GameLobbyAll().javaClass)
-                .add("BACCARAT", GameLobbyAll().javaClass)
-                .add("POKER", GameLobbyAll().javaClass)
-                .add("TOURNAMENTS", GameLobbyAll().javaClass)
+//                .add("ROULETTE", GameLobbyAll().javaClass)
+//                .add("BLACKJACK", GameLobbyAll().javaClass)
+//                .add("BACCARAT", GameLobbyAll().javaClass)
+//                .add("POKER", GameLobbyAll().javaClass)
+//                .add("TOURNAMENTS", GameLobbyAll().javaClass)
                 .create()
         )
         casino_viewpager.adapter = adapter
