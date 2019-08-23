@@ -333,6 +333,7 @@
                     android:textSize="18sp"
                     android:textColor="#000000"
                     android:letterSpacing="0.03"
+                    android:id="@+id/acc_edit_time"
                     android:lineSpacingExtra="6sp"
                     android:text=""
                     android:layout_marginStart="84dp"

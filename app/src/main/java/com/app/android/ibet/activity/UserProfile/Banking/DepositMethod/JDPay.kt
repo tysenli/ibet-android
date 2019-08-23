@@ -36,7 +36,7 @@ class JDPay : Fragment() {
         super.onStart()
         depo_method_show.text = "JDpay"
         var pk = JSONObject(userData).getString("pk")
-        println(pk)
+        //println(pk)
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201, 199, 199))
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))

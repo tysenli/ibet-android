@@ -37,6 +37,9 @@ android {
             buildConfigField 'String','WECHAT_ORDER',"\"$local/accounting/api/qaicash/deposit_transaction\""
             buildConfigField 'String','BALANCE',"\"$local/users/api/addorwithdrawbalance/\""
             buildConfigField 'String','VERI_SIGNUP',"\"$local/users/api/sendemail/?case=signup\""
+            buildConfigField 'String','SETLIMIT',"\"$local/users/api/set-limitations/\""
+            buildConfigField 'String','GETLIMIT',"\"$local/users/api/get-limitations/?id=\""
+
             buildConfigField 'String','WITHDRAW',"\"$local/accounting/api/qaicash/submit_payout\""
             buildConfigField 'String','WITHDRAW_ORDER',"\"$local/accounting/api/qaicash/payout_transaction\""
             buildConfigField 'String','LINE',"\"$local/accounting/api/linepay/reserve_payment\""
@@ -50,6 +53,7 @@ android {
             buildConfigField 'String', 'GAME_URL', "\"$local/games/api/games/?type=\""
             buildConfigField('String', 'GAME_URL_CATEGORY', "\"&category=\"")
             buildConfigField('String', 'GAME_FILTER', "\"$local/games/api/filter/\"")
+
 
 
 

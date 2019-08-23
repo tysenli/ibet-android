@@ -254,8 +254,9 @@
                     android:textSize="18sp"
                     android:textColor="#000000"
                     android:letterSpacing="0.03"
+                    android:id="@+id/acc_time"
                     android:lineSpacingExtra="6sp"
-                    android:text=""
+                    android:text="06/02/2019"
                     android:layout_marginStart="80dp"
             />
 

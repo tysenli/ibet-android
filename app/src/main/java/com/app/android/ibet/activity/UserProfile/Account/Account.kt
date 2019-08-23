@@ -48,7 +48,7 @@ class Account : Fragment() {
         }
 
         var userData = Api().get(BuildConfig.USER)
-        //println(userData)
+        //println("hhh" + userData)
         acc_id.text = "ID: " + JSONObject(userData).getString("pk")
         acc_first_name.text = JSONObject(userData).getString("first_name")
         acc_last_name.text = JSONObject(userData).getString("last_name")
@@ -58,6 +58,10 @@ class Account : Fragment() {
                 JSONObject(userData).getString("city") + " " + JSONObject(userData).getString("country")+
                 " " + JSONObject(userData).getString("zipcode")
         acc_phone.text = JSONObject(userData).getString("phone")
+        val time = JSONObject(userData).getString("time_of_registration").substring(5,7) + "/" +
+                JSONObject(userData).getString("time_of_registration").substring(8,10) + "/" +
+                JSONObject(userData).getString("time_of_registration").substring(0,4)
+        acc_time.text = time
         acc_edit.setOnClickListener {
             info = "acc_edit"
             startActivity(Intent(activity, MyAccount::class.java))

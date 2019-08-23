@@ -31,7 +31,7 @@ class PayzodQR : AppCompatActivity() {
         val height = point.y
         var smallerDimension = if (width < height) width else height
 
-        println(intent.getStringExtra("QRcode").trim())
+        //println(intent.getStringExtra("QRcode").trim())
         val qrgEncoder = QRGEncoder("222", null, QRGContents.Type.TEXT,smallerDimension * 3 / 4)
         val bitmap = qrgEncoder.encodeAsBitmap()
         payzodQR_img.setImageBitmap(bitmap)

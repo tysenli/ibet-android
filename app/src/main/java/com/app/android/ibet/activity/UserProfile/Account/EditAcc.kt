@@ -50,6 +50,11 @@ class EditAcc : Fragment() {
         acc_edit_username.hint = JSONObject(userData).getString("username")
         acc_edit_email.text = JSONObject(userData).getString("email")
         acc_edit_phone.hint = JSONObject(userData).getString("phone")
+        val time = JSONObject(userData).getString("time_of_registration").substring(5,7) + "/" +
+                JSONObject(userData).getString("time_of_registration").substring(8,10) + "/" +
+                JSONObject(userData).getString("time_of_registration").substring(0,4)
+        acc_edit_time.text = time
+
         if (JSONObject(userData).getString("country").isEmpty()) {
             acc_edit_country.hint = "Country"
         } else {
