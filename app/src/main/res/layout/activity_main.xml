@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-
               android:orientation="vertical">
 
-
-<android.support.v4.widget.DrawerLayout
+<androidx.drawerlayout.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/drawer_layout"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
@@ -24,11 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-
-    <android.support.design.widget.NavigationView
-
+    <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
-            android:layout_width="260dp"
+            android:layout_width="280dp"
             android:layout_height="700dp"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
@@ -37,11 +31,11 @@
             android:theme="@style/NavigationView"
             app:itemIconTint="@color/colorNavi"
             app:headerLayout="@layout/nav_header_main">
-            app:menu="@menu/activity_main_drawer"
+        app:menu="@menu/activity_main_drawer"
         <ExpandableListView
                 android:id="@+id/navigation_body"
                 android:layout_width="match_parent"
-                android:layout_height="391dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="90dp"
                 android:background="@color/colorPrimary"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -51,6 +45,7 @@
                 android:divider="#868686"
                 android:dividerHeight="0.5dp">
         </ExpandableListView>
+        <!--
         <LinearLayout
                 android:id="@+id/footer"
                 android:layout_width="291dp"
@@ -66,7 +61,6 @@
                     android:layout_weight=".28"
                     android:background="#ff6161"
                     android:orientation="horizontal">
-
                 <Spinner
                         android:id="@+id/language_navi"
                         android:layout_width="match_parent"
@@ -79,7 +73,6 @@
                         android:spinnerMode="dropdown" android:layout_alignParentStart="true"
                         android:layout_marginStart="0dp" android:layout_marginEnd="0dp"
                 />
-
                 <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -148,6 +141,7 @@
                     android:paddingBottom="10dp"
                     android:text="@string/ibet_corporate"/>
         </LinearLayout>
+        -->
         <!--
 
         <android.support.design.widget.NavigationView
@@ -160,12 +154,6 @@
             android:layout_gravity="bottom"
             android:theme="@style/NavigationView"
             app:menu="@menu/navigation_drawer_bottom"> -->
-
-
-
-
-
-
 
 
         <!--
@@ -182,8 +170,8 @@
                             -->
 
 
-                <!--Here is a container at the bottom of navigation drawer. Place your password_toggle here-->
-            <!--
+        <!--Here is a container at the bottom of navigation drawer. Place your password_toggle here-->
+        <!--
 
             <Button android:layout_width="164dp"
                     android:layout_height="44dp"
@@ -214,8 +202,8 @@
 -->
 
 
-    </android.support.design.widget.NavigationView>
+    </com.google.android.material.navigation.NavigationView>
 
 
-</android.support.v4.widget.DrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

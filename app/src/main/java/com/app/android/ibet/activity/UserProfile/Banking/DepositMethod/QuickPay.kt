@@ -4,9 +4,9 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
@@ -36,8 +36,9 @@ class QuickPay : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        depo_method_show.text = "QuickPay"
         var pk =  JSONObject(userData).getString("pk")
-        println(pk)
+       // println(pk)
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201,199,199))
             money_50.setBackgroundColor(Color.rgb(239,239,239))
@@ -114,7 +115,7 @@ class QuickPay : Fragment() {
                 startActivity(res)
             } else {
                 var quickData = response.body()!!.string()
-                println(quickData)
+                //println(quickData)
                 orderId = JSONObject(quickData).getString("order_id")
                 var url = JSONObject(quickData).getString("url")
                 var quickpay_url = "$url?cid=BRANDCQNGHUA3&oid=$orderId"

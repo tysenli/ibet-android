@@ -4,8 +4,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
@@ -34,8 +34,9 @@ class JDPay : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        depo_method_show.text = "JDpay"
         var pk = JSONObject(userData).getString("pk")
-        println(pk)
+        //println(pk)
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201, 199, 199))
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))

@@ -2,8 +2,8 @@ package com.app.android.ibet.activity.UserProfile
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
@@ -15,6 +15,7 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.Login.Login.Companion.token
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.UserProfile.Account.Account
+import com.app.android.ibet.activity.UserProfile.Account.EditAcc
 import com.app.android.ibet.activity.UserProfile.Analysis.*
 import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.activity.UserProfile.Banking.BankingDepo
@@ -36,6 +37,7 @@ class MyAccount : AppCompatActivity() {
     companion object {
         var amt = ""
         lateinit var  amtShow : Button
+        lateinit var loginShow : Button
         lateinit var userData :String
         lateinit var pages : FragmentPagerItems
         lateinit var adapter: FragmentPagerItemAdapter
@@ -87,11 +89,16 @@ class MyAccount : AppCompatActivity() {
             "success_with"->pages[0] = FragmentPagerItem.of("Banking", SuccessWithdraw().javaClass)
             "fail"       -> pages[0] = FragmentPagerItem.of("Banking", Failed().javaClass)
             "bankwith"   -> pages[0] = FragmentPagerItem.of("Banking", Bank().javaClass)
+            "payzod"     -> pages[0] = FragmentPagerItem.of("Banking", Payzod().javaClass)
+            "scratch"    -> pages[0] = FragmentPagerItem.of("Banking", ScratchCard().javaClass)
 
             "sports"     -> pages[1] = FragmentPagerItem.of("Analysis", SportsAly().javaClass)
             "depo&with"  -> pages[1] = FragmentPagerItem.of("Analysis", DepoWithAly().javaClass)
             "slots"      -> pages[1] = FragmentPagerItem.of("Analysis", SlotsAly().javaClass)
             "casino"     -> pages[1] = FragmentPagerItem.of("Analysis", CasinoAly().javaClass)
+
+            "acc"        -> pages[2] = FragmentPagerItem.of("Account", Account().javaClass)
+            "acc_edit"   -> pages[2] = FragmentPagerItem.of("Account", EditAcc().javaClass)
 
             "lock_account"-> pages[3] = FragmentPagerItem.of("Responsible Game", Lock().javaClass)
 
@@ -111,6 +118,9 @@ class MyAccount : AppCompatActivity() {
             "depo&with"  -> account_viewpager.setCurrentItem(1, true)
             "slots"      -> account_viewpager.setCurrentItem(1, true)
             "casino"     -> account_viewpager.setCurrentItem(1, true)
+
+            "acc"        -> account_viewpager.setCurrentItem(2, true)
+            "acc_edit"   -> account_viewpager.setCurrentItem(2, true)
 
             "lock_account"-> account_viewpager.setCurrentItem(3, true)
 

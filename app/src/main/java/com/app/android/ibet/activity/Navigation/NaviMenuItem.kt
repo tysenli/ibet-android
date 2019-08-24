@@ -1,7 +1,7 @@
 package com.app.android.ibet.activity.Navigation
 
-import android.support.annotation.DrawableRes
-import android.support.annotation.StringRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.app.android.ibet.R
 
 

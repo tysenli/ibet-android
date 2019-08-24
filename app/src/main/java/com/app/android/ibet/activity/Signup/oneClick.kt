@@ -2,7 +2,7 @@ package com.app.android.ibet.activity.Signup
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import com.app.android.ibet.R
 import kotlinx.android.synthetic.main.activity_one_click.*

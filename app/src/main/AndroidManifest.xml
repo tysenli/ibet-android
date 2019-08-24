@@ -7,11 +7,11 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!--supports-screens
+    <supports-screens
         android:smallScreens="true"
         android:normalScreens="true"
         android:largeScreens="true"
-        android:xlargeScreens="true" /-->
+        android:xlargeScreens="true" />
 
     <application
             android:allowBackup="true"
@@ -207,6 +207,10 @@
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Withdraw"
 
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.PayzodQR"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
         ></activity>
 
     </application>

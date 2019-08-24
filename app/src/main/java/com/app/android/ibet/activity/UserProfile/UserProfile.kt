@@ -103,7 +103,7 @@ class UserProfile : AppCompatActivity() {
 
         }
         edit_profile.setOnClickListener {
-            startActivity(Intent(this, Edit::class.java))
+            startActivity(Intent(this, EditAcc::class.java))
 
         }
         logout.setOnClickListener {

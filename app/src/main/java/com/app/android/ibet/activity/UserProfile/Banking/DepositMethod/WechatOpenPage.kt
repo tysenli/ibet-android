@@ -2,8 +2,8 @@ package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -47,14 +47,14 @@ class WechatOpenPage : AppCompatActivity() {
                 .post(orderBody)
                 .build()
             val response = OkHttpClient().newCall(request).execute()
-            println(response)
+            //println(response)
             if (response.code() != 200) {
                 info = "fail"
                 val res = Intent(this, MyAccount::class.java)
                 startActivity(res)
             } else {
                 val statusData = response.body()!!.string()
-                println(JSONObject(statusData).getString("status"))
+                //println(JSONObject(statusData).getString("status"))
 
                 if (JSONObject(statusData).getString("status") == "SUCCESS") {
 
