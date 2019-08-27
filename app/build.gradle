@@ -38,7 +38,11 @@ android {
             buildConfigField 'String','BALANCE',"\"$local/users/api/addorwithdrawbalance/\""
             buildConfigField 'String','VERI_SIGNUP',"\"$local/users/api/sendemail/?case=signup\""
             buildConfigField 'String','SETLIMIT',"\"$local/users/api/set-limitations/\""
+            buildConfigField 'String','REMOVELIMIT',"\"$local/users/api/delete-limitation/\""
+            buildConfigField 'String','CANCELLIMIT',"\"$local/users/api/cancel-delete-limitation/\""
             buildConfigField 'String','GETLIMIT',"\"$local/users/api/get-limitations/?id=\""
+            buildConfigField 'String','LOCKTIME',"\"$local/users/api/set-block-time/\""
+
 
             buildConfigField 'String','WITHDRAW',"\"$local/accounting/api/qaicash/submit_payout\""
             buildConfigField 'String','WITHDRAW_ORDER',"\"$local/accounting/api/qaicash/payout_transaction\""
