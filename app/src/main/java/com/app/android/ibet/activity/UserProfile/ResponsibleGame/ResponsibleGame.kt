@@ -37,8 +37,8 @@ class ResponsibleGame : Fragment() {
     //var userData = Api().get(BuildConfig.USER)
     private var depoInterval = 0
     private var lossInterval = 0
-    private var lockInterval = 0
-
+    var lockInterval = 0
+    var remindTime = 0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.frag_responsible_game, container, false)
     }
@@ -107,6 +107,7 @@ class ResponsibleGame : Fragment() {
 
         depo_limit_amt.hint = if (dailyDepoAmt == "null") "0" else dailyDepoAmt
         depo_cur.text = "Current Limit    \$0 out of \$${depo_limit_amt.hint}"
+        depo_expire.text = "Limit expires on    \$0 out of \$$dailyDepoAmt"
         if (dailyDepoExpiretime.isEmpty()) {
             depo_show.visibility = View.VISIBLE
             depo_remove.visibility = View.GONE
@@ -124,6 +125,7 @@ class ResponsibleGame : Fragment() {
             depoInterval = 0
             depo_limit_amt.hint = if (dailyDepoAmt == "null") "0" else dailyDepoAmt
             depo_cur.text = "Current Limit    \$0 out of \$${depo_limit_amt.hint}"
+            depo_expire.text = "Limit expires on    \$0 out of \$$dailyDepoAmt"
             remove_depo.visibility = if (dailyDepoAmt == "null") View.GONE else View.VISIBLE
             if (dailyDepoExpiretime.isEmpty()) {
                 depo_show.visibility = View.VISIBLE
@@ -145,6 +147,7 @@ class ResponsibleGame : Fragment() {
             depoInterval = 1
             depo_limit_amt.hint = if (weeklyDepoAmt == "null") "0" else weeklyDepoAmt
             depo_cur.text = "Current Limit    \$0 out of \$${depo_limit_amt.hint}"
+            depo_expire.text = "Limit expires on    \$0 out of \$$weeklyDepoAmt"
             remove_depo.visibility = if (weeklyDepoAmt == "null") View.GONE else View.VISIBLE
             if (weeklyDepoExpiretime.isEmpty()) {
                 depo_show.visibility = View.VISIBLE
@@ -164,6 +167,8 @@ class ResponsibleGame : Fragment() {
             remove_depo.visibility = if (monthlyDepoAmt == "null") View.GONE else View.VISIBLE
             depo_limit_amt.hint = if (monthlyDepoAmt == "null") "0" else monthlyDepoAmt
             depo_cur.text = "Current Limit    \$0 out of \$${depo_limit_amt.hint}"
+            depo_expire.text = "Limit expires on    \$0 out of \$$monthlyDepoAmt"
+
             if (monthlyDepoExpiretime.isEmpty()) {
                 depo_show.visibility = View.VISIBLE
                 depo_remove.visibility = View.GONE
@@ -178,16 +183,20 @@ class ResponsibleGame : Fragment() {
             monthly_depo.background = resources.getDrawable(R.color.btn_d)
         }
         minus_depo.setOnClickListener {
-            var amt = depo_limit_amt.text.toString().toInt()
-            if (amt > 0) {
-                amt--
+            if (depo_limit_amt.text.isNotEmpty()) {
+                var amt = depo_limit_amt.text.toString().toInt()
+                if (amt > 0) {
+                    amt--
+                }
+                depo_limit_amt.setText("$amt")
             }
-            depo_limit_amt.setText("$amt")
         }
         add_depo.setOnClickListener {
-            var amt = depo_limit_amt.text.toString().toInt()
-            amt++
-            depo_limit_amt.setText("$amt")
+            if (depo_limit_amt.text.isNotEmpty()) {
+                var amt = depo_limit_amt.text.toString().toInt()
+                amt++
+                depo_limit_amt.setText("$amt")
+            }
         }
         save_depo_limit.setOnClickListener {
 
@@ -217,6 +226,11 @@ class ResponsibleGame : Fragment() {
             if (depo_limit_amt.text.toString().isNotEmpty()) {
                 depoLimit.put(depo_limit_amt.text.toString().toInt())
                 inter.put(depoInterval)
+                when (depoInterval) {
+                    0 -> dailyDepoAmt = depo_limit_amt.text.toString()
+                    1 -> weeklyDepoAmt = depo_limit_amt.text.toString()
+                    2 -> monthlyDepoAmt = depo_limit_amt.text.toString()
+                }
             }
 
             val JSON = MediaType.get("application/json; charset=utf-8")
@@ -236,7 +250,9 @@ class ResponsibleGame : Fragment() {
             //Log.e("depolimit",response.body()!!.string())
 
             remove_depo.visibility = View.VISIBLE
-
+            if (depo_limit_amt.text.toString().isNotEmpty()) {
+                depo_cur.text = "Current Limit    \$0 out of \$${depo_limit_amt.text}"
+            }
             val toast = Toast.makeText(context,
                 "Changes are successfully updated", Toast.LENGTH_SHORT
             )
@@ -377,6 +393,8 @@ class ResponsibleGame : Fragment() {
 
         loss_limit_amt.hint = if (dailyLossAmt == "null") "0" else dailyLossAmt
         loss_cur.text = "Current Limit    \$0 out of \$${loss_limit_amt.hint}"
+        loss_expire.text = "Limit expires on    \$0 out of \$$dailyDepoAmt"
+
         if (dailyLossExpiretime.isEmpty()) {
             loss_show.visibility = View.VISIBLE
             loss_remove.visibility = View.GONE
@@ -389,6 +407,7 @@ class ResponsibleGame : Fragment() {
             lossInterval = 0
             loss_limit_amt.hint = if (dailyLossAmt == "null") "0" else dailyLossAmt
             loss_cur.text = "Current Limit    \$0 out of \$${loss_limit_amt.hint}"
+            loss_expire.text = "Limit expires on    \$0 out of \$$dailyDepoAmt"
             remove_loss.visibility = if (dailyLossAmt == "null") View.GONE else View.VISIBLE
             if (dailyLossExpiretime.isEmpty()) {
                 loss_show.visibility = View.VISIBLE
@@ -407,6 +426,8 @@ class ResponsibleGame : Fragment() {
             lossInterval = 1
             loss_limit_amt.hint = if (weeklyLossAmt == "null") "0" else weeklyLossAmt
             loss_cur.text = "Current Limit    \$0 out of \$${loss_limit_amt.hint}"
+            loss_expire.text = "Limit expires on    \$0 out of \$$weeklyDepoAmt"
+
             remove_loss.visibility = if (weeklyLossAmt == "null") View.GONE else View.VISIBLE
             if (weeklyLossExpiretime.isEmpty()) {
                 loss_show.visibility = View.VISIBLE
@@ -424,6 +445,8 @@ class ResponsibleGame : Fragment() {
             lossInterval = 2
             loss_limit_amt.hint = if (monthlyLossAmt == "null") "0" else monthlyLossAmt
             loss_cur.text = "Current Limit    \$0 out of \$${loss_limit_amt.hint}"
+            loss_expire.text = "Limit expires on    \$0 out of \$$monthlyDepoAmt"
+
             remove_loss.visibility = if (monthlyLossAmt == "null") View.GONE else View.VISIBLE
             if (monthlyLossExpiretime.isEmpty()) {
                 loss_show.visibility = View.VISIBLE
@@ -438,16 +461,20 @@ class ResponsibleGame : Fragment() {
             loss_monthly.background = resources.getDrawable(R.color.btn_d)
         }
         minus_loss.setOnClickListener {
-            var amt = loss_limit_amt.text.toString().toInt()
-            if (amt > 0) {
-                amt--
+            if (loss_limit_amt.text.isNotEmpty()) {
+                var amt = loss_limit_amt.text.toString().toInt()
+                if (amt > 0) {
+                    amt--
+                }
+                loss_limit_amt.setText("$amt")
             }
-            loss_limit_amt.setText("$amt")
         }
         add_loss.setOnClickListener {
-            var amt = loss_limit_amt.text.toString().toInt()
-            amt++
-            loss_limit_amt.setText("$amt")
+            if (loss_limit_amt.text.isNotEmpty()) {
+                var amt = loss_limit_amt.text.toString().toInt()
+                amt++
+                loss_limit_amt.setText("$amt")
+            }
         }
         save_loss_limit.setOnClickListener {
 
@@ -476,6 +503,11 @@ class ResponsibleGame : Fragment() {
             if (loss_limit_amt.text.toString().isNotEmpty()) {
                 lossLimit.put(loss_limit_amt.text.toString().toInt())
                 inter.put(lossInterval)
+                when (lossInterval) {
+                    0 -> dailyLossAmt = loss_limit_amt.text.toString()
+                    1 -> weeklyLossAmt = loss_limit_amt.text.toString()
+                    2 -> monthlyLossAmt = loss_limit_amt.text.toString()
+                }
             }
 
             val JSON = MediaType.get("application/json; charset=utf-8")
@@ -491,6 +523,9 @@ class ResponsibleGame : Fragment() {
             val response = client.newCall(request).execute()
            // Log.e("losslimit",response.body()!!.string())
             remove_loss.visibility = View.VISIBLE
+            if (loss_limit_amt.text.toString().isNotEmpty()) {
+                loss_cur.text = "Current Limit    \$0 out of \$${loss_limit_amt.text}"
+            }
             val toast = Toast.makeText(context,
                 "Changes are successfully updated", Toast.LENGTH_SHORT
             )
@@ -501,6 +536,35 @@ class ResponsibleGame : Fragment() {
             text.setTextColor(Color.parseColor("#ffffff"))
             toast.show()
         }
+        five_min.setOnClickListener {
+            remindTime = 5
+            five_min.background = resources.getDrawable(R.color.btn_d)
+            thirty_min.background = resources.getDrawable(R.color.btn_l)
+            sixty_min.background = resources.getDrawable(R.color.btn_l)
+            two_hour.background = resources.getDrawable(R.color.btn_l)
+        }
+        thirty_min.setOnClickListener {
+            remindTime = 30
+            five_min.background = resources.getDrawable(R.color.btn_l)
+            thirty_min.background = resources.getDrawable(R.color.btn_d)
+            sixty_min.background = resources.getDrawable(R.color.btn_l)
+            two_hour.background = resources.getDrawable(R.color.btn_l)
+        }
+        sixty_min.setOnClickListener {
+            remindTime = 60
+            five_min.background = resources.getDrawable(R.color.btn_l)
+            thirty_min.background = resources.getDrawable(R.color.btn_l)
+            sixty_min.background = resources.getDrawable(R.color.btn_d)
+            two_hour.background = resources.getDrawable(R.color.btn_l)
+        }
+        two_hour.setOnClickListener {
+            remindTime = 120
+            five_min.background = resources.getDrawable(R.color.btn_l)
+            thirty_min.background = resources.getDrawable(R.color.btn_l)
+            sixty_min.background = resources.getDrawable(R.color.btn_l)
+            two_hour.background = resources.getDrawable(R.color.btn_d)
+        }
+
         one_day.setOnClickListener {
             lockInterval = 0
             one_day.background = resources.getDrawable(R.color.btn_d)
@@ -591,20 +655,9 @@ class ResponsibleGame : Fragment() {
 
         lock_account.setOnClickListener {
             if (check_lock.isChecked) {
-                val client = OkHttpClient()
-                val lockJson = JSONObject()
-
-                val JSON = MediaType.get("application/json; charset=utf-8")
-                lockJson.put("timespan", lockInterval)
-                lockJson.put("userId", JSONObject(userData).getString("pk"))
-                val body = RequestBody.create(JSON,  lockJson.toString())
-                val request = Request.Builder()
-                    .url(BuildConfig.LOCKTIME)
-                    .post(body)
-                    .build()
-                val response = client.newCall(request).execute()
                 info = "lock_account"
-                startActivity(Intent(activity, MyAccount::class.java))
+                var res = Intent(activity, MyAccount::class.java)
+                startActivity(res)
                 activity!!.overridePendingTransition(0, 0)
             } else {
                 lock_error.visibility = View.VISIBLE

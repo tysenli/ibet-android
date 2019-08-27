@@ -101,6 +101,7 @@ class MyAccount : AppCompatActivity() {
             "acc_edit"   -> pages[2] = FragmentPagerItem.of("Account", EditAcc().javaClass)
 
             "lock_account"-> pages[3] = FragmentPagerItem.of("Responsible Game", Lock().javaClass)
+            "rg"         -> pages[3] = FragmentPagerItem.of("Responsible Game",  ResponsibleGame().javaClass)
 
         }
 

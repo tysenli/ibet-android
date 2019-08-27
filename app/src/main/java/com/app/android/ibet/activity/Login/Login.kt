@@ -86,7 +86,7 @@ class Login : AppCompatActivity() {
             //val url = "http://10.0.2.2:8000/users/api/login/"
 
             var log = Api().post(loginJson.toString(), BuildConfig.LOGIN)
-            //println("jh" + log)
+
             if (log.toString().equals("null")) {
                 forgot_password.text = "Incorrect Username or Password\n Forgot Password?"
                 forgot_password.setTextColor(Color.RED)
