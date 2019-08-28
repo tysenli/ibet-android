@@ -49,7 +49,7 @@ class AliOpenPage : AppCompatActivity() {
                 startActivity(res)
             } else {
                 val statusData = response.body()!!.string()
-                println(JSONObject(statusData).getString("status"))
+                //println(JSONObject(statusData).getString("status"))
 
                 if (JSONObject(statusData).getString("status") == "SUCCESS") {
 

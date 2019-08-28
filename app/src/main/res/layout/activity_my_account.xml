@@ -40,7 +40,7 @@
 
     <androidx.viewpager.widget.ViewPager
             android:id="@+id/account_viewpager"
-            android:layout_width="420dp"
+            android:layout_width="match_parent"
             android:layout_height="609dp"
             android:layout_below="@id/account_pagertab"
 

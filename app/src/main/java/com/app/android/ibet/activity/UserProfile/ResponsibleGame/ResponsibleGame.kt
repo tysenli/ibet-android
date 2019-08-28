@@ -214,24 +214,24 @@ class ResponsibleGame : Fragment() {
             val inter = JSONArray()
             if (dailyDepoAmt != "null") {
                 if (depoInterval != 0) {
-                    depoLimit.put(dailyDepoAmt!!.toInt())
+                    depoLimit.put(dailyDepoAmt!!.toFloat())
                     inter.put(0)
                 }
             }
             if (weeklyDepoAmt != "null") {
                 if (depoInterval != 1) {
-                    depoLimit.put(weeklyDepoAmt!!.toInt())
+                    depoLimit.put(weeklyDepoAmt!!.toFloat())
                     inter.put(1)
                 }
             }
             if (monthlyDepoAmt != "null") {
                 if (depoInterval != 2) {
-                    depoLimit.put(monthlyDepoAmt!!.toInt())
+                    depoLimit.put(monthlyDepoAmt!!.toFloat())
                     inter.put(2)
                 }
             }
             if (depo_limit_amt.text.toString().isNotEmpty()) {
-                depoLimit.put(depo_limit_amt.text.toString().toInt())
+                depoLimit.put(depo_limit_amt.text.toString().toFloat())
                 inter.put(depoInterval)
                 when (depoInterval) {
                     0 -> dailyDepoAmt = depo_limit_amt.text.toString()
@@ -491,24 +491,24 @@ class ResponsibleGame : Fragment() {
             val inter = JSONArray()
             if (dailyLossAmt != "null") {
                 if (lossInterval != 0) {
-                    lossLimit.put(dailyDepoAmt!!.toInt())
+                    lossLimit.put(dailyDepoAmt!!.toFloat())
                     inter.put(0)
                 }
             }
             if (weeklyLossAmt != "null") {
                 if (lossInterval != 1) {
-                    lossLimit.put(weeklyDepoAmt!!.toInt())
+                    lossLimit.put(weeklyDepoAmt!!.toFloat())
                     inter.put(1)
                 }
             }
             if (monthlyLossAmt != "null") {
                 if (lossInterval != 2) {
-                    lossLimit.put(monthlyDepoAmt!!.toInt())
+                    lossLimit.put(monthlyDepoAmt!!.toFloat())
                     inter.put(2)
                 }
             }
             if (loss_limit_amt.text.toString().isNotEmpty()) {
-                lossLimit.put(loss_limit_amt.text.toString().toInt())
+                lossLimit.put(loss_limit_amt.text.toString().toFloat())
                 inter.put(lossInterval)
                 when (lossInterval) {
                     0 -> dailyLossAmt = loss_limit_amt.text.toString()
