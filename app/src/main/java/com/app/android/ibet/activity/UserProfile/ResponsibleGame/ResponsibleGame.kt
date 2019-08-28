@@ -50,14 +50,15 @@ class ResponsibleGame : Fragment() {
             .url(BuildConfig.GETLIMIT + JSONObject(userData).getString("pk"))
             .build()
         val response = OkHttpClient().newCall(request).execute()
+
         //Log.e("response",response.body()!!.string())
-        val gameData = response.body()!!.string()
-        var dailyDepoAmt:String? = "null"
-        var weeklyDepoAmt:String? = "null"
-        var monthlyDepoAmt:String? = "null"
-        var dailyLossAmt:String? = "null"
-        var weeklyLossAmt:String? = "null"
-        var monthlyLossAmt:String? = "null"
+
+        var dailyDepoAmt: String? = "null"
+        var weeklyDepoAmt: String? = "null"
+        var monthlyDepoAmt: String? = "null"
+        var dailyLossAmt: String? = "null"
+        var weeklyLossAmt: String? = "null"
+        var monthlyLossAmt: String? = "null"
 
         var dailyDepoExpiretime = ""
         var weeklyDepoExpiretime = ""
@@ -66,44 +67,50 @@ class ResponsibleGame : Fragment() {
         var weeklyLossExpiretime = ""
         var monthlyLossExpiretime = ""
 
-        var depoArray = JSONObject(gameData).getJSONArray("deposit")
-        //Log.e("depoArray",depoArray.toString() )
-        for (i in 0 until depoArray.length()) {
-            when (JSONObject(depoArray.get(i).toString()).get("intervalValue"))  {
-                0 -> {
-                    dailyDepoAmt = JSONObject(depoArray.get(i).toString()).get("amount").toString()
-                    dailyDepoExpiretime = JSONObject(depoArray.get(i).toString()).get("expiration_time").toString()
+        if (response.code() == 200) {
+            val gameData = response.body()!!.string()
+            var depoArray = JSONObject(gameData).getJSONArray("deposit")
+            //Log.e("depoArray",depoArray.toString() )
+            for (i in 0 until depoArray.length()) {
+                when (JSONObject(depoArray.get(i).toString()).get("intervalValue")) {
+                    0 -> {
+                        dailyDepoAmt = JSONObject(depoArray.get(i).toString()).get("amount").toString()
+                        dailyDepoExpiretime = JSONObject(depoArray.get(i).toString()).get("expiration_time").toString()
+                    }
+                    1 -> {
+                        weeklyDepoAmt = JSONObject(depoArray.get(i).toString()).get("amount").toString()
+                        weeklyDepoExpiretime = JSONObject(depoArray.get(i).toString()).get("expiration_time").toString()
+                    }
+                    2 -> {
+                        monthlyDepoAmt = JSONObject(depoArray.get(i).toString()).get("amount").toString()
+                        monthlyDepoExpiretime =
+                            JSONObject(depoArray.get(i).toString()).get("expiration_time").toString()
+                    }
                 }
-                1 -> {
-                    weeklyDepoAmt = JSONObject(depoArray.get(i).toString()).get("amount").toString()
-                    weeklyDepoExpiretime = JSONObject(depoArray.get(i).toString()).get("expiration_time").toString()
-                }
-                2 -> {
-                    monthlyDepoAmt = JSONObject(depoArray.get(i).toString()).get("amount").toString()
-                    monthlyDepoExpiretime = JSONObject(depoArray.get(i).toString()).get("expiration_time").toString()
-                }
+
             }
 
-        }
+            var lossArray = JSONObject(gameData).getJSONArray("loss")
+            for (i in 0 until lossArray.length()) {
+                when (JSONObject(lossArray.get(i).toString()).get("intervalValue")) {
+                    0 -> {
+                        dailyLossAmt = JSONObject(lossArray.get(i).toString()).get("amount").toString()
+                        dailyLossExpiretime = JSONObject(lossArray.get(i).toString()).get("expiration_time").toString()
 
-        var lossArray = JSONObject(gameData).getJSONArray("loss")
-        for (i in 0 until lossArray.length()) {
-            when (JSONObject(lossArray.get(i).toString()).get("intervalValue"))  {
-                0 -> {
-                    dailyLossAmt = JSONObject(lossArray.get(i).toString()).get("amount").toString()
-                    dailyLossExpiretime = JSONObject(lossArray.get(i).toString()).get("expiration_time").toString()
-
-                }
-                1 -> {
-                    weeklyLossAmt = JSONObject(lossArray.get(i).toString()).get("amount").toString()
-                    weeklyLossExpiretime = JSONObject(lossArray.get(i).toString()).get("expiration_time").toString()
-                }
-                2 -> {
-                    monthlyLossAmt = JSONObject(lossArray.get(i).toString()).get("amount").toString()
-                    monthlyLossExpiretime = JSONObject(lossArray.get(i).toString()).get("expiration_time").toString()
+                    }
+                    1 -> {
+                        weeklyLossAmt = JSONObject(lossArray.get(i).toString()).get("amount").toString()
+                        weeklyLossExpiretime = JSONObject(lossArray.get(i).toString()).get("expiration_time").toString()
+                    }
+                    2 -> {
+                        monthlyLossAmt = JSONObject(lossArray.get(i).toString()).get("amount").toString()
+                        monthlyLossExpiretime =
+                            JSONObject(lossArray.get(i).toString()).get("expiration_time").toString()
+                    }
                 }
             }
         }
+
 
         depo_limit_amt.hint = if (dailyDepoAmt == "null") "0" else dailyDepoAmt
         depo_cur.text = "Current Limit    \$0 out of \$${depo_limit_amt.hint}"
