@@ -3,9 +3,12 @@ package com.app.android.ibet.activity.UserProfile.Setting
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
@@ -58,6 +61,7 @@ class Setting : Fragment() {
             communication.isChecked = true
         } else {
             communication.isChecked = false
+
             com_phone.isEnabled = false
             com_sms.isEnabled = false
             com_email.isEnabled = false
@@ -85,6 +89,12 @@ class Setting : Fragment() {
                 com_postal.isEnabled = true
                 com_social.isEnabled = true
             } else {
+                com_phone.isChecked = false
+                com_sms.isChecked = false
+                com_email.isChecked = false
+                com_postal.isChecked = false
+                com_social.isChecked = false
+
                 com_phone.isEnabled = false
                 com_sms.isEnabled = false
                 com_email.isEnabled = false
@@ -111,6 +121,17 @@ class Setting : Fragment() {
             val response = client.newCall(request).execute()
             val marketData = response.body()!!.string()
             Log.e("matketData",marketData)
+
+            val toast = Toast.makeText(context,
+                "Changes are successfully updated", Toast.LENGTH_SHORT
+            )
+            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 260)
+            val view = toast.view
+            view.setBackgroundResource(R.color.toast)
+            val text = view.findViewById<TextView>(android.R.id.message)
+            text.setTextColor(Color.parseColor("#ffffff"))
+            toast.show()
+
         }
         privacy_update.setOnClickListener {
             val client = OkHttpClient()
@@ -128,6 +149,16 @@ class Setting : Fragment() {
                 .build()
             val response = client.newCall(request).execute()
             val privacyData = response.body()!!.string()
+
+            val toast = Toast.makeText(context,
+                "Changes are successfully updated", Toast.LENGTH_SHORT
+            )
+            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 260)
+            val view = toast.view
+            view.setBackgroundResource(R.color.toast)
+            val text = view.findViewById<TextView>(android.R.id.message)
+            text.setTextColor(Color.parseColor("#ffffff"))
+            toast.show()
         }
 
 

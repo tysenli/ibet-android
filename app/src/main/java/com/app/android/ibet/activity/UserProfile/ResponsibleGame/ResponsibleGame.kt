@@ -258,6 +258,7 @@ class ResponsibleGame : Fragment() {
             //Log.e("code",response.code().toString())
             //Log.e("depolimit",response.body()!!.string())
 
+
             remove_depo.visibility = View.VISIBLE
             if (depo_limit_amt.text.toString().isNotEmpty()) {
                 depo_cur.text = "Current Limit    \$0 out of \$${depo_limit_amt.text}"
