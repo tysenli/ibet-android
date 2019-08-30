@@ -39,7 +39,7 @@ class ResponsibleGame : Fragment() {
     private var lossInterval = 0
     var lockInterval = 0
     companion object {
-        var remindTime = 0
+        var remindTime = 60
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.frag_responsible_game, container, false)
@@ -47,6 +47,11 @@ class ResponsibleGame : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        five_min.background = if (remindTime == 5)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
+        thirty_min.background = if (remindTime == 30)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
+        sixty_min.background = if (remindTime == 60)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
+        two_hour.background = if (remindTime == 120)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
 
         val request = Request.Builder()
             .url(BuildConfig.GETLIMIT + JSONObject(userData).getString("pk"))
