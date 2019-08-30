@@ -116,7 +116,7 @@ class ResponsibleGame : Fragment() {
 
         depo_limit_amt.hint = if (dailyDepoAmt == "null") "0" else dailyDepoAmt
         depo_cur.text = "Current Limit    \$0 out of \$${depo_limit_amt.hint}"
-        depo_expire.text = "Limit expires on    \$0 out of \$$dailyDepoAmt"
+        depo_expire.text = "Limit expires on    "
         if (dailyDepoExpiretime.isEmpty()) {
             depo_show.visibility = View.VISIBLE
             depo_remove.visibility = View.GONE
@@ -135,7 +135,7 @@ class ResponsibleGame : Fragment() {
             depoInterval = 0
             depo_limit_amt.hint = if (dailyDepoAmt == "null") "0" else dailyDepoAmt
             depo_cur.text = "Current Limit    \$0 out of \$${depo_limit_amt.hint}"
-            depo_expire.text = "Limit expires on    \$0 out of \$$dailyDepoAmt"
+            depo_expire.text = "Limit expires on   "
             remove_depo.visibility = if (dailyDepoAmt == "null") View.GONE else View.VISIBLE
             if (dailyDepoExpiretime.isEmpty()) {
                 depo_show.visibility = View.VISIBLE
@@ -158,7 +158,7 @@ class ResponsibleGame : Fragment() {
             depoInterval = 1
             depo_limit_amt.hint = if (weeklyDepoAmt == "null") "0" else weeklyDepoAmt
             depo_cur.text = "Current Limit    \$0 out of \$${depo_limit_amt.hint}"
-            depo_expire.text = "Limit expires on    \$0 out of \$$weeklyDepoAmt"
+            depo_expire.text = "Limit expires on   "
             remove_depo.visibility = if (weeklyDepoAmt == "null") View.GONE else View.VISIBLE
             if (weeklyDepoExpiretime.isEmpty()) {
                 depo_show.visibility = View.VISIBLE
@@ -179,7 +179,7 @@ class ResponsibleGame : Fragment() {
             remove_depo.visibility = if (monthlyDepoAmt == "null") View.GONE else View.VISIBLE
             depo_limit_amt.hint = if (monthlyDepoAmt == "null") "0" else monthlyDepoAmt
             depo_cur.text = "Current Limit    \$0 out of \$${depo_limit_amt.hint}"
-            depo_expire.text = "Limit expires on    \$0 out of \$$monthlyDepoAmt"
+            depo_expire.text = "Limit expires on  "
 
             if (monthlyDepoExpiretime.isEmpty()) {
                 depo_show.visibility = View.VISIBLE
@@ -295,17 +295,17 @@ class ResponsibleGame : Fragment() {
             if (depoInterval == 0) {
                 dailyDepoExpiretime = JSONObject(dateData).getString("expire_time")
                 depo_deletetime.text = dailyDepoExpiretime.substring(0,16)
-                depo_expire.text = "Limit expires on    \$0 out of \$$dailyDepoAmt"
+               // depo_expire.text = "Limit expires on    \$0 out of \$$dailyDepoAmt"
 
             } else if (depoInterval == 1) {
                 weeklyDepoExpiretime = JSONObject(dateData).getString("expire_time")
                 depo_deletetime.text = weeklyDepoExpiretime.substring(0,16)
-                depo_expire.text = "Limit expires on    \$0 out of \$$weeklyDepoAmt"
+                depo_expire.text = "Limit expires on"
 
             } else {
                 monthlyDepoExpiretime = JSONObject(dateData).getString("expire_time")
                 depo_deletetime.text = monthlyDepoExpiretime.substring(0,16)
-                depo_expire.text = "Limit expires on    \$0 out of \$$monthlyDepoAmt"
+                depo_expire.text = "Limit expires on    "
 
             }
 
@@ -342,17 +342,17 @@ class ResponsibleGame : Fragment() {
             if (lossInterval == 0) {
                 dailyLossExpiretime = JSONObject(dateData).getString("expire_time")
                 loss_deletetime.text = dailyLossExpiretime.substring(0,16)
-                loss_expire.text = "Limit expires on    \$0 out of \$$dailyLossAmt"
+                loss_expire.text = "Limit expires on    "
 
             } else if (lossInterval == 1) {
                 weeklyLossExpiretime = JSONObject(dateData).getString("expire_time")
                 loss_deletetime.text = weeklyLossExpiretime.substring(0,16)
-                loss_expire.text = "Limit expires on    \$0 out of \$$weeklyLossAmt"
+                loss_expire.text = "Limit expires on  "
 
             } else {
                 monthlyLossExpiretime = JSONObject(dateData).getString("expire_time")
                 loss_deletetime.text = monthlyLossExpiretime.substring(0,16)
-                loss_expire.text = "Limit expires on    \$0 out of \$$monthlyLossAmt"
+                loss_expire.text = "Limit expires on  "
 
             }
             loss_show.visibility = View.GONE
@@ -416,7 +416,7 @@ class ResponsibleGame : Fragment() {
 
         loss_limit_amt.hint = if (dailyLossAmt == "null") "0" else dailyLossAmt
         loss_cur.text = "Current Limit    \$0 out of \$${loss_limit_amt.hint}"
-        loss_expire.text = "Limit expires on    \$0 out of \$$dailyDepoAmt"
+        loss_expire.text = "Limit expires on   "
 
         if (dailyLossExpiretime.isEmpty()) {
             loss_show.visibility = View.VISIBLE
@@ -431,7 +431,7 @@ class ResponsibleGame : Fragment() {
             lossInterval = 0
             loss_limit_amt.hint = if (dailyLossAmt == "null") "0" else dailyLossAmt
             loss_cur.text = "Current Limit    \$0 out of \$${loss_limit_amt.hint}"
-            loss_expire.text = "Limit expires on    \$0 out of \$$dailyLossAmt"
+            loss_expire.text = "Limit expires on    "
             remove_loss.visibility = if (dailyLossAmt == "null") View.GONE else View.VISIBLE
             if (dailyLossExpiretime.isEmpty()) {
                 loss_show.visibility = View.VISIBLE
@@ -451,7 +451,7 @@ class ResponsibleGame : Fragment() {
             lossInterval = 1
             loss_limit_amt.hint = if (weeklyLossAmt == "null") "0" else weeklyLossAmt
             loss_cur.text = "Current Limit    \$0 out of \$${loss_limit_amt.hint}"
-            loss_expire.text = "Limit expires on    \$0 out of \$$weeklyLossAmt"
+            loss_expire.text = "Limit expires on   "
 
             remove_loss.visibility = if (weeklyLossAmt == "null") View.GONE else View.VISIBLE
             if (weeklyLossExpiretime.isEmpty()) {
@@ -471,7 +471,7 @@ class ResponsibleGame : Fragment() {
             lossInterval = 2
             loss_limit_amt.hint = if (monthlyLossAmt == "null") "0" else monthlyLossAmt
             loss_cur.text = "Current Limit    \$0 out of \$${loss_limit_amt.hint}"
-            loss_expire.text = "Limit expires on    \$0 out of \$$monthlyLossAmt"
+            loss_expire.text = "Limit expires on    "
 
             remove_loss.visibility = if (monthlyLossAmt == "null") View.GONE else View.VISIBLE
             if (monthlyLossExpiretime.isEmpty()) {
@@ -555,7 +555,7 @@ class ResponsibleGame : Fragment() {
             val toast = Toast.makeText(context,
                 "Changes are successfully updated", Toast.LENGTH_SHORT
             )
-            
+
             toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 260)
             val view = toast.view
             view.setBackgroundResource(R.color.toast)
