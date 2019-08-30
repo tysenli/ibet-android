@@ -507,6 +507,18 @@ class ResponsibleGame : Fragment() {
                 loss_limit_amt.setText("$amt")
             }
         }
+        save_activity.setOnClickListener {
+            val toast = Toast.makeText(context,
+                "Changes are successfully updated", Toast.LENGTH_SHORT
+            )
+
+            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 260)
+            val view = toast.view
+            view.setBackgroundResource(R.color.toast)
+            val text = view.findViewById<TextView>(android.R.id.message)
+            text.setTextColor(Color.parseColor("#ffffff"))
+            toast.show()
+        }
         save_loss_limit.setOnClickListener {
 
             val client = OkHttpClient()
