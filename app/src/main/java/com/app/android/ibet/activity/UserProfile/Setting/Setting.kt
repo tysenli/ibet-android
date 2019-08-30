@@ -66,7 +66,7 @@ class Setting : Fragment() {
             com_sms.isEnabled = false
             com_email.isEnabled = false
             com_postal.isEnabled = false
-            com_social.isEnabled = false
+
         }
 
         marketing.setOnClickListener {
@@ -87,19 +87,18 @@ class Setting : Fragment() {
                 com_sms.isEnabled = true
                 com_email.isEnabled = true
                 com_postal.isEnabled = true
-                com_social.isEnabled = true
+
             } else {
                 com_phone.isChecked = false
                 com_sms.isChecked = false
                 com_email.isChecked = false
                 com_postal.isChecked = false
-                com_social.isChecked = false
+
 
                 com_phone.isEnabled = false
                 com_sms.isEnabled = false
                 com_email.isEnabled = false
                 com_postal.isEnabled = false
-                com_social.isEnabled = false
             }
         }
         marketing_update.setOnClickListener {

@@ -33,8 +33,8 @@ android {
             buildConfigField 'String','USER',"\"$local/users/api/user/\""
             buildConfigField 'String','PAYPAL',"\"$local/accounting/api/paypal/create_payment\""
             buildConfigField 'String','PAYPAL_ORDER',"\"$local/accounting/api/paypal/get_order\""
-            buildConfigField 'String','WECHAT',"\"$local/accounting/api/qaicash/submit_deposit\""
-            buildConfigField 'String','WECHAT_ORDER',"\"$local/accounting/api/qaicash/deposit_transaction\""
+            buildConfigField 'String','QAICASH',"\"$local/accounting/api/qaicash/submit_deposit\""
+            buildConfigField 'String','QAICASH_CONFIRM',"\"$local/accounting/api/qaicash/get_transaction_status\""
             buildConfigField 'String','BALANCE',"\"$local/users/api/addorwithdrawbalance/\""
             buildConfigField 'String','VERI_SIGNUP',"\"$local/users/api/sendemail/?case=signup\""
             buildConfigField 'String','SETLIMIT',"\"$local/users/api/set-limitations/\""
@@ -45,12 +45,11 @@ android {
             buildConfigField 'String','MARKETING',"\"$local/users/api/marketing-settings/\""
             buildConfigField 'String','PRIVACY',"\"$local/users/api/privacy-settings/\""
 
-
-
             buildConfigField 'String','WITHDRAW',"\"$local/accounting/api/qaicash/submit_payout\""
             buildConfigField 'String','WITHDRAW_ORDER',"\"$local/accounting/api/qaicash/payout_transaction\""
             buildConfigField 'String','LINE',"\"$local/accounting/api/linepay/reserve_payment\""
             buildConfigField 'String','ASIAPAY',"\"$local/accounting/api/asiapay/deposit\""
+            buildConfigField 'String','ASIAPAY_CONFIRM',"\"$local/accounting/api/asiapay/orderStatus\""
             buildConfigField 'String','ASTROPAY',"\"$local/accounting/api/astropay/capture_transaction\""
             buildConfigField 'String','PAYZOD',"\"$local/accounting/api/payzod/deposit\""
             buildConfigField 'String','TRANSACTION_RECODE',"\"$local/accounting/api/transactions/get_transactions?userid=\""

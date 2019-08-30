@@ -110,7 +110,7 @@ class QaiWechat : Fragment() {
                     .build()
 
                 val request = Request.Builder()
-                    .url(BuildConfig.WECHAT)
+                    .url(BuildConfig.QAICASH)
                     .post(formBody)
                     .build()
                 val response = client.newCall(request).execute()

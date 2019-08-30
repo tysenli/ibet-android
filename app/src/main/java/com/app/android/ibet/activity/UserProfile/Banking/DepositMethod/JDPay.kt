@@ -112,6 +112,9 @@ class JDPay : Fragment() {
                 MyAccount.info = "fail"
                 val res = Intent(context, MyAccount::class.java)
                 startActivity(res)
+            } else  {
+                var quickData = response.body()!!.string()
+                //println(quickData)
             }
             //println(response.code())
             //var quickData = response.body()!!.string()
