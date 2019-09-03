@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
                 hourlyTask,
                 0L,
                 1000 * ResponsibleGame.remindTime * 60.toLong()
-            )// 1000*10*60 every 10 minut
+            )// 1000*10*60 every 10 minutes
         }
 
             //toolbar.setTitleTextColor(Color.RED)

@@ -55,6 +55,7 @@ android {
             buildConfigField 'String','TRANSACTION_RECODE',"\"$local/accounting/api/transactions/get_transactions?userid=\""
             buildConfigField 'String','Fgate',"\"$local/accounting/api/fgate/chargeCard\""
             buildConfigField 'String','Help2pay',"\"$local/accounting/api/help2pay/deposit\""
+            buildConfigField 'String','Help2pay_CONFIRM',"\"$local/accounting/api/help2pay/deposit_status\""
             buildConfigField 'String','Scratch',"\"$local/accounting/api/scratchcard/deposit\""
             buildConfigField 'String', 'GAME_URL', "\"$local/games/api/games/?type=\""
             buildConfigField('String', 'GAME_URL_CATEGORY', "\"&category=\"")

@@ -20,7 +20,7 @@ class Withdraw  : AppCompatActivity() {
         actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_withdraw)
-        bank.setOnClickListener {
+        asia_bank.setOnClickListener {
             startActivity(Intent(this, Bank::class.java))
 
         }

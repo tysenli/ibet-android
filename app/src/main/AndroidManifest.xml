@@ -154,19 +154,19 @@
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
-        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.BankDep"
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.QaiBank"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
-        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.JDPay"
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AsiaJDPay"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
-        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.QuickPay"
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AsiaQuickPay"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
-        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.UnionPay"
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AsiaUnionPay"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
@@ -182,11 +182,36 @@
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
-        <activity android:name=".activity.UserProfile.Banking.DepositMethod.WechatOpenPage"
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.QaiWechatOpenPage"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
-        <activity android:name=".activity.UserProfile.Banking.DepositMethod.AliOpenPage"
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.AsiaAliOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.AsiaJDOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.AsiaQuickpayOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.AsiaUnionOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.QaiAliOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.QaiBankOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.QaiUnionOpenPage"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
