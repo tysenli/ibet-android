@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
@@ -12,23 +12,17 @@ import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.*
 import com.app.android.ibet.R
-import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
-import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 
 
 import com.app.android.ibet.activity.MainActivity
-import com.wajahatkarim3.easyvalidation.core.view_ktx.minLength
 import com.ybs.passwordstrengthmeter.PasswordStrength
 import kotlinx.android.synthetic.main.activity_email_auth_p1.*
 import android.widget.TextView
 import android.view.ViewGroup
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.widget.BaseAdapter
-
-
-
-
-
+import com.wajahatkarim3.easyvalidation.core.view_ktx.*
 
 
 class emailAuthP1 : AppCompatActivity() {
@@ -41,6 +35,10 @@ class emailAuthP1 : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_email_auth_p1)
@@ -103,7 +101,7 @@ class emailAuthP1 : AppCompatActivity() {
 
         passwordtxt.addTextChangedListener (object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
-                if (passwordtxt.minLength(8)) {
+                if (passwordtxt.minLength(8) && passwordtxt.atleastOneUpperCase() && passwordtxt.atleastOneLowerCase() && passwordtxt.atleastOneSpecialCharacters()) {
                     isValidPassword = true
                 }
 
@@ -114,9 +112,10 @@ class emailAuthP1 : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (passwordtxt.minLength(8)) {
+                if (passwordtxt.minLength(8) && passwordtxt.atleastOneUpperCase() && passwordtxt.atleastOneLowerCase() && passwordtxt.atleastOneSpecialCharacters()) {
                     tv_password2.text = "At least 8 character."
                     tv_password2.setTextColor(Color.rgb(116,113,117))
+                    isValidPassword = true
 
                 } else {
                     tv_password2.text = "Password too simple"
@@ -129,7 +128,7 @@ class emailAuthP1 : AppCompatActivity() {
                     passwordtxt.error = it
                 }.check() */
                 updatePasswordStrenth(s.toString())
-                if (isValidEmail && passwordtxt.minLength(8)) {
+                if (isValidEmail && isValidPassword) {
                     continue1.setBackgroundResource(R.drawable.btn_red)
                     continue1.setEnabled(true)
                 } else {
@@ -198,7 +197,20 @@ class emailAuthP1 : AppCompatActivity() {
 
         }
 
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        when (item.itemId) {
+            android.R.id.home -> {
+                // startActivity(Intent(this, MyAccount::class.java))
+                onBackPressed()
+                return true
+            }
 
+            else -> return super.onOptionsItemSelected(item)
+        }
 
     }
 

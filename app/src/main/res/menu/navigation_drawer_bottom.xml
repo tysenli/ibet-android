@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+
+    <group android:id="@+id/policy"
+
+    >
+        <item
+            android:id="@+id/language_navi"
+            android:title=""
+            app:actionLayout="@layout/language_choose"/>
+
+        <item
+                android:id="@+id/about"
+                android:title="About Us"/>
+        <item
+                android:id="@+id/contact"
+                android:title="Contact Us"/>
+        <item
+                android:id="@+id/help"
+                android:title="Help and FAQ"/>
+        <item
+                android:id="@+id/terms"
+                android:title="Terms and Conditions"/>
+        <item
+                android:id="@+id/rules"
+                android:title="Sportsbook Rules"/>
+        <item
+                android:id="@+id/guides"
+                android:title="Sports Betting Guides"/>
+        <item
+                android:id="@+id/corporate"
+                android:title="Ibet Corporate"/>
+
+    </group>
+</menu>

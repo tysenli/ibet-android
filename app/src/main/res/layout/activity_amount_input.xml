@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-                                             android:layout_height="match_parent"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto">
     <Button
             android:text="$100"
             android:layout_width="72dp"
@@ -45,7 +45,7 @@
             android:layout_centerInParent="true"
             android:layout_margin="20dp"
             android:background="@drawable/deposit_btn"
-            android:text="change deposit method"
+            android:text="back to banking"
             android:textColor="#4e4f4e"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,7 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/deposit_amount2"
-            android:hint=" Deposit $10 - $2,000"
+            android:hint=" Deposit $10 - $2,000                        Other"
             android:layout_marginStart="8dp"
             android:textColorHint="#4e4e4e"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,15 +78,22 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.092"/>
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="method"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView43" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp" android:id="@+id/depo_method_show"/>
     <View
             android:id="@+id/divider7"
             android:layout_width="395dp"
             android:layout_height="1dp"
 
             android:background="#e7e7e7"
-            app:layout_constraintTop_toBottomOf="@+id/textView43" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginTop="12dp" app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toBottomOf="@+id/depo_method_show"
+            android:layout_marginTop="12dp"/>
     <Button
             android:text="$25"
             android:layout_width="72dp"
@@ -151,5 +158,13 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toEndOf="@+id/fee" android:layout_marginStart="8dp"
             app:layout_constraintHorizontal_bias="0.85"/>
+    <TextView
+            android:text="Please deposit between 20 - 2000"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:id="@+id/amt_input_err"
+            android:textColor="#c90000"
+            app:layout_constraintTop_toBottomOf="@+id/deposit_amount2" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"/>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

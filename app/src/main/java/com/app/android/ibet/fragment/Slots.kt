@@ -3,8 +3,8 @@ package com.app.android.ibet.fragment
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.view.ViewPager
+import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -28,13 +28,8 @@ class Slots (context: Context): Fragment() {
 
         val adapter = FragmentPagerItemAdapter(
             fragmentManager, FragmentPagerItems.with(parentContext)
-                .add("TOP RATED", Live().javaClass)
-                .add("NEW",Live().javaClass)
-                .add("SLOTS",Live().javaClass)
-                .add("JACKPOTS",Live().javaClass)
-                .add("TABLE GAMES", Live().javaClass)
-                .add("VIRTUAL SPORTS", Live().javaClass)
-                .add("OTHER GAMES", Live().javaClass)
+                .add("ALL", GameLobbySlots().javaClass)
+
                 .create()
         )
         slots_viewpager.adapter = adapter

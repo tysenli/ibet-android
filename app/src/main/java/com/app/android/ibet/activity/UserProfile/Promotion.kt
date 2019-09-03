@@ -1,7 +1,7 @@
 package com.app.android.ibet.activity.UserProfile
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import com.app.android.ibet.R
 

@@ -5,14 +5,18 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
 import android.os.StrictMode
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuItem
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.MainActivity.Companion.isLogin
 import com.app.android.ibet.activity.Signup.Signup
+import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amt
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.app.android.ibet.api.Api
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 
@@ -25,6 +29,10 @@ class Login : AppCompatActivity() {
         var token = ""
     }
     override fun onCreate(savedInstanceState: Bundle?) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
@@ -78,19 +86,22 @@ class Login : AppCompatActivity() {
             //val url = "http://10.0.2.2:8000/users/api/login/"
 
             var log = Api().post(loginJson.toString(), BuildConfig.LOGIN)
-            var hint = log!!.split(":")[0]
-            var key = log!!.split(":")[1]
-            // println(key.substring(1,key.length - 2))
-            var success = hint.substring(2,hint.length - 1)
-            token = key.substring(1,key.length - 2)
-
-            if (success == "key") {
-                isLogin = true
-                startActivity(Intent(this, MainActivity::class.java))
-            } else {
+            //println("jh" + log)
+            if (log.toString().equals("null")) {
                 forgot_password.text = "Incorrect Username or Password\n Forgot Password?"
                 forgot_password.setTextColor(Color.RED)
+            } else {
+               // var hint = log!!.split(":")[0]
+                //var key = log!!.split(":")[1]
+                // println(key.substring(1,key.length - 2))
+                //var success = hint.substring(2, hint.length - 1)
+                token = JSONObject(log).getString("key")
+                isLogin = true
+                userData = Api().get(BuildConfig.USER)!!
+                amt = JSONObject(userData).getString("main_wallet")
+                startActivity(Intent(this, MainActivity::class.java))
             }
+
 
         }
         forgot_password.setOnClickListener {
@@ -105,7 +116,21 @@ class Login : AppCompatActivity() {
             startActivity(intent)
         }*/
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        when (item.itemId) {
+            android.R.id.home -> {
+                // startActivity(Intent(this, MyAccount::class.java))
+                onBackPressed()
+                return true
+            }
 
+            else -> return super.onOptionsItemSelected(item)
+        }
+
+    }
 
 
 }

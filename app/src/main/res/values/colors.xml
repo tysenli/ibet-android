@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#5B5C5B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="title">#ff0000</color>
-    <color name="colorNavi">#2d2d2d</color>
+    <color name="colorNavi">#000000</color>
     <color name="line">#5b5c5b</color>
+    <color name="btn_d">#bebebe</color>
+    <color name="btn_l">#d8d8d8</color>
+    <color name="blue">#0091ff</color>
+    <color name="toast">#00cc66</color>
 
 </resources>

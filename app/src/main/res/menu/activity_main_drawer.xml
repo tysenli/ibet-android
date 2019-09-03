@@ -14,7 +14,7 @@
         />
     </group>
 -->
-
+<!--
     <group android:checkableBehavior="single"
            android:id="@+id/group1"
     >
@@ -25,6 +25,7 @@
                 app:showAsAction="collapseActionView|ifRoom"
                 app:actionViewClass="android.support.v7.widget.SearchView"/>
     </group>
+    -->
 
     <group android:checkableBehavior="single"
            android:id="@+id/group2"
@@ -64,18 +65,7 @@
 
     </group>
 
-    <group android:id="@+id/policy">
-        <item
-            android:id="@+id/terms"
-            android:title="Terms and Conditions"/>
-        <item
-            android:id="@+id/cookie"
-            android:title="Cookie Policy"/>
-        <item
-            android:id="@+id/privacy"
-            android:title="Privacy Policy"/>
 
-    </group>
 
 
 </menu>

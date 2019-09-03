@@ -4,8 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 
 import android.os.StrictMode
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import android.view.MenuItem
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.api.Api
@@ -26,6 +27,10 @@ class Signup : AppCompatActivity() {
     private var callbackManager: CallbackManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_signup)
@@ -72,8 +77,6 @@ class Signup : AppCompatActivity() {
         btnOneClick.setOnClickListener {
 
             val visitorJson = JSONObject()
-            //val url = "http://10.0.2.2:8000/users/api/oneclicksignup/"
-
             val info = Api().post(visitorJson.toString(),BuildConfig.ONE_CLICK_SIGNUP_URL)
             println (info)
             var info1 = info!!.split(",")
@@ -81,8 +84,7 @@ class Signup : AppCompatActivity() {
             var info3 = info1[1].split(":")[1]
             var name = info2.substring(1,info2.length - 1)
             var pass = info3.substring(1, info3.length - 2)
-            println(name)
-           // println(info1[0])
+           // println(name)
 
             var res = Intent(applicationContext, oneClick::class.java)
             res.putExtra("username",name)
@@ -93,6 +95,21 @@ class Signup : AppCompatActivity() {
         }
 
 
+
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        when (item.itemId) {
+            android.R.id.home -> {
+                // startActivity(Intent(this, MyAccount::class.java))
+                onBackPressed()
+                return true
+            }
+
+            else -> return super.onOptionsItemSelected(item)
+        }
 
     }
     /*

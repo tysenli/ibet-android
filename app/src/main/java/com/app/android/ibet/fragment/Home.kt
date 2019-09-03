@@ -3,7 +3,7 @@ package com.app.android.ibet.fragment
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +30,7 @@ class Home : Fragment() {
         if (!this.initialized) {
             val fm = fragmentManager
             val ft = fm?.beginTransaction()
-            ft?.add(R.id.list_holder, HomeGames(), "NEW_FRAG") //frag 1: load top track
+            ft?.add(R.id.list_holder, GameLobbyAll(), "NEW_FRAG")
             ft?.commit()
             //search
             /*

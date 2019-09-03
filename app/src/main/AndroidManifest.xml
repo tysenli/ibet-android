@@ -7,11 +7,11 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!--supports-screens
+    <supports-screens
         android:smallScreens="true"
         android:normalScreens="true"
         android:largeScreens="true"
-        android:xlargeScreens="true" /-->
+        android:xlargeScreens="true" />
 
     <application
             android:allowBackup="true"
@@ -31,18 +31,37 @@
 
         </activity>
 
-        <activity android:name=".activity.Signup.Signup"></activity>
+        <activity android:name=".activity.Signup.Signup"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Signup"
+        ></activity>
         <activity android:name=".activity.Signup.fbAuthenticatedActivity"></activity>
-        <activity android:name=".activity.Signup.emailAuthP1"></activity>
-        <activity android:name=".activity.Signup.emailAuthP2"/>
-        <activity android:name=".activity.Signup.emailAuthP3"></activity>
-        <activity android:name=".activity.Signup.oneClick"></activity>
+        <activity android:name=".activity.Signup.emailAuthP1"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Signup"></activity>
+        <activity android:name=".activity.Signup.emailAuthP2"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Signup"></activity>
+        <activity android:name=".activity.Signup.emailAuthP3"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Signup"></activity>
+        <activity android:name=".activity.Signup.oneClick"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="OneClick"></activity>
         <activity android:name=".activity.Signup.oneClickIntro"></activity>
-        <activity android:name=".activity.Signup.Verify"></activity>
-        <activity android:name=".activity.Signup.VeriEmail"></activity>
-        <activity android:name=".activity.Signup.VeriPhone"></activity>
+        <activity android:name=".activity.Signup.Verify"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Verify"></activity>
+        <activity android:name=".activity.Signup.VeriEmail"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Verify"></activity>
+        <activity android:name=".activity.Signup.VeriPhone"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Verify"></activity>
         <activity android:name=".activity.Signup.Verified"></activity>
-        <activity android:name=".activity.Signup.PhoneCode"></activity>
+        <activity android:name=".activity.Signup.PhoneCode"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Verify"></activity>
 
         <meta-data android:name="com.facebook.sdk.ApplicationId"
                    android:value="@string/facebook_app_id"/>
@@ -72,13 +91,17 @@
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Login">
         </activity>
-        <activity android:name=".activity.Login.ForgotPass"></activity>
-        <activity android:name=".activity.Login.NewPass"></activity>
+        <activity android:name=".activity.Login.ForgotPass"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="ForgotPassword"></activity>
+        <activity android:name=".activity.Login.NewPass"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="ForgotPassword"></activity>
 
 
         <activity android:name=".activity.UserProfile.MyAccount"
                   android:theme="@style/Theme.AppCompat.Light"
-                  android:label="My Account"></activity>
+                  android:label="Profile"></activity>
 
         <activity android:name=".activity.UserProfile.Edit"
                   android:theme="@style/Theme.AppCompat.Light"
@@ -86,7 +109,7 @@
         <activity android:name=".activity.UserProfile.Bets"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Bets"></activity>
-        <activity android:name=".activity.UserProfile.Transactions.Deposit"
+        <activity android:name=".activity.UserProfile.Banking.Deposit"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Bets"></activity>
 
@@ -106,8 +129,89 @@
         <activity android:name=".activity.UserProfile.ChangePass"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Change Password"></activity>
-        <activity android:name="com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.Paypal"></activity>
-        <activity android:name="com.app.android.ibet.activity.UserProfile.Transactions.DepositMethod.QaiWechat"></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.Paypal"></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.QaiWechat"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.VisaInfo"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.Visa"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.QaiAli"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.LinePay"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AstropayInfo"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.BankDep"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.JDPay"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.QuickPay"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.UnionPay"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name="com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.Help2payOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.Total"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Total Wealth"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.Success"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.WechatOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.AliOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.WithdrawMethod.BankOpenPage"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Withdraw"
+        ></activity>
+
+        <activity android:name=".activity.UserProfile.Banking.Withdraw"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Withdraw Method"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.WithdrawMethod.Bank"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Withdraw"
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.WithdrawMethod.SuccessWithdraw"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Withdraw"
+
+        ></activity>
+        <activity android:name=".activity.UserProfile.Banking.DepositMethod.PayzodQR"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:label="Deposit"
+        ></activity>
 
     </application>
 

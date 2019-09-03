@@ -1,15 +1,15 @@
 package com.app.android.ibet
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 
 import android.view.View
@@ -48,9 +48,14 @@ class HomeGames : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        game_list.layoutManager = GridLayoutManager(this.context,3)
+        game_list.layoutManager = GridLayoutManager(this.context, 3)
         //game_list.layoutManager = LinearLayoutManager(this.context)
-        game_list.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        game_list.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
         val observer = Observer<ArrayList<GameModel>> {
