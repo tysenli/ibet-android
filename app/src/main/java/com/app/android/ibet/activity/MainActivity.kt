@@ -1,14 +1,19 @@
 package com.app.android.ibet.activity
 
+import android.app.usage.UsageStats
+import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import android.view.*
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 
 
 import com.app.android.ibet.R
@@ -33,6 +38,8 @@ import com.app.android.ibet.fragment.Display
 //import com.app.android.ibet.activity.UserProfile.UserProfile
 import com.zhangke.zlog.ZLog
 import kotlinx.android.synthetic.main.login_actionlayout.*
+import android.widget.Toast
+import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
 
 
 class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick {
@@ -72,7 +79,35 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
         navigationBody.setOnChildClickListener(navigationBodyAdapter)
 
         navigationBodyAdapter.showItems(SampleMenu.getMenu())
-        //toolbar.setTitleTextColor(Color.RED)
+
+        Log.e("time",ResponsibleGame.remindTime.toString())
+        if (ResponsibleGame.remindTime != 0) {
+            val timer = Timer()
+            val hourlyTask = object : TimerTask() {
+
+                override fun run() {
+                    // your code here...
+                    this@MainActivity.runOnUiThread(Runnable {
+                        val toast = Toast.makeText(
+                            this@MainActivity,
+                            "Alert...", Toast.LENGTH_SHORT
+                        )
+                        toast.show()
+                        Log.e("alert", "alert")
+                    })
+                }
+            }
+
+
+            // schedule the task to run starting now and then every hour...
+            timer.schedule(
+                hourlyTask,
+                0L,
+                1000 * ResponsibleGame.remindTime * 60.toLong()
+            )// 1000*10*60 every 10 minut
+        }
+
+            //toolbar.setTitleTextColor(Color.RED)
 /*
         //nav_view.setNavigationItemSelectedListener(this)
         var language = arrayOf("Language", "English", "Chinese", "Thai")

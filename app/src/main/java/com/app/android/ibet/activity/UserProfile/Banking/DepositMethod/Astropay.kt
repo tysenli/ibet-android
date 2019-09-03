@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -119,6 +120,7 @@ class Astropay : Fragment() {
                     startActivity(res)
                 } else {
                     val statusData = response.body()!!.string()
+                    Log.e("Astropay",statusData)
                     //println(JSONObject(statusData).getString("response_msg").substring(0,6))
 
                     if (JSONObject(statusData).getString("response_msg").substring(0, 6) == "1|1|1|") {

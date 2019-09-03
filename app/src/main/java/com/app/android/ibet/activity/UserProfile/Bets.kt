@@ -36,7 +36,6 @@ class Bets : AppCompatActivity() {
                 super.onPageSelected(position)
                 val tab = bets_viewpagertab.getTabAt(position)
 
-
             }
         })
         bet_viewpager.setOnTouchListener(object : View.OnTouchListener {

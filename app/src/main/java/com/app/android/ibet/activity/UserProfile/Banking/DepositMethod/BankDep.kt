@@ -2,6 +2,7 @@ package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
@@ -110,6 +111,13 @@ class BankDep : Fragment() {
                 MyAccount.info = "fail"
                 val res = Intent(context, MyAccount::class.java)
                 startActivity(res)
+            } else {
+                val bankData = response.body()!!.string()
+                val url = JSONObject(bankData).getString("url")
+                val orderId = JSONObject(bankData).getString("order_id")
+                val openUrl =  "$url?cid=BRANDCQNGHUA3&oid=$orderId"
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(openUrl)))
+
             }
         }
     }

@@ -35,10 +35,10 @@ class AliOpenPage : AppCompatActivity() {
             val user = JSONObject(MyAccount.userData).getString("username")
 
             val orderBody = FormBody.Builder()
-                .add("order_id", intent.getStringExtra("aliorderId"))
+                .add("trans_id", intent.getStringExtra("aliorderId"))
                 .build()
             val request = Request.Builder()
-                .url(BuildConfig.WECHAT_ORDER)
+                .url(BuildConfig.QAICASH_CONFIRM)
                 .post(orderBody)
                 .build()
             val response = OkHttpClient().newCall(request).execute()
@@ -49,9 +49,9 @@ class AliOpenPage : AppCompatActivity() {
                 startActivity(res)
             } else {
                 val statusData = response.body()!!.string()
-                println(JSONObject(statusData).getString("status"))
+                //println(JSONObject(statusData).getString("status"))
 
-                if (JSONObject(statusData).getString("status") == "SUCCESS") {
+                if (JSONObject(statusData).getInt("status") == 0) {
 
                     val depositJson = JSONObject()
                     depositJson.put("type", "add")

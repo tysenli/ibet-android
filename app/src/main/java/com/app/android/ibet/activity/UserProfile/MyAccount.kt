@@ -25,6 +25,7 @@ import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.Bank
 import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.SuccessWithdraw
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.Lock
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
+import com.app.android.ibet.activity.UserProfile.Setting.Setting
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
@@ -68,7 +69,7 @@ class MyAccount : AppCompatActivity() {
                 .add("Analysis",Analysis().javaClass)
                 .add("Account",Account().javaClass)
                 .add("Responsible Gaming",ResponsibleGame().javaClass)
-                .add("Settings",BankingDepo().javaClass)
+                .add("Settings", Setting().javaClass)
                 .create()
         when (info) {
             "withdraw"   -> pages[0] = FragmentPagerItem.of("Banking", BankingWith().javaClass)
@@ -101,6 +102,7 @@ class MyAccount : AppCompatActivity() {
             "acc_edit"   -> pages[2] = FragmentPagerItem.of("Account", EditAcc().javaClass)
 
             "lock_account"-> pages[3] = FragmentPagerItem.of("Responsible Game", Lock().javaClass)
+            "rg"         -> pages[3] = FragmentPagerItem.of("Responsible Game",  ResponsibleGame().javaClass)
 
         }
 
