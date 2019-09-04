@@ -93,6 +93,12 @@ class AsiaWechat : Fragment() {
             }
 
         })
+        change_method.setOnClickListener {
+            MyAccount.info = "deposit"
+            val intent = Intent(activity, MyAccount::class.java)
+            startActivity(intent)
+            activity!!.overridePendingTransition(0, 0)
+        }
 
 
         btn_wechat_dep.setOnClickListener {
