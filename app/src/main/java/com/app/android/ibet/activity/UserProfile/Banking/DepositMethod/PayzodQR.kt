@@ -13,6 +13,12 @@ import android.content.Context
 import android.graphics.Point
 import android.view.WindowManager
 import kotlinx.android.synthetic.main.qrcode.*
+import java.util.*
+import android.graphics.BitmapFactory
+import android.graphics.Bitmap
+import android.R.id
+import android.content.Intent
+import com.app.android.ibet.activity.UserProfile.MyAccount
 
 
 class PayzodQR : AppCompatActivity() {
@@ -23,18 +29,16 @@ class PayzodQR : AppCompatActivity() {
         actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.qrcode)
-        val manager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
-        val display = manager.defaultDisplay
-        val point = Point()
-        display.getSize(point)
-        val width = point.x
-        val height = point.y
-        var smallerDimension = if (width < height) width else height
+        val base = intent.getStringExtra("QRcode")
+        val imageAsBytes = Base64.getDecoder().decode(base)
+        payzodQR_img.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.size))
+        payzod_continue.setOnClickListener {
+            MyAccount.info = "deposit"
+            val intent = Intent(this, MyAccount::class.java)
+            startActivity(intent)
+            this!!.overridePendingTransition(0, 0)
+        }
 
-        //println(intent.getStringExtra("QRcode").trim())
-        val qrgEncoder = QRGEncoder("222", null, QRGContents.Type.TEXT,smallerDimension * 3 / 4)
-        val bitmap = qrgEncoder.encodeAsBitmap()
-        payzodQR_img.setImageBitmap(bitmap)
 
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -47,7 +51,6 @@ class PayzodQR : AppCompatActivity() {
                 onBackPressed()
                 return true
             }
-
             else -> return super.onOptionsItemSelected(item)
         }
 
