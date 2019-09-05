@@ -58,15 +58,15 @@ class QaiBank : Fragment() {
         money_50.text = "1000"
         money_100.text = "5000"
         money_250.text = "10000"
-        val bank = arrayOf("China UnionPay", "Agricultural Bank of China","Bank of East Asia","Bank of Beijing","Bank of China","Bank of Ningbo",
-            "Bank Of Hebei","Bank of Shanghai","Beijing Rural Commercial Bank","Bank of Chengdu","China Bohai Bank","China Citic Bank",
-            "China Merchants Bank","China Merchants Bank","Zhongshan Rural Credit Union","Yao Credit Cooperative Union","Bank of Communication",
-            "Zhejiang Chouzhou commercial bank","China Everbright Bank","Industrial Bank Co Ltd","China Guangfa Bank","Guangzhou Rural Credit Cooperatives",
-            "Bank of Guangzhou","GuangZhou Commercial Bank","Huishang Bank","Huaxia Bank","Hangzhou Bank","Industrial and Commercial Bank of China",
-            "Jinshang Bank","China Minsheng Bank","Bank of Nanjing","Nanyang Commercial Bank","China Construction Bank","Postal Savings Bank of China",
-            "Shunde Rural Commercial Bank","Shanghai Rural Commercial Bank","Shanghai Pudong Development Bank","Ping An Bank","Shenzhen Development Bank",
-            "Bank of Tianjin","Hankou Bank","Bank of Wenzhou","China Zheshang Bank","Zhejiang Tailong Commercial Bank","People’s Bank of China",
-            "HSBC","Bank of Dongguang")
+        val bank = arrayOf("China UnionPay", "Agricultural QaiBank of China","QaiBank of East Asia","QaiBank of Beijing","QaiBank of China","QaiBank of Ningbo",
+            "QaiBank Of Hebei","QaiBank of Shanghai","Beijing Rural Commercial QaiBank","QaiBank of Chengdu","China Bohai QaiBank","China Citic QaiBank",
+            "China Merchants QaiBank","China Merchants QaiBank","Zhongshan Rural Credit Union","Yao Credit Cooperative Union","QaiBank of Communication",
+            "Zhejiang Chouzhou commercial bank","China Everbright QaiBank","Industrial QaiBank Co Ltd","China Guangfa QaiBank","Guangzhou Rural Credit Cooperatives",
+            "QaiBank of Guangzhou","GuangZhou Commercial QaiBank","Huishang QaiBank","Huaxia QaiBank","Hangzhou QaiBank","Industrial and Commercial QaiBank of China",
+            "Jinshang QaiBank","China Minsheng QaiBank","QaiBank of Nanjing","Nanyang Commercial QaiBank","China Construction QaiBank","Postal Savings QaiBank of China",
+            "Shunde Rural Commercial QaiBank","Shanghai Rural Commercial QaiBank","Shanghai Pudong Development QaiBank","Ping An QaiBank","Shenzhen Development QaiBank",
+            "QaiBank of Tianjin","Hankou QaiBank","QaiBank of Wenzhou","China Zheshang QaiBank","Zhejiang Tailong Commercial QaiBank","People’s QaiBank of China",
+            "HSBC","QaiBank of Dongguang")
         val bankvalue = arrayOf("OOO6CN","ABOCCN","BEASCN","BJCNCN","BKCHCN","BKNBCN","BKSHCN","BOSHCN","BRCBCN","CBOCCN","CHBHCN","CIBKCN","CMBCCN",
             "CN01CN","CN03CN","COMMCN","CZCBCN","EVSOCN","FJIBCN","GDBKCN","GNXSCN","GZCBCN","GZRCCN","HFCBCN","HXBKCN","HZCBCN","ICBKCN","JSHBCN",
             "MSBCCN","NJCBCN","NYCBCN","PCBCCN","PSBCCN","RCCSCN","SHRCCN","SPDBCN","SZCBCN","SZDBCN","TCCBCN","WHCBCN","WZCBCN","ZJCBCN","ZJTLCN",

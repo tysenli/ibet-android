@@ -221,9 +221,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
 
             amtShow = rootView.findViewById(R.id.balance_icon)
             amtShow.text = MyAccount.amt.split(".")[0]
-            amtShow.setOnClickListener {
-                startActivity(Intent(this, Deposit::class.java))
-            }
+
         }
         return super.onPrepareOptionsMenu(menu)
     }

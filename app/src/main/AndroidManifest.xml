@@ -215,7 +215,7 @@
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Deposit"
         ></activity>
-        <activity android:name=".activity.UserProfile.Banking.WithdrawMethod.BankOpenPage"
+        <activity android:name=".activity.UserProfile.Banking.WithdrawMethod.QaiBankOpenPage"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Withdraw"
         ></activity>
@@ -224,7 +224,7 @@
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Withdraw Method"
         ></activity>
-        <activity android:name=".activity.UserProfile.Banking.WithdrawMethod.Bank"
+        <activity android:name=".activity.UserProfile.Banking.WithdrawMethod.QaiBank"
                   android:theme="@style/Theme.AppCompat.Light"
                   android:label="Withdraw"
         ></activity>

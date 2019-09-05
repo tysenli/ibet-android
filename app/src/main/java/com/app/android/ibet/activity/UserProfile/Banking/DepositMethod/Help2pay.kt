@@ -43,11 +43,11 @@ class Help2pay : Fragment() {
 
         val currency = arrayOf("THB", "VND")
 
-        val bankthb = arrayOf("Karsikorn Bank (K-Bank)","Bangkok Bank","Siam Commercial Bank","Krung Thai Bank",
-            "Bank of Ayudhya (Krungsri)","Government Savings Bank","TMB Bank Public Company Limited","CIMB Thai","Kiatnakin Bank")
+        val bankthb = arrayOf("Karsikorn QaiBank (K-QaiBank)","Bangkok QaiBank","Siam Commercial QaiBank","Krung Thai QaiBank",
+            "QaiBank of Ayudhya (Krungsri)","Government Savings QaiBank","TMB QaiBank Public Company Limited","CIMB Thai","Kiatnakin QaiBank")
 
-        val bankvnd = arrayOf("Techcom Bank","Sacom Bank","Vietcom Bank","Asia Commercial Bank","DongA Bank","Vietin Bank",
-            "Bank for Investment and Development of Vietnam","Eximbank Vietnam")
+        val bankvnd = arrayOf("Techcom QaiBank","Sacom QaiBank","Vietcom QaiBank","Asia Commercial QaiBank","DongA QaiBank","Vietin QaiBank",
+            "QaiBank for Investment and Development of Vietnam","Eximbank Vietnam")
 
         val thbvalue = arrayOf("KKR","BBL","SCB","KTB","BOA","GSB","TMB","CIMBT","KNK")
         val vndvalue = arrayOf("TCB","SACOM","VCB","ACB","DAB","VTB","BIDV","EXIM")

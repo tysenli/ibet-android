@@ -17,7 +17,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 
-class Bank: Fragment() {
+class QaiBank: Fragment() {
     //private var parentContext = context
     var userData = Api().get(BuildConfig.USER)
     var withdraworderId = ""
@@ -62,7 +62,7 @@ class Bank: Fragment() {
 
 
                 //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(withdraw_url)))
-                val res = Intent(activity, BankOpenPage::class.java)
+                val res = Intent(activity, QaiBankOpenPage::class.java)
                 res.putExtra("bankurl", withdraw_url)
                 res.putExtra("bankorderId",withdraworderId)
                 res.putExtra("bankbnc",amount_display.text.toString())
@@ -167,7 +167,7 @@ class Bank: Fragment() {
                 dialogView.confirm.setOnClickListener {
                     dialog.dismiss()
                     //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(withdraw_url)))
-                    val res = Intent(this, BankOpenPage::class.java)
+                    val res = Intent(this, QaiBankOpenPage::class.java)
                     res.putExtra("bankurl", withdraw_url)
                     startActivity(res)
                 }

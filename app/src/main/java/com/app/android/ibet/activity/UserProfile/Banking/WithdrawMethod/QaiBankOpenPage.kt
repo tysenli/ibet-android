@@ -16,7 +16,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 
-class BankOpenPage : AppCompatActivity() {
+class QaiBankOpenPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val actionBar = supportActionBar
         actionBar!!.setHomeButtonEnabled(true)
