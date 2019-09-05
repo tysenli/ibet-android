@@ -126,7 +126,7 @@ class AsiaUnionPay : Fragment() {
                     var unionData = response.body()!!.string()
                     //println(quickData)
                     orderId = JSONObject(unionData).getString("oid")
-                    var union_url = JSONObject(unionData).getString("url")
+                    var union_url = JSONObject(unionData).getString("qr")
 
                     // startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(quickpay_url)))
 
