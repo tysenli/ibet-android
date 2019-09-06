@@ -66,6 +66,7 @@
                         android:textColor="#cdcbcc"
                         android:lineSpacingExtra="4sp"
                         android:text="Language:"
+                        android:textStyle="bold"
                         android:layout_marginTop="18dp"
                         android:layout_marginLeft="30dp"
                 />
@@ -222,6 +223,7 @@
                               android:layout_height="match_parent"
                               android:layout_marginTop="28dp"
                               android:layout_marginLeft="30dp"
+                              android:id="@+id/europe_logo"
                 >
                     <ImageView android:layout_width="34dp"
                                android:layout_height="34dp"
@@ -241,6 +243,18 @@
 
 
                 </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:layout_marginTop="28dp"
+                              android:layout_marginLeft="30dp"
+                              android:id="@+id/chinese_logo"
+                >
+                    <ImageView android:layout_width="34dp"
+                               android:layout_height="34dp"
+                               android:src="@drawable/eighteen"
+                    />
+
+                </LinearLayout>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -249,14 +263,15 @@
                         android:layout_marginTop="15dp"
                         android:textSize="10sp"
                         android:textColor="#d8d8d8"
-                        android:letterSpacing="-0.01"
+                        android:letterSpacing="0.01"
                         android:lineSpacingExtra="6sp"
-                        android:text="The main priority for us at ibet is to provide an enjoyable and entertaining gaming experience. We are committed to protecting our players and offer several different tools and resources to ensure that your gambling is conducted within safe limits. Please visit these at [RG Link] and if you are in any doubt contact our trained customer service at any time."
+                        android:text="@string/main_priority"
                 />
                 <LinearLayout android:layout_width="match_parent"
                               android:layout_height="match_parent"
                               android:layout_marginTop="30dp"
                               android:layout_marginLeft="30dp"
+                              android:id="@+id/europe_payment"
                 >
                     <ImageView android:layout_width="31dp"
                                android:layout_height="10dp"
@@ -293,6 +308,78 @@
                                android:layout_gravity="center"
                                android:layout_marginLeft="18dp"
                     />
+
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:layout_marginTop="30dp"
+                              android:layout_marginLeft="30dp"
+                              android:id="@+id/chinese_payment_one"
+                >
+                    <ImageView android:layout_width="36dp"
+                               android:layout_height="38dp"
+                               android:src="@drawable/footer_bank"
+                               android:layout_gravity="center"
+                    />
+                    <ImageView android:layout_width="69dp"
+                               android:layout_height="14dp"
+                               android:layout_marginLeft="18dp"
+                               android:src="@drawable/footer_quickpay"
+                               android:layout_gravity="center"
+                    />
+                    <ImageView android:layout_width="40dp"
+                               android:layout_height="25dp"
+                               android:src="@drawable/footer_unionpay"
+                               android:layout_marginLeft="18dp"
+                               android:layout_gravity="center"
+                    />
+
+                    <ImageView android:layout_width="51dp"
+                               android:layout_height="18dp"
+                               android:src="@drawable/footer_ali"
+                               android:layout_marginLeft="18dp"
+                               android:layout_gravity="center"
+                    />
+                    <ImageView android:layout_width="34dp"
+                               android:layout_height="29dp"
+                               android:src="@drawable/footer_circlepay"
+                               android:layout_marginLeft="18dp"
+                               android:layout_gravity="center"
+                    />
+
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:layout_marginTop="15dp"
+                              android:layout_marginLeft="30dp"
+                              android:id="@+id/chinese_payment_two"
+                >
+                    <ImageView android:layout_width="26dp"
+                               android:layout_height="23dp"
+                               android:src="@drawable/footer_wechatpay"
+                               android:layout_marginLeft="33dp"
+                               android:layout_gravity="center"
+                    />
+                    <ImageView android:layout_width="55dp"
+                               android:layout_height="18dp"
+                               android:src="@drawable/footer_jdpay"
+                               android:layout_marginLeft="18dp"
+                               android:layout_gravity="center"
+                    />
+                    <ImageView android:layout_width="43dp"
+                               android:layout_height="10dp"
+                               android:src="@drawable/footer_bitcoin"
+                               android:layout_marginLeft="18dp"
+                               android:layout_gravity="center"
+                    />
+
+                    <ImageView android:layout_width="40dp"
+                               android:layout_height="16dp"
+                               android:src="@drawable/footer_astropay"
+                               android:layout_marginLeft="18dp"
+                               android:layout_gravity="center"
+                    />
+
 
                 </LinearLayout>
                 <View
