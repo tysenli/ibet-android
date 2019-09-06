@@ -21,7 +21,7 @@ import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.activity.UserProfile.Banking.BankingDepo
 import com.app.android.ibet.activity.UserProfile.Banking.BankingWith
 import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.*
-import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.QaiBank
+import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.QaiBankWith
 import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.SuccessWithdraw
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.Lock
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
@@ -93,7 +93,7 @@ class MyAccount : AppCompatActivity() {
             "success"    -> pages[0] = FragmentPagerItem.of("Banking", Success().javaClass)
             "success_with"->pages[0] = FragmentPagerItem.of("Banking", SuccessWithdraw().javaClass)
             "fail"       -> pages[0] = FragmentPagerItem.of("Banking", Failed().javaClass)
-            "bankwith"   -> pages[0] = FragmentPagerItem.of("Banking", QaiBank().javaClass)
+            "bankwith"   -> pages[0] = FragmentPagerItem.of("Banking", QaiBankWith().javaClass)
             "payzod"     -> pages[0] = FragmentPagerItem.of("Banking", Payzod().javaClass)
             "scratch"    -> pages[0] = FragmentPagerItem.of("Banking", ScratchCard().javaClass)
 
