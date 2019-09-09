@@ -163,7 +163,7 @@ class QaiBankWith: Fragment() {
                 builder.setView(dialogView)
                 val dialog = builder.show()
                 dialogView.text.text = "Confirm Withdraw"
-                dialogView.diposit_display.text = amount_display.text.toString() + " bank"
+                dialogView.diposit_display.text = amount_display.text.toString() + " payment_bank"
                 dialogView.confirm.setOnClickListener {
                     dialog.dismiss()
                     //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(withdraw_url)))

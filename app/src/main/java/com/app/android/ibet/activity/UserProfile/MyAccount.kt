@@ -2,6 +2,7 @@ package com.app.android.ibet.activity.UserProfile
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
@@ -61,7 +62,7 @@ class MyAccount : AppCompatActivity() {
         val response = OkHttpClient().newCall(request).execute()
 
         var jsonData = response.body()!!.string()
-
+        Log.e("user",jsonData)
         amt = JSONObject(jsonData).getString("main_wallet")
 
         pages =  FragmentPagerItems.with(this)

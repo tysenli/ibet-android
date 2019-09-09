@@ -110,7 +110,7 @@ class QaiAli : Fragment() {
                     .add("user_id", pk)
                     .add("currency", "0")
                     .add("language", "zh-Hans")
-                    .add("method", "ALIPAY_H5")
+                    .add("method", "ALIPAY")
                     .build()
 
                 val request = Request.Builder()

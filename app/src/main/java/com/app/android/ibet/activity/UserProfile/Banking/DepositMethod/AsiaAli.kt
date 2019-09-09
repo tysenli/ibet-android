@@ -38,7 +38,6 @@ class AsiaAli : Fragment() {
         money_100.text = "1100"
         money_250.text = "1500"
         var pk = JSONObject(userData).getString("pk")
-        //println(pk)
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201, 199, 199))
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))
@@ -133,7 +132,7 @@ class AsiaAli : Fragment() {
                     res.putExtra("asia_aliorderId", orderId)
                     res.putExtra("asia_alibalance", amount_display.text.toString())
                     startActivity(res)
-                    //println(quickData)
+
                 }
             }
             //println(response.code())
