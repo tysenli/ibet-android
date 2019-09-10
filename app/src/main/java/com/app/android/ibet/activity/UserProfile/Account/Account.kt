@@ -46,9 +46,7 @@ class Account : Fragment() {
             toast.show()
             isChange = false
         }
-
         var userData = Api().get(BuildConfig.USER)
-        //println("hhh" + userData)
         acc_id.text = "ID: " + JSONObject(userData).getString("pk")
         acc_first_name.text = JSONObject(userData).getString("first_name")
         acc_last_name.text = JSONObject(userData).getString("last_name")

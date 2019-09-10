@@ -6,28 +6,21 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.Login.Login
-import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AstropayInfo.Companion.carddate
-import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AstropayInfo.Companion.cardnum
-import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AstropayInfo.Companion.cvv
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_amount_input.*
-import kotlinx.android.synthetic.main.activity_total.*
-import okhttp3.MediaType
+import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.RequestBody
 import org.json.JSONObject
 
-class Astropay : Fragment() {
+class AsiaUnionPay : Fragment() {
     //private var parentContext = context
+    var userData = Api().get(BuildConfig.USER)
+    var orderId = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.activity_amount_input, container, false)
@@ -35,13 +28,21 @@ class Astropay : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "Astropay"
+        depo_method_show.text = "AsiaUnionPay"
+        var pk = JSONObject(userData).getString("pk")
+        //println(pk)
+        deposit_amount2.hint = " Deposit 100 - 4,000                        Other"
+        amt_input_err.visibility = View.GONE
+        money_25.text = "100"
+        money_50.text = "1000"
+        money_100.text = "2000"
+        money_250.text = "4000"
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201, 199, 199))
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))
             money_100.setBackgroundColor(Color.rgb(239, 239, 239))
             money_250.setBackgroundColor(Color.rgb(239, 239, 239))
-            amount_display.text = "25"
+            amount_display.text = money_25.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -50,7 +51,7 @@ class Astropay : Fragment() {
             money_50.setBackgroundColor(Color.rgb(201, 199, 199))
             money_100.setBackgroundColor(Color.rgb(239, 239, 239))
             money_250.setBackgroundColor(Color.rgb(239, 239, 239))
-            amount_display.text = "50"
+            amount_display.text = money_50.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -59,7 +60,7 @@ class Astropay : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))
             money_100.setBackgroundColor(Color.rgb(201, 199, 199))
             money_250.setBackgroundColor(Color.rgb(239, 239, 239))
-            amount_display.text = "100"
+            amount_display.text = money_100.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -68,7 +69,7 @@ class Astropay : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))
             money_100.setBackgroundColor(Color.rgb(239, 239, 239))
             money_250.setBackgroundColor(Color.rgb(201, 199, 199))
-            amount_display.text = "250"
+            amount_display.text = money_250.text
             MyAccount.depo_amt = amount_display.text.toString()
         }
 
@@ -90,7 +91,6 @@ class Astropay : Fragment() {
             }
 
         })
-
         change_method.setOnClickListener {
             MyAccount.info = "deposit"
             val intent = Intent(activity, MyAccount::class.java)
@@ -99,25 +99,23 @@ class Astropay : Fragment() {
         }
 
         btn_wechat_dep.setOnClickListener {
-            if (amount_display.text.toString() == "0") {
+            if (amount_display.text.toString() == "" || amount_display.text.toString().toFloat() < 100 || amount_display.text.toString().toFloat() > 4000) {
                 amt_input_err.visibility = View.VISIBLE
+                amt_input_err.text = "Please deposit between 100 - 4000"
             } else {
                 amt_input_err.visibility = View.GONE
-
                 val client = OkHttpClient()
+                val formBody = FormBody.Builder()
+                    .add("amount", amount_display.text.toString())
+                    .add("userid", pk)
+                    .add("currency", "0")
+                    .add("PayWay", "42")
+                    .add("method", "47")
+                    .build()
 
-                val astroJson = JSONObject()
-                val JSON = MediaType.get("application/json; charset=utf-8")
-                //println("hhh" + cardnum)
-                astroJson.put("card_num", cardnum)
-                astroJson.put("card_code", cvv)
-                astroJson.put("exp_date", carddate)
-                astroJson.put("amount", amount_display.text.toString())
-                val body = RequestBody.create(JSON, astroJson.toString())
                 val request = Request.Builder()
-                    .addHeader("Authorization", "Token " + Login.token)
-                    .url(BuildConfig.ASTROPAY)
-                    .post(body)
+                    .url(BuildConfig.ASIAPAY)
+                    .post(formBody)
                     .build()
                 val response = client.newCall(request).execute()
                 if (response.code() != 200) {
@@ -125,30 +123,37 @@ class Astropay : Fragment() {
                     val res = Intent(context, MyAccount::class.java)
                     startActivity(res)
                 } else {
-                    val statusData = response.body()!!.string()
-                    Log.e("Astropay",statusData)
-                    //println(JSONObject(statusData).getString("response_msg").substring(0,6))
+                    var unionData = response.body()!!.string()
+                    //println(quickData)
+                    orderId = JSONObject(unionData).getString("oid")
+                    var union_url = JSONObject(unionData).getString("qr")
 
-                    if (JSONObject(statusData).getString("response_msg").substring(0, 6) == "1|1|1|") {
-                        val user = JSONObject(MyAccount.userData).getString("username")
-                        val depositJson = JSONObject()
-                        depositJson.put("type", "add")
-                        depositJson.put("username", user)
-                        depositJson.put("balance", amount_display.text.toString())
-                        val balance = Api().post(depositJson.toString(), BuildConfig.BALANCE)
-                        MyAccount.info = "success"
-                        val res = Intent(context, MyAccount::class.java)
-                        //res.putExtra("amount",intent.getStringExtra("balance"))
-                        startActivity(res)
+                    // startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(quickpay_url)))
 
-                    } else {
-                        MyAccount.info = "fail"
-                        val res = Intent(context, MyAccount::class.java)
-                        startActivity(res)
-                    }
+
+                    val res = Intent(activity, AsiaUnionOpenPage::class.java)
+                    res.putExtra("unionurl", union_url)
+                    res.putExtra("unionorderId", orderId)
+                    res.putExtra("unionbalance", amount_display.text.toString())
+                    startActivity(res)
+
                 }
             }
-
         }
     }
 }
+    /*: AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setHomeAsUpIndicator(R.drawable.back)
+        super.onCreate(savedInstanceState)
+
+        setContentView(R.layout.activity_amount_input)
+        change_method.setOnClickListener {
+            startActivity(Intent(this, Deposit::class.java))
+        }
+    }
+
+} */

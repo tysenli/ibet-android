@@ -3,24 +3,13 @@ package com.app.android.ibet.activity.UserProfile.Banking
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.VisaInfo
 import com.app.android.ibet.activity.UserProfile.MyAccount
-import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.adapter
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
-import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.pages
-import com.ogaclejapan.smarttablayout.SmartTabLayout
 import kotlinx.android.synthetic.main.frag_banking_depo.*
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
-import kotlinx.android.synthetic.main.activity_my_account.*
 import kotlinx.android.synthetic.main.frag_banking_depo.visa
 
 
@@ -40,7 +29,6 @@ class BankingDepo : Fragment() {
             startActivity(intent)
             activity!!.overridePendingTransition(0, 0)
 
-
         }
         withdraw.setOnClickListener {
             info = "withdraw"
@@ -49,20 +37,39 @@ class BankingDepo : Fragment() {
             activity!!.overridePendingTransition(0, 0)
             //startActivity(Intent(activity, Withdraw::class.java))
 
-
         }
-        wechat.setOnClickListener {
+        qai_wechat.setOnClickListener {
 
-            info = "wechat"
+            info = "qai_wechat"
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
-        ali.setOnClickListener {
-            info = "ali"
+        qai_ali.setOnClickListener {
+            info = "qai_ali"
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
-        jdpay.setOnClickListener {
+        qai_bt.setOnClickListener {
+            info = "qai_bank"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+        qai_union.setOnClickListener {
+            info = "qai_union"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+        asia_wechat.setOnClickListener {
+            info = "asia_wechat"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+        asia_alipay.setOnClickListener {
+            info = "asia_ali"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
+        asia_jdpay.setOnClickListener {
             info = "jdpay"
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
@@ -72,17 +79,17 @@ class BankingDepo : Fragment() {
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
-        quickpay.setOnClickListener {
+        asia_quickpay.setOnClickListener {
             info = "quickpay"
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
-        unionpay.setOnClickListener {
+        asia_unionpay.setOnClickListener {
             info = "unionpay"
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
-        bank.setOnClickListener {
+        asia_bank.setOnClickListener {
             info = "online"
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)

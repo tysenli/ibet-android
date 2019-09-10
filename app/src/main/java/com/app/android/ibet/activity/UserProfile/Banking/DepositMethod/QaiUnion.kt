@@ -11,17 +11,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_amount_input.*
-import okhttp3.MediaType
+import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.RequestBody
 import org.json.JSONObject
 
-class Payzod : Fragment() {
+class QaiUnion : Fragment() {
     //private var parentContext = context
+    var userData = Api().get(BuildConfig.USER)
+    var orderId = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.activity_amount_input, container, false)
@@ -29,13 +30,14 @@ class Payzod : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "Payzod"
-        deposit_amount2.hint = " Deposit 500 - 500,000                        Other"
+        depo_method_show.text = "Unionpay"
+        deposit_amount2.hint = " Deposit 100 - 4,000                        Other"
         amt_input_err.visibility = View.GONE
-        money_25.text = "500"
-        money_50.text = "5000"
-        money_100.text = "50000"
-        money_250.text = "500000"
+        var pk =  JSONObject(userData).getString("pk")
+        money_25.text = "100"
+        money_50.text = "1000"
+        money_100.text = "2000"
+        money_250.text = "4000"
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201,199,199))
             money_50.setBackgroundColor(Color.rgb(239,239,239))
@@ -68,7 +70,7 @@ class Payzod : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(201,199,199))
-            amount_display.text = money_250.text.toString()
+            amount_display.text = money_250.text
             MyAccount.depo_amt = amount_display.text.toString()
         }
 
@@ -95,37 +97,42 @@ class Payzod : Fragment() {
             startActivity(intent)
             activity!!.overridePendingTransition(0, 0)
         }
+
+
         btn_wechat_dep.setOnClickListener {
-            if (amount_display.text.toString() == "" || amount_display.text.toString().toFloat() < 500 || amount_display.text.toString().toFloat() > 500000) {
+            if (amount_display.text.toString() == "" || amount_display.text.toString().toFloat() < 100 || amount_display.text.toString().toFloat() > 4000) {
                 amt_input_err.visibility = View.VISIBLE
-                amt_input_err.text = "Please deposit between 500 - 500000"
+                amt_input_err.text = "Please deposit between 100 - 4000"
             } else {
                 amt_input_err.visibility = View.GONE
                 val client = OkHttpClient()
+                val formBody = FormBody.Builder()
+                    .add("amount", amount_display.text.toString())
+                    .add("user_id", pk)
+                    .add("currency", "0")
+                    .add("language", "zh-Hans")
+                    .add("method", "CUP_QR")
+                    .build()
 
-                val payzodJson = JSONObject()
-                val JSON = MediaType.get("application/json; charset=utf-8")
-                payzodJson.put("amount", amount_display.text.toString())
-
-                val body = RequestBody.create(JSON, payzodJson.toString())
                 val request = Request.Builder()
-                    .addHeader("Authorization", "Token " + Login.token)
-                    .url(BuildConfig.PAYZOD)
-                    .post(body)
+                    .url(BuildConfig.QAICASH)
+                    .post(formBody)
                     .build()
                 val response = client.newCall(request).execute()
-                if (response.code() != 200) {
-                    MyAccount.info = "fail"
-                    val res = Intent(context, MyAccount::class.java)
-                    startActivity(res)
-                } else {
-                    val statusData = response.body()!!.string()
-                    val res = Intent(activity, PayzodQR::class.java)
-                    res.putExtra("QRcode", statusData)
-                    startActivity(res)
+                var unionData = response.body()!!.string()
 
-                }
+                orderId = JSONObject(unionData).getJSONObject("paymentPageSession").getString("orderId")
+                //println("hhh" + orderId)
+                var union_url = JSONObject(unionData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
+
+                val res = Intent(activity, QaiUnionOpenPage::class.java)
+                res.putExtra("unionurl", union_url)
+                res.putExtra("unionorderId", orderId)
+                res.putExtra("unionbalance", amount_display.text.toString())
+                startActivity(res)
             }
+
         }
+
     }
 }

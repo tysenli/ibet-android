@@ -14,37 +14,40 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
+import com.app.android.ibet.api.Api
+import kotlinx.android.synthetic.main.activity_amount_input.*
+import kotlinx.android.synthetic.main.frag_banking_depo.*
 import kotlinx.android.synthetic.main.frag_help2pay.*
-import okhttp3.FormBody
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import okhttp3.*
 import org.json.JSONObject
 
 import java.util.*
 
 class Help2pay : Fragment() {
     //private var parentContext = context
-
+    var time = 0
+    var orderId = "ibet " + Calendar.getInstance().time
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.frag_help2pay, container, false)
     }
 
     override fun onStart() {
+        time++
         super.onStart()
         var cur = ""
         var bank = ""
         //var time = Calendar.getInstance().time
 
-        var orderId = "ibet " + Calendar.getInstance().time
+
         //println(orderId)
 
         val currency = arrayOf("THB", "VND")
 
-        val bankthb = arrayOf("Karsikorn Bank (K-Bank)","Bangkok Bank","Siam Commercial Bank","Krung Thai Bank",
-            "Bank of Ayudhya (Krungsri)","Government Savings Bank","TMB Bank Public Company Limited","CIMB Thai","Kiatnakin Bank")
+        val bankthb = arrayOf("Karsikorn QaiBankWith (K-QaiBankWith)","Bangkok QaiBankWith","Siam Commercial QaiBankWith","Krung Thai QaiBankWith",
+            "QaiBankWith of Ayudhya (Krungsri)","Government Savings QaiBankWith","TMB QaiBankWith Public Company Limited","CIMB Thai","Kiatnakin QaiBankWith")
 
-        val bankvnd = arrayOf("Techcom Bank","Sacom Bank","Vietcom Bank","Asia Commercial Bank","DongA Bank","Vietin Bank",
-            "Bank for Investment and Development of Vietnam","Eximbank Vietnam")
+        val bankvnd = arrayOf("Techcom QaiBankWith","Sacom QaiBankWith","Vietcom QaiBankWith","Asia Commercial QaiBankWith","DongA QaiBankWith","Vietin QaiBankWith",
+            "QaiBankWith for Investment and Development of Vietnam","Eximbank Vietnam")
 
         val thbvalue = arrayOf("KKR","BBL","SCB","KTB","BOA","GSB","TMB","CIMBT","KNK")
         val vndvalue = arrayOf("TCB","SACOM","VCB","ACB","DAB","VTB","BIDV","EXIM")
@@ -88,7 +91,7 @@ class Help2pay : Fragment() {
         }
 
         btn_help2pay.setOnClickListener {
-
+            if (help2pay_amt.text.toString() != "" && help2pay_amt.text.toString().toFloat() > 0) {
                 val client = OkHttpClient()
                 val formBody = FormBody.Builder()
                     .add("amount", help2pay_amt.text.toString())
@@ -119,8 +122,53 @@ class Help2pay : Fragment() {
 
                 }
             }
+        }
 
+    }
+    override fun onResume() {
+        super.onResume()
+        val user = JSONObject(userData).getString("username")
+        if (time > 1) {
 
+            val client = OkHttpClient()
 
+            val help2payJson = JSONObject()
+            val JSON = MediaType.get("application/json; charset=utf-8")
+
+            help2payJson.put("order_id", orderId)
+
+            val body = RequestBody.create(JSON, help2payJson.toString())
+            val request = Request.Builder()
+                .addHeader("Authorization", "Token " + Login.token)
+                .url(BuildConfig.Help2pay_CONFIRM)
+                .post(body)
+                .build()
+            val response = client.newCall(request).execute()
+            if (response.code() != 200) {
+                MyAccount.info = "fail"
+                val res = Intent(context, MyAccount::class.java)
+                startActivity(res)
+            } else {
+
+                val statusData = response.body()!!.string()
+
+                if (statusData == "0") {
+
+                    val depositJson = JSONObject()
+                    depositJson.put("type", "add")
+                    depositJson.put("username", user)
+                    depositJson.put("balance", help2pay_amt.text.toString())
+                    val info = Api().post(depositJson.toString(), BuildConfig.BALANCE)
+                    val res = Intent(context, Success::class.java)
+                    res.putExtra("amount", help2pay_amt.text.toString())
+                    startActivity(res)
+
+                } else {
+                    MyAccount.info = "fail"
+                    val res = Intent(context, MyAccount::class.java)
+                    startActivity(res)
+                }
+            }
+        }
     }
 }

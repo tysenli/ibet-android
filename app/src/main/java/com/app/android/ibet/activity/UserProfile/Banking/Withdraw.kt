@@ -9,7 +9,7 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.UserProfile.MyAccount
-import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.Bank
+import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.QaiBankWith
 import kotlinx.android.synthetic.main.frag_banking_depo.*
 
 class Withdraw  : AppCompatActivity() {
@@ -20,8 +20,8 @@ class Withdraw  : AppCompatActivity() {
         actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_withdraw)
-        bank.setOnClickListener {
-            startActivity(Intent(this, Bank::class.java))
+        asia_bank.setOnClickListener {
+            startActivity(Intent(this, QaiBankWith::class.java))
 
         }
 
