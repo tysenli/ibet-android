@@ -87,7 +87,7 @@ class MyAccount : AppCompatActivity() {
             "asia_ali"   -> pages[0] = FragmentPagerItem.of("Banking", AsiaAli().javaClass)
             "asia_wechat"-> pages[0] = FragmentPagerItem.of("Banking", AsiaWechat().javaClass)
             "astropayinfo"->pages[0] = FragmentPagerItem.of("Banking", AstropayInfo().javaClass)
-            "astropay_input"->pages[0] = FragmentPagerItem.of("Banking", Astropay().javaClass)
+           // "astropay_input"->pages[0] = FragmentPagerItem.of("Banking", Astropay().javaClass)
             "fgate"      -> pages[0] = FragmentPagerItem.of("Banking", Fgo().javaClass)
             "help2pay"   -> pages[0] = FragmentPagerItem.of("Banking", Help2pay().javaClass)
             "ciclepay"   -> pages[0] = FragmentPagerItem.of("Banking", Circlepay().javaClass)

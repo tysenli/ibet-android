@@ -28,8 +28,8 @@ class AsiaQuickPay : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "AsiaQuickPay"
-        deposit_amount2.hint = " Deposit 100 - 3,000                        Other"
+        depo_method_show.background = resources.getDrawable(R.drawable.quickpay)
+        deposit_amount2.hint = " Deposit 100 - 3,000"
         amt_input_err.visibility = View.GONE
         money_25.text = "100"
         money_50.text = "1000"

@@ -49,8 +49,8 @@ class QaiBank : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "Qai BT"
-        deposit_amount2.hint = " Deposit 100 - 10,000                        Other"
+        depo_method_show.background = resources.getDrawable(R.drawable.payment_bank)
+        deposit_amount2.hint = " Deposit 100 - 10,000"
         amt_input_err.visibility = View.GONE
         var pk = JSONObject(userData).getString("pk")
         var curBank = ""

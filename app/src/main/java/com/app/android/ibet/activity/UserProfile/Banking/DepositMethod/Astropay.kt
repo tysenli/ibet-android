@@ -35,7 +35,7 @@ class Astropay : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "Astropay"
+        //depo_method_show.text = "Astropay"
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201, 199, 199))
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))

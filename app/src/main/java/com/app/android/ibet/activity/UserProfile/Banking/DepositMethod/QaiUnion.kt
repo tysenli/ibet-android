@@ -30,8 +30,8 @@ class QaiUnion : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "Unionpay"
-        deposit_amount2.hint = " Deposit 100 - 4,000                        Other"
+        depo_method_show.background = resources.getDrawable(R.drawable.union)
+        deposit_amount2.hint = " Deposit 100 - 4,000"
         amt_input_err.visibility = View.GONE
         var pk =  JSONObject(userData).getString("pk")
         money_25.text = "100"

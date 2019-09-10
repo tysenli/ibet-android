@@ -30,8 +30,8 @@ class AsiaAli : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "AliPay"
-        deposit_amount2.hint = " Deposit 300 - 1,500                        Other"
+        depo_method_show.background = resources.getDrawable(R.drawable.alipay)
+        deposit_amount2.hint = " Deposit 300 - 1,500"
         amt_input_err.visibility = View.GONE
         money_25.text = "300"
         money_50.text = "700"

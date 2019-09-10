@@ -28,10 +28,10 @@ class AsiaUnionPay : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "AsiaUnionPay"
+        depo_method_show.background = resources.getDrawable(R.drawable.union)
         var pk = JSONObject(userData).getString("pk")
         //println(pk)
-        deposit_amount2.hint = " Deposit 100 - 4,000                        Other"
+        deposit_amount2.hint = " Deposit 100 - 4,000"
         amt_input_err.visibility = View.GONE
         money_25.text = "100"
         money_50.text = "1000"

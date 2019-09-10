@@ -29,8 +29,8 @@ class QaiAli : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "Alipay"
-        deposit_amount2.hint = " Deposit 300 - 1,500                        Other"
+        depo_method_show.background = resources.getDrawable(R.drawable.alipay)
+        deposit_amount2.hint = " Deposit 300 - 1,500"
         amt_input_err.visibility = View.GONE
         var pk =  JSONObject(userData).getString("pk")
         money_25.text = "300"

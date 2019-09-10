@@ -2,7 +2,6 @@ package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import android.webkit.WebView
@@ -13,9 +12,7 @@ import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.app.android.ibet.api.Api
-import kotlinx.android.synthetic.main.activity_amount_input.*
-import kotlinx.android.synthetic.main.activity_test.*
-import kotlinx.android.synthetic.main.activity_total.*
+import kotlinx.android.synthetic.main.activity_thirdparty.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -29,13 +26,13 @@ class QaiWechatOpenPage : AppCompatActivity() {
         actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_test)
+        setContentView(R.layout.activity_thirdparty)
         val myweb = findViewById<WebView>(R.id.webview)
         val setting = myweb.settings
         setting.javaScriptEnabled = true
         myweb.loadUrl(intent.getStringExtra("wechaturl"))
         myweb.webViewClient = WebViewClient()
-
+        depo_method_show.background = resources.getDrawable(R.drawable.wechat)
         deposit_check.setOnClickListener {
             val user = JSONObject(userData).getString("username")
 
@@ -74,6 +71,12 @@ class QaiWechatOpenPage : AppCompatActivity() {
                     startActivity(res)
                 }
             }
+        }
+        deposit_cancel.setOnClickListener {
+            info = "deposit"
+            val intent = Intent(this, MyAccount::class.java)
+            startActivity(intent)
+            this!!.overridePendingTransition(0, 0)
         }
 
     }

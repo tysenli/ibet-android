@@ -47,7 +47,6 @@ class ResponsibleGame : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
         five_min.background = if (remindTime == 5)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
         thirty_min.background = if (remindTime == 30)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
         sixty_min.background = if (remindTime == 60)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)

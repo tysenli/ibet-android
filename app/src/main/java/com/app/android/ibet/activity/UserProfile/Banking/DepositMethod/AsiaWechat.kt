@@ -30,8 +30,8 @@ class AsiaWechat : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "Wechat"
-        deposit_amount2.hint = " Deposit 500 - 2,000                        Other"
+        depo_method_show.background = resources.getDrawable(R.drawable.wechat)
+        deposit_amount2.hint = " Deposit 500 - 2,000"
         amt_input_err.visibility = View.GONE
         money_25.text = "500"
         money_50.text = "1000"

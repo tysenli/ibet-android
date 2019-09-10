@@ -30,8 +30,8 @@ class QaiWechat : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        depo_method_show.text = "Wechat"
-        deposit_amount2.hint = " Deposit 500 - 2,000                        Other"
+        depo_method_show.background = resources.getDrawable(R.drawable.wechat)
+        deposit_amount2.hint = " Deposit 500 - 2,000"
         amt_input_err.visibility = View.GONE
         var pk =  JSONObject(userData).getString("pk")
         money_25.text = "500"
@@ -114,7 +114,7 @@ class QaiWechat : Fragment() {
                     .add("user_id", pk)
                     .add("currency", "0")
                     .add("language", "zh-Hans")
-                    .add("method", "WECHAT_PAY_H5")
+                    .add("method", "WECHAT_PAY")
                     .build()
 
                 val request = Request.Builder()

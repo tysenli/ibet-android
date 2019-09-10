@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.*
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
@@ -28,8 +29,8 @@ class AsiaJDPay : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "JDpay"
-        deposit_amount2.hint = " Deposit 100 - 900                        Other"
+        depo_method_show.background = resources.getDrawable(R.drawable.jd)
+        deposit_amount2.hint = " Deposit 100 - 900"
         amt_input_err.visibility = View.GONE
         money_25.text = "100"
         money_50.text = "300"
@@ -124,6 +125,7 @@ class AsiaJDPay : Fragment() {
                 var jdurl = JSONObject(jdData).getString("qr")
                 orderId = JSONObject(jdData).getString("oid")
                 val res = Intent(activity, AsiaJDOpenPage::class.java)
+                Log.e("url",jdurl)
                 res.putExtra("jdurl", jdurl)
                 res.putExtra("jdorderId", orderId)
                 res.putExtra("jdbalance", amount_display.text.toString())
