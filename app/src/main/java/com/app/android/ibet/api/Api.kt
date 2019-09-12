@@ -29,7 +29,7 @@ class Api {
 
             if (response.isSuccessful) {
                 val res = response.body()!!.string()
-                //Log.e("res",res)
+                Log.e("res",res)
                 return res
             }
             return null

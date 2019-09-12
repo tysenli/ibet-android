@@ -41,7 +41,6 @@ class PhoneCode : AppCompatActivity() {
                 }
 
             }
-
         })
         phone_code2.addTextChangedListener (object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
