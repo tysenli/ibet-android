@@ -30,7 +30,7 @@ class Success : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        dep_amount.text = "Deposit " + depo_amt + " completed"
+        dep_amount.text = "Deposit $depo_amt submitted.\nPlease check for transaction status."
 
         val request = Request.Builder()
             .header("Authorization", "Token "+ Login.token)

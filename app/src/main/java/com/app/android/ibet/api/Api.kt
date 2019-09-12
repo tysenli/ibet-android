@@ -1,5 +1,6 @@
 package com.app.android.ibet.api
 
+import android.util.Log
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.activity.Login.Login
 import okhttp3.MediaType
@@ -28,7 +29,7 @@ class Api {
 
             if (response.isSuccessful) {
                 val res = response.body()!!.string()
-                //println(response.request())
+                //Log.e("res",res)
                 return res
             }
             return null

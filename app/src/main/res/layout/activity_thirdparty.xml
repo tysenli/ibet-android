@@ -36,6 +36,110 @@
                     android:layout_marginTop="20dp">
 
             </WebView>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:background="#e7e7e7"
+                    android:layout_marginTop="42dp"/>
+            <RelativeLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="18dp"
+                          android:layout_marginRight="18dp"
+                          android:layout_marginTop="15dp"
+
+            >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#4a4a4a"
+                        android:text="Deposit Method"
+                />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textSize="14sp"
+                        android:textColor="#4a4a4a"
+                        android:id="@+id/payment_method"
+                        android:text="AliPay"
+                />
+            </RelativeLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:background="#e7e7e7"
+                    android:layout_marginTop="15dp"/>
+            <RelativeLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="18dp"
+                          android:layout_marginRight="18dp"
+                          android:layout_marginTop="15dp"
+
+            >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#4a4a4a"
+                        android:text="Order Number"
+                />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textSize="12sp"
+                        android:textColor="#4a4a4a"
+                        android:id="@+id/order_number"
+                        android:text="111"
+                />
+            </RelativeLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:background="#e7e7e7"
+                    android:layout_marginTop="15dp"/>
+            <RelativeLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="18dp"
+                          android:layout_marginRight="18dp"
+                          android:layout_marginTop="15dp"
+
+            >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#4a4a4a"
+                        android:text="Time"
+                />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textSize="14sp"
+                        android:textColor="#4a4a4a"
+                        android:id="@+id/time"
+                        android:text="AliPay"
+                />
+            </RelativeLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:background="#e7e7e7"
+                    android:layout_marginTop="15dp"/>
             <Button
                     android:background="@drawable/payment_confirm"
                     android:layout_width="300dp"
@@ -47,7 +151,9 @@
                     android:layout_width="300dp"
                     android:layout_height="55dp"
                     android:id="@+id/deposit_cancel"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="60dp"
+            />
 
         </LinearLayout>
     </ScrollView>

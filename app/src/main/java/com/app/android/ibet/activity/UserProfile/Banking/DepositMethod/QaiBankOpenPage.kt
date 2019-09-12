@@ -15,6 +15,8 @@ import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class QaiBankOpenPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +33,9 @@ class QaiBankOpenPage : AppCompatActivity() {
         myweb.loadUrl(intent.getStringExtra("qai_bankurl"))
         myweb.webViewClient = WebViewClient()
         depo_method_show.background = resources.getDrawable(R.drawable.payment_bank)
-
+        payment_method.text = "Bank"
+        order_number.text = intent.getStringExtra("qai_bankorderId")
+        time.text = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
         deposit_check.setOnClickListener {
             val user = JSONObject(MyAccount.userData).getString("username")
 

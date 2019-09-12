@@ -15,6 +15,8 @@ import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AsiaWechatOpenPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +33,9 @@ class AsiaWechatOpenPage : AppCompatActivity() {
         myweb.loadUrl(intent.getStringExtra("wechaturl"))
         myweb.webViewClient = WebViewClient()
         depo_method_show.background = resources.getDrawable(R.drawable.wechat)
+        payment_method.text = "WechatPay"
+        order_number.text = intent.getStringExtra("wechatorderId")
+        time.text = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
         deposit_check.setOnClickListener {
             val user = JSONObject(MyAccount.userData).getString("username")
 

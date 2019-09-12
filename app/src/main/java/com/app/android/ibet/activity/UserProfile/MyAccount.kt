@@ -97,6 +97,7 @@ class MyAccount : AppCompatActivity() {
             "bankwith"   -> pages[0] = FragmentPagerItem.of("Banking", QaiBankWith().javaClass)
             "payzod"     -> pages[0] = FragmentPagerItem.of("Banking", Payzod().javaClass)
             "scratch"    -> pages[0] = FragmentPagerItem.of("Banking", ScratchCard().javaClass)
+            "online"     -> pages[0] = FragmentPagerItem.of("Banking", AsiaBank().javaClass)
 
 
             "sports"     -> pages[1] = FragmentPagerItem.of("Analysis", SportsAly().javaClass)
