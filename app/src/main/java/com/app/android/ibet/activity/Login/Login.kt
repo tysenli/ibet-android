@@ -99,9 +99,10 @@ class Login : AppCompatActivity() {
                     .build()
 
             val response = client.newCall(request).execute()
+            val res = response.body()!!.string()
             when (response.code()) {
                 403 -> {
-                    login_hint.text = "User was blocked."
+                    login_hint.text = JSONObject(res).getString("detail")
                     login_hint.setTextColor(Color.RED)
                     login_hint.isClickable = false
                 }
@@ -110,7 +111,7 @@ class Login : AppCompatActivity() {
                     login_hint.setTextColor(Color.RED)
                 }
                 200 -> {
-                    val res = response.body()!!.string()
+
                     token = JSONObject(res).getString("key")
                     isLogin = true
                     userData = Api().get(BuildConfig.USER)!!

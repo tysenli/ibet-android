@@ -2,6 +2,7 @@ package com.app.android.ibet.activity.UserProfile.ResponsibleGame
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.Signup.emailAuthP1
 import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame.Companion.lockInterval
 import kotlinx.android.synthetic.main.frag_lock.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -35,7 +37,8 @@ class Lock : Fragment() {
             val lockJson = JSONObject()
 
             val JSON = MediaType.get("application/json; charset=utf-8")
-            lockJson.put("timespan", ResponsibleGame().lockInterval)
+            lockJson.put("timespan", lockInterval)
+
             lockJson.put("userId", JSONObject(MyAccount.userData).getString("pk"))
             val body = RequestBody.create(JSON,  lockJson.toString())
             val request = Request.Builder()

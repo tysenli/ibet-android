@@ -37,9 +37,10 @@ class ResponsibleGame : Fragment() {
     //var userData = Api().get(BuildConfig.USER)
     private var depoInterval = 0
     private var lossInterval = 0
-    var lockInterval = 0
+
     companion object {
         var remindTime = 2
+        var lockInterval = 0
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.frag_responsible_game, container, false)
