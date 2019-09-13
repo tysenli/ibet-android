@@ -15,7 +15,6 @@ import org.json.JSONObject
 class VeriPhone : AppCompatActivity() {
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         val actionBar = supportActionBar
         actionBar!!.setHomeButtonEnabled(true)

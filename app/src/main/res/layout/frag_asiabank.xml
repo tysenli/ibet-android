@@ -30,7 +30,7 @@
                 android:gravity="center"
                 android:background="#ffffff"
                 android:popupBackground="#ffffff"
-                android:spinnerMode="dialog" android:layout_alignParentStart="true"
+                android:spinnerMode="dropdown" android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true" android:layout_marginTop="2dp"/>
         <ImageView
                 android:layout_width="wrap_content"
