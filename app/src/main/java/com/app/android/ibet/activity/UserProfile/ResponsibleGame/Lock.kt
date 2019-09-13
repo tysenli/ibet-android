@@ -49,11 +49,6 @@ class Lock : Fragment() {
             activity!!.overridePendingTransition(0, 0)
 
         }
-        revert.setOnClickListener {
-            MyAccount.info = "rg"
-            var res = Intent(activity, MyAccount::class.java)
-            startActivity(res)
-            activity!!.overridePendingTransition(0, 0)
-        }
+
     }
 }
