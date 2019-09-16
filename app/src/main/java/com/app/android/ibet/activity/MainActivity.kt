@@ -1,14 +1,24 @@
 package com.app.android.ibet.activity
 
+import android.app.usage.UsageStats
+import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+<<<<<<< HEAD
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+=======
+import android.graphics.Color
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
+>>>>>>> c6b46c1bd3a9e3efaaafb4d3c7b5f379d12f875d
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import android.view.*
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 
 
 import com.app.android.ibet.R
@@ -28,9 +38,13 @@ import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amtShow
 import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.loginShow
 import com.app.android.ibet.fragment.Display
 //import com.app.android.ibet.activity.UserProfile.UserProfile
 import com.zhangke.zlog.ZLog
+import kotlinx.android.synthetic.main.login_actionlayout.*
+import android.widget.Toast
+import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
 
 
 class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick {
@@ -70,8 +84,36 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
         navigationBody.setOnChildClickListener(navigationBodyAdapter)
 
         navigationBodyAdapter.showItems(SampleMenu.getMenu())
-        //toolbar.setTitleTextColor(Color.RED)
 
+        Log.e("time",ResponsibleGame.remindTime.toString())
+        if (ResponsibleGame.remindTime != 0) {
+            val timer = Timer()
+            val hourlyTask = object : TimerTask() {
+
+                override fun run() {
+                    // your code here...
+                    this@MainActivity.runOnUiThread(Runnable {
+                        val toast = Toast.makeText(
+                            this@MainActivity,
+                            "Alert...", Toast.LENGTH_SHORT
+                        )
+                        toast.show()
+                        Log.e("alert", "alert")
+                    })
+                }
+            }
+
+
+            // schedule the task to run starting now and then every hour...
+            timer.schedule(
+                hourlyTask,
+                0L,
+                1000 * ResponsibleGame.remindTime * 60.toLong()
+            )// 1000*10*60 every 10 minutes
+        }
+
+            //toolbar.setTitleTextColor(Color.RED)
+/*
         //nav_view.setNavigationItemSelectedListener(this)
         var language = arrayOf("Language", "English", "Chinese", "Thai")
         var lanImg = arrayOf(R.drawable.lan_bng, R.drawable.gb, R.drawable.cn, R.drawable.th)
@@ -117,8 +159,9 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
                 }
             }
 
-        }
+        }*/
 
+/*
         rules.setOnClickListener {
             val fm = supportFragmentManager
             val ft = fm.beginTransaction()
@@ -141,7 +184,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             ft.replace(R.id.frag_placeholder, Terms(), "terms")
             ft.commit()
 
-        }
+        } */
         /*
         val filePath = Environment.getExternalStorageDirectory().toString() + "/logcat.txt"
         println(filePath)
@@ -159,26 +202,31 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
         if (!isLogin) {
             menu!!.findItem(R.id.logged).isVisible = false
             menu.findItem(R.id.login).isVisible = true
-            val menuItem = menu.findItem(R.id.deposit)
+            menu.findItem(R.id.deposit).isVisible = false
+            val menuItem = menu.findItem(R.id.login)
             val rootView = menuItem.actionView
-
+            loginShow = rootView.findViewById(R.id.login_btn)
+            loginShow.setOnClickListener {
+                startActivity(Intent(this, Login::class.java))
+                overridePendingTransition(0, 0)
+            }
+            /*
             amtShow = rootView.findViewById(R.id.balance_icon)
             amtShow.setOnClickListener {
                 startActivity(Intent(this, Signup::class.java))
                 overridePendingTransition(0, 0)
-            }
+            } */
 
         } else {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
+            menu.findItem(R.id.deposit).isVisible = true
             val menuItem = menu.findItem(R.id.deposit)
             val rootView = menuItem.actionView
 
             amtShow = rootView.findViewById(R.id.balance_icon)
             amtShow.text = MyAccount.amt.split(".")[0]
-            amtShow.setOnClickListener {
-                startActivity(Intent(this, Deposit::class.java))
-            }
+
         }
         return super.onPrepareOptionsMenu(menu)
     }
@@ -239,10 +287,12 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
         // as you specify a parent activity in AndroidManifest.xml.
 
         when (item.itemId) {
+            /*
             R.id.deposit -> {
                 startActivity(Intent(this, Signup::class.java))
                 return true
-            }
+            } */
+
             R.id.login -> {
                 /*
                 val fm = supportFragmentManager
@@ -258,6 +308,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             }
             R.id.logged -> {
                 info = "deposit"
+
                 startActivity(Intent(this, MyAccount::class.java))
                 overridePendingTransition(0, 0)
                 return true
@@ -338,9 +389,9 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
     }  */
 }
 
-class CustomDropDownAdapter(val context: Context,var image : Array<Int>, var listItemsTxt: Array<String>) : BaseAdapter() {
 
 
+<<<<<<< HEAD
     val mInflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -395,3 +446,5 @@ class CustomDropDownAdapter(val context: Context,var image : Array<Int>, var lis
 
 }
 
+=======
+>>>>>>> c6b46c1bd3a9e3efaaafb4d3c7b5f379d12f875d

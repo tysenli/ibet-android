@@ -9,12 +9,12 @@
         <Button android:layout_width="80dp"
                 android:layout_height="32dp"
                 android:id="@+id/balance_icon"
-                android:background="@drawable/rectangle"
-                android:drawableLeft="@drawable/deposit"
+                android:background="@drawable/open_account"
+                android:drawableRight="@drawable/add"
                 android:padding="5dp"
-                android:text=""
+                android:text="222"
                 android:textSize="13.5sp"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
         />
     </FrameLayout>
 

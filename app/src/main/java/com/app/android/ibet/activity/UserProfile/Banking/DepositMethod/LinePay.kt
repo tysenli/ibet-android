@@ -32,7 +32,7 @@ class LinePay : AppCompatActivity() {
         actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_amount_input)
-        println(token)
+        //println(token)
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201,199,199))
             money_50.setBackgroundColor(Color.rgb(239,239,239))
@@ -94,7 +94,7 @@ class LinePay : AppCompatActivity() {
             val response = client.newCall(request).execute()
 
             var lineData = response.body()!!.string()
-            println(lineData)
+            //println(lineData)
             var line_url = JSONObject(lineData).getJSONObject("info").getJSONObject("paymentUrl").getString("web")
 
             //println(line_url)

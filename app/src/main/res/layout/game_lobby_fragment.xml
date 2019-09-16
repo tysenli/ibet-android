@@ -8,7 +8,6 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_height="93dp" android:layout_width="match_parent">
 
-
         <androidx.recyclerview.widget.RecyclerView
                 tools:listitem="@layout/game_filter_item"
                 android:id="@+id/filter_recycler_list"

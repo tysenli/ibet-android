@@ -45,7 +45,7 @@ class ForgotPass : AppCompatActivity() {
             val response = client.newCall(request).execute()
             //http://10.0.2.2:8000/users/api/generateactivationcode/
             //val info = Api().post(forgetCodeJson.toString(), BuildConfig.FORGET_CODE )
-            println(response.code())
+           // println(response.code())
             if (response.code() == 200) {
                 val info2 = Api().post(forgetCodeJson.toString(), BuildConfig.FORGET_SEND_EMAIL)
 

@@ -2,7 +2,10 @@ package com.app.android.ibet.activity.UserProfile
 
 import android.content.Intent
 import android.os.Bundle
+<<<<<<< HEAD
 import androidx.fragment.app.Fragment
+=======
+>>>>>>> c6b46c1bd3a9e3efaaafb4d3c7b5f379d12f875d
 import androidx.appcompat.app.AppCompatActivity
 import android.view.*
 import com.app.android.ibet.R
@@ -14,7 +17,7 @@ class Settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_setting)
+        setContentView(R.layout.frag_setting)
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

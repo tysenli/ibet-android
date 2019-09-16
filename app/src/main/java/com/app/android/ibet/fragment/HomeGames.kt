@@ -48,12 +48,12 @@ class HomeGames : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        game_list.layoutManager = androidx.recyclerview.widget.GridLayoutManager(this.context, 3)
+        game_list.layoutManager = GridLayoutManager(this.context, 3)
         //game_list.layoutManager = LinearLayoutManager(this.context)
         game_list.addItemDecoration(
-            androidx.recyclerview.widget.DividerItemDecoration(
+            DividerItemDecoration(
                 context,
-                androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
+                DividerItemDecoration.VERTICAL
             )
         )
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)

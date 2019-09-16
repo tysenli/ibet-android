@@ -77,8 +77,6 @@ class Signup : AppCompatActivity() {
         btnOneClick.setOnClickListener {
 
             val visitorJson = JSONObject()
-            //val url = "http://10.0.2.2:8000/users/api/oneclicksignup/"
-
             val info = Api().post(visitorJson.toString(),BuildConfig.ONE_CLICK_SIGNUP_URL)
             println (info)
             var info1 = info!!.split(",")
@@ -86,8 +84,7 @@ class Signup : AppCompatActivity() {
             var info3 = info1[1].split(":")[1]
             var name = info2.substring(1,info2.length - 1)
             var pass = info3.substring(1, info3.length - 2)
-            println(name)
-           // println(info1[0])
+           // println(name)
 
             var res = Intent(applicationContext, oneClick::class.java)
             res.putExtra("username",name)

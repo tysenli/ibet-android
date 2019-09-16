@@ -25,12 +25,12 @@
     <item android:id="@+id/login"
 
           android:title="@string/log_in"
-          android:icon="@drawable/user"
+          app:actionLayout = "@layout/login_actionlayout"
           android:orderInCategory="2"
           app:showAsAction="always"/>
     <item android:id="@+id/logged"
           android:title=""
-          android:icon="@drawable/user3"
+          android:icon="@drawable/user"
           android:orderInCategory="2"
           app:showAsAction="ifRoom"/>
 

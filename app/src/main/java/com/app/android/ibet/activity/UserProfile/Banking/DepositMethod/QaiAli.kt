@@ -4,21 +4,20 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+<<<<<<< HEAD
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+=======
+>>>>>>> c6b46c1bd3a9e3efaaafb4d3c7b5f379d12f875d
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.*
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.Login.Login
-import com.app.android.ibet.activity.MainActivity
-import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
-import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_amount_input.*
-import kotlinx.android.synthetic.main.dialog.view.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -35,14 +34,20 @@ class QaiAli : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        depo_method_show.text = "Alipay"
+        deposit_amount2.hint = " Deposit 300 - 1,500                        Other"
+        amt_input_err.visibility = View.GONE
         var pk =  JSONObject(userData).getString("pk")
-
+        money_25.text = "300"
+        money_50.text = "700"
+        money_100.text = "1100"
+        money_250.text = "1500"
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201,199,199))
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text =  "25"
+            amount_display.text =  money_25.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -51,7 +56,7 @@ class QaiAli : Fragment() {
             money_50.setBackgroundColor(Color.rgb(201,199,199))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text = "50"
+            amount_display.text = money_50.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -60,7 +65,7 @@ class QaiAli : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(201,199,199))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text =  "100"
+            amount_display.text =  money_100.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -69,7 +74,7 @@ class QaiAli : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(201,199,199))
-            amount_display.text = "250"
+            amount_display.text = money_250.text
             MyAccount.depo_amt = amount_display.text.toString()
         }
 
@@ -90,32 +95,46 @@ class QaiAli : Fragment() {
             }
 
         })
+        change_method.setOnClickListener {
+            MyAccount.info = "deposit"
+            val intent = Intent(activity, MyAccount::class.java)
+            startActivity(intent)
+            activity!!.overridePendingTransition(0, 0)
+        }
 
 
         btn_wechat_dep.setOnClickListener {
-            val client = OkHttpClient()
-            val formBody = FormBody.Builder()
-                .add("amount", amount_display.text.toString())
-                .add("user_id", pk)
-                .add("currency", "0")
-                .add("language", "zh-Hans")
-                .add("method", "ALIPAY_H5")
-                .build()
+            if (amount_display.text.toString() == "" || amount_display.text.toString().toFloat() < 300 || amount_display.text.toString().toFloat() > 1500) {
+                amt_input_err.visibility = View.VISIBLE
+                amt_input_err.text = "Please deposit between 300 - 1500"
+            } else {
+                amt_input_err.visibility = View.GONE
+                val client = OkHttpClient()
+                val formBody = FormBody.Builder()
+                    .add("amount", amount_display.text.toString())
+                    .add("user_id", pk)
+                    .add("currency", "0")
+                    .add("language", "zh-Hans")
+                    .add("method", "ALIPAY")
+                    .build()
 
-            val request = Request.Builder()
-                .url(BuildConfig.WECHAT)
-                .post(formBody)
-                .build()
-            val response = client.newCall(request).execute()
-            var aliData = response.body()!!.string()
-            orderId = JSONObject(aliData).getJSONObject("depositTransaction").getString("orderId")
-            var ali_url = JSONObject(aliData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
+                val request = Request.Builder()
+                    .url(BuildConfig.QAICASH)
+                    .post(formBody)
+                    .build()
+                val response = client.newCall(request).execute()
+                var aliData = response.body()!!.string()
 
-            val res = Intent(activity, AliOpenPage::class.java)
-            res.putExtra("aliurl", ali_url)
-            res.putExtra("aliorderId",orderId)
-            res.putExtra("alibalance",amount_display.text.toString())
-            startActivity(res)
+                orderId = JSONObject(aliData).getJSONObject("paymentPageSession").getString("orderId")
+                //println("hhh" + orderId)
+                var ali_url = JSONObject(aliData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
+
+                val res = Intent(activity, QaiAliOpenPage::class.java)
+                res.putExtra("aliurl", ali_url)
+                res.putExtra("aliorderId", orderId)
+                res.putExtra("alibalance", amount_display.text.toString())
+                startActivity(res)
+            }
 
         }
 
@@ -204,7 +223,7 @@ class QaiAli : Fragment() {
             dialogView.confirm.setOnClickListener {
                 dialog.dismiss()
                // startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(ali_url)))
-                val res = Intent(this, AliOpenPage::class.java)
+                val res = Intent(this, QaiAliOpenPage::class.java)
                 res.putExtra("aliurl", ali_url)
                 startActivity(res)
 

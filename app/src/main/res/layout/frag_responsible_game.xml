@@ -30,6 +30,7 @@
                         android:textColor="#ff0000"
                         android:gravity="end"
                         android:text="Remove The Limit"
+
                 />
             </LinearLayout>
             <LinearLayout android:layout_width="match_parent"
@@ -58,49 +59,93 @@
                         android:textAllCaps="false"
                 />
             </LinearLayout>
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_gravity="center"
+                          android:id="@+id/depo_show"
+            >
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:gravity="center"
+                          android:id="@+id/depo_cur"
+                          android:text="Current Limit    $0 out of $0"
+                          android:paddingTop="18dp"
+                          android:textSize="14sp"
+                          android:textColor="#212121"
+                />
+                <LinearLayout android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:gravity="center"
+                >
+                    <Button android:layout_width="44dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/minus_depo"
+                            android:text="-"
+                            android:background="#efefef"
+                    />
+                    <EditText android:layout_width="210dp"
+                              android:layout_height="match_parent"
+                              android:text=""
+                              android:id="@+id/depo_limit_amt"
+                              android:gravity="center"
+                              android:inputType="number"
+                              android:background="@drawable/border"
+                    />
+                    <Button android:layout_width="44dp"
+                            android:layout_height="wrap_content"
+                            android:text="+"
+                            android:id="@+id/add_depo"
+                            android:layout_marginLeft="16dp"
+                            android:background="#efefef"
+                    />
+                </LinearLayout>
+
+                <Button android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/save_depo_limit"
+                        android:layout_gravity="center"
+                        android:text="save my deposit limit"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/deposit_btn"
+                />
+            </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_gravity="center"
+                      android:id="@+id/depo_remove"
+        >
             <TextView android:layout_width="match_parent"
                       android:layout_height="match_parent"
                       android:gravity="center"
-                      android:text="Current Limit    $0 out of $0"
+                      android:id="@+id/depo_expire"
+                      android:text="Limit expires on    $0 out of $0"
                       android:paddingTop="18dp"
                       android:textSize="14sp"
                       android:textColor="#212121"
             />
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:gravity="center"
-            >
-                <Button android:layout_width="44dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/minus_depo"
-                        android:text="-"
-                        android:background="#efefef"
-                />
-                <EditText android:layout_width="210dp"
-                          android:layout_height="match_parent"
-                          android:text="0"
-                          android:id="@+id/depo_limit_amt"
-                          android:gravity="center"
-                          android:inputType="number"
-                          android:background="@drawable/border"
-                />
-                <Button android:layout_width="44dp"
-                        android:layout_height="wrap_content"
-                        android:text="+"
-                        android:id="@+id/add_depo"
-                        android:layout_marginLeft="16dp"
-                        android:background="#efefef"
-                />
-            </LinearLayout>
-            <Button android:layout_width="300dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:id="@+id/save_depo_limit"
-                    android:text="save my deposit limit"
-                    android:layout_marginTop="18dp"
-                    android:background="@drawable/deposit_btn"
+            <TextView android:layout_width="210dp"
+                      android:layout_height="44dp"
+                      android:text=""
+                      android:textSize="22sp"
+                      android:textColor="#2e2f2e"
+                      android:gravity="center"
+                      android:id="@+id/depo_deletetime"
+                      android:layout_gravity="center"
+                      android:background="@drawable/border"
             />
+
+               <Button android:layout_width="300dp"
+                       android:layout_height="40dp"
+                       android:layout_gravity="center"
+                       android:id="@+id/depo_limit_cancel"
+                       android:layout_marginTop="18dp"
+                       android:text="Cancel"
+                       android:background="@drawable/deposit_btn"
+               />
+        </LinearLayout>
+
+
             <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -153,49 +198,91 @@
                         android:textAllCaps="false"
                 />
             </LinearLayout>
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:gravity="center"
-                      android:text="Current Limit    $0 out of $0"
-                      android:paddingTop="18dp"
-                      android:textSize="14sp"
-                      android:textColor="#212121"
-            />
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:gravity="center"
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_gravity="center"
+                          android:id="@+id/loss_show"
             >
-                <Button android:layout_width="44dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_height="wrap_content"
-                        android:text="-"
-                        android:id="@+id/minus_loss"
-                        android:background="#efefef"
-                />
-                <EditText android:layout_width="210dp"
+                <TextView android:layout_width="match_parent"
                           android:layout_height="match_parent"
-                          android:text="0"
-                          android:id="@+id/loss_limit_amt"
                           android:gravity="center"
-                          android:inputType="number"
-                          android:background="@drawable/border"
+                          android:id="@+id/loss_cur"
+                          android:text="Current Limit    $0 out of $0"
+                          android:paddingTop="18dp"
+                          android:textSize="14sp"
+                          android:textColor="#212121"
                 />
-                <Button android:layout_width="44dp"
-                        android:layout_height="wrap_content"
-                        android:text="+"
-                        android:id="@+id/add_loss"
-                        android:layout_marginLeft="16dp"
-                        android:background="#efefef"
+                <LinearLayout android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:gravity="center"
+                >
+                    <Button android:layout_width="44dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:id="@+id/minus_loss"
+                            android:background="#efefef"
+                    />
+                    <EditText android:layout_width="210dp"
+                              android:layout_height="match_parent"
+                              android:text=""
+                              android:id="@+id/loss_limit_amt"
+                              android:gravity="center"
+                              android:inputType="number"
+                              android:background="@drawable/border"
+                    />
+                    <Button android:layout_width="44dp"
+                            android:layout_height="wrap_content"
+                            android:text="+"
+                            android:id="@+id/add_loss"
+                            android:layout_marginLeft="16dp"
+                            android:background="#efefef"
+                    />
+                </LinearLayout>
+                <Button android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:text="save my loss limit"
+                        android:id="@+id/save_loss_limit"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/deposit_btn"
                 />
             </LinearLayout>
-            <Button android:layout_width="300dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:text="save my loss limit"
-                    android:id="@+id/save_loss_limit"
-                    android:layout_marginTop="18dp"
-                    android:background="@drawable/deposit_btn"
-            />
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_gravity="center"
+                          android:id="@+id/loss_remove"
+            >
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:gravity="center"
+                          android:id="@+id/loss_expire"
+                          android:text="Limit expires on    $0 out of $0"
+                          android:paddingTop="18dp"
+                          android:textSize="14sp"
+                          android:textColor="#212121"
+                />
+                <TextView android:layout_width="210dp"
+                          android:layout_height="44dp"
+                          android:text=""
+                          android:textSize="22sp"
+                          android:textColor="#2e2f2e"
+                          android:gravity="center"
+                          android:id="@+id/loss_deletetime"
+                          android:layout_gravity="center"
+                          android:background="@drawable/border"
+                />
+
+                <Button android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/loss_limit_cancel"
+                        android:layout_marginTop="18dp"
+                        android:text="Cancel"
+                        android:background="@drawable/deposit_btn"
+                />
+            </LinearLayout>
+
             <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -244,24 +331,28 @@
                         android:layout_marginLeft="16dp"
                         android:layout_height="wrap_content"
                         android:text="5 Min"
+                        android:id="@+id/five_min"
                         android:background="#e5e5e5"
                 />
 
                 <Button android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:text="30 Min"
+                        android:id="@+id/thirty_min"
                         android:layout_marginLeft="12dp"
                         android:background="#e5e5e5"
                 />
                 <Button android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:text="60 Min"
+                        android:id="@+id/sixty_min"
                         android:layout_marginLeft="12dp"
                         android:background="#e5e5e5"
                 />
                 <Button android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:text="120 Min"
+                        android:id="@+id/two_hour"
                         android:layout_marginLeft="12dp"
                         android:background="#e5e5e5"
                 />
@@ -322,8 +413,8 @@
                         android:layout_marginLeft="16dp"
                         android:layout_height="wrap_content"
                         android:text="1 Days"
+                        android:background="@color/btn_l"
                         android:id="@+id/one_day"
-                        android:background="#e5e5e5"
                 />
 
                 <Button android:layout_width="100dp"
@@ -331,14 +422,14 @@
                         android:text="7 Days"
                         android:id="@+id/seven_day"
                         android:layout_marginLeft="12dp"
-                        android:background="#e5e5e5"
+                        android:background="@color/btn_l"
                 />
                 <Button android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:text="30 Days"
                         android:id="@+id/thirty_day"
                         android:layout_marginLeft="12dp"
-                        android:background="#e5e5e5"
+                        android:background="@color/btn_l"
                 />
 
             </LinearLayout>
@@ -361,7 +452,7 @@
                         android:layout_height="wrap_content"
                         android:text="6 Months"
                         android:id="@+id/six_month"
-                        android:background="#e5e5e5"
+                        android:background="@color/btn_l"
                 />
 
                 <Button android:layout_width="100dp"
@@ -369,14 +460,14 @@
                         android:text="1 Year"
                         android:id="@+id/one_year"
                         android:layout_marginLeft="12dp"
-                        android:background="#e5e5e5"
+                        android:background="@color/btn_l"
                 />
                 <Button android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:text="3 Years"
                         android:id="@+id/three_year"
                         android:layout_marginLeft="12dp"
-                        android:background="#e5e5e5"
+                        android:background="@color/btn_l"
                 />
 
             </LinearLayout>
@@ -390,7 +481,7 @@
                         android:layout_height="wrap_content"
                         android:text="5 Years"
                         android:id="@+id/five_year"
-                        android:background="#e5e5e5"
+                        android:background="@color/btn_l"
                 />
 
                 <Button android:layout_width="210dp"
@@ -398,7 +489,7 @@
                         android:text="Indefinite(Min. 1 Year)"
                         android:id="@+id/indefinite"
                         android:layout_marginLeft="12dp"
-                        android:background="#e5e5e5"
+                        android:background="@color/btn_l"
                 />
 
             </LinearLayout>

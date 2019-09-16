@@ -53,7 +53,7 @@
         <item
                 android:id="@+id/slots"
                 android:icon="@drawable/slots"
-                android:title="@string/slots"/>
+                android:title="@string/casino"/>
     </group>
     <group android:checkableBehavior="single"
            android:id="@+id/group5"

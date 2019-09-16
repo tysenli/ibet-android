@@ -26,10 +26,10 @@ class Deposit : AppCompatActivity() {
         paypal.setOnClickListener {
             startActivity(Intent(this, Paypal::class.java))
         }
-        wechat.setOnClickListener {
+        qai_wechat.setOnClickListener {
             startActivity(Intent(this, QaiWechat::class.java))
         }
-        ali.setOnClickListener {
+        qai_ali.setOnClickListener {
             startActivity(Intent(this, QaiAli::class.java))
         }
         line_pay.setOnClickListener {
@@ -38,17 +38,17 @@ class Deposit : AppCompatActivity() {
         visa.setOnClickListener {
             startActivity(Intent(this, VisaInfo::class.java))
         }
-        jdpay.setOnClickListener {
-            startActivity(Intent(this, JDPay::class.java))
+        asia_jdpay.setOnClickListener {
+            startActivity(Intent(this, AsiaJDPay::class.java))
         }
-        unionpay.setOnClickListener {
-            startActivity(Intent(this, UnionPay::class.java))
+        asia_unionpay.setOnClickListener {
+            startActivity(Intent(this, AsiaUnionPay::class.java))
         }
-        bank.setOnClickListener {
-            startActivity(Intent(this, BankDep::class.java))
+        asia_bank.setOnClickListener {
+            startActivity(Intent(this, QaiBank::class.java))
         }
-        quickpay.setOnClickListener {
-            startActivity(Intent(this, QuickPay::class.java))
+        asia_quickpay.setOnClickListener {
+            startActivity(Intent(this, AsiaQuickPay::class.java))
         }
     }
 
