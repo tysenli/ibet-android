@@ -27,6 +27,7 @@ import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.SuccessW
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.Lock
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
 import com.app.android.ibet.activity.UserProfile.Setting.Setting
+import com.app.android.ibet.api.URLs
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
@@ -57,7 +58,7 @@ class MyAccount : AppCompatActivity() {
         setContentView(R.layout.activity_my_account)
         val request = Request.Builder()
             .header("Authorization", "Token "+ token)
-            .url(BuildConfig.USER)
+            .url(URLs.USER)
             .build()
         val response = OkHttpClient().newCall(request).execute()
 

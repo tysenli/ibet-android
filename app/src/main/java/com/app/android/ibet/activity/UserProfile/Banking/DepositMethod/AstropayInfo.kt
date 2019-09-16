@@ -17,6 +17,7 @@ import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_amount_input.*
 import kotlinx.android.synthetic.main.activity_amount_input.amount_display
 import kotlinx.android.synthetic.main.activity_amount_input.deposit_amount2
@@ -166,7 +167,7 @@ class AstropayInfo: Fragment() {
                     val body = RequestBody.create(JSON, astroJson.toString())
                     val request = Request.Builder()
                         .addHeader("Authorization", "Token " + Login.token)
-                        .url(BuildConfig.ASTROPAY)
+                        .url(URLs.ASTROPAY)
                         .post(body)
                         .build()
                     val response = client.newCall(request).execute()
@@ -185,7 +186,7 @@ class AstropayInfo: Fragment() {
                             depositJson.put("type", "add")
                             depositJson.put("username", user)
                             depositJson.put("balance", deposit_amount.text.toString())
-                            val balance = Api().post(depositJson.toString(), BuildConfig.BALANCE)
+                            val balance = Api().post(depositJson.toString(), URLs.BALANCE)
                             MyAccount.info = "success"
                             val res = Intent(context, MyAccount::class.java)
                             //res.putExtra("amount",intent.getStringExtra("balance"))

@@ -10,6 +10,7 @@ import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_thirdparty.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
@@ -43,7 +44,7 @@ class QaiUnionOpenPage : AppCompatActivity() {
                 .add("trans_id", intent.getStringExtra("unionorderId"))
                 .build()
             val request = Request.Builder()
-                .url(BuildConfig.QAICASH_CONFIRM)
+                .url(URLs.QAICASH_CONFIRM)
                 .post(orderBody)
                 .build()
             val response = OkHttpClient().newCall(request).execute()
@@ -61,7 +62,7 @@ class QaiUnionOpenPage : AppCompatActivity() {
                     depositJson.put("type", "add")
                     depositJson.put("username", user)
                     depositJson.put("balance", intent.getStringExtra("unionbalance"))
-                    val balance = Api().post(depositJson.toString(), BuildConfig.BALANCE)
+                    val balance = Api().post(depositJson.toString(), URLs.BALANCE)
                     MyAccount.info = "success"
                     val res = Intent(this, MyAccount::class.java)
                     //res.putExtra("amount",intent.getStringExtra("balance"))

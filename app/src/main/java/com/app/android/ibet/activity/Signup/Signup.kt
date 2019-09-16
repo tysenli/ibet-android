@@ -10,6 +10,7 @@ import android.view.MenuItem
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -77,7 +78,7 @@ class Signup : AppCompatActivity() {
         btnOneClick.setOnClickListener {
 
             val visitorJson = JSONObject()
-            val info = Api().post(visitorJson.toString(),BuildConfig.ONE_CLICK_SIGNUP_URL)
+            val info = Api().post(visitorJson.toString(),URLs.ONE_CLICK_SIGNUP_URL)
             println (info)
             var info1 = info!!.split(",")
             var info2 = info1[0].split(":")[1]

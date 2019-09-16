@@ -19,6 +19,7 @@ import com.app.android.ibet.activity.MainActivity.Companion.isLogin
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.frag_account.*
 import org.json.JSONObject
 
@@ -46,7 +47,7 @@ class Account : Fragment() {
             toast.show()
             isChange = false
         }
-        var userData = Api().get(BuildConfig.USER)
+        var userData = Api().get(URLs.USER)
         acc_id.text = "ID: " + JSONObject(userData).getString("pk")
         acc_first_name.text = JSONObject(userData).getString("first_name")
         acc_last_name.text = JSONObject(userData).getString("last_name")

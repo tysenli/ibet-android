@@ -18,6 +18,7 @@ import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amt
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 
 import kotlinx.android.synthetic.main.activity_login.*
@@ -85,7 +86,7 @@ class Login : AppCompatActivity() {
 
             //val url = "http://10.0.2.2:8000/users/api/login/"
 
-            var log = Api().post(loginJson.toString(), BuildConfig.LOGIN)
+            var log = Api().post(loginJson.toString(), URLs.LOGIN)
 
             if (log.toString().equals("null")) {
                 forgot_password.text = "Incorrect Username or Password\n Forgot Password?"
@@ -97,7 +98,7 @@ class Login : AppCompatActivity() {
                 //var success = hint.substring(2, hint.length - 1)
                 token = JSONObject(log).getString("key")
                 isLogin = true
-                userData = Api().get(BuildConfig.USER)!!
+                userData = Api().get(URLs.USER)!!
                 amt = JSONObject(userData).getString("main_wallet")
                 startActivity(Intent(this, MainActivity::class.java))
             }

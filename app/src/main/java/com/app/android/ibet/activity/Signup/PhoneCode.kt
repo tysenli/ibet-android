@@ -10,6 +10,7 @@ import android.view.MenuItem
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_phone_code.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -90,7 +91,7 @@ class PhoneCode : AppCompatActivity() {
 
                 val request = Request.Builder()
                     // .addHeader("Authorization", "Bearer $token")
-                    .url(BuildConfig.VERI_CODE)
+                    .url(URLs.VERI_CODE)
                     .post(body)
                     .build()
 

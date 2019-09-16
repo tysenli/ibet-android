@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_edit_profile.city_edit
 import kotlinx.android.synthetic.main.activity_edit_profile.edit_address
@@ -22,7 +23,7 @@ class Edit : AppCompatActivity() {
         setContentView(R.layout.activity_edit_profile)
         val request = Request.Builder()
             .header("Authorization", "Token "+ Login.token)
-            .url(BuildConfig.USER)
+            .url(URLs.USER)
             .build()
         val response = OkHttpClient().newCall(request).execute()
         println(Login.token)
@@ -73,7 +74,7 @@ class Edit : AppCompatActivity() {
             val body = RequestBody.create(JSON, editJson.toString())
             val request = Request.Builder()
                 .header("Authorization", "Token "+ Login.token)
-                .url(BuildConfig.USER)
+                .url(URLs.USER)
                 .put(body)
                 .build()
 

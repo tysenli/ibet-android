@@ -1,5 +1,6 @@
 package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -20,6 +21,8 @@ import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
+import kotlinx.android.synthetic.main.dialog.view.*
 
 
 import kotlinx.android.synthetic.main.frag_bt.*
@@ -40,7 +43,7 @@ import org.json.JSONObject
 
 class QaiBank : Fragment() {
     //private var parentContext = context
-    var userData = Api().get(BuildConfig.USER)
+    var userData = Api().get(URLs.USER)
     var orderId = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -156,41 +159,50 @@ class QaiBank : Fragment() {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 100 - 10000"
             } else {
-                amt_input_err.visibility = View.GONE
-                val client = OkHttpClient()
-                val formBody = FormBody.Builder()
-                    .add("amount", amount_display.text.toString())
-                    .add("user_id", pk)
-                    .add("currency", "0")
-                    .add("language", "zh-Hans")
-                    .add("method", "BANK_TRANSFER")
-                    .add("bank", curBank)
-                    .build()
+                val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog,null)
+                val builder = AlertDialog.Builder(context)
+                builder.setView(dialogView)
+                val dialog = builder.show()
+                dialogView.instruction_hint.text = resources.getText(R.string.instruction_hint)
+                dialogView.confirm.setOnClickListener {
+                    dialog.dismiss()
+                    amt_input_err.visibility = View.GONE
+                    val client = OkHttpClient()
+                    val formBody = FormBody.Builder()
+                        .add("amount", amount_display.text.toString())
+                        .add("user_id", pk)
+                        .add("currency", "0")
+                        .add("language", "zh-Hans")
+                        .add("method", "BANK_TRANSFER")
+                        .add("bank", curBank)
+                        .build()
 
-                val request = Request.Builder()
-                    .url(BuildConfig.QAICASH)
-                    .post(formBody)
-                    .build()
-                val response = client.newCall(request).execute()
-                if (response.code() != 200) {
-                    MyAccount.info = "fail"
-                    val res = Intent(context, MyAccount::class.java)
-                    startActivity(res)
-                } else {
-                    val bankData = response.body()!!.string()
-                    orderId = JSONObject(bankData).getJSONObject("paymentPageSession").getString("orderId")
-                    var bank_url = JSONObject(bankData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
+                    val request = Request.Builder()
+                        .url(URLs.QAICASH)
+                        .post(formBody)
+                        .build()
+                    val response = client.newCall(request).execute()
+                    if (response.code() != 200) {
+                        MyAccount.info = "fail"
+                        val res = Intent(context, MyAccount::class.java)
+                        startActivity(res)
+                    } else {
+                        val bankData = response.body()!!.string()
+                        orderId = JSONObject(bankData).getJSONObject("paymentPageSession").getString("orderId")
+                        var bank_url =
+                            JSONObject(bankData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
 
-                    val res = Intent(activity, QaiBankOpenPage::class.java)
-                    res.putExtra("qai_bankurl", bank_url)
-                    res.putExtra("qai_bankorderId", orderId)
-                    res.putExtra("qai_bankbalance", amount_display.text.toString())
-                    startActivity(res)
-                    // val url = JSONObject(bankData).getString("url")
-                    //val orderId = JSONObject(bankData).getString("order_id")
-                    //val openUrl =  "$url?cid=BRANDCQNGHUA3&oid=$orderId"
-                    //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(openUrl)))
+                        val res = Intent(activity, QaiBankOpenPage::class.java)
+                        res.putExtra("qai_bankurl", bank_url)
+                        res.putExtra("qai_bankorderId", orderId)
+                        res.putExtra("qai_bankbalance", amount_display.text.toString())
+                        startActivity(res)
+                        // val url = JSONObject(bankData).getString("url")
+                        //val orderId = JSONObject(bankData).getString("order_id")
+                        //val openUrl =  "$url?cid=BRANDCQNGHUA3&oid=$orderId"
+                        //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(openUrl)))
 
+                    }
                 }
             }
         }

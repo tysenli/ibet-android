@@ -1,5 +1,6 @@
 package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -18,9 +19,15 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import com.app.android.ibet.fragment.CustomDropDownAdapter
+import kotlinx.android.synthetic.main.activity_amount_input.*
+import kotlinx.android.synthetic.main.dialog.view.*
 import kotlinx.android.synthetic.main.frag_asiabank.*
+import kotlinx.android.synthetic.main.frag_asiabank.amount_display
 import kotlinx.android.synthetic.main.frag_asiabank.amt_input_err
+import kotlinx.android.synthetic.main.frag_asiabank.btn_wechat_dep
+import kotlinx.android.synthetic.main.frag_asiabank.change_method
 import kotlinx.android.synthetic.main.frag_asiabank.deposit_amount2
 import kotlinx.android.synthetic.main.frag_asiabank.money_100
 import kotlinx.android.synthetic.main.frag_asiabank.money_25
@@ -36,7 +43,7 @@ import java.util.*
 
 class AsiaBank : Fragment() {
     //private var parentContext = context
-    var userData = Api().get(BuildConfig.USER)
+    var userData = Api().get(URLs.USER)
     var orderId = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -138,37 +145,50 @@ class AsiaBank : Fragment() {
         }
 
         btn_wechat_dep.setOnClickListener {
-            val client = OkHttpClient()
-            val formBody = FormBody.Builder()
-                .add("amount", amount_display.text.toString())
-                .add("userid", pk)
-                .add("currency", "0")
-                .add("PayWay", "30")
-                .add("method", bankId.toString())
-                .build()
+            if (amount_display.text.toString() == "" || amount_display.text.toString().toFloat() < 100 || amount_display.text.toString().toFloat() > 10000) {
+                amt_input_err.visibility = View.VISIBLE
+                amt_input_err.text = "Please deposit between 100 - 10000"
+            } else {
+                val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog,null)
+                val builder = AlertDialog.Builder(context)
+                builder.setView(dialogView)
+                val dialog = builder.show()
+                dialogView.instruction_hint.text = resources.getText(R.string.instruction_hint)
+                dialogView.confirm.setOnClickListener {
+                    dialog.dismiss()
+                    val client = OkHttpClient()
+                    val formBody = FormBody.Builder()
+                        .add("amount", amount_display.text.toString())
+                        .add("userid", pk)
+                        .add("currency", "0")
+                        .add("PayWay", "30")
+                        .add("method", bankId.toString())
+                        .build()
 
-            val request = Request.Builder()
-                .url(BuildConfig.ASIAPAY)
-                .post(formBody)
-                .build()
-            val response = client.newCall(request).execute()
+                    val request = Request.Builder()
+                        .url(URLs.ASIAPAY)
+                        .post(formBody)
+                        .build()
+                    val response = client.newCall(request).execute()
 
-            if (response.code() != 200) {
-                MyAccount.info = "fail"
-                val res = Intent(context, MyAccount::class.java)
-                startActivity(res)
-            } else  {
-                var bankData = response.body()!!.string()
-                orderId = JSONObject(bankData).getString("order_id")
-                var bankurl = JSONObject(bankData).getString("url") + "?cid=BRANDCQNGHUA3&oid=" + orderId
+                    if (response.code() != 200) {
+                        MyAccount.info = "fail"
+                        val res = Intent(context, MyAccount::class.java)
+                        startActivity(res)
+                    } else {
+                        var bankData = response.body()!!.string()
+                        orderId = JSONObject(bankData).getString("order_id")
+                        var bankurl = JSONObject(bankData).getString("url") + "?cid=BRANDCQNGHUA3&oid=" + orderId
 
-                val res = Intent(activity, AsiaBankOpenPage::class.java)
+                        val res = Intent(activity, AsiaBankOpenPage::class.java)
 
-                res.putExtra("bankurl", bankurl)
-                res.putExtra("bankorderId", orderId)
-                res.putExtra("bankbalance", amount_display.text.toString())
-                startActivity(res)
+                        res.putExtra("bankurl", bankurl)
+                        res.putExtra("bankorderId", orderId)
+                        res.putExtra("bankbalance", amount_display.text.toString())
+                        startActivity(res)
 
+                    }
+                }
             }
 
         }

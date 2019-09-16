@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_email_auth_p3.*
 import kotlinx.android.synthetic.main.activity_email_auth_p3.city_edit
@@ -86,7 +87,7 @@ class emailAuthP3: AppCompatActivity() {
             signupJson.put("over_eighteen"    , true)
 
             //val url = "http://10.0.2.2:8000/users/api/signup/"
-            post(signupJson.toString(), BuildConfig.SIGNUP_URL)
+            post(signupJson.toString(), URLs.SIGNUP_URL)
             val res = Intent(applicationContext, Verify::class.java)
             res.putExtra("user", intent.getStringExtra(emailAuthP2.USER))
             res.putExtra("email",intent.getStringExtra(emailAuthP1.MAIL))

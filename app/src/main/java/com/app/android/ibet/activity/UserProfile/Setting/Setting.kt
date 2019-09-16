@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.frag_responsible_game.*
 import kotlinx.android.synthetic.main.frag_setting.*
 import okhttp3.MediaType
@@ -32,14 +33,14 @@ class Setting : Fragment() {
     override fun onStart() {
         super.onStart()
         val request = Request.Builder()
-            .url(BuildConfig.MARKETING + "?userId=" + JSONObject(MyAccount.userData).getString("pk"))
+            .url(URLs.MARKETING + "?userId=" + JSONObject(MyAccount.userData).getString("pk"))
             .build()
         val response = OkHttpClient().newCall(request).execute()
         val marketData = response.body()!!.string()
 
 
         val request2 = Request.Builder()
-            .url(BuildConfig.PRIVACY + "?userId=" + JSONObject(MyAccount.userData).getString("pk"))
+            .url(URLs.PRIVACY + "?userId=" + JSONObject(MyAccount.userData).getString("pk"))
             .build()
         val response2 = OkHttpClient().newCall(request2).execute()
         val privacyData = response2.body()!!.string()
@@ -114,7 +115,7 @@ class Setting : Fragment() {
             marketJson.put("socialMedia",com_social.isChecked)
             val body = RequestBody.create(JSON, marketJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.MARKETING)
+                .url(URLs.MARKETING)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -143,7 +144,7 @@ class Setting : Fragment() {
 
             val body = RequestBody.create(JSON, privacyJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.PRIVACY)
+                .url(URLs.PRIVACY)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
