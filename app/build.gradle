@@ -44,6 +44,7 @@ android {
             buildConfigField 'String','LOCKTIME',"\"$local/users/api/set-block-time/\""
             buildConfigField 'String','MARKETING',"\"$local/users/api/marketing-settings/\""
             buildConfigField 'String','PRIVACY',"\"$local/users/api/privacy-settings/\""
+            buildConfigField 'String','ACTIVITY',"\"$local/users/api/activity-check/\""
 
             buildConfigField 'String','WITHDRAW',"\"$local/accounting/api/qaicash/submit_payout\""
             buildConfigField 'String','WITHDRAW_ORDER',"\"$local/accounting/api/qaicash/payout_transaction\""

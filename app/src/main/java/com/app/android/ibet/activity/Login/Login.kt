@@ -14,13 +14,16 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.MainActivity.Companion.isLogin
 import com.app.android.ibet.activity.Signup.Signup
-import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amt
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.app.android.ibet.api.Api
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 
 import kotlinx.android.synthetic.main.activity_login.*
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
 import org.json.JSONObject
 
 
@@ -41,7 +44,7 @@ class Login : AppCompatActivity() {
 
         StrictMode.setThreadPolicy(policy)
         userlogin.isEnabled = false
-        forgot_password.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+        login_hint.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         sign_up_here.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
         login_password.addTextChangedListener (object : TextWatcher {
@@ -84,27 +87,41 @@ class Login : AppCompatActivity() {
             loginJson.put("password", login_password.text.toString())
 
             //val url = "http://10.0.2.2:8000/users/api/login/"
+            //var log = Api().post(loginJson.toString(), BuildConfig.LOGIN)
+            val client = OkHttpClient()
+            val JSON = MediaType.get("application/json; charset=utf-8")
+            val body = RequestBody.create(JSON, loginJson.toString())
 
-            var log = Api().post(loginJson.toString(), BuildConfig.LOGIN)
+            val request = Request.Builder()
+                    // .addHeader("Authorization", "Bearer $token")
+                    .url(BuildConfig.LOGIN)
+                    .post(body)
+                    .build()
 
-            if (log.toString().equals("null")) {
-                forgot_password.text = "Incorrect Username or Password\n Forgot Password?"
-                forgot_password.setTextColor(Color.RED)
-            } else {
-               // var hint = log!!.split(":")[0]
-                //var key = log!!.split(":")[1]
-                // println(key.substring(1,key.length - 2))
-                //var success = hint.substring(2, hint.length - 1)
-                token = JSONObject(log).getString("key")
-                isLogin = true
-                userData = Api().get(BuildConfig.USER)!!
-                amt = JSONObject(userData).getString("main_wallet")
-                startActivity(Intent(this, MainActivity::class.java))
+            val response = client.newCall(request).execute()
+            val res = response.body()!!.string()
+            when (response.code()) {
+                403 -> {
+                    login_hint.text = JSONObject(res).getString("detail")
+                    login_hint.setTextColor(Color.RED)
+                    login_hint.isClickable = false
+                }
+                400 -> {
+                    login_hint.text = "Incorrect Username or Password\n Forgot Password?"
+                    login_hint.setTextColor(Color.RED)
+                }
+                200 -> {
+
+                    token = JSONObject(res).getString("key")
+                    isLogin = true
+                    userData = Api().get(BuildConfig.USER)!!
+                    amt = JSONObject(userData).getString("main_wallet")
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
             }
 
-
         }
-        forgot_password.setOnClickListener {
+        login_hint.setOnClickListener {
             startActivity(Intent(this, ForgotPass::class.java))
 
         }
