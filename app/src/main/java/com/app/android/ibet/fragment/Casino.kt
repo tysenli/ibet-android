@@ -4,17 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.android.ibet.R
+import com.app.android.ibet.fragment.AllGames.AllGames
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import kotlinx.android.synthetic.main.fragment_casino.*
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
-
-
 
 
 @SuppressLint("ValidFragment")
@@ -32,12 +29,12 @@ class Casino (context: Context): Fragment() {
             fragmentManager, FragmentPagerItems.with(parentContext)
 
                 .add("All Games", AllGames().javaClass)
-                .add("New", GameLobbyAll().javaClass)
-                .add("Popular", GameLobbyAll().javaClass)
-                .add("Table Games", GameLobbyAll().javaClass)
-                .add("Jackpot", GameLobbyAll().javaClass)
-                .add("Slots", GameLobbyAll().javaClass)
-                .add("Promo", GameLobbyAll().javaClass)
+                .add("New", AllGames().javaClass)
+                .add("Popular", AllGames().javaClass)
+                .add("Table Games", AllGames().javaClass)
+                .add("Jackpot", AllGames().javaClass)
+                .add("Slots", AllGames().javaClass)
+                .add("Promo", AllGames().javaClass)
                 .create()
         )
         casino_viewpager.adapter = adapter
