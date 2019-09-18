@@ -2,20 +2,14 @@ package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 
 import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.Login.Login
-import com.app.android.ibet.activity.MainActivity
-import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
-import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_amount_input.*
 import okhttp3.FormBody
@@ -23,7 +17,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 
-class BankDep : Fragment() {
+class AsiaJDPay : Fragment() {
     //private var parentContext = context
     var userData = Api().get(BuildConfig.USER)
     var orderId = ""
@@ -34,14 +28,21 @@ class BankDep : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        depo_method_show.text = "JDpay"
+        deposit_amount2.hint = " Deposit 100 - 900                        Other"
+        amt_input_err.visibility = View.GONE
+        money_25.text = "100"
+        money_50.text = "300"
+        money_100.text = "600"
+        money_250.text = "900"
         var pk = JSONObject(userData).getString("pk")
-        println(pk)
+        //println(pk)
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201, 199, 199))
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))
             money_100.setBackgroundColor(Color.rgb(239, 239, 239))
             money_250.setBackgroundColor(Color.rgb(239, 239, 239))
-            amount_display.text = "25"
+            amount_display.text = money_25.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -50,7 +51,7 @@ class BankDep : Fragment() {
             money_50.setBackgroundColor(Color.rgb(201, 199, 199))
             money_100.setBackgroundColor(Color.rgb(239, 239, 239))
             money_250.setBackgroundColor(Color.rgb(239, 239, 239))
-            amount_display.text = "50"
+            amount_display.text = money_50.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -59,7 +60,7 @@ class BankDep : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))
             money_100.setBackgroundColor(Color.rgb(201, 199, 199))
             money_250.setBackgroundColor(Color.rgb(239, 239, 239))
-            amount_display.text = "100"
+            amount_display.text = money_100.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -68,7 +69,7 @@ class BankDep : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))
             money_100.setBackgroundColor(Color.rgb(239, 239, 239))
             money_250.setBackgroundColor(Color.rgb(201, 199, 199))
-            amount_display.text = "250"
+            amount_display.text = money_250.text
             MyAccount.depo_amt = amount_display.text.toString()
         }
 
@@ -91,6 +92,12 @@ class BankDep : Fragment() {
 
         })
 
+        change_method.setOnClickListener {
+            MyAccount.info = "deposit"
+            val intent = Intent(activity, MyAccount::class.java)
+            startActivity(intent)
+            activity!!.overridePendingTransition(0, 0)
+        }
 
         btn_wechat_dep.setOnClickListener {
             val client = OkHttpClient()
@@ -98,8 +105,8 @@ class BankDep : Fragment() {
                 .add("amount", amount_display.text.toString())
                 .add("userid", pk)
                 .add("currency", "0")
-                .add("PayWay", "30")
-                .add("method", "1")
+                .add("PayWay", "42")
+                .add("method", "49")
                 .build()
 
             val request = Request.Builder()
@@ -107,32 +114,56 @@ class BankDep : Fragment() {
                 .post(formBody)
                 .build()
             val response = client.newCall(request).execute()
+
             if (response.code() != 200) {
                 MyAccount.info = "fail"
                 val res = Intent(context, MyAccount::class.java)
                 startActivity(res)
-            } else {
-                val bankData = response.body()!!.string()
-                val url = JSONObject(bankData).getString("url")
-                val orderId = JSONObject(bankData).getString("order_id")
-                val openUrl =  "$url?cid=BRANDCQNGHUA3&oid=$orderId"
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(openUrl)))
-
+            } else  {
+                var jdData = response.body()!!.string()
+                var jdurl = JSONObject(jdData).getString("qr")
+                orderId = JSONObject(jdData).getString("oid")
+                val res = Intent(activity, AsiaJDOpenPage::class.java)
+                res.putExtra("jdurl", jdurl)
+                res.putExtra("jdorderId", orderId)
+                res.putExtra("jdbalance", amount_display.text.toString())
+                startActivity(res)
+                //println(quickData)
             }
+            //println(response.code())
+            //var quickData = response.body()!!.string()
+            //println(quickData)
+            /*
+            orderId = JSONObject(quickData).getString("order_id")
+            var url = JSONObject(quickData).getString("url")
+            var quickpay_url = "$url?cid=BRANDCQNGHUA3&oid=$orderId"
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(quickpay_url))) */
         }
     }
-    /*: AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        val actionBar = supportActionBar
-        actionBar!!.setHomeButtonEnabled(true)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-        actionBar.setHomeAsUpIndicator(R.drawable.back)
-        super.onCreate(savedInstanceState)
+}
+    /*
+        btn_wechat_dep.setOnClickListener {
+            val client = OkHttpClient()
+            val formBody = FormBody.Builder()
+                .add("amount", amount_display.text.toString())
+                .add("userid", pk)
+                .add("currency", "0")
+                .add("PayWay", "42")
+                .add("method", "49")
+                .build()
 
-        setContentView(R.layout.activity_amount_input)
+            val request = Request.Builder()
+                .url(BuildConfig.ASIAPAY)
+                .post(formBody)
+                .build()
+            val response = client.newCall(request).execute()
+            var quickData = response.body()!!.string()
+
+
+        }
         change_method.setOnClickListener {
             startActivity(Intent(this, Deposit::class.java))
         }
-    } */
+    }
 
-}
+} */

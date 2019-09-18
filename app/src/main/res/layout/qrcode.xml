@@ -2,13 +2,30 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
-    <ImageView android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
+    <ImageView android:layout_width="247dp"
+               android:layout_height="244dp"
                android:id="@+id/payzodQR_img"
-               android:layout_marginTop="8dp"
+               android:layout_marginTop="64dp"
                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-               android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
-               app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.493"
-               app:layout_constraintVertical_bias="0.498"/>
+               android:layout_marginEnd="8dp"
+    />
+    <TextView
+            android:text="Once you have scanned the QR code, please check your e-mail and transaction history to confirm that the deposit was successful."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:id="@+id/textView35" android:layout_marginTop="44dp"
+            app:layout_constraintTop_toBottomOf="@+id/payzodQR_img" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.404" android:layout_marginEnd="32dp"/>
+    <Button
+            android:text="Continue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/payzod_continue" android:layout_marginTop="44dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView35" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.498"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,7 +45,7 @@
                 android:divider="#868686"
                 android:dividerHeight="0.5dp">
         </ExpandableListView>
-        <!--
+<!--
         <LinearLayout
                 android:id="@+id/footer"
                 android:layout_width="291dp"

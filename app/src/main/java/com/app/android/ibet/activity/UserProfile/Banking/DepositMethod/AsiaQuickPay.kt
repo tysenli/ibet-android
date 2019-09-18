@@ -2,30 +2,22 @@ package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 
 import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.Login.Login
-import com.app.android.ibet.activity.MainActivity
-import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
-import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_amount_input.*
-import kotlinx.android.synthetic.main.dialog.view.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 
-class QuickPay : Fragment() {
+class AsiaQuickPay : Fragment() {
     //private var parentContext = context
     var userData = Api().get(BuildConfig.USER)
     var orderId = ""
@@ -36,7 +28,13 @@ class QuickPay : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "QuickPay"
+        depo_method_show.text = "AsiaQuickPay"
+        deposit_amount2.hint = " Deposit 100 - 3,000                        Other"
+        amt_input_err.visibility = View.GONE
+        money_25.text = "100"
+        money_50.text = "1000"
+        money_100.text = "2000"
+        money_250.text = "3000"
         var pk =  JSONObject(userData).getString("pk")
        // println(pk)
         money_25.setOnClickListener {
@@ -44,7 +42,7 @@ class QuickPay : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text =  "25"
+            amount_display.text =  money_25.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -53,7 +51,7 @@ class QuickPay : Fragment() {
             money_50.setBackgroundColor(Color.rgb(201,199,199))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text = "50"
+            amount_display.text = money_50.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -62,7 +60,7 @@ class QuickPay : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(201,199,199))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text =  "100"
+            amount_display.text =  money_100.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -71,7 +69,7 @@ class QuickPay : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(201,199,199))
-            amount_display.text = "250"
+            amount_display.text = money_250.text
             MyAccount.depo_amt = amount_display.text.toString()
         }
 
@@ -92,38 +90,56 @@ class QuickPay : Fragment() {
             }
 
         })
-
+        change_method.setOnClickListener {
+            MyAccount.info = "deposit"
+            val intent = Intent(activity, MyAccount::class.java)
+            startActivity(intent)
+            activity!!.overridePendingTransition(0, 0)
+        }
 
         btn_wechat_dep.setOnClickListener {
-            val client = OkHttpClient()
-            val formBody = FormBody.Builder()
-                .add("amount", amount_display.text.toString())
-                .add("userid", pk)
-                .add("currency", "0")
-                .add("PayWay", "30")
-                .add("method", "39")
-                .build()
-
-            val request = Request.Builder()
-                .url(BuildConfig.ASIAPAY)
-                .post(formBody)
-                .build()
-            val response = client.newCall(request).execute()
-            if (response.code() != 200) {
-                MyAccount.info = "fail"
-                val res = Intent(context, MyAccount::class.java)
-                startActivity(res)
+            if (amount_display.text.toString() == "" || amount_display.text.toString().toFloat() < 100 || amount_display.text.toString().toFloat() > 3000) {
+                amt_input_err.visibility = View.VISIBLE
+                amt_input_err.text = "Please deposit between 100 - 3000"
             } else {
-                var quickData = response.body()!!.string()
-                //println(quickData)
-                orderId = JSONObject(quickData).getString("order_id")
-                var url = JSONObject(quickData).getString("url")
-                var quickpay_url = "$url?cid=BRANDCQNGHUA3&oid=$orderId"
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(quickpay_url)))
+                amt_input_err.visibility = View.GONE
+                val client = OkHttpClient()
+                val formBody = FormBody.Builder()
+                    .add("amount", amount_display.text.toString())
+                    .add("userid", pk)
+                    .add("currency", "0")
+                    .add("PayWay", "30")
+                    .add("method", "39")
+                    .build()
 
+                val request = Request.Builder()
+                    .url(BuildConfig.ASIAPAY)
+                    .post(formBody)
+                    .build()
+                val response = client.newCall(request).execute()
+                if (response.code() != 200) {
+                    MyAccount.info = "fail"
+                    val res = Intent(context, MyAccount::class.java)
+                    startActivity(res)
+                } else {
+                    var quickData = response.body()!!.string()
+                    //println(quickData)
+                    orderId = JSONObject(quickData).getString("oid")
+                    var url = JSONObject(quickData).getString("url")
+                    var quickpay_url = "$url?cid=BRANDCQNGHUA3&oid=$orderId"
+                    // startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(quickpay_url)))
+
+
+                    val res = Intent(activity, AsiaQuickpayOpenPage::class.java)
+                    res.putExtra("quickurl", quickpay_url)
+                    res.putExtra("quickorderId", orderId)
+                    res.putExtra("quickbalance", amount_display.text.toString())
+                    startActivity(res)
+
+                }
             }
 /*
-            val res = Intent(activity, WechatOpenPage::class.java)
+            val res = Intent(activity, QaiWechatOpenPage::class.java)
             res.putExtra("wechaturl", wechat_url)
             res.putExtra("orderId",orderId)
             res.putExtra("balance",amount_display.text.toString())
@@ -160,7 +176,7 @@ class QuickPay : Fragment() {
             builder.setView(dialogView)
             val dialog = builder.show()
             dialogView.text.text = "Confirm Deposit"
-            dialogView.diposit_display.text = amount_display.text.toString() + " QuickPay"
+            dialogView.diposit_display.text = amount_display.text.toString() + " AsiaQuickPay"
             dialogView.confirm.setOnClickListener {
                 dialog.dismiss()
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(quickpay_url)))

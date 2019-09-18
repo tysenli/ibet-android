@@ -4,35 +4,20 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.*
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.Login.Login
-import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.UserProfile.MyAccount
-import com.app.android.ibet.activity.UserProfile.Banking.Deposit
-import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.WechatOpenPage
-import com.app.android.ibet.activity.UserProfile.Banking.Withdraw
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.with_amt
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_amount_input.amount_display
-import kotlinx.android.synthetic.main.activity_amount_input.money_100
-import kotlinx.android.synthetic.main.activity_amount_input.money_25
-import kotlinx.android.synthetic.main.activity_amount_input.money_250
-import kotlinx.android.synthetic.main.activity_amount_input.money_50
 import kotlinx.android.synthetic.main.activity_amount_input_withdraw.*
-import kotlinx.android.synthetic.main.activity_total.*
-import kotlinx.android.synthetic.main.dialog.view.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 
-class Bank: Fragment() {
+class QaiBankWith: Fragment() {
     //private var parentContext = context
     var userData = Api().get(BuildConfig.USER)
     var withdraworderId = ""
@@ -77,7 +62,7 @@ class Bank: Fragment() {
 
 
                 //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(withdraw_url)))
-                val res = Intent(activity, BankOpenPage::class.java)
+                val res = Intent(activity, QaiBankWithOpenPage::class.java)
                 res.putExtra("bankurl", withdraw_url)
                 res.putExtra("bankorderId",withdraworderId)
                 res.putExtra("bankbnc",amount_display.text.toString())
@@ -178,11 +163,11 @@ class Bank: Fragment() {
                 builder.setView(dialogView)
                 val dialog = builder.show()
                 dialogView.text.text = "Confirm Withdraw"
-                dialogView.diposit_display.text = amount_display.text.toString() + " bank"
+                dialogView.diposit_display.text = amount_display.text.toString() + " payment_bank"
                 dialogView.confirm.setOnClickListener {
                     dialog.dismiss()
                     //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(withdraw_url)))
-                    val res = Intent(this, BankOpenPage::class.java)
+                    val res = Intent(this, QaiBankWithOpenPage::class.java)
                     res.putExtra("bankurl", withdraw_url)
                     startActivity(res)
                 }

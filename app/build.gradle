@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.app.android.ibet"
-        minSdkVersion 19
+        minSdkVersion 26
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -44,6 +44,7 @@ android {
             buildConfigField 'String','LOCKTIME',"\"$local/users/api/set-block-time/\""
             buildConfigField 'String','MARKETING',"\"$local/users/api/marketing-settings/\""
             buildConfigField 'String','PRIVACY',"\"$local/users/api/privacy-settings/\""
+            buildConfigField 'String','ACTIVITY',"\"$local/users/api/activity-check/\""
 
             buildConfigField 'String','WITHDRAW',"\"$local/accounting/api/qaicash/submit_payout\""
             buildConfigField 'String','WITHDRAW_ORDER',"\"$local/accounting/api/qaicash/payout_transaction\""
@@ -55,6 +56,8 @@ android {
             buildConfigField 'String','TRANSACTION_RECODE',"\"$local/accounting/api/transactions/get_transactions?userid=\""
             buildConfigField 'String','Fgate',"\"$local/accounting/api/fgate/chargeCard\""
             buildConfigField 'String','Help2pay',"\"$local/accounting/api/help2pay/deposit\""
+            buildConfigField 'String','Help2pay_CONFIRM',"\"$local/accounting/api/help2pay/deposit_status\""
+            buildConfigField 'String','Circlepay',"\"$local/accounting/api/circlepay/deposit\""
             buildConfigField 'String','Scratch',"\"$local/accounting/api/scratchcard/deposit\""
             buildConfigField 'String', 'GAME_URL', "\"$local/games/api/games/?type=\""
             buildConfigField('String', 'GAME_URL_CATEGORY', "\"&category=\"")
@@ -110,6 +113,7 @@ dependencies {
     implementation 'com.github.Idtk:SmallChart:v0.1.1'
     implementation 'com.github.0xZhangKe:ZLog:3.0'
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
+
 
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'

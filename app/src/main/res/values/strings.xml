@@ -99,7 +99,7 @@
     <string name="sports">SPORTS</string>
     <string name="search">Search</string>
     <string name="live_casino">LIVE CASINO</string>
-    <string name="slots">SLOTS</string>
+    <string name="casino">CASINO</string>
     <string name="lottery">LOTTERY</string>
     <string name="policy">
         By signing up you agree to ibet’s <b>terms and conditions</b> and confirm you’ve read and understood the
@@ -143,6 +143,7 @@
     <string name="feature">Feature</string>
     <string name="theme">Theme</string>
     <string name="sort_by">Sort by</string>
+    <string name="main_priority">The main priority for us at ibet is to provide an enjoyable and entertaining gaming experience. We are committed to protecting our players and offer several different tools and resources to ensure that your gambling is conducted within safe limits. Please visit these at <font color='#ff0a00'>[RG Link]</font> and if you are in any doubt contact our trained customer service at any time.</string>
 
 
 </resources>

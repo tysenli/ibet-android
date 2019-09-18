@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
-import kotlinx.android.synthetic.main.frag_banking_depo.*
 import kotlinx.android.synthetic.main.frag_banking_depo.deposit
 import kotlinx.android.synthetic.main.frag_banking_depo.withdraw
 import kotlinx.android.synthetic.main.frag_banking_with.*
@@ -37,7 +36,7 @@ class BankingWith : Fragment() {
             //startActivity(Intent(activity, Withdraw::class.java))
 
         }
-        bank_with.setOnClickListener {
+        qaicash_lbt.setOnClickListener {
             info = "bankwith"
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)

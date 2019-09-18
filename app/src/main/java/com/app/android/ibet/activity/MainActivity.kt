@@ -40,6 +40,7 @@ import com.zhangke.zlog.ZLog
 import kotlinx.android.synthetic.main.login_actionlayout.*
 import android.widget.Toast
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
+import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame.Companion.remindTime
 
 
 class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick {
@@ -100,11 +101,18 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
 
 
             // schedule the task to run starting now and then every hour...
+            var time = 60
+            when (remindTime) {
+                 0 -> time = 5
+                 1 -> time = 30
+                 2 -> time = 60
+                 3 -> time = 120
+            }
             timer.schedule(
                 hourlyTask,
                 0L,
-                1000 * ResponsibleGame.remindTime * 60.toLong()
-            )// 1000*10*60 every 10 minut
+                1000 * time * 60.toLong()
+            )// 1000*10*60 every 10 minutes
         }
 
             //toolbar.setTitleTextColor(Color.RED)
@@ -221,9 +229,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
 
             amtShow = rootView.findViewById(R.id.balance_icon)
             amtShow.text = MyAccount.amt.split(".")[0]
-            amtShow.setOnClickListener {
-                startActivity(Intent(this, Deposit::class.java))
-            }
+
         }
         return super.onPrepareOptionsMenu(menu)
     }
@@ -386,59 +392,5 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
     }  */
 }
 
-class CustomDropDownAdapter(val context: Context,var image : Array<Int>, var listItemsTxt: Array<String>) : BaseAdapter() {
 
-
-    val mInflater: LayoutInflater = LayoutInflater.from(context)
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View
-        val vh: ItemRowHolder
-        if (convertView == null) {
-            view = mInflater.inflate(R.layout.custom_spinner_items, parent, false)
-            vh = ItemRowHolder(view)
-            view?.tag = vh
-        } else {
-            view = convertView
-            vh = view.tag as ItemRowHolder
-        }
-
-        // setting adapter item height programatically.
-
-        val params = view.layoutParams
-        params.height = 80
-        view.layoutParams = params
-
-        vh.label.text = listItemsTxt.get(position)
-        vh.img.setImageResource(image[position])
-        return view
-    }
-
-    override fun getItem(position: Int): Any? {
-
-        return null
-
-    }
-
-    override fun getItemId(position: Int): Long {
-
-        return 0
-
-    }
-
-    override fun getCount(): Int {
-        return listItemsTxt.size
-    }
-
-    private class ItemRowHolder(row: View?) {
-
-        val label: TextView
-        val img : ImageView
-
-        init {
-            this.label = row?.findViewById(R.id.language_txt) as TextView
-            this.img = row?.findViewById(R.id.language_img) as ImageView
-        }
-    }
-}
 

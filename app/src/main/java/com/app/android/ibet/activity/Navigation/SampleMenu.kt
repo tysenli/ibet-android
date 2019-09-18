@@ -60,35 +60,12 @@ object SampleMenu {
                 )
         )
 
-        menu.add(
-                NaviMenuItem(
-                        id = 2,
-                        title = "LIVE CASINO",
-                        iconRes = R.drawable.casino,
-                        subMenus = mutableListOf(
-                                NaviMenuItem(
-                                        id = 21,
-                                        title = "Galería",
-                                        iconRes = R.drawable.ic_menu_gallery
-                                ),
-                                NaviMenuItem(
-                                        id = 22,
-                                        title = "Compartir",
-                                        iconRes = R.drawable.ic_menu_gallery
-                                ),
-                                NaviMenuItem(
-                                        id = 23,
-                                        title = "Carousel",
-                                        iconRes = R.drawable.ic_menu_gallery
-                                )
-                        )
-                )
-        )
+
 
         menu.add(
                 NaviMenuItem(
-                        id = 3,
-                        title = "SLOTS",
+                        id = 2,
+                        title = "CASINO",
                         iconRes = R.drawable.slots,
                         subMenus = mutableListOf(
                                 NaviMenuItem(
@@ -109,6 +86,30 @@ object SampleMenu {
                         )
                 )
         )
+            menu.add(
+                    NaviMenuItem(
+                            id = 3,
+                            title = "LIVE CASINO",
+                            iconRes = R.drawable.casino,
+                            subMenus = mutableListOf(
+                                    NaviMenuItem(
+                                            id = 21,
+                                            title = "Galería",
+                                            iconRes = R.drawable.ic_menu_gallery
+                                    ),
+                                    NaviMenuItem(
+                                            id = 22,
+                                            title = "Compartir",
+                                            iconRes = R.drawable.ic_menu_gallery
+                                    ),
+                                    NaviMenuItem(
+                                            id = 23,
+                                            title = "Carousel",
+                                            iconRes = R.drawable.ic_menu_gallery
+                                    )
+                            )
+                    )
+            )
 
         menu.add(
                 NaviMenuItem(

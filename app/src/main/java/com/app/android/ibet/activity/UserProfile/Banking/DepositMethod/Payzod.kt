@@ -30,12 +30,18 @@ class Payzod : Fragment() {
     override fun onStart() {
         super.onStart()
         depo_method_show.text = "Payzod"
+        deposit_amount2.hint = " Deposit 500 - 500,000                        Other"
+        amt_input_err.visibility = View.GONE
+        money_25.text = "500"
+        money_50.text = "5000"
+        money_100.text = "50000"
+        money_250.text = "500000"
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201,199,199))
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text =  "25"
+            amount_display.text =  money_25.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -44,7 +50,7 @@ class Payzod : Fragment() {
             money_50.setBackgroundColor(Color.rgb(201,199,199))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text = "50"
+            amount_display.text = money_50.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -53,7 +59,7 @@ class Payzod : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(201,199,199))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text =  "100"
+            amount_display.text =  money_100.text
             MyAccount.depo_amt = amount_display.text.toString()
 
         }
@@ -62,7 +68,7 @@ class Payzod : Fragment() {
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(201,199,199))
-            amount_display.text = "250"
+            amount_display.text = money_250.text.toString()
             MyAccount.depo_amt = amount_display.text.toString()
         }
 
@@ -83,17 +89,22 @@ class Payzod : Fragment() {
             }
 
         })
+        change_method.setOnClickListener {
+            MyAccount.info = "deposit"
+            val intent = Intent(activity, MyAccount::class.java)
+            startActivity(intent)
+            activity!!.overridePendingTransition(0, 0)
+        }
         btn_wechat_dep.setOnClickListener {
-            if (amount_display.text.toString() == "0") {
+            if (amount_display.text.toString() == "" || amount_display.text.toString().toFloat() < 500 || amount_display.text.toString().toFloat() > 500000) {
                 amt_input_err.visibility = View.VISIBLE
+                amt_input_err.text = "Please deposit between 500 - 500000"
             } else {
                 amt_input_err.visibility = View.GONE
-
                 val client = OkHttpClient()
 
                 val payzodJson = JSONObject()
                 val JSON = MediaType.get("application/json; charset=utf-8")
-                //println("hhh" + cardnum)
                 payzodJson.put("amount", amount_display.text.toString())
 
                 val body = RequestBody.create(JSON, payzodJson.toString())

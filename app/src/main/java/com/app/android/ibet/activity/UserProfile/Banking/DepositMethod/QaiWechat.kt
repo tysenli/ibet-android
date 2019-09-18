@@ -4,22 +4,15 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
-import com.app.android.ibet.activity.Login.Login
-import com.app.android.ibet.activity.MainActivity
-import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
-import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.depo_amt
 import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.activity_amount_input.*
-import kotlinx.android.synthetic.main.dialog.view.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -36,43 +29,52 @@ class QaiWechat : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
         depo_method_show.text = "Wechat"
+        deposit_amount2.hint = " Deposit 500 - 2,000                        Other"
         amt_input_err.visibility = View.GONE
         var pk =  JSONObject(userData).getString("pk")
-
+        money_25.text = "500"
+        money_50.text = "1000"
+        money_100.text = "1500"
+        money_250.text = "2000"
         money_25.setOnClickListener {
+
             money_25.setBackgroundColor(Color.rgb(201,199,199))
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text =  "25"
+            amount_display.text =  money_25.text
             depo_amt = amount_display.text.toString()
 
         }
         money_50.setOnClickListener {
+
             money_25.setBackgroundColor(Color.rgb(239,239,239))
             money_50.setBackgroundColor(Color.rgb(201,199,199))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text = "50"
+            amount_display.text = money_50.text
             depo_amt = amount_display.text.toString()
 
         }
         money_100.setOnClickListener {
+
             money_25.setBackgroundColor(Color.rgb(239,239,239))
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(201,199,199))
             money_250.setBackgroundColor(Color.rgb(239,239,239))
-            amount_display.text =  "100"
+            amount_display.text =  money_100.text
             depo_amt = amount_display.text.toString()
 
         }
         money_250.setOnClickListener {
+
             money_25.setBackgroundColor(Color.rgb(239,239,239))
             money_50.setBackgroundColor(Color.rgb(239,239,239))
             money_100.setBackgroundColor(Color.rgb(239,239,239))
             money_250.setBackgroundColor(Color.rgb(201,199,199))
-            amount_display.text = "250"
+            amount_display.text = money_250.text
             depo_amt = amount_display.text.toString()
         }
 
@@ -93,11 +95,17 @@ class QaiWechat : Fragment() {
             }
 
         })
-
+        change_method.setOnClickListener {
+            MyAccount.info = "deposit"
+            val intent = Intent(activity, MyAccount::class.java)
+            startActivity(intent)
+            activity!!.overridePendingTransition(0, 0)
+        }
 
         btn_wechat_dep.setOnClickListener {
-            if (amount_display.text.toString() == "0") {
+            if (amount_display.text.toString() == "" || amount_display.text.toString().toFloat() < 500 || amount_display.text.toString().toFloat() > 2000) {
                 amt_input_err.visibility = View.VISIBLE
+                amt_input_err.text = "Please deposit between 500 - 2000"
             } else {
                 amt_input_err.visibility = View.GONE
                 val client = OkHttpClient()
@@ -115,10 +123,10 @@ class QaiWechat : Fragment() {
                     .build()
                 val response = client.newCall(request).execute()
                 var wechatData = response.body()!!.string()
-                orderId = JSONObject(wechatData).getJSONObject("depositTransaction").getString("orderId")
+                orderId = JSONObject(wechatData).getJSONObject("paymentPageSession").getString("orderId")
                 var wechat_url = JSONObject(wechatData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
 
-                val res = Intent(activity, WechatOpenPage::class.java)
+                val res = Intent(activity, QaiWechatOpenPage::class.java)
                 res.putExtra("wechaturl", wechat_url)
                 res.putExtra("orderId", orderId)
                 res.putExtra("balance", amount_display.text.toString())
@@ -223,7 +231,7 @@ class QaiWechat : Fragment() {
             dialogView.confirm.setOnClickListener {
                 dialog.dismiss()
                 //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(wechat_url)))
-                val res = Intent(this, WechatOpenPage::class.java)
+                val res = Intent(this, QaiWechatOpenPage::class.java)
                 res.putExtra("wechaturl", wechat_url)
                 startActivity(res)
 
