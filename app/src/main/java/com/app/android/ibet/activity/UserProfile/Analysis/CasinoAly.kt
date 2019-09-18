@@ -58,6 +58,7 @@ class CasinoAly : Fragment() {
         val myListDayAdapter = SlotsDayAdapter(activity!!,day,spins,rtp,bet,win,pl,biggest,bonus)
         casino_list_byday.adapter = myListDayAdapter
 
+
     }
 
 }
