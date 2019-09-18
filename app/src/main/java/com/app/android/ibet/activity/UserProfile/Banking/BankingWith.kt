@@ -34,7 +34,8 @@ class BankingWith : Fragment() {
 
         }
         withdraw.setOnClickListener {
-            info = "withdraw"
+           // info = "withdraw"
+            info = "withdraw_pass"
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
             //startActivity(Intent(activity, Withdraw::class.java))

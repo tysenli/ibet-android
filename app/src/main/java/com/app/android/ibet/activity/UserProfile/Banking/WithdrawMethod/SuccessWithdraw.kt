@@ -28,7 +28,8 @@ class SuccessWithdraw: Fragment() {
 
     override fun onStart() {
         super.onStart()
-        dep_amount.text = "Withdraw " + MyAccount.with_amt + " completed"
+        textView45.text = "Withdrawal submitted!"
+        dep_amount.text = "Withdraw " + MyAccount.with_amt + " submitted. Withdrawals are typically completed within 1 hour but please allow up to 3 hours for your bank to confirm."
 
         val request = Request.Builder()
             .header("Authorization", "Token "+ Login.token)

@@ -24,6 +24,7 @@ import com.app.android.ibet.activity.UserProfile.Banking.BankingWith
 import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.*
 import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.QaiBankWith
 import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.SuccessWithdraw
+import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.WithdrawPass
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.Lock
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
 import com.app.android.ibet.activity.UserProfile.Setting.Setting
@@ -88,7 +89,7 @@ class MyAccount : AppCompatActivity() {
             "asia_ali"   -> pages[0] = FragmentPagerItem.of("Banking", AsiaAli().javaClass)
             "asia_wechat"-> pages[0] = FragmentPagerItem.of("Banking", AsiaWechat().javaClass)
             "astropayinfo"->pages[0] = FragmentPagerItem.of("Banking", AstropayInfo().javaClass)
-           // "astropay_input"->pages[0] = FragmentPagerItem.of("Banking", Astropay().javaClass)
+            //"astropay_input"->pages[0] = FragmentPagerItem.of("Banking", Astropay().javaClass)
             "fgate"      -> pages[0] = FragmentPagerItem.of("Banking", Fgo().javaClass)
             "help2pay"   -> pages[0] = FragmentPagerItem.of("Banking", Help2pay().javaClass)
             "ciclepay"   -> pages[0] = FragmentPagerItem.of("Banking", Circlepay().javaClass)
@@ -99,6 +100,7 @@ class MyAccount : AppCompatActivity() {
             "payzod"     -> pages[0] = FragmentPagerItem.of("Banking", Payzod().javaClass)
             "scratch"    -> pages[0] = FragmentPagerItem.of("Banking", ScratchCard().javaClass)
             "online"     -> pages[0] = FragmentPagerItem.of("Banking", AsiaBank().javaClass)
+            "withdraw_pass"->pages[0] = FragmentPagerItem.of("Banking", WithdrawPass().javaClass)
 
 
             "sports"     -> pages[1] = FragmentPagerItem.of("Analysis", SportsAly().javaClass)
