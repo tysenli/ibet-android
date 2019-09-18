@@ -46,6 +46,8 @@ android {
             buildConfigField 'String','PRIVACY',"\"$local/users/api/privacy-settings/\""
             buildConfigField 'String','ACTIVITY',"\"$local/users/api/activity-check/\""
 
+            buildConfigField 'String','LOG',"\"$local/system/api/logstreamtos3/\""
+
             buildConfigField 'String','WITHDRAW',"\"$local/accounting/api/qaicash/submit_payout\""
             buildConfigField 'String','WITHDRAW_ORDER',"\"$local/accounting/api/qaicash/payout_transaction\""
             buildConfigField 'String','LINE',"\"$local/accounting/api/linepay/reserve_payment\""

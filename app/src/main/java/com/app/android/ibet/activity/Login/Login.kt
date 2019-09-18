@@ -8,6 +8,7 @@ import android.os.StrictMode
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MenuItem
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
@@ -85,9 +86,9 @@ class Login : AppCompatActivity() {
             loginJson.put("username", login_user.text.toString())
             //loginJson.put("email", login_email.text.toString())
             loginJson.put("password", login_password.text.toString())
+            //userData = Api().post(loginJson.toString(),BuildConfig.USER)
 
-            //val url = "http://10.0.2.2:8000/users/api/login/"
-            //var log = Api().post(loginJson.toString(), BuildConfig.LOGIN)
+
             val client = OkHttpClient()
             val JSON = MediaType.get("application/json; charset=utf-8")
             val body = RequestBody.create(JSON, loginJson.toString())
@@ -105,18 +106,25 @@ class Login : AppCompatActivity() {
                     login_hint.text = JSONObject(res).getString("detail")
                     login_hint.setTextColor(Color.RED)
                     login_hint.isClickable = false
+
                 }
                 400 -> {
                     login_hint.text = "Incorrect Username or Password\n Forgot Password?"
                     login_hint.setTextColor(Color.RED)
                 }
                 200 -> {
-
                     token = JSONObject(res).getString("key")
                     isLogin = true
-                    userData = Api().get(BuildConfig.USER)!!
+                    userData = Api().get(BuildConfig.USER)
+                    Log.e("user", userData)
                     amt = JSONObject(userData).getString("main_wallet")
                     startActivity(Intent(this, MainActivity::class.java))
+                    //here is log test
+                    val logJson = JSONObject()
+                    logJson.put("line", "this is a test, user login successful")
+                    logJson.put("source", "Android")
+                    Api().post(logJson.toString(), BuildConfig.LOG)
+
                 }
             }
 
