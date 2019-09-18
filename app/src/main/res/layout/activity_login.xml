@@ -99,7 +99,7 @@
             android:letterSpacing="0.03"
             android:textSize="16sp"
             android:textColor="#212121"
-            android:id="@+id/forgot_password" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/login_hint" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="44dp" app:layout_constraintBottom_toTopOf="@+id/checkBox"/>
 
