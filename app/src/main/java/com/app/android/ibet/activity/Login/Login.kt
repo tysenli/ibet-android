@@ -115,7 +115,7 @@ class Login : AppCompatActivity() {
 
                     token = JSONObject(res).getString("key")
                     isLogin = true
-                    userData = Api().get(BuildConfig.USER)!!
+                    userData = Api().get(URLs.USER)!!
                     amt = JSONObject(userData).getString("main_wallet")
                     startActivity(Intent(this, MainActivity::class.java))
                 }

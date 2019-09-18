@@ -52,7 +52,7 @@ class ResponsibleGame : Fragment() {
 
 
         val acRequest = Request.Builder()
-            .url(BuildConfig.ACTIVITY + "?userId=" + JSONObject(userData).getString("pk"))
+            .url(URLs.ACTIVITY + "?userId=" + JSONObject(userData).getString("pk"))
             .build()
         val acResponse = OkHttpClient().newCall(acRequest).execute()
         if (acResponse.code() == 200) {
@@ -631,7 +631,7 @@ class ResponsibleGame : Fragment() {
 
             val body = RequestBody.create(JSON, acJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.ACTIVITY)
+                .url(URLs.ACTIVITY)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
