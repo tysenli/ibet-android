@@ -60,7 +60,7 @@ android {
             buildConfigField('String', 'GAME_URL_CATEGORY', "\"&category=\"")
             buildConfigField('String', 'GAME_FILTER', "\"$local/games/api/filter/\"")
 
-
+            buildConfigField('String', 'USER_INBOX', "\"$local/operation/api/notification-users/\"")
 
 
         }

@@ -125,7 +125,7 @@ class MyAccount : AppCompatActivity() {
 
             "acc"        -> account_viewpager.setCurrentItem(2, true)
             "acc_edit"   -> account_viewpager.setCurrentItem(2, true)
-            "inbox"   -> account_viewpager.setCurrentItem(2, true)
+            "inbox"      -> account_viewpager.setCurrentItem(2, true)
 
             "lock_account"-> account_viewpager.setCurrentItem(3, true)
 

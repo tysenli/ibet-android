@@ -1,5 +1,6 @@
 package com.app.android.ibet.activity.UserProfile.Account
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,19 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
+import kotlinx.android.synthetic.main.frag_account_edit.*
 import kotlinx.android.synthetic.main.frag_inbox.*
+import kotlinx.android.synthetic.main.frag_inbox_item.*
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import org.json.JSONArray
+import org.json.JSONObject
 import javax.security.auth.Subject
 
 class Inbox : Fragment() {
@@ -23,11 +35,49 @@ class Inbox : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        var subject = arrayOf("Sub", "Subject", "Hi")
-        var content = arrayOf("Content", "Con", "Hello")
-        var date = arrayOf("07/31", "07/31", "07/31")
-        val myListAdapter = InboxAdapter(activity!!, subject, content, date)
-        item.adapter = myListAdapter
+        val client = OkHttpClient()
+//        val JSON = MediaType.get("application/json; charset=utf-8")
+//        val body = RequestBody.create(JSON, changeJson.toString())
+        val request = Request.Builder()
+//            .addHeader("Authorization", "token " + Login.token)
+            .url(BuildConfig.USER_INBOX + JSONObject(userData).getString("pk"))
+//            .post(body)
+            .build()
+
+        val response = client.newCall(request).execute()
+        if (response.code() == 400) {
+            println(response.body()!!.string())
+        }
+        else {
+            val messageList = response.body()!!.string()
+            println(messageList)
+            val userMessageList = JSONArray(messageList)
+            println(userMessageList)
+
+            var subject = arrayOf<String>()
+            var content = arrayOf<String>()
+            var date = arrayOf<String>()
+
+            for (i in 0 until userMessageList.length()) {
+
+                //unread.background = resources.getDrawable(R.drawable.read)
+                subject += userMessageList.getJSONObject(i).getString("subject")
+                content += userMessageList.getJSONObject(i).getString("content")
+//                date += userMessageList.getJSONObject(i).getString("date")
+                date += "07/31"
+            }
+
+            val myListAdapter = InboxAdapter(activity!!, subject, content, date)
+            item.adapter = myListAdapter
+        }
+
+
+
+//        var subject = arrayOf("Sub", "Subject", "Hi")
+//        var content = arrayOf("Content", "Con", "Hello")
+//        var date = arrayOf("07/31", "07/31", "07/31")
+//        val myListAdapter = InboxAdapter(activity!!, subject, content, date)
+//        item.adapter = myListAdapter
         //println(records.getJSONObject(1).getString(“method”))
         //println(records.length())
         /*
@@ -100,7 +150,7 @@ class InboxAdapter(private val context: FragmentActivity, private val subject: A
 
         val subjectText = rowView.findViewById(R.id.inbox_subject) as TextView
         val contentText = rowView.findViewById(R.id.inbox_content) as TextView
-        val timeText = rowView.findViewById(R.id.time) as TextView
+        val timeText = rowView.findViewById(R.id.inbox_time) as TextView
 
 
 
