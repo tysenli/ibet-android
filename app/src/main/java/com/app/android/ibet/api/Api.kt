@@ -6,6 +6,7 @@ import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
+import org.json.JSONObject
 import java.lang.Exception
 
 import java.io.IOException
@@ -93,6 +94,14 @@ class Api {
             .post(body)
             .build()
         client.newCall(request).execute().use { response -> return response.body()!!.string() }
+    }
+
+    fun myLog(log : String) {
+        val logJson = JSONObject()
+        logJson.put("line", log)
+        logJson.put("source", "Android")
+        val message = Api().post(logJson.toString(), BuildConfig.LOG)
+        println(message)
     }
 
 }
