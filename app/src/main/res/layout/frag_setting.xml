@@ -1,247 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"  android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    android:background="#f1f1f1"
 >
-
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:weightSum="2"
-                  android:id="@+id/item_layout"
-    >
-        <Button
-                android:text="Marketing"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="40dp"
-                android:textAllCaps="false"
-                android:background="#bebebe"
-                android:id="@+id/marketing"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-        <Button
-                android:text="Privacy"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="40dp"
-                android:textAllCaps="false"
-                android:background="#d8d8d8"
-                android:id="@+id/privacy"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/marketing" app:layout_constraintHorizontal_bias="0.0"/>
-    </LinearLayout>
-
-    <TextView
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:textSize="9sp"
-            android:letterSpacing="0.03"
-            android:lineSpacingExtra="3sp"
-            android:textColor="#000000"
-            android:text="We only want to send you information that you will find interesting and you have full control to ensure you are only contacted when and how you prefer. Update your preferences below as often as you like and don&apos;t forget to press &apos;Update&apos; when done."
-            android:layout_marginTop="23dp"
-            app:layout_constraintTop_toBottomOf="@+id/item_layout" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/textView34"/>
-
-    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  app:layout_constraintTop_toBottomOf="@+id/textView34" app:layout_constraintStart_toStartOf="parent"
-                  android:layout_marginStart="8dp"
-                  android:id="@+id/privacy_info"
-                  app:layout_constraintEnd_toEndOf="parent"
-                  android:orientation="vertical"
-                  android:layout_marginEnd="8dp" android:layout_marginTop="30dp"
-                  app:layout_constraintHorizontal_bias="0.658">
-        <LinearLayout android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical"
         >
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:weightSum="2"
+                          android:id="@+id/item_layout"
+                          app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                          app:layout_constraintEnd_toEndOf="parent"
+            >
+                <Button
+                        android:text="Marketing"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="40dp"
+                        android:textAllCaps="false"
+                        android:background="#bebebe"
+                        android:id="@+id/marketing"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                <Button
+                        android:text="Privacy"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="40dp"
+                        android:textAllCaps="false"
+                        android:background="#d8d8d8"
+                        android:id="@+id/privacy"
+                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/marketing" app:layout_constraintHorizontal_bias="0.0"/>
+            </LinearLayout>
+
             <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="Bonuses"
+                    android:textSize="9sp"
+                    android:layout_gravity="center_horizontal"
+                    android:letterSpacing="0.03"
+                    android:lineSpacingExtra="3sp"
                     android:textColor="#000000"
-            />
-            <Switch android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/bonuses"
-                    android:layout_marginLeft="175dp"
-                    android:shadowColor="#6a6a6a"
-                    android:text="No"
+                    android:text="We only want to send you information that you will find interesting and you have full control to ensure you are only contacted when and how you prefer. Update your preferences below as often as you like and don&apos;t forget to press &apos;Update&apos; when done."
+                    android:layout_marginTop="23dp"
+                    app:layout_constraintTop_toBottomOf="@+id/item_layout" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/textView34"/>
 
-            />
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="Yes"
-                    android:textColor="#000000"
-            />
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          app:layout_constraintTop_toBottomOf="@+id/textView34"
+                          app:layout_constraintStart_toStartOf="parent"
+                          android:layout_marginStart="8dp"
+                          android:id="@+id/privacy_info"
+                          android:layout_gravity="center_horizontal"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          android:orientation="vertical"
+                          android:layout_marginBottom="50dp"
+                          android:layout_marginEnd="8dp" android:layout_marginTop="30dp"
+                          app:layout_constraintHorizontal_bias="0.658">
+                <LinearLayout android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+
+                >
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:text="Bonuses"
+                            android:textColor="#000000"
+                    />
+                    <Switch android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/bonuses"
+                            android:layout_marginLeft="175dp"
+                            android:shadowColor="#6a6a6a"
+                            android:text="No"
+
+                    />
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:text="Yes"
+                            android:textColor="#000000"
+                    />
 
 
+                </LinearLayout>
+
+                <TextView
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginTop="6dp"
+                        android:textSize="9sp"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="5sp"
+                        android:text="I would like to be informed about relevant promotions such as Deposit Bonuses and new products available in my account. Read More"
+                />
+                <LinearLayout android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="25dp"
+                >
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:text="VIP Program"
+                            android:textColor="#000000"
+                    />
+                    <Switch android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/vip"
+                            android:shadowColor="#6a6a6a"
+                            android:layout_marginLeft="150dp"
+                            android:text="No"
+
+                    />
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:text="Yes"
+                            android:textColor="#000000"
+                    />
+                </LinearLayout>
+                <TextView
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="9sp"
+                        android:letterSpacing="0.01"
+                        android:textColor="#000000"
+                        android:lineSpacingExtra="5sp"
+                        android:layout_marginTop="6dp"
+                        android:text="I would like to be informed about VIP Programe of my account. Read More"
+                />
+                <Button android:layout_width="290dp"
+                        android:background="@drawable/update"
+                        android:id="@+id/privacy_update"
+                        android:layout_marginTop="55dp"
+                        android:layout_height="50dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          app:layout_constraintStart_toStartOf="parent"
+                          android:layout_marginStart="8dp"
+                          android:id="@+id/marketing_info"
+                          android:layout_gravity="center_horizontal"
+                          app:layout_constraintTop_toBottomOf="@+id/textView34"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          android:orientation="vertical"
+                          android:layout_marginBottom="50dp"
+                          android:layout_marginEnd="8dp" android:layout_marginTop="30dp"
+                          app:layout_constraintHorizontal_bias="0.409"
+            >
+                <CheckBox android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textSize="15sp"
+                          android:textColor="#000000"
+                          android:paddingLeft="25dp"
+                          android:text="Communication"
+                          android:buttonTint="#80000000"
+                          android:id="@+id/communication"
+                />
+                <TextView
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="55dp"
+                        android:textSize="9sp"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="5sp"
+                        android:textColor="#000000"
+                        android:text="If you choose this option we will contact you with information about promotions, latest offers and other information that you will find interesting."
+                />
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:layout_marginTop="20dp"
+                >
+                    <CheckBox android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textSize="15sp"
+                              android:textColor="#000000"
+                              android:paddingLeft="25dp"
+                              android:text="Phone"
+                              android:buttonTint="#80000000"
+                              android:id="@+id/com_phone"
+
+                    />
+                    <CheckBox android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textSize="15sp"
+                              android:textColor="#000000"
+                              android:text="SMS"
+                              android:paddingLeft="25dp"
+                              android:layout_marginLeft="70dp"
+                              android:buttonTint="#80000000"
+                              android:id="@+id/com_sms"
+                    />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:layout_marginTop="20dp"
+                >
+                    <CheckBox android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+
+                              android:textSize="15sp"
+                              android:textColor="#000000"
+                              android:paddingLeft="25dp"
+                              android:text="Email"
+                              android:buttonTint="#80000000"
+                              android:id="@+id/com_email"
+                    />
+                    <CheckBox android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textSize="15sp"
+                              android:textColor="#000000"
+                              android:layout_marginLeft="75dp"
+                              android:paddingLeft="25dp"
+                              android:text="Postal mail"
+                              android:id="@+id/com_postal"
+                              android:buttonTint="#80000000"
+                    />
+                </LinearLayout>
+
+                <CheckBox android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textSize="15sp"
+                          android:textColor="#000000"
+                          android:layout_marginTop="20dp"
+                          android:paddingLeft="25dp"
+                          android:text="Social Media"
+                          android:buttonTint="#80000000"
+                          android:id="@+id/com_social"
+
+                />
+                <TextView
+                        android:layout_width="285dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="9sp"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="5sp"
+                        android:paddingLeft="55dp"
+                        android:textColor="#000000"
+                        android:text="If you choose this option, we may use our social media channels such as Facebook to contact you. This will only apply if you already use these channels and we decide to display marketing material to you. We will not provide any information about you via our social media channels."
+                />
+                <Button android:layout_width="290dp"
+                        android:background="@drawable/update"
+                        android:id="@+id/marketing_update"
+                        android:layout_marginTop="40dp"
+                        android:layout_height="50dp"/>
+
+
+            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
-        <TextView
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_marginTop="6dp"
-                android:textSize="9sp"
-                android:letterSpacing="0.01"
-                android:lineSpacingExtra="5sp"
-                android:text="I would like to be informed about relevant promotions such as Deposit Bonuses and new products available in my account. Read More"
-        />
-        <LinearLayout android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_marginTop="25dp"
-        >
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="VIP Program"
-                    android:textColor="#000000"
-            />
-            <Switch android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/vip"
-                    android:shadowColor="#6a6a6a"
-                    android:layout_marginLeft="150dp"
-                    android:text="No"
-
-            />
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="Yes"
-                    android:textColor="#000000"
-            />
-        </LinearLayout>
-        <TextView
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:textSize="9sp"
-                android:letterSpacing="0.01"
-                android:textColor="#000000"
-                android:lineSpacingExtra="5sp"
-                android:layout_marginTop="6dp"
-                android:text="I would like to be informed about VIP Programe of my account. Read More"
-        />
-        <Button android:layout_width="290dp"
-                android:background="@drawable/update"
-                android:id="@+id/privacy_update"
-                android:layout_marginTop="55dp"
-                android:layout_height="50dp"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  app:layout_constraintTop_toBottomOf="@+id/textView34" app:layout_constraintStart_toStartOf="parent"
-                  android:layout_marginStart="8dp"
-                  android:id="@+id/marketing_info"
-                  app:layout_constraintEnd_toEndOf="parent"
-                  android:orientation="vertical"
-                  android:layout_marginEnd="8dp" android:layout_marginTop="30dp"
-                  app:layout_constraintHorizontal_bias="0.409"
-    >
-        <CheckBox android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textSize="15sp"
-                  android:textColor="#000000"
-                  android:paddingLeft="25dp"
-                  android:text="Communication"
-                  android:buttonTint="#80000000"
-                  android:id="@+id/communication"
-        />
-        <TextView
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:paddingLeft="55dp"
-                android:textSize="9sp"
-                android:letterSpacing="0.01"
-                android:lineSpacingExtra="5sp"
-                android:textColor="#000000"
-                android:text="If you choose this option we will contact you with information about promotions, latest offers and other information that you will find interesting."
-        />
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:layout_marginTop="20dp"
-        >
-            <CheckBox android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textSize="15sp"
-                      android:textColor="#000000"
-                      android:paddingLeft="25dp"
-                      android:text="Phone"
-                      android:buttonTint="#80000000"
-                      android:id="@+id/com_phone"
-
-            />
-            <CheckBox android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textSize="15sp"
-                      android:textColor="#000000"
-                      android:text="SMS"
-                      android:paddingLeft="25dp"
-                      android:layout_marginLeft="70dp"
-                      android:buttonTint="#80000000"
-                      android:id="@+id/com_sms"
-            />
-        </LinearLayout>
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:layout_marginTop="20dp"
-        >
-            <CheckBox android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-
-                      android:textSize="15sp"
-                      android:textColor="#000000"
-                      android:paddingLeft="25dp"
-                      android:text="Email"
-                      android:buttonTint="#80000000"
-                      android:id="@+id/com_email"
-            />
-            <CheckBox android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textSize="15sp"
-                      android:textColor="#000000"
-                      android:layout_marginLeft="75dp"
-                      android:paddingLeft="25dp"
-                      android:text="Postal mail"
-                      android:id="@+id/com_postal"
-                      android:buttonTint="#80000000"
-            />
-        </LinearLayout>
-
-        <CheckBox android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textSize="15sp"
-                  android:textColor="#000000"
-                  android:layout_marginTop="20dp"
-                  android:paddingLeft="25dp"
-                  android:text="Social Media"
-                  android:buttonTint="#80000000"
-                  android:id="@+id/com_social"
-
-        />
-        <TextView
-                android:layout_width="285dp"
-                android:layout_height="wrap_content"
-                android:textSize="9sp"
-                android:letterSpacing="0.01"
-                android:lineSpacingExtra="5sp"
-                android:paddingLeft="55dp"
-                android:textColor="#000000"
-                android:text="If you choose this option, we may use our social media channels such as Facebook to contact you. This will only apply if you already use these channels and we decide to display marketing material to you. We will not provide any information about you via our social media channels."
-        />
-        <Button android:layout_width="290dp"
-                android:background="@drawable/update"
-                android:id="@+id/marketing_update"
-                android:layout_marginTop="40dp"
-                android:layout_height="50dp"/>
-
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

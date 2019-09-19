@@ -89,24 +89,34 @@
                 android:layout_height="match_parent"></com.github.mikephil.charting.charts.LineChart>
 
     </LinearLayout>
-    <Button
-            android:text="Bets"
-            android:layout_width="205dp"
-            android:layout_height="40dp"
-            android:textAllCaps="false"
-            android:background="#bebebe"
-            android:id="@+id/aly_bet" android:layout_marginTop="45dp"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" app:layout_constraintStart_toStartOf="parent"
-    />
-    <Button
-            android:text="Banking"
-            android:layout_width="205dp"
-            android:layout_height="40dp"
-            android:textAllCaps="false"
-            android:background="#d8d8d8"
-            android:id="@+id/aly_bank" android:layout_marginTop="45dp"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" app:layout_constraintStart_toEndOf="@+id/aly_bet"
-            app:layout_constraintEnd_toEndOf="parent"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/aly"
+                  app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                  android:weightSum="2"
+    >
+        <Button
+                android:text="Bets"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:textAllCaps="false"
+                android:background="#bebebe"
+                android:id="@+id/aly_bet" android:layout_marginTop="45dp"
+                app:layout_constraintStart_toStartOf="parent"
+        />
+        <Button
+                android:text="Banking"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:textAllCaps="false"
+                android:background="#d8d8d8"
+                android:id="@+id/aly_bank" android:layout_marginTop="45dp"
+                app:layout_constraintStart_toEndOf="@+id/aly_bet"
+                app:layout_constraintEnd_toEndOf="parent"/>
+    </LinearLayout>
+
 
     <LinearLayout android:layout_width="105dp" android:layout_height="105dp"
                   android:layout_marginTop="45dp"
@@ -114,7 +124,7 @@
                   android:gravity="center_horizontal"
                   android:orientation="vertical"
                   android:visibility="visible"
-                  app:layout_constraintTop_toBottomOf="@+id/aly_bet" app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/aly" app:layout_constraintStart_toStartOf="parent"
                   android:layout_marginStart="30dp" android:id="@+id/aly_sport">
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -138,7 +148,7 @@
                   android:orientation="vertical"
                   android:layout_marginTop="45dp"
                   android:visibility="visible"
-                  app:layout_constraintTop_toBottomOf="@+id/aly_bet"
+                  app:layout_constraintTop_toBottomOf="@+id/aly"
                   app:layout_constraintStart_toEndOf="@+id/aly_sport" android:layout_marginStart="10dp"
                   android:id="@+id/aly_slot">
         <TextView android:layout_width="wrap_content"
@@ -163,7 +173,7 @@
                   android:id="@+id/aly_casino"
                   android:layout_marginTop="45dp"
                   android:visibility="visible"
-                  app:layout_constraintTop_toBottomOf="@+id/aly_bank"
+                  app:layout_constraintTop_toBottomOf="@+id/aly"
                   app:layout_constraintStart_toEndOf="@+id/aly_slot" android:layout_marginStart="10dp"
                   app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
                   app:layout_constraintHorizontal_bias="0.0">
@@ -189,7 +199,7 @@
                   android:id="@+id/aly_depo"
                   android:layout_marginTop="45dp"
                   android:visibility="visible"
-                  app:layout_constraintTop_toBottomOf="@+id/aly_bank"
+                  app:layout_constraintTop_toBottomOf="@+id/aly"
                   android:layout_marginStart="38dp" app:layout_constraintStart_toStartOf="parent">
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -211,7 +221,7 @@
                   android:id="@+id/aly_with"
                   android:layout_marginTop="44dp"
                   android:visibility="visible"
-                  app:layout_constraintTop_toBottomOf="@+id/aly_bank"
+                  app:layout_constraintTop_toBottomOf="@+id/aly"
                   android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintStart_toEndOf="@+id/aly_depo" android:layout_marginStart="8dp"
                   app:layout_constraintHorizontal_bias="0.158">
