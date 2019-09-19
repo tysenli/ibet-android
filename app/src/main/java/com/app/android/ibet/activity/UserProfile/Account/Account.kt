@@ -37,7 +37,7 @@ class Account : Fragment() {
             val toast = Toast.makeText(
                 context,
                 "Changes are successfully updated", Toast.LENGTH_SHORT
-            )
+             )
             toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 260)
             val view = toast.view
             view.setBackgroundResource(R.color.toast)
