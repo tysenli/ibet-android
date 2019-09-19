@@ -30,7 +30,7 @@ class VeriPhone : AppCompatActivity() {
             generateCodeJson.put("username",intent.getStringExtra("user"))
             //http://10.0.2.2:8000/users/api/generateactivationcode/
             val info = Api().post(generateCodeJson.toString(),BuildConfig.GENERATE_CODE )
-            println(info)
+            Api().myLog("generate phone code: $info")
             val res = Intent(applicationContext, PhoneCode::class.java)
             res.putExtra("phone_num", "+" + country_code_picker.selectedCountryCode.toString() + "  " + phone.text.toString())
             res.putExtra("user",intent.getStringExtra("user"))

@@ -48,7 +48,7 @@ class QaiUnionOpenPage : AppCompatActivity() {
                 startActivity(res)
             } else {
                 val statusData = response.body()!!.string()
-                //println(JSONObject(statusData).getString("status"))
+                Api().myLog("unionPay: $statusData")
 
                 if (JSONObject(statusData).getInt("status") == 0) {
 

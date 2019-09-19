@@ -42,14 +42,14 @@ class QaiBankWithOpenPage : AppCompatActivity() {
                 .post(orderBody)
                 .build()
             val response = OkHttpClient().newCall(request).execute()
-            println(response)
+
             if (response.code() != 200) {
                 MyAccount.info = "fail"
                 val res = Intent(this, MyAccount::class.java)
                 startActivity(res)
             } else {
                 val statusData = response.body()!!.string()
-                println(JSONObject(statusData).getString("status"))
+                Api().myLog("bankWithdraw: $statusData")
 
                 if (JSONObject(statusData).getString("status") == "HELD") {
 

@@ -85,10 +85,8 @@ class NewPass : AppCompatActivity() {
             newCodeJson.put("password", new_password.text.toString())
             //http://10.0.2.2:8000/users/api/generateactivationcode/
             val info = Api().post(newCodeJson.toString(), BuildConfig.VERI_PASS_CODE )
-            val logJson = JSONObject()
-            logJson.put("line", "new password:$info")
-            logJson.put("source", "Android")
-            Api().post(logJson.toString(), BuildConfig.LOG)
+
+            Api().myLog("new password:$info")
             if (info!!.substring(1,info.length - 1) == "Success") {
                 code_error2.text = "Success!"
                 startActivity(Intent(this, MainActivity::class.java))

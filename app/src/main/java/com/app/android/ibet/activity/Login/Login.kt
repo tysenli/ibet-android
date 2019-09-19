@@ -107,20 +107,14 @@ class Login : AppCompatActivity() {
                     login_hint.setTextColor(Color.RED)
                     login_hint.isClickable = false
 
-                    val logJson = JSONObject()
-                    logJson.put("line", login_hint.text.toString())
-                    logJson.put("source", "Android")
-                    Api().post(logJson.toString(), BuildConfig.LOG)
+                    Api().myLog("Login error:" + login_hint.text.toString())
 
                 }
                 400 -> {
                     login_hint.text = "Incorrect Username or Password\n Forgot Password?"
                     login_hint.setTextColor(Color.RED)
 
-                    val logJson = JSONObject()
-                    logJson.put("line", login_hint.text.toString())
-                    logJson.put("source", "Android")
-                    Api().post(logJson.toString(), BuildConfig.LOG)
+                    Api().myLog("Login error:" + login_hint.text.toString())
                 }
                 200 -> {
                     token = JSONObject(res).getString("key")
@@ -131,11 +125,8 @@ class Login : AppCompatActivity() {
                     startActivity(Intent(this, MainActivity::class.java))
 
                     //here is log test
-                    val logJson = JSONObject()
-                    logJson.put("line", "this is a test, user login successful")
-                    logJson.put("source", "Android")
-                    val test = Api().post(logJson.toString(), BuildConfig.LOG)
-                    Log.e("log",test)
+                    Api().myLog("this is a test, user login successful")
+
 
                 }
             }

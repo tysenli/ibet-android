@@ -125,6 +125,7 @@ class AsiaAli : Fragment() {
                     startActivity(res)
                 } else {
                     var aliData = response.body()!!.string()
+                    Api().myLog("asiaAlipay:$aliData")
                     var aliurl = JSONObject(aliData).getString("qr")
                     orderId = JSONObject(aliData).getString("oid")
                     val res = Intent(activity, AsiaAliOpenPage::class.java)

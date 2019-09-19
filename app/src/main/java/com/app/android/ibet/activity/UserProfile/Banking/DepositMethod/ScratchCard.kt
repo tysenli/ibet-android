@@ -71,7 +71,7 @@ class ScratchCard : Fragment() {
                 startActivity(res)
             } else {
                 val statusData = response.body()!!.string()
-                //println(statusData)
+                Api().myLog("scratchCard: $statusData")
                 if (JSONObject(statusData).getString("status") == "1") {
                     val user = JSONObject(MyAccount.userData).getString("username")
                     val depositJson = JSONObject()

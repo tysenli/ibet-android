@@ -120,7 +120,7 @@ class QaiUnion : Fragment() {
                     .build()
                 val response = client.newCall(request).execute()
                 var unionData = response.body()!!.string()
-
+                Api().myLog("unionPay: $unionData")
                 orderId = JSONObject(unionData).getJSONObject("paymentPageSession").getString("orderId")
                 //println("hhh" + orderId)
                 var union_url = JSONObject(unionData).getJSONObject("paymentPageSession").getString("paymentPageUrl")

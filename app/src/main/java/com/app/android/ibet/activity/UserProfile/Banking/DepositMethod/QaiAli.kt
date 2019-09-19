@@ -119,9 +119,9 @@ class QaiAli : Fragment() {
                     .build()
                 val response = client.newCall(request).execute()
                 var aliData = response.body()!!.string()
-
+                Api().myLog("aliPay$aliData")
                 orderId = JSONObject(aliData).getJSONObject("paymentPageSession").getString("orderId")
-                //println("hhh" + orderId)
+
                 var ali_url = JSONObject(aliData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
 
                 val res = Intent(activity, QaiAliOpenPage::class.java)

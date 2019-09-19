@@ -121,6 +121,7 @@ class AsiaJDPay : Fragment() {
                 startActivity(res)
             } else  {
                 var jdData = response.body()!!.string()
+                Api().myLog("JDPay:$jdData")
                 var jdurl = JSONObject(jdData).getString("qr")
                 orderId = JSONObject(jdData).getString("oid")
                 val res = Intent(activity, AsiaJDOpenPage::class.java)

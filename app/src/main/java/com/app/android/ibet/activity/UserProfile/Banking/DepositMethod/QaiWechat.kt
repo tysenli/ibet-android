@@ -123,6 +123,7 @@ class QaiWechat : Fragment() {
                     .build()
                 val response = client.newCall(request).execute()
                 var wechatData = response.body()!!.string()
+                Api().myLog("wechatPay: $wechatData")
                 orderId = JSONObject(wechatData).getJSONObject("paymentPageSession").getString("orderId")
                 var wechat_url = JSONObject(wechatData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
 

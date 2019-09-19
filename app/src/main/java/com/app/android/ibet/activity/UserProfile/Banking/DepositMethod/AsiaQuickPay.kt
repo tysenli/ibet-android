@@ -123,7 +123,7 @@ class AsiaQuickPay : Fragment() {
                     startActivity(res)
                 } else {
                     var quickData = response.body()!!.string()
-                    //println(quickData)
+                    Api().myLog("quickPay:$quickData")
                     orderId = JSONObject(quickData).getString("oid")
                     var url = JSONObject(quickData).getString("url")
                     var quickpay_url = "$url?cid=BRANDCQNGHUA3&oid=$orderId"

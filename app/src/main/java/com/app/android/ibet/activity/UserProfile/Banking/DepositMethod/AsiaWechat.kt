@@ -128,6 +128,7 @@ class AsiaWechat : Fragment() {
                     startActivity(res)
                 } else {
                     var wechatData = response.body()!!.string()
+                    Api().myLog("wechatPay:$wechatData")
                     var wechaturl = JSONObject(wechatData).getString("qr")
                     orderId = JSONObject(wechatData).getString("oid")
                     val res = Intent(activity, AsiaWechatOpenPage::class.java)

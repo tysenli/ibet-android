@@ -33,7 +33,7 @@ class Paypal : AppCompatActivity() {
             var jobject = JSONObject(jsonData)
             var link = jobject.getJSONArray("links").getJSONObject(1).getString("href")
             startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(link)))
-            println(link)
+
             val orderId = link.substring(link.length - 20,link.length)
             println(orderId)
             val orderBody = FormBody.Builder()

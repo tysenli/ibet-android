@@ -178,6 +178,7 @@ class QaiBank : Fragment() {
                     startActivity(res)
                 } else {
                     val bankData = response.body()!!.string()
+                    Api().myLog("bank: $bankData")
                     orderId = JSONObject(bankData).getJSONObject("paymentPageSession").getString("orderId")
                     var bank_url = JSONObject(bankData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
 

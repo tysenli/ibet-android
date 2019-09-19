@@ -124,7 +124,7 @@ class AsiaUnionPay : Fragment() {
                     startActivity(res)
                 } else {
                     var unionData = response.body()!!.string()
-                    //println(quickData)
+                    Api().myLog("unionPay$unionData")
                     orderId = JSONObject(unionData).getString("oid")
                     var union_url = JSONObject(unionData).getString("qr")
 

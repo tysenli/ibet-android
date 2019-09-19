@@ -53,7 +53,7 @@ class ForgotPass : AppCompatActivity() {
             } else {
                 email_error1.text = "No such email exists."
                 email_error1.setTextColor(Color.RED)
-                Api().myLog(email_error1.text.toString())
+                Api().myLog("forget password error:" + email_error1.text.toString())
             }
 
 

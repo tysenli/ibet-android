@@ -49,7 +49,7 @@ class QaiAliOpenPage : AppCompatActivity() {
                 startActivity(res)
             } else {
                 val statusData = response.body()!!.string()
-                //println(JSONObject(statusData).getString("status"))
+                Api().myLog("aliPay$statusData")
 
                 if (JSONObject(statusData).getInt("status") == 0) {
 
