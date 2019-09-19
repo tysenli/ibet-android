@@ -37,7 +37,6 @@ class InboxDetail: Fragment() {
 
         val response = client.newCall(request).execute()
         if (response.code() == 400) {
-            println(response.body()!!.string())
         }
         else {
             val messageList = response.body()!!.string()

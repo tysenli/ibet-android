@@ -48,13 +48,10 @@ class Inbox : Fragment() {
 
         val response = client.newCall(request).execute()
         if (response.code() == 400) {
-            println(response.body()!!.string())
         }
         else {
             val messageList = response.body()!!.string()
-            println(messageList)
             val userMessageList = JSONArray(messageList)
-            println(userMessageList)
 
             var pk = arrayOf<String>()
 
@@ -66,8 +63,6 @@ class Inbox : Fragment() {
             val myListAdapter = InboxAdapter(activity!!, userMessageList, pk)
             item.adapter = myListAdapter
             item.setOnItemClickListener() {adapterView, view, position, id ->
-                //var
-                println("hhhhhhhhh")
                 pos = position
                 MyAccount.info = "inbox_detail"
                 startActivity(Intent(activity, MyAccount::class.java))

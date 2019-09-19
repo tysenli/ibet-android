@@ -65,7 +65,7 @@
 
                 <Button android:layout_width="100dp"
                         android:layout_height="32dp"
-                        android:background="@drawable/read"
+                        android:background="@drawable/rectangle"
                         android:textSize="16sp"
                         android:textColor="#ffffff"
                         android:letterSpacing="0.06"
