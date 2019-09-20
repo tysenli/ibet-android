@@ -42,7 +42,7 @@ class Login : AppCompatActivity() {
         StrictMode.setThreadPolicy(policy)
         userlogin.isEnabled = false
         forgot_password.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-        sign_up_here.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+
 
         login_password.addTextChangedListener (object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {

@@ -5,7 +5,7 @@
                                                    xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.ogaclejapan.smarttablayout.SmartTabLayout
             android:id="@+id/account_pagertab"
-            android:layout_width="412dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#2D2D2D"
             android:clickable="true"
