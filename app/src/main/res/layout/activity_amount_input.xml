@@ -3,6 +3,7 @@
                                                    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 <ScrollView android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="none"
@@ -192,12 +193,13 @@
                 app:layout_constraintVertical_bias="0.223" android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"/>
         <Button
+
             android:id="@+id/change_method"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_centerInParent="true"
             android:background="@drawable/deposit_btn"
-            android:text="back to banking"
+            android:text="cancel"
             android:textColor="#4e4f4e"
             android:textSize="16sp"
             android:layout_marginTop="20dp"
@@ -205,6 +207,7 @@
             android:layout_marginBottom="60dp"
 
            />
+
 
 
     </LinearLayout>

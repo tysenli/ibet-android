@@ -10,7 +10,8 @@ import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
-import kotlinx.android.synthetic.main.activity_test.*
+import com.app.android.ibet.api.URLs
+import kotlinx.android.synthetic.main.activity_thirdparty.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -24,7 +25,7 @@ class QaiBankWithOpenPage : AppCompatActivity() {
         actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_test)
+        setContentView(R.layout.activity_thirdparty)
         val myweb = findViewById<WebView>(R.id.webview)
         val setting = myweb.settings
         setting.javaScriptEnabled = true
@@ -38,7 +39,7 @@ class QaiBankWithOpenPage : AppCompatActivity() {
                 .add("order_id", intent.getStringExtra("bankorderId"))
                 .build()
             val request = Request.Builder()
-                .url(BuildConfig.WITHDRAW_ORDER)
+                .url(URLs.WITHDRAW_ORDER)
                 .post(orderBody)
                 .build()
             val response = OkHttpClient().newCall(request).execute()
@@ -57,7 +58,7 @@ class QaiBankWithOpenPage : AppCompatActivity() {
                     depositJson.put("type", "withdraw")
                     depositJson.put("username", user)
                     depositJson.put("balance", intent.getStringExtra("bankbnc"))
-                    val balance = Api().post(depositJson.toString(), BuildConfig.BALANCE)
+                    val balance = Api().post(depositJson.toString(), URLs.BALANCE)
                     MyAccount.info = "success_with"
                     val res = Intent(this, MyAccount::class.java)
                     //res.putExtra("amount",intent.getStringExtra("balance"))

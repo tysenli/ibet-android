@@ -24,11 +24,11 @@
             >
                 <ImageView android:layout_width="178dp"
                            android:layout_height="167dp"
-                           android:background="@drawable/gift"
+                           android:padding="10dp"
                            android:id="@+id/imageView8"/>
                 <ImageView android:layout_width="178dp"
                            android:layout_height="167dp"
-                           android:background="@drawable/gift"
+                           android:padding="10dp"
                            android:id="@+id/imageView5"
                 />
             </LinearLayout>
@@ -38,12 +38,12 @@
             >
                 <ImageView android:layout_width="178dp"
                            android:layout_height="167dp"
-                           android:background="@drawable/gift"
+                           android:padding="10dp"
                            android:id="@+id/imageView7"
                 />
                 <ImageView android:layout_width="178dp"
                            android:layout_height="167dp"
-                           android:background="@drawable/gift"
+                           android:padding="10dp"
                            android:id="@+id/imageView6"
                 />
             </LinearLayout>

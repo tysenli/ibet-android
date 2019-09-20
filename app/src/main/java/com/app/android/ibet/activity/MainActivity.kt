@@ -40,6 +40,7 @@ import com.zhangke.zlog.ZLog
 import kotlinx.android.synthetic.main.login_actionlayout.*
 import android.widget.Toast
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
+import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame.Companion.remindTime
 
 
 class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick {
@@ -100,10 +101,17 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
 
 
             // schedule the task to run starting now and then every hour...
+            var time = 60
+            when (remindTime) {
+                 0 -> time = 5
+                 1 -> time = 30
+                 2 -> time = 60
+                 3 -> time = 120
+            }
             timer.schedule(
                 hourlyTask,
                 0L,
-                1000 * ResponsibleGame.remindTime * 60.toLong()
+                1000 * time * 60.toLong()
             )// 1000*10*60 every 10 minutes
         }
 

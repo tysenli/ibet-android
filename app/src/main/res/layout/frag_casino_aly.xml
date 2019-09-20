@@ -17,6 +17,7 @@
             android:id="@+id/textView54"
             app:layout_constraintEnd_toEndOf="parent"
     />
+
     <Button
             android:text="By Game"
             android:layout_width="200dp"
@@ -46,6 +47,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/by_game" app:layout_constraintVertical_bias="0.0"
             android:layout_marginTop="22dp">
+
     <ListView
             android:id="@+id/casino_list_bygame"
             android:layout_width="wrap_content"
@@ -58,15 +60,16 @@
             app:layout_constraintTop_toBottomOf="@+id/by_game" app:layout_constraintVertical_bias="0.0"
            />
     </HorizontalScrollView>
+
     <HorizontalScrollView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/by_game" app:layout_constraintVertical_bias="0.0"
-            android:layout_marginTop="22dp">
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintTop_toBottomOf="@+id/item_layout"
+            android:layout_marginTop="22dp" app:layout_constraintVertical_bias="0.0">
         <ListView
                 android:id="@+id/casino_list_byday"
                 android:layout_width="wrap_content"

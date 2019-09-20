@@ -23,6 +23,9 @@ class BankingDepo : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        deposit.background = resources.getDrawable(R.color.btn_d)
+        withdraw.background = resources.getDrawable(R.color.btn_l)
+        transfer.background = resources.getDrawable(R.color.btn_l)
         deposit.setOnClickListener {
             info = "deposit"
             val intent = Intent(activity, MyAccount::class.java)
@@ -31,8 +34,10 @@ class BankingDepo : Fragment() {
 
         }
         withdraw.setOnClickListener {
-            info = "withdraw"
-            val intent = Intent(activity, MyAccount::class.java)
+            /*
+            info = "withdraw" */
+            info = "withdraw_pass"
+            //val intent = Intent(activity, MyAccount::class.java)
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
             //startActivity(Intent(activity, Withdraw::class.java))
