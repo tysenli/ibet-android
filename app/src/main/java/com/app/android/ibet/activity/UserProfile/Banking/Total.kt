@@ -19,6 +19,7 @@ import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amt
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amtShow
+import com.app.android.ibet.api.URLs
 import com.idtk.smallchart.data.CurveData
 import com.idtk.smallchart.data.PointShape
 import com.idtk.smallchart.interfaces.iData.ICurveData
@@ -60,7 +61,7 @@ class Total : AppCompatActivity() {
         setContentView(R.layout.activity_total)
         val request = Request.Builder()
             .header("Authorization", "Token "+ token)
-            .url(BuildConfig.USER)
+            .url(URLs.USER)
             .build()
         val response = OkHttpClient().newCall(request).execute()
         //println(response.body()!!.string())

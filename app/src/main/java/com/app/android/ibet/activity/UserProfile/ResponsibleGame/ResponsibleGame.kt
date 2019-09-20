@@ -20,6 +20,7 @@ import android.widget.Toast
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AstropayInfo
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
+import com.app.android.ibet.api.URLs
 import com.facebook.FacebookSdk.getApplicationContext
 import com.google.gson.JsonArray
 import kotlinx.android.synthetic.main.activity_amount_input.*
@@ -48,8 +49,10 @@ class ResponsibleGame : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+
         val acRequest = Request.Builder()
-            .url(BuildConfig.ACTIVITY + "?userId=" + JSONObject(userData).getString("pk"))
+            .url(URLs.ACTIVITY + "?userId=" + JSONObject(userData).getString("pk"))
             .build()
         val acResponse = OkHttpClient().newCall(acRequest).execute()
         if (acResponse.code() == 200) {
@@ -63,8 +66,9 @@ class ResponsibleGame : Fragment() {
         sixty_min.background = if (remindTime == 2)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
         two_hour.background = if (remindTime == 3)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
 
+
         val request = Request.Builder()
-            .url(BuildConfig.GETLIMIT + JSONObject(userData).getString("pk"))
+            .url(URLs.GETLIMIT + JSONObject(userData).getString("pk"))
             .build()
         val response = OkHttpClient().newCall(request).execute()
 
@@ -269,7 +273,7 @@ class ResponsibleGame : Fragment() {
             depoJson.put("type", "deposit")
             val body = RequestBody.create(JSON, depoJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.SETLIMIT)
+                .url(URLs.SETLIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -302,7 +306,7 @@ class ResponsibleGame : Fragment() {
             depoJson.put("type", "deposit")
             val body = RequestBody.create(JSON, depoJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.REMOVELIMIT)
+                .url(URLs.REMOVELIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -349,7 +353,7 @@ class ResponsibleGame : Fragment() {
             lossJson.put("type", "loss")
             val body = RequestBody.create(JSON, lossJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.REMOVELIMIT)
+                .url(URLs.REMOVELIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -393,7 +397,7 @@ class ResponsibleGame : Fragment() {
             depoJson.put("type", "deposit")
             val body = RequestBody.create(JSON, depoJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.CANCELLIMIT)
+                .url(URLs.CANCELLIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -416,7 +420,7 @@ class ResponsibleGame : Fragment() {
             lossJson.put("type", "loss")
             val body = RequestBody.create(JSON, lossJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.CANCELLIMIT)
+                .url(URLs.CANCELLIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -570,7 +574,7 @@ class ResponsibleGame : Fragment() {
             lossJson.put("type", "loss")
             val body = RequestBody.create(JSON, lossJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.SETLIMIT)
+                .url(URLs.SETLIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -627,7 +631,7 @@ class ResponsibleGame : Fragment() {
 
             val body = RequestBody.create(JSON, acJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.ACTIVITY)
+                .url(URLs.ACTIVITY)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()

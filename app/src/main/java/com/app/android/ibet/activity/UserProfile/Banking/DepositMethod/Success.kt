@@ -15,6 +15,7 @@ import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.activity.UserProfile.Banking.Total
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.depo_amt
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_success.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -30,11 +31,11 @@ class Success : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        dep_amount.text = "Deposit " + depo_amt + " completed"
+        dep_amount.text = "Deposit $depo_amt submitted.\nPlease check for transaction status."
 
         val request = Request.Builder()
             .header("Authorization", "Token "+ Login.token)
-            .url(BuildConfig.USER)
+            .url(URLs.USER)
             .build()
         val response = OkHttpClient().newCall(request).execute()
 
