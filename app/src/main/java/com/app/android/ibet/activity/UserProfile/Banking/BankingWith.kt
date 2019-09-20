@@ -6,10 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
-import kotlinx.android.synthetic.main.frag_banking_depo.deposit
-import kotlinx.android.synthetic.main.frag_banking_depo.withdraw
+
+
 import kotlinx.android.synthetic.main.frag_banking_with.*
 
 class BankingWith : Fragment() {
@@ -22,6 +23,9 @@ class BankingWith : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        deposit.background = resources.getDrawable(R.color.btn_l)
+        withdraw.background = resources.getDrawable(R.color.btn_d)
+        transfer.background = resources.getDrawable(R.color.btn_l)
         deposit.setOnClickListener {
             info = "deposit"
             startActivity(Intent(activity, MyAccount::class.java))
@@ -30,7 +34,8 @@ class BankingWith : Fragment() {
 
         }
         withdraw.setOnClickListener {
-            info = "withdraw"
+           // info = "withdraw"
+            info = "withdraw_pass"
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
             //startActivity(Intent(activity, Withdraw::class.java))

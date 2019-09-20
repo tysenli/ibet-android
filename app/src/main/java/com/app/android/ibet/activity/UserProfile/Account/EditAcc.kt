@@ -14,6 +14,7 @@ import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.info
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import com.wajahatkarim3.easyvalidation.core.view_ktx.minLength
 import kotlinx.android.synthetic.main.activity_change_pass.*
 import kotlinx.android.synthetic.main.activity_edit_profile.*
@@ -42,8 +43,9 @@ class EditAcc : Fragment() {
         cur_pass_error.text = ""
         new_pass_error.text = ""
         match_error.text = ""
-        var userData = Api().get(BuildConfig.USER)
 
+        var userData = Api().get(URLs.USER)
+        
         acc_editid.text = "ID: " + JSONObject(userData).getString("pk")
         acc_first_name.text = JSONObject(userData).getString("first_name")
         acc_last_name.text = JSONObject(userData).getString("last_name")
@@ -154,7 +156,7 @@ class EditAcc : Fragment() {
             val body = RequestBody.create(JSON, editJson.toString())
             val request = Request.Builder()
                 .header("Authorization", "Token "+ Login.token)
-                .url(BuildConfig.USER)
+                .url(URLs.USER)
                 .put(body)
                 .build()
 
@@ -183,7 +185,7 @@ class EditAcc : Fragment() {
                     val body = RequestBody.create(JSON, changeJson.toString())
                     val request = Request.Builder()
                         .addHeader("Authorization", "token " + Login.token)
-                        .url(BuildConfig.CHANGE_PASS)
+                        .url(URLs.CHANGE_PASS)
                         .post(body)
                         .build()
 

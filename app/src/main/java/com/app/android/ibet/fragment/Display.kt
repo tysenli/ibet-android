@@ -12,6 +12,9 @@ import android.view.ViewGroup
 import android.widget.*
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.MainActivity
+import com.bumptech.glide.Glide
+import com.facebook.FacebookSdk.getApplicationContext
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.frag_display.*
 import java.util.*
 
@@ -26,6 +29,12 @@ class Display : Fragment() {
     override fun onStart() {
         super.onStart()
         Log.e("language", resources.configuration.locale.toString())
+        //Picasso.with(context).load("https://ibet-web.s3-us-west-1.amazonaws.com/public_images/account-menu-open-bets.svg").into(testImage)
+        Glide.with(context!!).load("https://edsurge.imgix.net/uploads/post/image/12571/innovation-1567558252.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop").centerCrop().into(imageView5)
+        Glide.with(context!!).load("https://edsurge.imgix.net/uploads/post/image/12571/innovation-1567558252.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop").centerCrop().into(imageView6)
+        Glide.with(context!!).load("https://edsurge.imgix.net/uploads/post/image/12571/innovation-1567558252.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop").centerCrop().into(imageView7)
+        Glide.with(context!!).load("https://edsurge.imgix.net/uploads/post/image/12571/innovation-1567558252.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop").centerCrop().into(imageView8)
+
         var language = arrayOf("Language", "English", "Chinese", "Thai")
         var lanImg = arrayOf(R.drawable.lan_bng, R.drawable.gb, R.drawable.cn, R.drawable.th)
         if (resources.configuration.locale.toString() == "en" || resources.configuration.locale.toString() == "en_US") {
@@ -48,7 +57,7 @@ class Display : Fragment() {
         }
 
         // var flag[] = {R.drawable.gb, R.drawable.cn, R.drawable.th}
-       // var lanSpinner = findViewById<Spinner>(R.id.language_navi)
+        // var lanSpinner = findViewById<Spinner>(R.id.language_navi)
         var lan: String = ""
         if (language_navi != null) {
             val arrayAdapter = CustomDropDownAdapter(context!!, lanImg, language)

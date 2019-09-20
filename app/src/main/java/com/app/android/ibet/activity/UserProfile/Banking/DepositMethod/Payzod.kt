@@ -13,7 +13,11 @@ import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.UserProfile.MyAccount
+
 import com.app.android.ibet.api.Api
+
+import com.app.android.ibet.api.URLs
+
 import kotlinx.android.synthetic.main.activity_amount_input.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -111,7 +115,7 @@ class Payzod : Fragment() {
                 val body = RequestBody.create(JSON, payzodJson.toString())
                 val request = Request.Builder()
                     .addHeader("Authorization", "Token " + Login.token)
-                    .url(BuildConfig.PAYZOD)
+                    .url(URLs.PAYZOD)
                     .post(body)
                     .build()
                 val response = client.newCall(request).execute()

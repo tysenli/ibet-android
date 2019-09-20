@@ -11,6 +11,7 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_forgot_pass.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -38,15 +39,17 @@ class ForgotPass : AppCompatActivity() {
 
             val request = Request.Builder()
                     // .addHeader("Authorization", "Bearer $token")
-                    .url(BuildConfig.FORGET_CODE)
+                    .url(URLs.FORGET_CODE)
                     .post(body)
                     .build()
 
             val response = client.newCall(request).execute()
 
             if (response.code() == 200) {
-                val info2 = Api().post(forgetCodeJson.toString(), BuildConfig.FORGET_SEND_EMAIL)
+
+                val info2 = Api().post(forgetCodeJson.toString(), URLs.FORGET_SEND_EMAIL)
                 Api().myLog( "forget password success: $info2")
+
                 val res = Intent(this, NewPass::class.java)
                 res.putExtra("mail",email_id2.text.toString())
                 startActivity(res)

@@ -1,5 +1,6 @@
 package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -12,7 +13,9 @@ import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_amount_input.*
+import kotlinx.android.synthetic.main.dialog.view.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -20,7 +23,7 @@ import org.json.JSONObject
 
 class QaiAli : Fragment() {
     //private var parentContext = context
-    var userData = Api().get(BuildConfig.USER)
+    var userData = Api().get(URLs.USER)
     var orderId = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -29,8 +32,8 @@ class QaiAli : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "Alipay"
-        deposit_amount2.hint = " Deposit 300 - 1,500                        Other"
+        depo_method_show.background = resources.getDrawable(R.drawable.alipay)
+        deposit_amount2.hint = " Deposit 300 - 1,500"
         amt_input_err.visibility = View.GONE
         var pk =  JSONObject(userData).getString("pk")
         money_25.text = "300"
@@ -103,32 +106,41 @@ class QaiAli : Fragment() {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 300 - 1500"
             } else {
-                amt_input_err.visibility = View.GONE
-                val client = OkHttpClient()
-                val formBody = FormBody.Builder()
-                    .add("amount", amount_display.text.toString())
-                    .add("user_id", pk)
-                    .add("currency", "0")
-                    .add("language", "zh-Hans")
-                    .add("method", "ALIPAY")
-                    .build()
 
-                val request = Request.Builder()
-                    .url(BuildConfig.QAICASH)
-                    .post(formBody)
-                    .build()
-                val response = client.newCall(request).execute()
-                var aliData = response.body()!!.string()
-                Api().myLog("aliPay$aliData")
-                orderId = JSONObject(aliData).getJSONObject("paymentPageSession").getString("orderId")
+                val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog,null)
+                val builder = AlertDialog.Builder(context)
+                builder.setView(dialogView)
+                val dialog = builder.show()
+                dialogView.instruction_hint.text = resources.getText(R.string.instruction_hint)
+                dialogView.confirm.setOnClickListener {
+                    dialog.dismiss()
+                    amt_input_err.visibility = View.GONE
+                    val client = OkHttpClient()
+                    val formBody = FormBody.Builder()
+                        .add("amount", amount_display.text.toString())
+                        .add("user_id", pk)
+                        .add("currency", "0")
+                        .add("language", "zh-Hans")
+                        .add("method", "ALIPAY")
+                        .build()
 
-                var ali_url = JSONObject(aliData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
+                    val request = Request.Builder()
+                        .url(URLs.QAICASH)
+                        .post(formBody)
+                        .build()
+                    val response = client.newCall(request).execute()
+                    var aliData = response.body()!!.string()
+                    Log.e("ali", aliData)
+                    orderId = JSONObject(aliData).getJSONObject("paymentPageSession").getString("orderId")
+                    var ali_url = JSONObject(aliData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
 
-                val res = Intent(activity, QaiAliOpenPage::class.java)
-                res.putExtra("aliurl", ali_url)
-                res.putExtra("aliorderId", orderId)
-                res.putExtra("alibalance", amount_display.text.toString())
-                startActivity(res)
+                    val res = Intent(activity, QaiAliOpenPage::class.java)
+                    res.putExtra("aliurl", ali_url)
+                    res.putExtra("aliorderId", orderId)
+                    res.putExtra("alibalance", amount_display.text.toString())
+                    startActivity(res)
+                }
+
             }
 
         }

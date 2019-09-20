@@ -10,13 +10,18 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+
 import com.app.android.ibet.api.Api
+
+import com.app.android.ibet.api.URLs
+
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_email_auth_p3.*
 import kotlinx.android.synthetic.main.activity_email_auth_p3.city_edit
 import kotlinx.android.synthetic.main.activity_email_auth_p3.country_id
 import kotlinx.android.synthetic.main.activity_email_auth_p3.edit_address
 import kotlinx.android.synthetic.main.activity_email_auth_p3.zip_code_edit
+import kotlinx.android.synthetic.main.activity_veri_phone.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -75,7 +80,7 @@ class emailAuthP3: AppCompatActivity() {
             signupJson.put("username"         , intent.getStringExtra(emailAuthP2.USER))
             signupJson.put("password"        ,  intent.getStringExtra(emailAuthP1.PASS1))
             signupJson.put("email"            , intent.getStringExtra(emailAuthP1.MAIL))
-            signupJson.put("phone"            , phone1.text.toString())
+            signupJson.put("phone"            , country_code_picker1.selectedCountryCode.toString() + phone1.text.toString())
             signupJson.put("first_name"       , intent.getStringExtra(emailAuthP2.FIRST))
             signupJson.put("last_name"        , intent.getStringExtra(emailAuthP2.LAST))
             signupJson.put("date_of_birth"    , intent.getStringExtra(emailAuthP2.BIRTH))
@@ -86,7 +91,8 @@ class emailAuthP3: AppCompatActivity() {
             signupJson.put("over_eighteen"    , true)
 
 
-            val signupInfo = Api().post(signupJson.toString(), BuildConfig.SIGNUP_URL)
+            //val url = "http://10.0.2.2:8000/users/api/signup/"
+            Api().post(signupJson.toString(), URLs.SIGNUP_URL)
             Api().myLog("signupInfo: $signupInfo")
             val res = Intent(applicationContext, Verify::class.java)
             res.putExtra("user", intent.getStringExtra(emailAuthP2.USER))

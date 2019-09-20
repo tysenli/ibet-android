@@ -12,6 +12,7 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_amount_input.*
 import kotlinx.android.synthetic.main.frag_fgo.*
 import okhttp3.FormBody
@@ -42,7 +43,7 @@ class Fgo : Fragment() {
 
             val request = Request.Builder()
                 .addHeader("Authorization", "Token " + Login.token)
-                .url(BuildConfig.Fgate)
+                .url(URLs.Fgate)
                 .post(formBody)
                 .build()
             val response = client.newCall(request).execute()
@@ -60,7 +61,7 @@ class Fgo : Fragment() {
                     depositJson.put("type", "add")
                     depositJson.put("username", user)
                     depositJson.put("balance", JSONObject(statusData).getString("amount"))
-                    val balance = Api().post(depositJson.toString(), BuildConfig.BALANCE)
+                    val balance = Api().post(depositJson.toString(), URLs.BALANCE)
                     MyAccount.info = "success"
                     val res = Intent(context, MyAccount::class.java)
                     startActivity(res)

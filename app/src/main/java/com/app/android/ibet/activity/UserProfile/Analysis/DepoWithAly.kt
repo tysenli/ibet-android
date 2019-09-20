@@ -17,6 +17,7 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amt
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import com.wajahatkarim3.easyvalidation.core.view_ktx.atleastOneLowerCase
 import kotlinx.android.synthetic.main.frag_depowith_aly.*
 import kotlinx.android.synthetic.main.frag_sports_aly.*
@@ -40,7 +41,7 @@ class DepoWithAly : Fragment() {
 
         val request = Request.Builder()
             //.url("http://10.0.2.2:8000/accounting/api/transactions/get_transactions?userid=Jennie")
-            .url(BuildConfig.TRANSACTION_RECODE + username)
+            .url(URLs.TRANSACTION_RECODE + username)
             .build()
         val response = OkHttpClient().newCall(request).execute()
         val transaction = response.body()!!.string()
