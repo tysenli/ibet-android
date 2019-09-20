@@ -37,15 +37,34 @@ class Login : AppCompatActivity() {
 
         setContentView(R.layout.activity_login)
 
+        val sharedPreference = SharedPreference(this)
+
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
 
         StrictMode.setThreadPolicy(policy)
         userlogin.isEnabled = false
+
         forgot_password.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
 
+        if (sharedPreference.getValueString("name") != null) {
+            login_user.setText(sharedPreference.getValueString("name")!!)
+        }
+        if (sharedPreference.getValueString("password") != null) {
+            login_password.setText(sharedPreference.getValueString("password")!!)
+        }
+
+        if (login_user.nonEmpty() && login_password.nonEmpty()) {
+            userlogin.setBackgroundResource(R.drawable.btn_red)
+            userlogin.isEnabled = true
+        } else {
+            userlogin.setBackgroundResource(R.drawable.btn_red2)
+            userlogin.isEnabled = false
+        }
         login_password.addTextChangedListener (object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
+
+
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -77,6 +96,9 @@ class Login : AppCompatActivity() {
             startActivity(intent)
         }
         userlogin.setOnClickListener {
+
+            sharedPreference.save("name",login_user.text.toString())
+            sharedPreference.save("password",login_password.text.toString())
 
             val loginJson = JSONObject()
             loginJson.put("username", login_user.text.toString())
