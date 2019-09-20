@@ -57,7 +57,7 @@ class QaiWechatOpenPage : AppCompatActivity() {
                 startActivity(res)
             } else {
                 val statusData = response.body()!!.string()
-
+                Api().myLog("wechatPay: $statusData")
 
                 if (JSONObject(statusData).getInt("status") == 0) {
 

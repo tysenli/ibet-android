@@ -105,6 +105,7 @@ class AsiaQuickPay : Fragment() {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 100 - 3000"
             } else {
+
                 val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog, null)
                 val builder = AlertDialog.Builder(context)
                 builder.setView(dialogView)
@@ -147,6 +148,7 @@ class AsiaQuickPay : Fragment() {
                         startActivity(res)
 
                     }
+
                 }
             }
 /*

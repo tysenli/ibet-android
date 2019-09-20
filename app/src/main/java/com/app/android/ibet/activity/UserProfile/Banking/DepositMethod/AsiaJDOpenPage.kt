@@ -59,6 +59,9 @@ class AsiaJDOpenPage : AppCompatActivity() {
             } else {
                 val statusData = response.body()!!.string()
 
+                Api().myLog("JDpay:$statusData")
+
+
                 if (JSONObject(statusData).getString("status") == "001") {
 
                     val depositJson = JSONObject()

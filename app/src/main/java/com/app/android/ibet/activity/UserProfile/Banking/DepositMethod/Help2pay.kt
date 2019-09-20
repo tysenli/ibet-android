@@ -116,6 +116,7 @@ class Help2pay : Fragment() {
                     startActivity(res)
                 } else {
                     val statusData = response.body()!!.string()
+                    Api().myLog("help2Pay:$statusData")
                     val res = Intent(activity, Help2payOpenPage::class.java)
                     res.putExtra("help2pay", statusData)
                     startActivity(res)

@@ -159,6 +159,7 @@ class QaiBank : Fragment() {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 100 - 10000"
             } else {
+
                 val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog,null)
                 val builder = AlertDialog.Builder(context)
                 builder.setView(dialogView)
@@ -203,6 +204,7 @@ class QaiBank : Fragment() {
                         //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(openUrl)))
 
                     }
+
                 }
             }
         }

@@ -109,6 +109,7 @@ class AsiaWechat : Fragment() {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 500 - 2000"
             } else {
+
                 val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog, null)
                 val builder = AlertDialog.Builder(context)
                 builder.setView(dialogView)
@@ -147,6 +148,7 @@ class AsiaWechat : Fragment() {
                         startActivity(res)
 
                     }
+
                 }
             }
             //println(response.code())

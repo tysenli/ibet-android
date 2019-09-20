@@ -55,7 +55,7 @@ class QaiBankOpenPage : AppCompatActivity() {
                 startActivity(res)
             } else {
                 val statusData = response.body()!!.string()
-                //println(JSONObject(statusData).getString("status"))
+                Api().myLog("bank: $statusData")
 
                 if (JSONObject(statusData).getInt("status") == 0) {
 

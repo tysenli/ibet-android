@@ -114,6 +114,7 @@ class AsiaJDPay : Fragment() {
         }
 
         btn_wechat_dep.setOnClickListener {
+
             if (amount_display.text.toString() == "" || amount_display.text.toString().toFloat() < 100 || amount_display.text.toString().toFloat() > 900) {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 100 - 900"
@@ -157,6 +158,7 @@ class AsiaJDPay : Fragment() {
 
                     }
                 }
+
             }
 
             /*

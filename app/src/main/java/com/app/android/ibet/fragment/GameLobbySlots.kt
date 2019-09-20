@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.api.URLs
 import com.app.android.ibet.model.FilterModel
 import com.app.android.ibet.model.GameModelResponse
 import com.google.gson.GsonBuilder
@@ -42,7 +43,7 @@ class GameLobbySlots: Fragment() {
 
 
     private  fun fetchGames(){
-        val url = BuildConfig.GAME_URL+ "slots"
+        val url = URLs.GAME_URL+ "slots"
 
         val request = Request.Builder().url(url).build()
 
@@ -71,7 +72,7 @@ class GameLobbySlots: Fragment() {
     }
     private fun fetchFilter(){
 
-        val url = BuildConfig.GAME_FILTER
+        val url = URLs.GAME_FILTER
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
         client.newCall(request).enqueue((object: okhttp3.Callback{
