@@ -10,5 +10,5 @@
     <color name="btn_l">#d8d8d8</color>
     <color name="blue">#0091ff</color>
     <color name="toast">#00cc66</color>
-
+    <color name="delete">#d0d0d0</color>
 </resources>

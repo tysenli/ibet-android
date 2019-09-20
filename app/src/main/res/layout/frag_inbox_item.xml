@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
 
-                                             android:layout_height="match_parent">
-    <!--<HorizontalScrollView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:scrollbars="none"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"-->
-            <!--android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"-->
-    <!--&gt;-->
-        <!--<LinearLayout android:layout_width="wrap_content"-->
-                      <!--android:layout_height="wrap_content"-->
-                      <!--android:orientation="horizontal"-->
-                      <!--android:clickable="true"-->
-        <!--&gt;-->
-
-
+<com.daimajia.swipe.SwipeLayout
+        xmlns:swipe="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        swipe:leftEdgeSwipeOffset="0dp"
+        swipe:rightEdgeSwipeOffset="0dp">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#d8d8d8"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:tag="Bottom3"
+            android:weightSum="10">
+        ​<TextView
+                android:id="@+id/delete"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="4"
+                android:text="Delete"
+                android:textStyle="bold"
+                android:background="#d8d8d8"
+                android:letterSpacing="0.04"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:textColor="#5c5c5c" />
+    </LinearLayout>
+    ​
     <LinearLayout
             android:id="@+id/unread"
             android:orientation="vertical"
@@ -27,12 +39,9 @@
             android:background="@drawable/group"
             android:layout_weight="1"
             android:fitsSystemWindows="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="22dp" android:layout_marginEnd="20dp">
-
-
+            android:layout_marginEnd="20dp">
+        ​
+        ​
         <TextView android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_marginTop="8dp"
@@ -72,19 +81,18 @@
                     android:lineSpacingExtra="7sp"
                     android:gravity="end"
             />
-
+            ​
         </RelativeLayout>
-
+        ​
     </LinearLayout>
-
-        <!--<Button android:id="@+id/delete"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:text="delete"-->
-                <!--android:background="#d8d8d8"-->
-                <!--android:layout_marginEnd="6dp"-->
-
-        <!--/>-->
-       <!--</LinearLayout>-->
-    <!--</HorizontalScrollView>-->
-</androidx.constraintlayout.widget.ConstraintLayout>
+    ​
+    <!--<Button android:id="@+id/delete"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:text="delete"-->
+    <!--android:background="#d8d8d8"-->
+    <!--android:layout_marginEnd="6dp"-->
+    ​
+    <!--/>-->
+    ​
+</com.daimajia.swipe.SwipeLayout>
