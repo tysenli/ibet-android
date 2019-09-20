@@ -49,14 +49,14 @@
             app:layout_constraintTop_toBottomOf="@+id/by_game" app:layout_constraintVertical_bias="0.0"
             android:layout_marginTop="22dp"/>
     <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/by_game" app:layout_constraintVertical_bias="0.0"
-            android:layout_marginTop="22dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/by_game" app:layout_constraintVertical_bias="0.0"
+        android:layout_marginTop="22dp">
         <ListView
                 android:id="@+id/slots_list_byday"
                 android:layout_width="wrap_content"
