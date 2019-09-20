@@ -43,6 +43,8 @@ public final class URLs {
         val Circlepay = BuildConfig.BASE_URL + "/accounting/api/circlepay/deposit"
         val Scratch = BuildConfig.BASE_URL + "/accounting/api/scratchcard/deposit"
 
+        val LOG = BuildConfig.BASE_URL + "/system/api/logstreamtos3/"
+
     }
 
 }

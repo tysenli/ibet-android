@@ -101,7 +101,7 @@ class Api {
         val logJson = JSONObject()
         logJson.put("line", log)
         logJson.put("source", "Android")
-        Api().post(logJson.toString(), BuildConfig.LOG)
+        Api().post(logJson.toString(), URLs.LOG)
 
     }
 

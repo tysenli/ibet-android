@@ -92,7 +92,7 @@ class emailAuthP3: AppCompatActivity() {
 
 
             //val url = "http://10.0.2.2:8000/users/api/signup/"
-            Api().post(signupJson.toString(), URLs.SIGNUP_URL)
+            val signupInfo = Api().post(signupJson.toString(), URLs.SIGNUP_URL)
             Api().myLog("signupInfo: $signupInfo")
             val res = Intent(applicationContext, Verify::class.java)
             res.putExtra("user", intent.getStringExtra(emailAuthP2.USER))
