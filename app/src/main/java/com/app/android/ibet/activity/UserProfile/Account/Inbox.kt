@@ -1,5 +1,6 @@
 package com.app.android.ibet.activity.UserProfile.Account
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +16,8 @@ import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
+import com.daimajia.swipe.SwipeLayout
+import com.daimajia.swipe.adapters.BaseSwipeAdapter
 import kotlinx.android.synthetic.main.frag_inbox.*
 import kotlinx.android.synthetic.main.frag_inbox_detail.*
 import okhttp3.OkHttpClient
@@ -60,14 +63,21 @@ class Inbox : Fragment() {
                 pk += userMessageList.getJSONObject(i).getString("pk")
             }
 
-            val myListAdapter = InboxAdapter(activity!!, userMessageList, pk)
+            val myListAdapter = ListViewAdapter(activity!!, userMessageList)
             item.adapter = myListAdapter
-            item.setOnItemClickListener() {adapterView, view, position, id ->
+
+
+
+            item.setOnItemClickListener() { adapterView, view, position, id ->
                 pos = position
                 MyAccount.info = "inbox_detail"
                 startActivity(Intent(activity, MyAccount::class.java))
                 activity!!.overridePendingTransition(0, 0)
+                // true
+
+
             }
+
 /*
             delete.setOnClickListener {
                 val req = Request.Builder()
@@ -86,6 +96,7 @@ class Inbox : Fragment() {
     }
 }
 // private val userMessageList: JSONArray
+/*
 class InboxAdapter(private val context: FragmentActivity, private val userMessageList: JSONArray ,private val pk: Array<String>):
     ArrayAdapter<String>(context, R.layout.frag_inbox_item, pk) {
 
@@ -112,5 +123,60 @@ class InboxAdapter(private val context: FragmentActivity, private val userMessag
 
 
         return rowView
+    }
+} */
+
+class ListViewAdapter(private val mContext: Context,private val userMessageList: JSONArray) : BaseSwipeAdapter() {
+
+    override fun getSwipeLayoutResourceId(position: Int): Int {
+        return R.id.swipe
+    }
+
+    override fun generateView(position: Int, parent: ViewGroup): View {
+        val v = LayoutInflater.from(mContext).inflate(R.layout.frag_inbox_item, null)
+        val swipeLayout = v.findViewById(getSwipeLayoutResourceId(position)) as SwipeLayout
+
+
+        if (userMessageList.getJSONObject(position).getBoolean("is_read")) {
+            val bg = v.findViewById(R.id.unread) as LinearLayout
+            bg.setBackgroundResource(R.drawable.read)
+        }
+
+        swipeLayout.setOnDoubleClickListener { layout, surface ->
+            Toast.makeText(
+                mContext,
+                "DoubleClick",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        v.findViewById<TextView>(R.id.delete).setOnClickListener(View.OnClickListener {
+            Toast.makeText(mContext, "click delete", Toast.LENGTH_SHORT).show()
+        })
+        return v
+    }
+
+    override fun fillValues(position: Int, convertView: View) {
+
+
+        val subjectText = convertView.findViewById<View>(R.id.inbox_subject) as TextView
+        subjectText.text = userMessageList.getJSONObject(position).getString("subject")
+
+        val contentText = convertView.findViewById<View>(R.id.inbox_content) as TextView
+        contentText.text = userMessageList.getJSONObject(position).getString("content")
+
+        val timeText  = convertView.findViewById<View>(R.id.inbox_time) as TextView
+        timeText .text = userMessageList.getJSONObject(position).getString("publish_on")
+    }
+
+    override fun getCount(): Int {
+        return userMessageList.length()
+    }
+
+    override fun getItem(position: Int): Any? {
+        return null
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
     }
 }
