@@ -22,11 +22,6 @@ android {
 
             buildConfigField 'String','BASE_URL',"\"http://10.0.2.2:8000\""
 
-            buildConfigField 'String', 'GAME_URL', "\"$local/games/api/games/?type=\""
-            buildConfigField('String', 'GAME_URL_CATEGORY', "\"&category=\"")
-            buildConfigField('String', 'GAME_FILTER', "\"$local/games/api/filter/\"")
-
-
             buildConfigField('String', 'USER_INBOX', "\"$local/operation/api/notification-users/\"")
             buildConfigField('String', 'USER_INBOX_READ', "\"$local/operation/api/read_message/\"")
             buildConfigField('String', 'USER_INBOX_DELETE', "\"$local/operation/api/delete_message/\"")
