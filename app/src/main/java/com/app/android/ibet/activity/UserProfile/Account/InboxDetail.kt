@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.activity.UserProfile.Account.Inbox.Companion.isDelete
 import com.app.android.ibet.activity.UserProfile.Account.Inbox.Companion.pos
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import kotlinx.android.synthetic.main.frag_inbox_detail.*
@@ -68,6 +69,8 @@ class InboxDetail: Fragment() {
                     MyAccount.info = "inbox"
                     startActivity(Intent(activity, MyAccount::class.java))
                     activity!!.overridePendingTransition(0, 0)
+
+                    isDelete = true
                 }
             }
         }

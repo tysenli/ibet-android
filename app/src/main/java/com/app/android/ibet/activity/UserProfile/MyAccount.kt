@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
@@ -171,17 +172,62 @@ class MyAccount : AppCompatActivity() {
         if (!MainActivity.isLogin) {
             menu!!.findItem(R.id.logged).isVisible = false
             menu.findItem(R.id.login).isVisible = true
+            menu.findItem(R.id.deposit).isVisible = false
+            menu.findItem(R.id.notification).isVisible = false
+            val menuItem = menu.findItem(R.id.login)
+            val rootView = menuItem.actionView
+            loginShow = rootView.findViewById(R.id.login_btn)
+            loginShow.setOnClickListener {
+                startActivity(Intent(this, Login::class.java))
+                overridePendingTransition(0, 0)
+            }
+            /*
+            amtShow = rootView.findViewById(R.id.balance_icon)
+            amtShow.setOnClickListener {
+                startActivity(Intent(this, Signup::class.java))
+                overridePendingTransition(0, 0)
+            } */
+
         } else {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
-        }
-        val menuItem = menu.findItem(R.id.deposit)
-        val rootView = menuItem.actionView
+            menu.findItem(R.id.deposit).isVisible = true
+            menu.findItem(R.id.notification).isVisible = false
+            val menuItem = menu.findItem(R.id.deposit)
+            val rootView = menuItem.actionView
 
-        amtShow = rootView.findViewById(R.id.balance_icon)
-        amtShow.text = amt.split(".")[0]
-        amtShow.setOnClickListener {
-            startActivity(Intent(this, Deposit::class.java))
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url(BuildConfig.USER_INBOX_UNREAD + JSONObject(MyAccount.userData).getString("pk"))
+                .build()
+
+            val response = client.newCall(request).execute()
+            val notiCnt = response.body()!!.string()
+            Log.e("cnt",notiCnt)
+            if (notiCnt.toInt() > 0) {
+                menu.findItem(R.id.notification).isVisible = true
+                menu!!.findItem(R.id.logged).isVisible = false
+                menu.findItem(R.id.login).isVisible = false
+                menu.findItem(R.id.deposit).isVisible = true
+                val menuItem = menu.findItem(R.id.notification)
+                val rootView = menuItem.actionView
+
+                val button= rootView.findViewById<Button>(R.id.notification_cnt)
+                button.text = notiCnt
+
+                val notiImg= rootView.findViewById<ImageView>(R.id.noti_img)
+                notiImg.setOnClickListener {
+                    info = "deposit"
+                    startActivity(Intent(this, MyAccount::class.java))
+                    overridePendingTransition(0, 0)
+
+                }
+
+            }
+
+            amtShow = rootView.findViewById(R.id.balance_icon)
+            amtShow.text = MyAccount.amt.split(".")[0]
+
         }
         return super.onPrepareOptionsMenu(menu)
     }
@@ -198,6 +244,12 @@ class MyAccount : AppCompatActivity() {
             }
             R.id.login -> {
                 startActivity(Intent(this, Login::class.java))
+                overridePendingTransition(0, 0)
+                return true
+            }
+            R.id.notification -> {
+                info = "deposit"
+                startActivity(Intent(this, MyAccount::class.java))
                 overridePendingTransition(0, 0)
                 return true
             }

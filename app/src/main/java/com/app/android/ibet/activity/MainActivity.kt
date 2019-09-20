@@ -210,6 +210,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             menu!!.findItem(R.id.logged).isVisible = false
             menu.findItem(R.id.login).isVisible = true
             menu.findItem(R.id.deposit).isVisible = false
+            menu.findItem(R.id.notification).isVisible = false
             val menuItem = menu.findItem(R.id.login)
             val rootView = menuItem.actionView
             loginShow = rootView.findViewById(R.id.login_btn)
@@ -228,19 +229,38 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
             menu.findItem(R.id.deposit).isVisible = true
+            menu.findItem(R.id.notification).isVisible = false
             val menuItem = menu.findItem(R.id.deposit)
             val rootView = menuItem.actionView
 
             val client = OkHttpClient()
-//        val JSON = MediaType.get("application/json; charset=utf-8")
-//        val body = RequestBody.create(JSON, changeJson.toString())
             val request = Request.Builder()
-//            .addHeader("Authorization", "token " + Login.token)
-                .url(BuildConfig.USER_INBOX + JSONObject(MyAccount.userData).getString("pk"))
-//            .post(body)
+                .url(BuildConfig.USER_INBOX_UNREAD + JSONObject(MyAccount.userData).getString("pk"))
                 .build()
 
             val response = client.newCall(request).execute()
+            val notiCnt = response.body()!!.string()
+            Log.e("cnt",notiCnt)
+            if (notiCnt.toInt() > 0) {
+                menu.findItem(R.id.notification).isVisible = true
+                menu!!.findItem(R.id.logged).isVisible = false
+                menu.findItem(R.id.login).isVisible = false
+                menu.findItem(R.id.deposit).isVisible = true
+                val menuItem = menu.findItem(R.id.notification)
+                val rootView = menuItem.actionView
+
+                val button= rootView.findViewById<Button>(R.id.notification_cnt)
+                button.text = notiCnt
+
+                val notiImg= rootView.findViewById<ImageView>(R.id.noti_img)
+                notiImg.setOnClickListener {
+                    info = "deposit"
+                    startActivity(Intent(this, MyAccount::class.java))
+                    overridePendingTransition(0, 0)
+
+                }
+
+            }
 
             amtShow = rootView.findViewById(R.id.balance_icon)
             amtShow.text = MyAccount.amt.split(".")[0]
@@ -321,6 +341,12 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
                 ft.replace(R.id.frag_placeholder, Login(this@MainActivity), "FAVORITES_FRAG")
                 ft.commit() */
                 startActivity(Intent(this, Login::class.java))
+                overridePendingTransition(0, 0)
+                return true
+            }
+            R.id.notification -> {
+                info = "deposit"
+                startActivity(Intent(this, MyAccount::class.java))
                 overridePendingTransition(0, 0)
                 return true
             }

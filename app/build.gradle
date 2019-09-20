@@ -28,7 +28,7 @@ android {
             buildConfigField('String', 'USER_INBOX', "\"$local/operation/api/notification-users/\"")
             buildConfigField('String', 'USER_INBOX_READ', "\"$local/operation/api/read_message/\"")
             buildConfigField('String', 'USER_INBOX_DELETE', "\"$local/operation/api/delete_message/\"")
-
+            buildConfigField('String', 'USER_INBOX_UNREAD', "\"$local/operation/api/notification-count/\"")
 
         }
         release {

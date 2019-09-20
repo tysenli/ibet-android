@@ -3,7 +3,9 @@ package com.app.android.ibet.activity.UserProfile.Account
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.activity.UserProfile.Account.Inbox.Companion.isDelete
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.daimajia.swipe.SwipeLayout
@@ -34,6 +37,7 @@ class Inbox : Fragment() {
     //private var parentContext = context
     companion object {
         var pos = 0
+        var isDelete = false
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -42,6 +46,20 @@ class Inbox : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        if (isDelete) {
+            isDelete = false
+            val toast = Toast.makeText(
+                context,
+                "Message deleted", Toast.LENGTH_SHORT
+            )
+            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 260)
+            val view = toast.view
+            view.setBackgroundResource(R.color.delete)
+            val text = view.findViewById<TextView>(android.R.id.message)
+            text.setTextColor(Color.parseColor("#000000"))
+            toast.show()
+        }
 
         val client = OkHttpClient()
 //        val JSON = MediaType.get("application/json; charset=utf-8")
@@ -167,6 +185,8 @@ class ListViewAdapter(private val mContext: Context,private val userMessageList:
                 MyAccount.info = "inbox"
                 mContext.startActivity(Intent(mContext, MyAccount::class.java))
                 // ((Activity)mContext).overridePendingTransition(0, 0)
+
+                isDelete = true
             }
         })
         return v
