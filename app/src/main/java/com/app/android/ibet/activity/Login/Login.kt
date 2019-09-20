@@ -49,7 +49,7 @@ class Login : AppCompatActivity() {
         userlogin.isEnabled = false
 
 
-        forgot_password.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+        //forgot_password.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
         login_hint.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         sign_up_here.paintFlags = Paint.UNDERLINE_TEXT_FLAG
