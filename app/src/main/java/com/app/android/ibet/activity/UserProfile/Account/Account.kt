@@ -65,6 +65,11 @@ class Account : Fragment() {
             startActivity(Intent(activity, MyAccount::class.java))
             activity!!.overridePendingTransition(0, 0)
         }
+        acc_inbox.setOnClickListener {
+            info = "inbox"
+            startActivity(Intent(activity, MyAccount::class.java))
+            activity!!.overridePendingTransition(0, 0)
+        }
         logout.setOnClickListener {
             isLogin = false
             token = ""

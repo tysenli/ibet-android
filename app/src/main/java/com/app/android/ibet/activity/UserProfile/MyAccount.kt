@@ -17,6 +17,8 @@ import com.app.android.ibet.activity.Login.Login.Companion.token
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.UserProfile.Account.Account
 import com.app.android.ibet.activity.UserProfile.Account.EditAcc
+import com.app.android.ibet.activity.UserProfile.Account.Inbox
+import com.app.android.ibet.activity.UserProfile.Account.InboxDetail
 import com.app.android.ibet.activity.UserProfile.Analysis.*
 import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.activity.UserProfile.Banking.BankingDepo
@@ -106,6 +108,8 @@ class MyAccount : AppCompatActivity() {
 
             "acc"        -> pages[2] = FragmentPagerItem.of("Account", Account().javaClass)
             "acc_edit"   -> pages[2] = FragmentPagerItem.of("Account", EditAcc().javaClass)
+            "inbox"      -> pages[2] = FragmentPagerItem.of("Account", Inbox().javaClass)
+            "inbox_detail"-> pages[2] = FragmentPagerItem.of("Account", InboxDetail().javaClass)
 
             "lock_account"-> pages[3] = FragmentPagerItem.of("Responsible Game", Lock().javaClass)
             "rg"         -> pages[3] = FragmentPagerItem.of("Responsible Game",  ResponsibleGame().javaClass)
@@ -129,6 +133,8 @@ class MyAccount : AppCompatActivity() {
 
             "acc"        -> account_viewpager.setCurrentItem(2, true)
             "acc_edit"   -> account_viewpager.setCurrentItem(2, true)
+            "inbox"      -> account_viewpager.setCurrentItem(2, true)
+            "inbox_detail"-> account_viewpager.setCurrentItem(2, true)
 
             "lock_account"-> account_viewpager.setCurrentItem(3, true)
             "rg"          -> account_viewpager.setCurrentItem(3, true)
