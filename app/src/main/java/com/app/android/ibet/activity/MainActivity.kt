@@ -42,9 +42,14 @@ import android.widget.Toast
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame.Companion.remindTime
+
 import com.app.android.ibet.api.URLs
 import okhttp3.OkHttpClient
 import okhttp3.Request
+
+import com.app.android.ibet.api.Api
+import kotlinx.android.synthetic.main.activity_login.*
+
 import org.json.JSONObject
 
 
@@ -120,86 +125,16 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             )// 1000*10*60 every 10 minutes
         }
 
-            //toolbar.setTitleTextColor(Color.RED)
-/*
-        //nav_view.setNavigationItemSelectedListener(this)
-        var language = arrayOf("Language", "English", "Chinese", "Thai")
-        var lanImg = arrayOf(R.drawable.lan_bng, R.drawable.gb, R.drawable.cn, R.drawable.th)
-        // var flag[] = {R.drawable.gb, R.drawable.cn, R.drawable.th}
-        var lanSpinner = findViewById<Spinner>(R.id.language_navi)
-        var lan: String = ""
-        if (lanSpinner != null) {
-            val arrayAdapter = CustomDropDownAdapter(this, lanImg, language)
-            //CusAdapter(this, flag, language)
-            lanSpinner.adapter = arrayAdapter
 
-            lanSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    //Toast.makeText(this, getString(R.string.selected_item) + " " + gender[position], Toast.LENGTH_SHORT).show()
 
-                    when (position) {
-                        1 -> {
-                            val locale = Locale("en")
-                            val config = Configuration()
-                            config.locale = locale
-                            baseContext.resources.updateConfiguration(
-                                config,
-                                baseContext.resources.displayMetrics
-                            )
-                            startActivity(Intent(baseContext, MainActivity::class.java))
-                        }
-                        2 -> {
 
-                            val locale = Locale("zh")
-                            val config = Configuration()
-                            config.locale = locale
-                            baseContext.resources.updateConfiguration(
-                                config,
-                                baseContext.resources.displayMetrics
-                            )
-                            startActivity(Intent(baseContext, MainActivity::class.java))
-                        }
-                    }
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // Code to perform some action when nothing is selected
-                }
-            }
-
-        }*/
-
-/*
-        rules.setOnClickListener {
-            val fm = supportFragmentManager
-            val ft = fm.beginTransaction()
-            ft.replace(R.id.frag_placeholder, Cookie(), "cookie")
-            ft.commit()
-        }
-
-        guides.setOnClickListener {
-
-            val fm = supportFragmentManager
-            val ft = fm.beginTransaction()
-            ft.replace(R.id.frag_placeholder, Privacy(), "privacy")
-            ft.commit()
-
-        }
-        terms.setOnClickListener {
-
-            val fm = supportFragmentManager
-            val ft = fm.beginTransaction()
-            ft.replace(R.id.frag_placeholder, Terms(), "terms")
-            ft.commit()
-
-        } */
-        /*
+           /*
         val filePath = Environment.getExternalStorageDirectory().toString() + "/logcat.txt"
         println(filePath)
-        Runtime.getRuntime().exec(arrayOf("logcat","-f",filePath,"MyAppTAG:V", "*:S")) */
+        Runtime.getRuntime().exec(arrayOf("logcat","-f",filePath,"MyAppTAG:V", "*:S"))
         ZLog.Init(String.format("%s/log/", getExternalFilesDir(null).getPath()))
         //ZLog.e("TAG", "Internet Error");
-        /*
+
         on_board.setOnClickListener {
             startActivity(Intent(applicationContext, IntroOne::class.java))
         }*/
@@ -333,14 +268,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             } */
 
             R.id.login -> {
-                /*
-                val fm = supportFragmentManager
 
-                // add
-                val ft = fm.beginTransaction()
-                //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
-                ft.replace(R.id.frag_placeholder, Login(this@MainActivity), "FAVORITES_FRAG")
-                ft.commit() */
                 startActivity(Intent(this, Login::class.java))
                 overridePendingTransition(0, 0)
                 return true

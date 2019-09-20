@@ -57,7 +57,7 @@ class QaiBankWith: Fragment() {
                     .build()
                 val response = client.newCall(request).execute()
                 var withdrawData = response.body()!!.string()
-                //println(withdrawData)
+                Api().myLog("bankWithdraw: $withdrawData")
                 withdraworderId = JSONObject(withdrawData).getJSONObject("payoutTransaction").getString("orderId")
                 var withdraw_url = JSONObject(withdrawData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
 

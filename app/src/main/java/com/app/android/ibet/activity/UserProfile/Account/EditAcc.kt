@@ -43,8 +43,9 @@ class EditAcc : Fragment() {
         cur_pass_error.text = ""
         new_pass_error.text = ""
         match_error.text = ""
+
         var userData = Api().get(URLs.USER)
-        //println(userData)
+        
         acc_editid.text = "ID: " + JSONObject(userData).getString("pk")
         acc_first_name.text = JSONObject(userData).getString("first_name")
         acc_last_name.text = JSONObject(userData).getString("last_name")
@@ -160,8 +161,8 @@ class EditAcc : Fragment() {
                 .build()
 
             val response = client.newCall(request).execute()
-           // println(response.code())
-           // println("this is:" + response.body()!!.string())
+            Api().myLog("edit profile status: $response.code()")
+
 
             //change pass
             if (acc_edit_curpass.text.isNotEmpty()) {
@@ -189,6 +190,7 @@ class EditAcc : Fragment() {
                         .build()
 
                     val response = client.newCall(request).execute()
+                    Api().myLog("change password status: ${response.code()}")
                     if (response.code() == 400) {
                         cur_pass_error.text = "Incorrect password. Please, try again."
                     }

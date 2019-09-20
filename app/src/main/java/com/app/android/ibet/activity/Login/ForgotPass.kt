@@ -44,19 +44,19 @@ class ForgotPass : AppCompatActivity() {
                     .build()
 
             val response = client.newCall(request).execute()
-            //http://10.0.2.2:8000/users/api/generateactivationcode/
-            //val info = Api().post(forgetCodeJson.toString(), BuildConfig.FORGET_CODE )
-           // println(response.code())
+
             if (response.code() == 200) {
+
                 val info2 = Api().post(forgetCodeJson.toString(), URLs.FORGET_SEND_EMAIL)
+                Api().myLog( "forget password success: $info2")
 
                 val res = Intent(this, NewPass::class.java)
-
                 res.putExtra("mail",email_id2.text.toString())
                 startActivity(res)
             } else {
                 email_error1.text = "No such email exists."
                 email_error1.setTextColor(Color.RED)
+                Api().myLog("forget password error:" + email_error1.text.toString())
             }
 
 

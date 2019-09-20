@@ -110,6 +110,7 @@ class QaiWechat : Fragment() {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 500 - 2000"
             } else {
+
                 val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog,null)
                 val builder = AlertDialog.Builder(context)
                 builder.setView(dialogView)
@@ -143,6 +144,7 @@ class QaiWechat : Fragment() {
                     res.putExtra("balance", amount_display.text.toString())
                     startActivity(res)
                 }
+
             }
 
 

@@ -107,6 +107,7 @@ class AsiaAli : Fragment() {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 300 - 1500"
             } else {
+
                 val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog,null)
                 val builder = AlertDialog.Builder(context)
                 builder.setView(dialogView)
@@ -145,6 +146,7 @@ class AsiaAli : Fragment() {
 
 
                     }
+
                 }
             }
             //println(response.code())

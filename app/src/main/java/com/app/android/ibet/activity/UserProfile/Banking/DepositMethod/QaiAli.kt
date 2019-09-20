@@ -106,6 +106,7 @@ class QaiAli : Fragment() {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 300 - 1500"
             } else {
+
                 val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog,null)
                 val builder = AlertDialog.Builder(context)
                 builder.setView(dialogView)
@@ -139,6 +140,7 @@ class QaiAli : Fragment() {
                     res.putExtra("alibalance", amount_display.text.toString())
                     startActivity(res)
                 }
+
             }
 
         }

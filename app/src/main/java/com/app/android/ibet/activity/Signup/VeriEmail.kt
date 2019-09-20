@@ -6,7 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+
+import com.app.android.ibet.api.Api
+
 import com.app.android.ibet.api.URLs
+
 import kotlinx.android.synthetic.main.activity_veri_email.*
 import okhttp3.*
 
@@ -31,19 +35,20 @@ class VeriEmail : AppCompatActivity() {
         //http://10.0.2.2:8000/users/api/sendemail/?case=signup&username=test&to_email_address=jiaqi@claymore.com...
 
         veri_email.setOnClickListener {
+
             var urlBuilder = HttpUrl.parse(URLs.VERI_SIGNUP)!!.newBuilder()
-            println(email_verify.text.toString())
+    
             urlBuilder.addQueryParameter("username", intent.getStringExtra("user"))
             urlBuilder.addQueryParameter("to_email_address",email_verify.text.toString())
             urlBuilder.addQueryParameter("email",email_verify.text.toString())
             val url = urlBuilder.build().toString()
-            println(url)
+
             val request = Request.Builder()
                 .url(url)
                 .build()
-            println(request)
+
             val response = OkHttpClient().newCall(request).execute()
-            println(response.body()!!.string())
+            Api().myLog("emailVerify:" + response.body()!!.string())
             startActivity(Intent(applicationContext, Verified::class.java))
 
         }

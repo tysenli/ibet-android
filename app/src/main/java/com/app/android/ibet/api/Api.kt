@@ -7,10 +7,17 @@ import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
+import org.json.JSONObject
 import java.lang.Exception
 
-class Api {
+import java.io.IOException
 
+
+
+
+
+class Api {
+/*
     fun post(json : String, url : String):  String? {
 
         val client = OkHttpClient()
@@ -39,9 +46,9 @@ class Api {
             throw e
         }
     }
+*/
 
-
-
+/*
     fun get(url : String) : String? {
         try {
             val request = Request.Builder()
@@ -60,5 +67,42 @@ class Api {
         }
     }
 
+*/
+
+
+    @Throws(IOException::class)
+    fun get(url: String): String {
+        var client = OkHttpClient()
+        val request = Request.Builder()
+            .header("Authorization", "Token " + Login.token)
+            .url(url)
+            .build()
+
+        client.newCall(request).execute().use { response -> return response.body()!!.string() }
+    }
+
+
+
+
+
+    @Throws(IOException::class)
+    fun post( json: String, url: String): String {
+        val JSON = MediaType.get("application/json; charset=utf-8")
+        var client = OkHttpClient()
+        val body = RequestBody.create(JSON, json)
+        val request = Request.Builder()
+            .url(url)
+            .post(body)
+            .build()
+        client.newCall(request).execute().use { response -> return response.body()!!.string() }
+    }
+
+    fun myLog(log : String) {
+        val logJson = JSONObject()
+        logJson.put("line", log)
+        logJson.put("source", "Android")
+        Api().post(logJson.toString(), URLs.LOG)
+
+    }
 
 }

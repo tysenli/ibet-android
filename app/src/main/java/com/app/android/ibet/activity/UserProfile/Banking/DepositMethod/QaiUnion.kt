@@ -107,6 +107,7 @@ class QaiUnion : Fragment() {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 100 - 4000"
             } else {
+
                 val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog,null)
                 val builder = AlertDialog.Builder(context)
                 builder.setView(dialogView)
@@ -142,6 +143,7 @@ class QaiUnion : Fragment() {
                     res.putExtra("unionbalance", amount_display.text.toString())
                     startActivity(res)
                 }
+
             }
 
         }
