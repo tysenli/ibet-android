@@ -13,6 +13,9 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.Signup.emailAuthP1
 import com.app.android.ibet.activity.UserProfile.MyAccount
+
+import com.app.android.ibet.api.URLs
+
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame.Companion.lockInterval
 import kotlinx.android.synthetic.main.frag_lock.*
 import okhttp3.MediaType
@@ -42,7 +45,7 @@ class Lock : Fragment() {
             lockJson.put("userId", JSONObject(MyAccount.userData).getString("pk"))
             val body = RequestBody.create(JSON,  lockJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.LOCKTIME)
+                .url(URLs.LOCKTIME)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -52,12 +55,6 @@ class Lock : Fragment() {
             activity!!.overridePendingTransition(0, 0)
 
         }
-        /*
-        revert.setOnClickListener {
-            MyAccount.info = "rg"
-            var res = Intent(activity, MyAccount::class.java)
-            startActivity(res)
-            activity!!.overridePendingTransition(0, 0)
-        } */
+
     }
 }

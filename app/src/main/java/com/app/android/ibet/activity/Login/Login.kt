@@ -17,6 +17,7 @@ import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amt
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 
 import kotlinx.android.synthetic.main.activity_login.*
@@ -94,7 +95,7 @@ class Login : AppCompatActivity() {
 
             val request = Request.Builder()
                     // .addHeader("Authorization", "Bearer $token")
-                    .url(BuildConfig.LOGIN)
+                    .url(URLs.LOGIN)
                     .post(body)
                     .build()
 
@@ -114,10 +115,11 @@ class Login : AppCompatActivity() {
 
                     token = JSONObject(res).getString("key")
                     isLogin = true
-                    userData = Api().get(BuildConfig.USER)!!
+                    userData = Api().get(URLs.USER)!!
                     amt = JSONObject(userData).getString("main_wallet")
                     startActivity(Intent(this, MainActivity::class.java))
                 }
+
             }
 
         }

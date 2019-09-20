@@ -10,12 +10,14 @@ import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
-import kotlinx.android.synthetic.main.activity_amount_input.*
-import kotlinx.android.synthetic.main.activity_test.*
+import com.app.android.ibet.api.URLs
+import kotlinx.android.synthetic.main.activity_thirdparty.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class QaiAliOpenPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,12 +27,16 @@ class QaiAliOpenPage : AppCompatActivity() {
         actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_test)
+        setContentView(R.layout.activity_thirdparty)
         val myweb = findViewById<WebView>(R.id.webview)
         val setting = myweb.settings
         setting.javaScriptEnabled = true
         myweb.loadUrl(intent.getStringExtra("aliurl"))
         myweb.webViewClient = WebViewClient()
+        depo_method_show.background = resources.getDrawable(R.drawable.alipay)
+        payment_method.text = "Alipay"
+        order_number.text = intent.getStringExtra("aliorderId")
+        time.text = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
         deposit_check.setOnClickListener {
             val user = JSONObject(MyAccount.userData).getString("username")
 
@@ -38,7 +44,7 @@ class QaiAliOpenPage : AppCompatActivity() {
                 .add("trans_id", intent.getStringExtra("aliorderId"))
                 .build()
             val request = Request.Builder()
-                .url(BuildConfig.QAICASH_CONFIRM)
+                .url(URLs.QAICASH_CONFIRM)
                 .post(orderBody)
                 .build()
             val response = OkHttpClient().newCall(request).execute()
@@ -57,7 +63,7 @@ class QaiAliOpenPage : AppCompatActivity() {
                     depositJson.put("type", "add")
                     depositJson.put("username", user)
                     depositJson.put("balance", intent.getStringExtra("alibalance"))
-                    val balance = Api().post(depositJson.toString(), BuildConfig.BALANCE)
+                    val balance = Api().post(depositJson.toString(), URLs.BALANCE)
                     MyAccount.info = "success"
                     val res = Intent(this, MyAccount::class.java)
                     //res.putExtra("amount",intent.getStringExtra("balance"))
@@ -69,6 +75,12 @@ class QaiAliOpenPage : AppCompatActivity() {
                     startActivity(res)
                 }
             }
+        }
+        deposit_cancel.setOnClickListener {
+            MyAccount.info = "deposit"
+            val intent = Intent(this, MyAccount::class.java)
+            startActivity(intent)
+            this!!.overridePendingTransition(0, 0)
         }
 
     }

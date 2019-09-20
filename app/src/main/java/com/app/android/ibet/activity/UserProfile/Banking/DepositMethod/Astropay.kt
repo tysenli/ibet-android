@@ -18,6 +18,7 @@ import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AstropayI
 import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AstropayInfo.Companion.cvv
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_amount_input.*
 import kotlinx.android.synthetic.main.activity_total.*
 import okhttp3.MediaType
@@ -35,7 +36,7 @@ class Astropay : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "Astropay"
+        //depo_method_show.text = "Astropay"
         money_25.setOnClickListener {
             money_25.setBackgroundColor(Color.rgb(201, 199, 199))
             money_50.setBackgroundColor(Color.rgb(239, 239, 239))
@@ -116,7 +117,7 @@ class Astropay : Fragment() {
                 val body = RequestBody.create(JSON, astroJson.toString())
                 val request = Request.Builder()
                     .addHeader("Authorization", "Token " + Login.token)
-                    .url(BuildConfig.ASTROPAY)
+                    .url(URLs.ASTROPAY)
                     .post(body)
                     .build()
                 val response = client.newCall(request).execute()
@@ -135,7 +136,7 @@ class Astropay : Fragment() {
                         depositJson.put("type", "add")
                         depositJson.put("username", user)
                         depositJson.put("balance", amount_display.text.toString())
-                        val balance = Api().post(depositJson.toString(), BuildConfig.BALANCE)
+                        val balance = Api().post(depositJson.toString(), URLs.BALANCE)
                         MyAccount.info = "success"
                         val res = Intent(context, MyAccount::class.java)
                         //res.putExtra("amount",intent.getStringExtra("balance"))

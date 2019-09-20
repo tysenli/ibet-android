@@ -13,6 +13,7 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_amount_input.*
 import kotlinx.android.synthetic.main.frag_help2pay.*
 import kotlinx.android.synthetic.main.frag_scratch.*
@@ -61,7 +62,7 @@ class ScratchCard : Fragment() {
             val body = RequestBody.create(JSON, scratchJson.toString())
             val request = Request.Builder()
                 .addHeader("Authorization", "Token " + Login.token)
-                .url(BuildConfig.Scratch)
+                .url(URLs.Scratch)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -78,7 +79,7 @@ class ScratchCard : Fragment() {
                     depositJson.put("type", "add")
                     depositJson.put("username", user)
                     depositJson.put("balance", scratch_amt.text.toString())
-                    val balance = Api().post(depositJson.toString(), BuildConfig.BALANCE)
+                    val balance = Api().post(depositJson.toString(), URLs.BALANCE)
                     MyAccount.info = "success"
                     val res = Intent(context, MyAccount::class.java)
                     //res.putExtra("amount",intent.getStringExtra("balance"))
