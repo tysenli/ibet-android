@@ -1,5 +1,6 @@
 package com.app.android.ibet.activity.UserProfile.Account
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.app.android.ibet.BuildConfig
@@ -20,6 +22,7 @@ import com.daimajia.swipe.SwipeLayout
 import com.daimajia.swipe.adapters.BaseSwipeAdapter
 import kotlinx.android.synthetic.main.frag_inbox.*
 import kotlinx.android.synthetic.main.frag_inbox_detail.*
+import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
@@ -150,7 +153,21 @@ class ListViewAdapter(private val mContext: Context,private val userMessageList:
             ).show()
         }
         v.findViewById<TextView>(R.id.delete).setOnClickListener(View.OnClickListener {
-            Toast.makeText(mContext, "click delete", Toast.LENGTH_SHORT).show()
+            // Toast.makeText(mContext, "click delete", Toast.LENGTH_SHORT).show()
+            val client = OkHttpClient()
+            val pk = userMessageList.getJSONObject(Inbox.pos).getString("pk")
+            val JSON = MediaType.get("application/json; charset=utf-8")
+
+            val req = Request.Builder()
+                .url(BuildConfig.USER_INBOX_DELETE + pk)
+                .post(RequestBody.create(JSON, JSONObject().toString()))
+                .build()
+            val response = client.newCall(req).execute()
+            if (response.code() == 200) {
+                MyAccount.info = "inbox"
+                mContext.startActivity(Intent(mContext, MyAccount::class.java))
+                // ((Activity)mContext).overridePendingTransition(0, 0)
+            }
         })
         return v
     }

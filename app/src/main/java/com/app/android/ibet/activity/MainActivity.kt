@@ -39,8 +39,12 @@ import com.app.android.ibet.fragment.Display
 import com.zhangke.zlog.ZLog
 import kotlinx.android.synthetic.main.login_actionlayout.*
 import android.widget.Toast
+import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame.Companion.remindTime
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick {
@@ -226,6 +230,17 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             menu.findItem(R.id.deposit).isVisible = true
             val menuItem = menu.findItem(R.id.deposit)
             val rootView = menuItem.actionView
+
+            val client = OkHttpClient()
+//        val JSON = MediaType.get("application/json; charset=utf-8")
+//        val body = RequestBody.create(JSON, changeJson.toString())
+            val request = Request.Builder()
+//            .addHeader("Authorization", "token " + Login.token)
+                .url(BuildConfig.USER_INBOX + JSONObject(MyAccount.userData).getString("pk"))
+//            .post(body)
+                .build()
+
+            val response = client.newCall(request).execute()
 
             amtShow = rootView.findViewById(R.id.balance_icon)
             amtShow.text = MyAccount.amt.split(".")[0]

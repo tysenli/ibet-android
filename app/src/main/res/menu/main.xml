@@ -20,6 +20,11 @@
           app:actionLayout="@layout/dep_actionlayout"
           app:showAsAction="always"/>
 
+    <item android:id="@+id/notification"
+          android:title=""
+          android:orderInCategory="2"
+          app:actionLayout="@layout/inbox_count"
+          app:showAsAction="always"/>
 
 
     <item android:id="@+id/login"
