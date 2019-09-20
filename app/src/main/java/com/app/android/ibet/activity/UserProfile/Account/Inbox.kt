@@ -21,6 +21,7 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.Account.Inbox.Companion.isDelete
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
+import com.app.android.ibet.api.URLs
 import com.daimajia.swipe.SwipeLayout
 import com.daimajia.swipe.adapters.BaseSwipeAdapter
 import kotlinx.android.synthetic.main.frag_inbox.*
@@ -53,7 +54,7 @@ class Inbox : Fragment() {
                 context,
                 "Message deleted", Toast.LENGTH_SHORT
             )
-            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 260)
+            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 360)
             val view = toast.view
             view.setBackgroundResource(R.color.delete)
             val text = view.findViewById<TextView>(android.R.id.message)
@@ -66,7 +67,7 @@ class Inbox : Fragment() {
 //        val body = RequestBody.create(JSON, changeJson.toString())
         val request = Request.Builder()
 //            .addHeader("Authorization", "token " + Login.token)
-            .url(BuildConfig.USER_INBOX + JSONObject(userData).getString("pk"))
+            .url(URLs.USER_INBOX + JSONObject(userData).getString("pk"))
 //            .post(body)
             .build()
 
@@ -177,7 +178,7 @@ class ListViewAdapter(private val mContext: Context,private val userMessageList:
             val JSON = MediaType.get("application/json; charset=utf-8")
 
             val req = Request.Builder()
-                .url(BuildConfig.USER_INBOX_DELETE + pk)
+                .url(URLs.USER_INBOX_DELETE + pk)
                 .post(RequestBody.create(JSON, JSONObject().toString()))
                 .build()
             val response = client.newCall(req).execute()

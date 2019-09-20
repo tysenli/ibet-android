@@ -11,6 +11,7 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.Account.Inbox.Companion.isDelete
 import com.app.android.ibet.activity.UserProfile.Account.Inbox.Companion.pos
 import com.app.android.ibet.activity.UserProfile.MyAccount
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.frag_inbox_detail.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -32,7 +33,7 @@ class InboxDetail: Fragment() {
 //        val body = RequestBody.create(JSON, changeJson.toString())
         val request = Request.Builder()
 //            .addHeader("Authorization", "token " + Login.token)
-            .url(BuildConfig.USER_INBOX + JSONObject(MyAccount.userData).getString("pk"))
+            .url(URLs.USER_INBOX + JSONObject(MyAccount.userData).getString("pk"))
 //            .post(body)
             .build()
 
@@ -47,7 +48,7 @@ class InboxDetail: Fragment() {
             val JSON = MediaType.get("application/json; charset=utf-8")
             val request = Request.Builder()
 //            .addHeader("Authorization", "token " + Login.token)
-                .url(BuildConfig.USER_INBOX_READ + pk)
+                .url(URLs.USER_INBOX_READ + pk)
                 .post(RequestBody.create(JSON, JSONObject().toString()))
                 .build()
             val response = client.newCall(request).execute()
@@ -61,7 +62,7 @@ class InboxDetail: Fragment() {
 
             delete.setOnClickListener {
                 val req = Request.Builder()
-                    .url(BuildConfig.USER_INBOX_DELETE + pk)
+                    .url(URLs.USER_INBOX_DELETE + pk)
                     .post(RequestBody.create(JSON, JSONObject().toString()))
                     .build()
                 val response = client.newCall(req).execute()

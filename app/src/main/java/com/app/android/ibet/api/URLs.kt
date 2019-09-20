@@ -43,6 +43,10 @@ public final class URLs {
         val Circlepay = BuildConfig.BASE_URL + "/accounting/api/circlepay/deposit"
         val Scratch = BuildConfig.BASE_URL + "/accounting/api/scratchcard/deposit"
 
+        val USER_INBOX = BuildConfig.BASE_URL + "/operation/api/notification-users/"
+        val USER_INBOX_READ = BuildConfig.BASE_URL + "/operation/api/read_message/"
+        val USER_INBOX_DELETE = BuildConfig.BASE_URL + "/operation/api/delete_message/"
+        val USER_INBOX_UNREAD = BuildConfig.BASE_URL + "/operation/api/notification-count/"
     }
 
 }

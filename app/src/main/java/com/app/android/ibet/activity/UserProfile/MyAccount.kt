@@ -198,7 +198,7 @@ class MyAccount : AppCompatActivity() {
 
             val client = OkHttpClient()
             val request = Request.Builder()
-                .url(BuildConfig.USER_INBOX_UNREAD + JSONObject(MyAccount.userData).getString("pk"))
+                .url(URLs.USER_INBOX_UNREAD + JSONObject(MyAccount.userData).getString("pk"))
                 .build()
 
             val response = client.newCall(request).execute()

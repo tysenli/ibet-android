@@ -42,6 +42,7 @@ import android.widget.Toast
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame.Companion.remindTime
+import com.app.android.ibet.api.URLs
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
@@ -235,7 +236,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
 
             val client = OkHttpClient()
             val request = Request.Builder()
-                .url(BuildConfig.USER_INBOX_UNREAD + JSONObject(MyAccount.userData).getString("pk"))
+                .url(URLs.USER_INBOX_UNREAD + JSONObject(MyAccount.userData).getString("pk"))
                 .build()
 
             val response = client.newCall(request).execute()
