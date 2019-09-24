@@ -57,6 +57,7 @@ class ResponsibleGame : Fragment() {
         val acResponse = OkHttpClient().newCall(acRequest).execute()
         if (acResponse.code() == 200) {
             val activityData = acResponse.body()!!.string()
+            Api().myLog("RG activity check:$activityData")
             remindTime = JSONObject(activityData).getString("activityOpt").toInt()
         }
 
@@ -90,6 +91,7 @@ class ResponsibleGame : Fragment() {
 
         if (response.code() == 200) {
             val gameData = response.body()!!.string()
+            Api().myLog("get limit in RG: $gameData")
             var depoArray = JSONObject(gameData).getJSONArray("deposit")
             //Log.e("depoArray",depoArray.toString() )
             for (i in 0 until depoArray.length()) {
@@ -279,7 +281,8 @@ class ResponsibleGame : Fragment() {
             val response = client.newCall(request).execute()
             //Log.e("code",response.code().toString())
             //Log.e("depolimit",response.body()!!.string())
-
+            Api().myLog("code:" + response.code())
+            Api().myLog("depolimit" + response.body()!!.string())
 
             remove_depo.visibility = View.VISIBLE
             if (depo_limit_amt.text.toString().isNotEmpty()) {

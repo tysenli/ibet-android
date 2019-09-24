@@ -17,6 +17,7 @@ import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.URLs
 
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame.Companion.lockInterval
+import com.app.android.ibet.api.Api
 import kotlinx.android.synthetic.main.frag_lock.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -49,6 +50,7 @@ class Lock : Fragment() {
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
+            Api().myLog("Lock account:" +  response.code())
             MainActivity.isLogin = false
             Login.token = ""
             startActivity(Intent(activity, MainActivity::class.java))

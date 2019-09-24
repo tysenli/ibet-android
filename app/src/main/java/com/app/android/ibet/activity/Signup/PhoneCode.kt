@@ -98,6 +98,7 @@ class PhoneCode : AppCompatActivity() {
                 val response = client.newCall(request).execute()
                 Api().myLog("phoneVerifyStatus:${response.code()}")
                 if (response.code() == 200) {
+
                     startActivity(Intent(applicationContext, Verified::class.java))
                 } else {
                     code_error.text = "Sorry, that's not the code we're looking for. Please check and try again."
