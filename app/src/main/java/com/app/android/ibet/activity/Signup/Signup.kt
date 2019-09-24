@@ -84,7 +84,7 @@ class Signup : AppCompatActivity() {
 
           
   
-            var info1 = info!!.split(",")
+            var info1 = info.split(",")
             var info2 = info1[0].split(":")[1]
             var info3 = info1[1].split(":")[1]
             var name = info2.substring(1,info2.length - 1)

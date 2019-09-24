@@ -75,7 +75,7 @@ class Login : AppCompatActivity() {
                 println(response)
 
             }*/
-        sign_up_here.setOnClickListener { view ->
+        sign_up_here.setOnClickListener { _ ->
             //Log.d("btnSetup", "Selected")
             //sign_up_here.autoSizeMaxTextSize
             var intent = Intent(this, Signup::class.java)
@@ -120,7 +120,7 @@ class Login : AppCompatActivity() {
                 200 -> {
                     token = JSONObject(res).getString("key")
                     isLogin = true
-                    userData = Api().get(URLs.USER)!!
+                    userData = Api().get(URLs.USER)
                     Log.e("user", userData)
                     amt = JSONObject(userData).getString("main_wallet")
                     startActivity(Intent(this, MainActivity::class.java))

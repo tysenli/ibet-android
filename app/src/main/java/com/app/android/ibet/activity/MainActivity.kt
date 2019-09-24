@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -48,6 +49,8 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 
 import com.app.android.ibet.api.Api
+import com.iovation.mobile.android.FraudForceConfiguration
+import com.iovation.mobile.android.FraudForceManager
 import kotlinx.android.synthetic.main.activity_login.*
 
 import org.json.JSONObject
@@ -125,6 +128,13 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             )// 1000*10*60 every 10 minutes
         }
 
+        var configuration = FraudForceConfiguration.Builder().subscriberKey("hhh").enableNetworkCalls(true).build()
+        var fraudForceManager = FraudForceManager.getInstance()
+        fraudForceManager.initialize(configuration, applicationContext)
+        FraudForceManager.getInstance().refresh(applicationContext)
+
+        PrintThread().execute()
+
 
 
 
@@ -138,6 +148,24 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
         on_board.setOnClickListener {
             startActivity(Intent(applicationContext, IntroOne::class.java))
         }*/
+    }
+
+
+    private inner class PrintThread : AsyncTask<Void, Void, String>() {
+        override fun doInBackground(vararg voids: Void): String {
+            return FraudForceManager.getInstance().getBlackbox(applicationContext)
+        }
+
+        override fun onPostExecute(bb: String) {
+//                val bbResultLabel = findViewById<View>(R.id.bbResultLabel) as TextView
+//                bbResultLabel.setText(R.string.bbResultLabel)
+//                bbResultLabel.visibility = View.VISIBLE
+//
+//                val bbResult = findViewById<View>(R.id.bbResult) as TextView
+//                bbResult.text = bb
+//                bbResult.visibility = View.VISIBLE
+            Log.e("getBlackBox", bb)
+        }
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -179,7 +207,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             Log.e("cnt",notiCnt)
             if (notiCnt.toInt() > 0) {
                 menu.findItem(R.id.notification).isVisible = true
-                menu!!.findItem(R.id.logged).isVisible = false
+                menu.findItem(R.id.logged).isVisible = false
                 menu.findItem(R.id.login).isVisible = false
                 menu.findItem(R.id.deposit).isVisible = true
                 val menuItem = menu.findItem(R.id.notification)
@@ -361,6 +389,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
         return true
     }  */
 }
+
 
 
 

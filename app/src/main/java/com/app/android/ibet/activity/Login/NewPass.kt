@@ -92,7 +92,7 @@ class NewPass : AppCompatActivity() {
            
             
 
-            if (info!!.substring(1,info.length - 1) == "Success") {
+            if (info.substring(1,info.length - 1) == "Success") {
                 code_error2.text = "Success!"
                 startActivity(Intent(this, MainActivity::class.java))
             } else {

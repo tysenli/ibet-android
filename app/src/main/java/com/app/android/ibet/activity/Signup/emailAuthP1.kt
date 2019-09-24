@@ -46,7 +46,7 @@ class emailAuthP1 : AppCompatActivity() {
         var passwordtxt = findViewById<EditText>(R.id.password_id)
         //var conPasswordtxt = findViewById<EditText>(com.app.android.ibet.R.id.con_password_id)
 
-        var isValidUser = false
+        //var isValidUser = false
         var isValidEmail = false
         var isValidPassword = false
 

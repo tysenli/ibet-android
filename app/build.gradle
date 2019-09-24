@@ -20,7 +20,6 @@ android {
 
         debug {
 
-
             buildConfigField 'String','BASE_URL',"\"http://10.0.2.2:8000\""
 
 
@@ -32,6 +31,7 @@ android {
         }
     }
 }
+
 android {
     lintOptions {
         checkReleaseBuilds false
@@ -44,6 +44,20 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+buildscript {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
     }
 }
 
@@ -84,6 +98,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.0.0'
 
     implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation (name:'fraudforce-lib-release-3.1.0', ext:'aar')
 
 }
 
