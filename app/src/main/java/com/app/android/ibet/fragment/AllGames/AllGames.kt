@@ -1,16 +1,18 @@
 package com.app.android.ibet.fragment.AllGames
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.fragment.FilterAdapter
@@ -29,14 +31,26 @@ import org.json.JSONObject
 import java.io.IOException
 import com.google.gson.Gson
 import androidx.recyclerview.widget.RecyclerView
+import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.adapter
+import com.app.android.ibet.fragment.NewGames.NewGames
+import com.app.android.ibet.fragment.NewGames.PopularGames
+import com.app.android.ibet.fragment.NewGames.SlotsGames
+import com.app.android.ibet.fragment.NewGames.TableGames
+import com.app.android.ibet.model.GameModelResponse
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
+import kotlinx.android.synthetic.main.game_child_recycler.*
+import kotlinx.android.synthetic.main.game_parent_recycler.*
 import java.util.HashMap
 
 
 class AllGames: Fragment(){
 
+
     private lateinit var rootView: View
     private lateinit var filterListBody: ExpandableListView
     private lateinit var sortListView: ListView
+    private lateinit var progressBar: ProgressBar
+
 
 //    private var groups: ArrayList<String> = arrayListOf()
 //    private var children: ArrayList<List<String>> = arrayListOf()
@@ -44,14 +58,15 @@ class AllGames: Fragment(){
     internal lateinit var listDataChild: HashMap<String, List<String>>
 
     internal lateinit var listDataHeader1: MutableList<String>
+    private lateinit var newgameRecyclerView: RecyclerView
+    //private lateinit var childGameRecyclerView: RecyclerView
+
+    private lateinit var filterModel: List<FilterModel>
+
+    private lateinit var gameModelResponse: List<GameModelResponse>
 
 
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        fetchFilter()
-//
-//    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,15 +80,23 @@ class AllGames: Fragment(){
 //        filterListBody.setOnGroupClickListener(filterListAdapter)
 //        filterListBody.setOnChildClickListener(filterListAdapter)
 //        filterListAdapter.showItems(SampleFilter.getFilter())
+
         return rootView
     }
 
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        filterListBody = view.findViewById(R.id.filter_List_parents) as ExpandableListView
-        sortListView =  view.findViewById(R.id.sort_List) as ListView
+        newgameRecyclerView = view.findViewById(R.id.game_parent_recycler) as RecyclerView
+        //childGameRecyclerView = view.findViewById(R.id.game_child_recycler) as RecyclerView
+
+        filterListBody = view.findViewById(R.id.allgame_filter_List_parents) as ExpandableListView
+        sortListView =  view.findViewById(R.id.allgame_sort_List) as ListView
         prepareListData()
         prepareListData1()
+        newgameRecyclerView.layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
         filterListBody.setAdapter(FilterExpandableListAdapter(listDataHeader, listDataChild))
         sortListView.adapter = SortListAdapter(listDataHeader1)
 
@@ -85,50 +108,173 @@ class AllGames: Fragment(){
         super.onStart()
         var filter = true
         var sort = true
-        filter_button.background = resources.getDrawable(R.color.colorPrimary)
-        sort_button.background = resources.getDrawable(R.color.colorPrimary)
-        filter_expan.visibility = View.GONE
-        filter_button.setOnClickListener {
+        var saved = true
+        fetchFilter()
+        //newgameRecyclerView.adapter = GameParentRecyclerAdapter(filterModel)
+        //fetchGames()
+        //progressAction()
+        allgame_filter_button.background = resources.getDrawable(R.color.colorPrimary)
+        allgame_sort_button.background = resources.getDrawable(R.color.colorPrimary)
+        allgame_filter_expan.visibility = View.GONE
+        allgame_filter_button.setOnClickListener {
             sort = true
-
-            sort_expan.visibility = View.GONE
+            allgame_sort_expan.visibility = View.GONE
             if(filter){
-                filter_button.background = resources.getDrawable(R.color.brownish_grey)
-                sort_button.background = resources.getDrawable(R.color.colorPrimary)
-                filter_expan.visibility = View.VISIBLE
+                allgame_filter_button.background = resources.getDrawable(R.color.brownish_grey)
+                allgame_sort_button.background = resources.getDrawable(R.color.colorPrimary)
+                allgame_filter_expan.bringToFront()
+                allgame_filter_expan.visibility = View.VISIBLE
                 filter = false
             }else{
-                filter_button.background = resources.getDrawable(R.color.colorPrimary)
-                sort_button.background = resources.getDrawable(R.color.colorPrimary)
-                filter_expan.visibility = View.GONE
+                allgame_filter_button.background = resources.getDrawable(R.color.colorPrimary)
+                allgame_sort_button.background = resources.getDrawable(R.color.colorPrimary)
+                allgame_filter_expan.visibility = View.GONE
                 filter = true
             }
 
         }
-        sort_button.setOnClickListener {
+        allgame_sort_button.setOnClickListener {
             filter = true
-
-            filter_expan.visibility = View.GONE
+            allgame_filter_expan.visibility = View.GONE
             if(sort){
-                filter_button.background = resources.getDrawable(R.color.colorPrimary)
-                sort_button.background = resources.getDrawable(R.color.brownish_grey)
-                sort_expan.visibility = View.VISIBLE
+                allgame_filter_button.background = resources.getDrawable(R.color.colorPrimary)
+                allgame_sort_button.background = resources.getDrawable(R.color.brownish_grey)
+                allgame_sort_expan.bringToFront()
+                allgame_sort_expan.visibility = View.VISIBLE
                 sort = false
             }else{
-                filter_button.background = resources.getDrawable(R.color.colorPrimary)
-                sort_button.background = resources.getDrawable(R.color.colorPrimary)
-                sort_expan.visibility = View.GONE
+                allgame_filter_button.background = resources.getDrawable(R.color.colorPrimary)
+                allgame_sort_button.background = resources.getDrawable(R.color.colorPrimary)
+                allgame_sort_expan.visibility = View.GONE
                 sort = true
             }
-
-
-
         }
 
+
+    }
+    fun progressAction(progressBar: ProgressBar, recyclerView: RecyclerView, layoutManager: LinearLayoutManager){
+
+        progressBar.progressDrawable.setColorFilter(Color.rgb(255,0,0),android.graphics.PorterDuff.Mode.SRC_IN)
+        val linearLayoutManager = layoutManager
+        val lastVisibleItem = linearLayoutManager.findFirstVisibleItemPosition()
+        println("lastVisibleItem:" + lastVisibleItem)
+        val totalItemCount = linearLayoutManager.itemCount
+        println("totalItemCount:" + totalItemCount)
+        if(lastVisibleItem ==  totalItemCount / 4){
+            progressBar.progress = 25
+        }else if(lastVisibleItem ==  totalItemCount / 2){
+            progressBar.progress = 50
+        }else if(lastVisibleItem ==  totalItemCount / 4 * 3){
+            progressBar.progress = 75
+        }else if(lastVisibleItem ==  totalItemCount){
+            progressBar.progress = 100
+        }
+
+
+
+    }
+    private fun fetchFilter(){
+
+        val url = BuildConfig.GAME_FILTER
+        val request = Request.Builder().url(url).build()
+        val client = OkHttpClient()
+        client.newCall(request).enqueue((object: okhttp3.Callback{
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("TAG", "onFailure: "+e.toString() );
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+
+                val body = response?.body()?.string()
+                Log.e("Success", body)
+
+                val gson = GsonBuilder().create()
+                filterModel = gson.fromJson(body, object :TypeToken<List<FilterModel>>() { }.type)
+                this@AllGames.activity!!.runOnUiThread {
+                    newgameRecyclerView.adapter = GameParentRecyclerAdapter(filterModel)
+                }
+            }
+
+        }))
+    }
+    fun fetchGames(category: String, recyclerView: RecyclerView, layoutManager: LinearLayoutManager, progressBar: ProgressBar, button: Button){
+
+        val url = BuildConfig.GAME_URL+ "live-casino" + BuildConfig.GAME_URL_CATEGORY + "all" + BuildConfig.GAME_URL_FILTER + category
+
+        val request = Request.Builder().url(url).build()
+
+        val client = OkHttpClient()
+        client.newCall(request).enqueue(object: okhttp3.Callback {
+            override fun onResponse(call: okhttp3.Call?, response: okhttp3.Response?) {
+                val body = response?.body()?.string()
+
+                Log.e("Success", body)
+
+
+                val gson = GsonBuilder().create()
+
+                gameModelResponse = gson.fromJson(body, object : TypeToken<List<GameModelResponse>>() { }.type)
+                recyclerView.post(object :Runnable{
+                    override fun run() {
+                        recyclerView.adapter = AllGameRecyclerAdapter(gameModelResponse)
+
+                        progressBar.progressDrawable.setColorFilter(Color.rgb(255,0,0),android.graphics.PorterDuff.Mode.SRC_IN)
+
+                        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+                            override fun onScrollStateChanged(recyclerView:RecyclerView, newState:Int){
+                                super.onScrollStateChanged(recyclerView, newState)
+                            }
+                            override fun onScrolled(recyclerView:RecyclerView, dx:Int, dy:Int) {
+                                super.onScrolled(recyclerView, dx, dy)
+                                if (layoutManager != null)
+                                {
+                                    val curPosition = layoutManager.findLastCompletelyVisibleItemPosition()
+                                    println("cur:" + curPosition)
+                                    val totalItemCount = AllGameRecyclerAdapter(gameModelResponse).itemCount
+                                    println("total:" + totalItemCount)
+                                    if(curPosition + 1 == totalItemCount){
+                                        progressBar.progress = 100
+                                    }else{
+                                        var processStatus = 100 * (curPosition + 1) / totalItemCount
+                                        println("process:" + processStatus)
+                                        progressBar.progress = processStatus
+                                    }
+
+
+                                }
+                            }
+                        })
+                        button.setOnClickListener{
+
+                            var newFragment : Fragment = AllGames()
+                            when(category){
+                                "New" -> newFragment = NewGames()
+                                "Popular" -> newFragment = PopularGames()
+                                "Table Games" -> newFragment = TableGames()
+                                "Slots" -> newFragment = SlotsGames()
+                            }
+                            println(newFragment)
+                            val activity = recyclerView.context as AppCompatActivity
+                            activity.supportFragmentManager.beginTransaction().replace(R.id.list_holder, newFragment).addToBackStack(null).commit()
+
+                        }
+
+                    }
+                })
+
+
+            }
+
+            override fun onFailure(call: okhttp3.Call?, e: IOException?) {
+                Log.e("TAG", "onFailure: "+e.toString() );
+            }
+        })
     }
 
 
-//    private fun fetchFilter(){
+
+
+    //    private fun fetchFilter(){
 //        val client = OkHttpClient()
 //        val url = BuildConfig.GAME_FILTER
 //        val request = Request.Builder().url(url).build()
@@ -396,6 +542,9 @@ class AllGames: Fragment(){
 
 
     }
+
+
+
 }
 
 

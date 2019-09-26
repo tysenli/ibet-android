@@ -60,6 +60,7 @@ android {
             buildConfigField 'String', 'Scratch', "\"$local/accounting/api/scratchcard/deposit\""
             buildConfigField 'String', 'GAME_URL', "\"$local/games/api/games/?type=\""
             buildConfigField('String', 'GAME_URL_CATEGORY', "\"&category=\"")
+            buildConfigField('String', 'GAME_URL_FILTER', "\"&filtercategory=\"")
             buildConfigField('String', 'GAME_FILTER', "\"$local/games/api/filter/\"")
 
 
@@ -121,6 +122,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.google.firebase:firebase-core:17.0.0'
+
 
 
 }

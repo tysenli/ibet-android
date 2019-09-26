@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.fragment.AllGames.GameLobbyAdapter
 import com.app.android.ibet.model.FilterModel
 import com.app.android.ibet.model.GameModelResponse
 import com.google.gson.GsonBuilder
@@ -59,7 +60,8 @@ class GameLobbySlots: Fragment() {
 
 
                 this@GameLobbySlots.activity!!.runOnUiThread {
-                    game_recycler_list.adapter = GameLobbyAdapter(gameModelResponse)
+                    game_recycler_list.adapter =
+                        GameLobbyAdapter(gameModelResponse)
 
                 }
             }

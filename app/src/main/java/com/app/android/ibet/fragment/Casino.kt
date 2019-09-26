@@ -9,6 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.app.android.ibet.R
 import com.app.android.ibet.fragment.AllGames.AllGames
+import com.app.android.ibet.fragment.NewGames.NewGames
+import com.app.android.ibet.fragment.NewGames.PopularGames
+import com.app.android.ibet.fragment.NewGames.SlotsGames
+import com.app.android.ibet.fragment.NewGames.TableGames
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import kotlinx.android.synthetic.main.fragment_casino.*
@@ -29,12 +33,12 @@ class Casino (context: Context): Fragment() {
             fragmentManager, FragmentPagerItems.with(parentContext)
 
                 .add("All Games", AllGames().javaClass)
-                .add("New", AllGames().javaClass)
-                .add("Popular", AllGames().javaClass)
-                .add("Table Games", AllGames().javaClass)
-                .add("Jackpot", AllGames().javaClass)
-                .add("Slots", AllGames().javaClass)
-                .add("Promo", AllGames().javaClass)
+                .add("New", NewGames().javaClass)
+                .add("Popular", PopularGames().javaClass)
+                .add("Table Games", TableGames().javaClass)
+                .add("Jackpot", Live().javaClass)
+                .add("Slots", SlotsGames().javaClass)
+                .add("Promo", Live().javaClass)
                 .create()
         )
         casino_viewpager.adapter = adapter

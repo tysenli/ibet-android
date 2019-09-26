@@ -1,21 +1,16 @@
-package com.app.android.ibet.fragment
+package com.app.android.ibet.fragment.AllGames
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
-import android.widget.Filter.*
 import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
-import com.app.android.ibet.HomeGames
 import com.app.android.ibet.R
 import com.app.android.ibet.model.GameModelResponse
-import com.app.android.ibet.model.GameModel
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.game_list_item.view.*
-import android.content.Context as ContentContext
 
 class GameLobbyAdapter(val games: List<GameModelResponse>): RecyclerView.Adapter<GameLobbyAdapter.GameViewHolder>(),Filterable {
 

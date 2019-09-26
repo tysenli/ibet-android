@@ -1,13 +1,7 @@
 package com.app.android.ibet.fragment
 
-import android.app.SearchManager
-import android.content.ComponentName
-import android.content.Context
-import android.content.Context.SEARCH_SERVICE
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.viewpager.widget.ViewPager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.appcompat.widget.SearchView
 import android.util.Log
@@ -21,21 +15,15 @@ import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
-import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import android.view.*
-import android.view.MenuInflater
-import android.widget.*
+import com.app.android.ibet.fragment.AllGames.GameLobbyAdapter
 import com.app.android.ibet.model.FilterModel
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.fragment_casino.*
-import kotlinx.android.synthetic.main.game_filter_item.*
 import okhttp3.Call
 import okhttp3.Response
-import org.json.JSONArray
-import org.json.JSONObject
 
 
 class GameLobbyAll : Fragment() {
@@ -98,7 +86,8 @@ class GameLobbyAll : Fragment() {
 
 
                 this@GameLobbyAll.activity!!.runOnUiThread {
-                    game_recycler_list.adapter = GameLobbyAdapter(gameModelResponse)
+                    game_recycler_list.adapter =
+                        GameLobbyAdapter(gameModelResponse)
 
                 }
             }
