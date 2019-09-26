@@ -98,8 +98,6 @@ class SportsAly : Fragment() {
                 detail_stake.text = stake[position]
                 detail_return.text = winloss[position]
 
-
-
                 //Toast.makeText(context, "Click on item at $itemAtPos its item id $itemIdAtPos", Toast.LENGTH_LONG).show()
             }
         }

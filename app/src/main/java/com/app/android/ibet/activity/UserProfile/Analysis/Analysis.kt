@@ -124,7 +124,7 @@ class Analysis : Fragment() {
             // Set the xAxis position to bottom. Default is top
             xAxis.position = XAxis.XAxisPosition.BOTTOM
             //Customizing x axis value
-            val months = arrayOf("7/1", "7/2", "7/3", "7/4", "7/5", "7/6", "7/7", "7/8", "7/9", "7/10")
+            val months = arrayOf("$curMon/1", "$curMon/2", "$curMon/3", "$curMon/4", "$curMon/5", "$curMon/6", "$curMon/7", "$curMon/8", "$curMon/9", "$curMon/10")
 
             val formatter = IAxisValueFormatter { value, axis -> months[value.toInt()] }
             xAxis.granularity = 1f // minimum axis-step (interval) is 1
@@ -190,7 +190,8 @@ class Analysis : Fragment() {
             // Set the xAxis position to bottom. Default is top
             xAxis.position = XAxis.XAxisPosition.BOTTOM
             //Customizing x axis value
-            val months = arrayOf("7/1", "7/2", "7/3", "7/4", "7/5", "7/6", "7/7", "7/8", "7/9", "7/10")
+            val months = arrayOf("$curMon/1", "$curMon/2", "$curMon/3", "$curMon/4", "$curMon/5", "$curMon/6", "$curMon/7", "$curMon/8", "$curMon/9", "$curMon/10")
+
 
             val formatter = IAxisValueFormatter { value, axis -> months[value.toInt()] }
             xAxis.granularity = 1f // minimum axis-step (interval) is 1
@@ -236,7 +237,8 @@ class Analysis : Fragment() {
         // Set the xAxis position to bottom. Default is top
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         //Customizing x axis value
-        val months = arrayOf("7/1", "7/2", "7/3", "7/4", "7/5", "7/6", "7/7", "7/8", "7/9", "7/10")
+        val months = arrayOf("$curMon/1", "$curMon/2", "$curMon/3", "$curMon/4", "$curMon/5", "$curMon/6", "$curMon/7", "$curMon/8", "$curMon/9", "$curMon/10")
+
 
         val formatter = IAxisValueFormatter { value, axis -> months[value.toInt()] }
         xAxis.granularity = 1f // minimum axis-step (interval) is 1
