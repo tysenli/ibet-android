@@ -154,5 +154,7 @@
     <string name="filter">Filter</string>
     <string name="sort">Sort</string>
 
+    <string name="main_priority">The main priority for us at ibet is to provide an enjoyable and entertaining gaming experience. We are committed to protecting our players and offer several different tools and resources to ensure that your gambling is conducted within safe limits. Please visit these at <font color='#ff0a00'>[RG Link]</font> and if you are in any doubt contact our trained customer service at any time.</string>
+    <string name="instruction_hint">Your QR code needs to be used once only, please ensure the amount you deposit matches what is on the QR code to avoid any issues.</string>
 
 </resources>

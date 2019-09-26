@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
@@ -17,6 +18,8 @@ import com.app.android.ibet.activity.Login.Login.Companion.token
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.UserProfile.Account.Account
 import com.app.android.ibet.activity.UserProfile.Account.EditAcc
+import com.app.android.ibet.activity.UserProfile.Account.Inbox
+import com.app.android.ibet.activity.UserProfile.Account.InboxDetail
 import com.app.android.ibet.activity.UserProfile.Analysis.*
 import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.activity.UserProfile.Banking.BankingDepo
@@ -24,9 +27,11 @@ import com.app.android.ibet.activity.UserProfile.Banking.BankingWith
 import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.*
 import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.QaiBankWith
 import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.SuccessWithdraw
+import com.app.android.ibet.activity.UserProfile.Banking.WithdrawMethod.WithdrawPass
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.Lock
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
 import com.app.android.ibet.activity.UserProfile.Setting.Setting
+import com.app.android.ibet.api.URLs
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
@@ -57,7 +62,7 @@ class MyAccount : AppCompatActivity() {
         setContentView(R.layout.activity_my_account)
         val request = Request.Builder()
             .header("Authorization", "Token "+ token)
-            .url(BuildConfig.USER)
+            .url(URLs.USER)
             .build()
         val response = OkHttpClient().newCall(request).execute()
 
@@ -87,7 +92,7 @@ class MyAccount : AppCompatActivity() {
             "asia_ali"   -> pages[0] = FragmentPagerItem.of("Banking", AsiaAli().javaClass)
             "asia_wechat"-> pages[0] = FragmentPagerItem.of("Banking", AsiaWechat().javaClass)
             "astropayinfo"->pages[0] = FragmentPagerItem.of("Banking", AstropayInfo().javaClass)
-            "astropay_input"->pages[0] = FragmentPagerItem.of("Banking", Astropay().javaClass)
+            //"astropay_input"->pages[0] = FragmentPagerItem.of("Banking", Astropay().javaClass)
             "fgate"      -> pages[0] = FragmentPagerItem.of("Banking", Fgo().javaClass)
             "help2pay"   -> pages[0] = FragmentPagerItem.of("Banking", Help2pay().javaClass)
             "ciclepay"   -> pages[0] = FragmentPagerItem.of("Banking", Circlepay().javaClass)
@@ -97,6 +102,8 @@ class MyAccount : AppCompatActivity() {
             "bankwith"   -> pages[0] = FragmentPagerItem.of("Banking", QaiBankWith().javaClass)
             "payzod"     -> pages[0] = FragmentPagerItem.of("Banking", Payzod().javaClass)
             "scratch"    -> pages[0] = FragmentPagerItem.of("Banking", ScratchCard().javaClass)
+            "online"     -> pages[0] = FragmentPagerItem.of("Banking", AsiaBank().javaClass)
+            "withdraw_pass"->pages[0] = FragmentPagerItem.of("Banking", WithdrawPass().javaClass)
 
 
             "sports"     -> pages[1] = FragmentPagerItem.of("Analysis", SportsAly().javaClass)
@@ -106,6 +113,8 @@ class MyAccount : AppCompatActivity() {
 
             "acc"        -> pages[2] = FragmentPagerItem.of("Account", Account().javaClass)
             "acc_edit"   -> pages[2] = FragmentPagerItem.of("Account", EditAcc().javaClass)
+            "inbox"      -> pages[2] = FragmentPagerItem.of("Account", Inbox().javaClass)
+            "inbox_detail"-> pages[2] = FragmentPagerItem.of("Account", InboxDetail().javaClass)
 
             "lock_account"-> pages[3] = FragmentPagerItem.of("Responsible Game", Lock().javaClass)
             "rg"         -> pages[3] = FragmentPagerItem.of("Responsible Game",  ResponsibleGame().javaClass)
@@ -129,6 +138,8 @@ class MyAccount : AppCompatActivity() {
 
             "acc"        -> account_viewpager.setCurrentItem(2, true)
             "acc_edit"   -> account_viewpager.setCurrentItem(2, true)
+            "inbox"      -> account_viewpager.setCurrentItem(2, true)
+            "inbox_detail"-> account_viewpager.setCurrentItem(2, true)
 
             "lock_account"-> account_viewpager.setCurrentItem(3, true)
             "rg"          -> account_viewpager.setCurrentItem(3, true)
@@ -161,17 +172,62 @@ class MyAccount : AppCompatActivity() {
         if (!MainActivity.isLogin) {
             menu!!.findItem(R.id.logged).isVisible = false
             menu.findItem(R.id.login).isVisible = true
+            menu.findItem(R.id.deposit).isVisible = false
+            menu.findItem(R.id.notification).isVisible = false
+            val menuItem = menu.findItem(R.id.login)
+            val rootView = menuItem.actionView
+            loginShow = rootView.findViewById(R.id.login_btn)
+            loginShow.setOnClickListener {
+                startActivity(Intent(this, Login::class.java))
+                overridePendingTransition(0, 0)
+            }
+            /*
+            amtShow = rootView.findViewById(R.id.balance_icon)
+            amtShow.setOnClickListener {
+                startActivity(Intent(this, Signup::class.java))
+                overridePendingTransition(0, 0)
+            } */
+
         } else {
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
-        }
-        val menuItem = menu.findItem(R.id.deposit)
-        val rootView = menuItem.actionView
+            menu.findItem(R.id.deposit).isVisible = true
+            menu.findItem(R.id.notification).isVisible = false
+            val menuItem = menu.findItem(R.id.deposit)
+            val rootView = menuItem.actionView
 
-        amtShow = rootView.findViewById(R.id.balance_icon)
-        amtShow.text = amt.split(".")[0]
-        amtShow.setOnClickListener {
-            startActivity(Intent(this, Deposit::class.java))
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url(URLs.USER_INBOX_UNREAD + JSONObject(MyAccount.userData).getString("pk"))
+                .build()
+
+            val response = client.newCall(request).execute()
+            val notiCnt = response.body()!!.string()
+            Log.e("cnt",notiCnt)
+            if (notiCnt.toInt() > 0) {
+                menu.findItem(R.id.notification).isVisible = true
+                menu!!.findItem(R.id.logged).isVisible = false
+                menu.findItem(R.id.login).isVisible = false
+                menu.findItem(R.id.deposit).isVisible = true
+                val menuItem = menu.findItem(R.id.notification)
+                val rootView = menuItem.actionView
+
+                val button= rootView.findViewById<Button>(R.id.notification_cnt)
+                button.text = notiCnt
+
+                val notiImg= rootView.findViewById<ImageView>(R.id.noti_img)
+                notiImg.setOnClickListener {
+                    info = "deposit"
+                    startActivity(Intent(this, MyAccount::class.java))
+                    overridePendingTransition(0, 0)
+
+                }
+
+            }
+
+            amtShow = rootView.findViewById(R.id.balance_icon)
+            amtShow.text = MyAccount.amt.split(".")[0]
+
         }
         return super.onPrepareOptionsMenu(menu)
     }
@@ -188,6 +244,12 @@ class MyAccount : AppCompatActivity() {
             }
             R.id.login -> {
                 startActivity(Intent(this, Login::class.java))
+                overridePendingTransition(0, 0)
+                return true
+            }
+            R.id.notification -> {
+                info = "deposit"
+                startActivity(Intent(this, MyAccount::class.java))
                 overridePendingTransition(0, 0)
                 return true
             }

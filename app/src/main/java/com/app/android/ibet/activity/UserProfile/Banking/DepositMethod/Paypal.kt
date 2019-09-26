@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_paypal.*
 import okhttp3.*
 import org.json.JSONObject
@@ -24,7 +25,7 @@ class Paypal : AppCompatActivity() {
                 .build()
             val request = Request.Builder()
                 //.addHeader("Authorization", "token " + Login.token)
-                .url(BuildConfig.PAYPAL)
+                .url(URLs.PAYPAL)
                 .post(formBody)
                 .build()
             val response = client.newCall(request).execute()
@@ -33,7 +34,7 @@ class Paypal : AppCompatActivity() {
             var jobject = JSONObject(jsonData)
             var link = jobject.getJSONArray("links").getJSONObject(1).getString("href")
             startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(link)))
-            println(link)
+
             val orderId = link.substring(link.length - 20,link.length)
             println(orderId)
             val orderBody = FormBody.Builder()
@@ -43,7 +44,7 @@ class Paypal : AppCompatActivity() {
 
             val request2 = Request.Builder()
                 //.addHeader("Authorization", "token " + Login.token)
-                .url(BuildConfig.PAYPAL_ORDER)
+                .url(URLs.PAYPAL_ORDER)
                 .post(orderBody)
                 .build()
             val response2 = client.newCall(request).execute()

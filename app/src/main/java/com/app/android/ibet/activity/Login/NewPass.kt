@@ -12,6 +12,7 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_newpass.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -84,8 +85,13 @@ class NewPass : AppCompatActivity() {
             newCodeJson.put("code",veri_code1.text.toString() + veri_code2.text.toString() + veri_code3.text.toString() + veri_code4.text.toString())
             newCodeJson.put("password", new_password.text.toString())
             //http://10.0.2.2:8000/users/api/generateactivationcode/
-            val info = Api().post(newCodeJson.toString(), BuildConfig.VERI_PASS_CODE )
-            //println(info)
+            val info = Api().post(newCodeJson.toString(), URLs.VERI_PASS_CODE )
+
+            Api().myLog("new password:$info")
+
+           
+            
+
             if (info!!.substring(1,info.length - 1) == "Success") {
                 code_error2.text = "Success!"
                 startActivity(Intent(this, MainActivity::class.java))

@@ -2,17 +2,18 @@ package com.app.android.ibet.activity.Signup
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_phone_code.*
 import kotlinx.android.synthetic.main.activity_veri_phone.*
 import org.json.JSONObject
 
 class VeriPhone : AppCompatActivity() {
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +30,11 @@ class VeriPhone : AppCompatActivity() {
             val generateCodeJson = JSONObject()
             generateCodeJson.put("username",intent.getStringExtra("user"))
             //http://10.0.2.2:8000/users/api/generateactivationcode/
-            val info = Api().post(generateCodeJson.toString(),BuildConfig.GENERATE_CODE )
-            println(info)
+           
+            val info = Api().post(generateCodeJson.toString(), URLs.GENERATE_CODE )
+            Api().myLog("generate phone code: $info")
+            Log.e("info", info)
+
             val res = Intent(applicationContext, PhoneCode::class.java)
             res.putExtra("phone_num", "+" + country_code_picker.selectedCountryCode.toString() + "  " + phone.text.toString())
             res.putExtra("user",intent.getStringExtra("user"))

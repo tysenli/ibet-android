@@ -39,7 +39,18 @@ import com.app.android.ibet.fragment.Display
 import com.zhangke.zlog.ZLog
 import kotlinx.android.synthetic.main.login_actionlayout.*
 import android.widget.Toast
+import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame
+import com.app.android.ibet.activity.UserProfile.ResponsibleGame.ResponsibleGame.Companion.remindTime
+
+import com.app.android.ibet.api.URLs
+import okhttp3.OkHttpClient
+import okhttp3.Request
+
+import com.app.android.ibet.api.Api
+import kotlinx.android.synthetic.main.activity_login.*
+
+import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick {
@@ -100,93 +111,30 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
 
 
             // schedule the task to run starting now and then every hour...
+            var time = 60
+            when (remindTime) {
+                 0 -> time = 5
+                 1 -> time = 30
+                 2 -> time = 60
+                 3 -> time = 120
+            }
             timer.schedule(
                 hourlyTask,
                 0L,
-                1000 * ResponsibleGame.remindTime * 60.toLong()
+                1000 * time * 60.toLong()
             )// 1000*10*60 every 10 minutes
         }
 
-            //toolbar.setTitleTextColor(Color.RED)
-/*
-        //nav_view.setNavigationItemSelectedListener(this)
-        var language = arrayOf("Language", "English", "Chinese", "Thai")
-        var lanImg = arrayOf(R.drawable.lan_bng, R.drawable.gb, R.drawable.cn, R.drawable.th)
-        // var flag[] = {R.drawable.gb, R.drawable.cn, R.drawable.th}
-        var lanSpinner = findViewById<Spinner>(R.id.language_navi)
-        var lan: String = ""
-        if (lanSpinner != null) {
-            val arrayAdapter = CustomDropDownAdapter(this, lanImg, language)
-            //CusAdapter(this, flag, language)
-            lanSpinner.adapter = arrayAdapter
 
-            lanSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    //Toast.makeText(this, getString(R.string.selected_item) + " " + gender[position], Toast.LENGTH_SHORT).show()
 
-                    when (position) {
-                        1 -> {
-                            val locale = Locale("en")
-                            val config = Configuration()
-                            config.locale = locale
-                            baseContext.resources.updateConfiguration(
-                                config,
-                                baseContext.resources.displayMetrics
-                            )
-                            startActivity(Intent(baseContext, MainActivity::class.java))
-                        }
-                        2 -> {
 
-                            val locale = Locale("zh")
-                            val config = Configuration()
-                            config.locale = locale
-                            baseContext.resources.updateConfiguration(
-                                config,
-                                baseContext.resources.displayMetrics
-                            )
-                            startActivity(Intent(baseContext, MainActivity::class.java))
-                        }
-                    }
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // Code to perform some action when nothing is selected
-                }
-            }
-
-        }*/
-
-/*
-        rules.setOnClickListener {
-            val fm = supportFragmentManager
-            val ft = fm.beginTransaction()
-            ft.replace(R.id.frag_placeholder, Cookie(), "cookie")
-            ft.commit()
-        }
-
-        guides.setOnClickListener {
-
-            val fm = supportFragmentManager
-            val ft = fm.beginTransaction()
-            ft.replace(R.id.frag_placeholder, Privacy(), "privacy")
-            ft.commit()
-
-        }
-        terms.setOnClickListener {
-
-            val fm = supportFragmentManager
-            val ft = fm.beginTransaction()
-            ft.replace(R.id.frag_placeholder, Terms(), "terms")
-            ft.commit()
-
-        } */
-        /*
+           /*
         val filePath = Environment.getExternalStorageDirectory().toString() + "/logcat.txt"
         println(filePath)
-        Runtime.getRuntime().exec(arrayOf("logcat","-f",filePath,"MyAppTAG:V", "*:S")) */
+        Runtime.getRuntime().exec(arrayOf("logcat","-f",filePath,"MyAppTAG:V", "*:S"))
         ZLog.Init(String.format("%s/log/", getExternalFilesDir(null).getPath()))
         //ZLog.e("TAG", "Internet Error");
-        /*
+
         on_board.setOnClickListener {
             startActivity(Intent(applicationContext, IntroOne::class.java))
         }*/
@@ -198,6 +146,7 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             menu!!.findItem(R.id.logged).isVisible = false
             menu.findItem(R.id.login).isVisible = true
             menu.findItem(R.id.deposit).isVisible = false
+            menu.findItem(R.id.notification).isVisible = false
             val menuItem = menu.findItem(R.id.login)
             val rootView = menuItem.actionView
             loginShow = rootView.findViewById(R.id.login_btn)
@@ -216,8 +165,38 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             menu!!.findItem(R.id.logged).isVisible = true
             menu.findItem(R.id.login).isVisible = false
             menu.findItem(R.id.deposit).isVisible = true
+            menu.findItem(R.id.notification).isVisible = false
             val menuItem = menu.findItem(R.id.deposit)
             val rootView = menuItem.actionView
+
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url(URLs.USER_INBOX_UNREAD + JSONObject(MyAccount.userData).getString("pk"))
+                .build()
+
+            val response = client.newCall(request).execute()
+            val notiCnt = response.body()!!.string()
+            Log.e("cnt",notiCnt)
+            if (notiCnt.toInt() > 0) {
+                menu.findItem(R.id.notification).isVisible = true
+                menu!!.findItem(R.id.logged).isVisible = false
+                menu.findItem(R.id.login).isVisible = false
+                menu.findItem(R.id.deposit).isVisible = true
+                val menuItem = menu.findItem(R.id.notification)
+                val rootView = menuItem.actionView
+
+                val button= rootView.findViewById<Button>(R.id.notification_cnt)
+                button.text = notiCnt
+
+                val notiImg= rootView.findViewById<ImageView>(R.id.noti_img)
+                notiImg.setOnClickListener {
+                    info = "deposit"
+                    startActivity(Intent(this, MyAccount::class.java))
+                    overridePendingTransition(0, 0)
+
+                }
+
+            }
 
             amtShow = rootView.findViewById(R.id.balance_icon)
             amtShow.text = MyAccount.amt.split(".")[0]
@@ -289,15 +268,14 @@ class MainActivity : AppCompatActivity(), MenuExpandableAdapter.OnMenuItemClick 
             } */
 
             R.id.login -> {
-                /*
-                val fm = supportFragmentManager
 
-                // add
-                val ft = fm.beginTransaction()
-                //ft.remove(fm.findFragmentById(R.id.frag_placeholder)!!)
-                ft.replace(R.id.frag_placeholder, Login(this@MainActivity), "FAVORITES_FRAG")
-                ft.commit() */
                 startActivity(Intent(this, Login::class.java))
+                overridePendingTransition(0, 0)
+                return true
+            }
+            R.id.notification -> {
+                info = "deposit"
+                startActivity(Intent(this, MyAccount::class.java))
                 overridePendingTransition(0, 0)
                 return true
             }

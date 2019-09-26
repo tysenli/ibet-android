@@ -11,6 +11,7 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.Signup.Signup
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_change_pass.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -54,7 +55,7 @@ class ChangePass : AppCompatActivity() {
                 val body = RequestBody.create(JSON, changeJson.toString())
                 val request = Request.Builder()
                     .addHeader("Authorization", "token " + Login.token)
-                    .url(BuildConfig.CHANGE_PASS)
+                    .url(URLs.CHANGE_PASS)
                     .post(body)
                     .build()
 

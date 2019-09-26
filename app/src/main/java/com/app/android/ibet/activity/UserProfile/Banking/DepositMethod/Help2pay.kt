@@ -15,6 +15,7 @@ import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_amount_input.*
 import kotlinx.android.synthetic.main.frag_banking_depo.*
 import kotlinx.android.synthetic.main.frag_help2pay.*
@@ -104,7 +105,7 @@ class Help2pay : Fragment() {
 
                 val request = Request.Builder()
                     .addHeader("Authorization", "Token " + Login.token)
-                    .url(BuildConfig.Help2pay)
+                    .url(URLs.Help2pay)
                     .post(formBody)
                     .build()
                 val response = client.newCall(request).execute()
@@ -115,6 +116,7 @@ class Help2pay : Fragment() {
                     startActivity(res)
                 } else {
                     val statusData = response.body()!!.string()
+                    Api().myLog("help2Pay:$statusData")
                     val res = Intent(activity, Help2payOpenPage::class.java)
                     res.putExtra("help2pay", statusData)
                     startActivity(res)
@@ -140,7 +142,7 @@ class Help2pay : Fragment() {
             val body = RequestBody.create(JSON, help2payJson.toString())
             val request = Request.Builder()
                 .addHeader("Authorization", "Token " + Login.token)
-                .url(BuildConfig.Help2pay_CONFIRM)
+                .url(URLs.Help2pay_CONFIRM)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -158,7 +160,7 @@ class Help2pay : Fragment() {
                     depositJson.put("type", "add")
                     depositJson.put("username", user)
                     depositJson.put("balance", help2pay_amt.text.toString())
-                    val info = Api().post(depositJson.toString(), BuildConfig.BALANCE)
+                    val info = Api().post(depositJson.toString(), URLs.BALANCE)
                     val res = Intent(context, Success::class.java)
                     res.putExtra("amount", help2pay_amt.text.toString())
                     startActivity(res)

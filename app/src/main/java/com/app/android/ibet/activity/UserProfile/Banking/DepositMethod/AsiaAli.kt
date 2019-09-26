@@ -1,5 +1,6 @@
 package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -13,7 +14,9 @@ import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_amount_input.*
+import kotlinx.android.synthetic.main.dialog.view.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -21,7 +24,7 @@ import org.json.JSONObject
 
 class AsiaAli : Fragment() {
     //private var parentContext = context
-    var userData = Api().get(BuildConfig.USER)
+    var userData = Api().get(URLs.USER)
     var orderId = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -30,8 +33,8 @@ class AsiaAli : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        depo_method_show.text = "AliPay"
-        deposit_amount2.hint = " Deposit 300 - 1,500                        Other"
+        depo_method_show.background = resources.getDrawable(R.drawable.alipay)
+        deposit_amount2.hint = " Deposit 300 - 1,500"
         amt_input_err.visibility = View.GONE
         money_25.text = "300"
         money_50.text = "700"
@@ -104,34 +107,45 @@ class AsiaAli : Fragment() {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 300 - 1500"
             } else {
-                amt_input_err.visibility = View.GONE
-                val client = OkHttpClient()
-                val formBody = FormBody.Builder()
-                    .add("amount", amount_display.text.toString())
-                    .add("userid", pk)
-                    .add("currency", "0")
-                    .add("PayWay", "42")
-                    .add("method", "41") //ali
-                    .build()
 
-                val request = Request.Builder()
-                    .url(BuildConfig.ASIAPAY)
-                    .post(formBody)
-                    .build()
-                val response = client.newCall(request).execute()
-                if (response.code() != 200) {
-                    MyAccount.info = "fail"
-                    val res = Intent(context, MyAccount::class.java)
-                    startActivity(res)
-                } else {
-                    var aliData = response.body()!!.string()
-                    var aliurl = JSONObject(aliData).getString("qr")
-                    orderId = JSONObject(aliData).getString("oid")
-                    val res = Intent(activity, AsiaAliOpenPage::class.java)
-                    res.putExtra("asia_aliurl", aliurl)
-                    res.putExtra("asia_aliorderId", orderId)
-                    res.putExtra("asia_alibalance", amount_display.text.toString())
-                    startActivity(res)
+                val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog,null)
+                val builder = AlertDialog.Builder(context)
+                builder.setView(dialogView)
+                val dialog = builder.show()
+                dialogView.instruction_hint.text = resources.getText(R.string.instruction_hint)
+                dialogView.confirm.setOnClickListener {
+                    dialog.dismiss()
+                    amt_input_err.visibility = View.GONE
+                    val client = OkHttpClient()
+                    val formBody = FormBody.Builder()
+                        .add("amount", amount_display.text.toString())
+                        .add("userid", pk)
+                        .add("currency", "0")
+                        .add("PayWay", "42")
+                        .add("method", "41") //ali
+                        .build()
+
+                    val request = Request.Builder()
+                        .url(URLs.ASIAPAY)
+                        .post(formBody)
+                        .build()
+                    val response = client.newCall(request).execute()
+                    if (response.code() != 200) {
+                        MyAccount.info = "fail"
+                        val res = Intent(context, MyAccount::class.java)
+                        startActivity(res)
+                    } else {
+                        var aliData = response.body()!!.string()
+                        var aliurl = JSONObject(aliData).getString("qr")
+                        orderId = JSONObject(aliData).getString("oid")
+                        val res = Intent(activity, AsiaAliOpenPage::class.java)
+                        res.putExtra("asia_aliurl", aliurl)
+                        res.putExtra("asia_aliorderId", orderId)
+                        res.putExtra("asia_alibalance", amount_display.text.toString())
+                        startActivity(res)
+
+
+                    }
 
                 }
             }

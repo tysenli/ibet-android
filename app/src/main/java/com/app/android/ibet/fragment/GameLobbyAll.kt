@@ -18,7 +18,9 @@ import java.io.IOException
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import android.view.*
-import com.app.android.ibet.fragment.AllGames.GameLobbyAdapter
+import android.view.MenuInflater
+import android.widget.*
+import com.app.android.ibet.api.URLs
 import com.app.android.ibet.model.FilterModel
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import io.reactivex.disposables.CompositeDisposable
@@ -69,7 +71,7 @@ class GameLobbyAll : Fragment() {
             5 -> tabName = "tournaments"
         }
 
-        val url = BuildConfig.GAME_URL+ "live-casino" + BuildConfig.GAME_URL_CATEGORY + tabName
+        val url = URLs.GAME_URL+ "live-casino" + URLs.GAME_URL_CATEGORY + tabName
 
         val request = Request.Builder().url(url).build()
 
@@ -100,7 +102,7 @@ class GameLobbyAll : Fragment() {
 
     private fun fetchFilter(){
 
-        val url = BuildConfig.GAME_FILTER
+        val url = URLs.GAME_FILTER
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
         client.newCall(request).enqueue((object: okhttp3.Callback{

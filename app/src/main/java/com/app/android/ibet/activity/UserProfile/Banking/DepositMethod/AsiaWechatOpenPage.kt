@@ -10,11 +10,14 @@ import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.api.Api
-import kotlinx.android.synthetic.main.activity_test.*
+import com.app.android.ibet.api.URLs
+import kotlinx.android.synthetic.main.activity_thirdparty.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AsiaWechatOpenPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,12 +27,16 @@ class AsiaWechatOpenPage : AppCompatActivity() {
         actionBar.setHomeAsUpIndicator(R.drawable.back)
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_test)
+        setContentView(R.layout.activity_thirdparty)
         val myweb = findViewById<WebView>(R.id.webview)
         val setting = myweb.settings
         setting.javaScriptEnabled = true
         myweb.loadUrl(intent.getStringExtra("wechaturl"))
         myweb.webViewClient = WebViewClient()
+        depo_method_show.background = resources.getDrawable(R.drawable.wechat)
+        payment_method.text = "WechatPay"
+        order_number.text = intent.getStringExtra("wechatorderId")
+        time.text = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
         deposit_check.setOnClickListener {
             val user = JSONObject(MyAccount.userData).getString("username")
 
@@ -39,7 +46,7 @@ class AsiaWechatOpenPage : AppCompatActivity() {
                 .add("CmdType","01")
                 .build()
             val request = Request.Builder()
-                .url(BuildConfig.ASIAPAY_CONFIRM)
+                .url(URLs.ASIAPAY_CONFIRM)
                 .post(orderBody)
                 .build()
             val response = OkHttpClient().newCall(request).execute()
@@ -50,7 +57,7 @@ class AsiaWechatOpenPage : AppCompatActivity() {
                 startActivity(res)
             } else {
                 val statusData = response.body()!!.string()
-                //println(JSONObject(statusData).getString("status"))
+                Api().myLog("wechatPay$statusData")
 
                 if (JSONObject(statusData).getString("status") == "001") {
 
@@ -58,7 +65,7 @@ class AsiaWechatOpenPage : AppCompatActivity() {
                     depositJson.put("type", "add")
                     depositJson.put("username", user)
                     depositJson.put("balance", intent.getStringExtra("wechatbalance"))
-                    val balance = Api().post(depositJson.toString(), BuildConfig.BALANCE)
+                    val balance = Api().post(depositJson.toString(), URLs.BALANCE)
                     MyAccount.info = "success"
                     val res = Intent(this, MyAccount::class.java)
                     //res.putExtra("amount",intent.getStringExtra("balance"))
@@ -70,6 +77,12 @@ class AsiaWechatOpenPage : AppCompatActivity() {
                     startActivity(res)
                 }
             }
+        }
+        deposit_cancel.setOnClickListener {
+            MyAccount.info = "deposit"
+            val intent = Intent(this, MyAccount::class.java)
+            startActivity(intent)
+            this!!.overridePendingTransition(0, 0)
         }
 
     }

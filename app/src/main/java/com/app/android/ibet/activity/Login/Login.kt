@@ -8,19 +8,24 @@ import android.os.StrictMode
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MenuItem
 import com.app.android.ibet.BuildConfig
 import com.app.android.ibet.R
 import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.MainActivity.Companion.isLogin
 import com.app.android.ibet.activity.Signup.Signup
-import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.amt
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 
 import kotlinx.android.synthetic.main.activity_login.*
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
 import org.json.JSONObject
 
 
@@ -41,7 +46,7 @@ class Login : AppCompatActivity() {
 
         StrictMode.setThreadPolicy(policy)
         userlogin.isEnabled = false
-        forgot_password.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+        login_hint.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         sign_up_here.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
         login_password.addTextChangedListener (object : TextWatcher {
@@ -82,29 +87,54 @@ class Login : AppCompatActivity() {
             loginJson.put("username", login_user.text.toString())
             //loginJson.put("email", login_email.text.toString())
             loginJson.put("password", login_password.text.toString())
+            //userData = Api().post(loginJson.toString(),BuildConfig.USER)
 
-            //val url = "http://10.0.2.2:8000/users/api/login/"
 
-            var log = Api().post(loginJson.toString(), BuildConfig.LOGIN)
+            val client = OkHttpClient()
+            val JSON = MediaType.get("application/json; charset=utf-8")
+            val body = RequestBody.create(JSON, loginJson.toString())
 
-            if (log.toString().equals("null")) {
-                forgot_password.text = "Incorrect Username or Password\n Forgot Password?"
-                forgot_password.setTextColor(Color.RED)
-            } else {
-               // var hint = log!!.split(":")[0]
-                //var key = log!!.split(":")[1]
-                // println(key.substring(1,key.length - 2))
-                //var success = hint.substring(2, hint.length - 1)
-                token = JSONObject(log).getString("key")
-                isLogin = true
-                userData = Api().get(BuildConfig.USER)!!
-                amt = JSONObject(userData).getString("main_wallet")
-                startActivity(Intent(this, MainActivity::class.java))
+            val request = Request.Builder()
+                    // .addHeader("Authorization", "Bearer $token")
+                    .url(URLs.LOGIN)
+                    .post(body)
+                    .build()
+
+            val response = client.newCall(request).execute()
+            val res = response.body()!!.string()
+            when (response.code()) {
+                403 -> {
+                    login_hint.text = JSONObject(res).getString("detail")
+                    login_hint.setTextColor(Color.RED)
+                    login_hint.isClickable = false
+
+                    Api().myLog("Login error:" + login_hint.text.toString())
+
+                }
+                400 -> {
+                    login_hint.text = "Incorrect Username or Password\n Forgot Password?"
+                    login_hint.setTextColor(Color.RED)
+
+                    Api().myLog("Login error:" + login_hint.text.toString())
+                }
+                200 -> {
+                    token = JSONObject(res).getString("key")
+                    isLogin = true
+                    userData = Api().get(URLs.USER)!!
+                    Log.e("user", userData)
+                    amt = JSONObject(userData).getString("main_wallet")
+                    startActivity(Intent(this, MainActivity::class.java))
+
+                    //here is log test
+                    Api().myLog("this is a test, user login successful")
+
+
+                }
+
             }
 
-
         }
-        forgot_password.setOnClickListener {
+        login_hint.setOnClickListener {
             startActivity(Intent(this, ForgotPass::class.java))
 
         }

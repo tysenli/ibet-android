@@ -18,12 +18,13 @@ import com.app.android.ibet.activity.Signup.Signup
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_amount_input.*
 import okhttp3.*
 import org.json.JSONObject
 
 class LinePay : AppCompatActivity() {
-    var userData = Api().get(BuildConfig.USER)
+    var userData = Api().get(URLs.USER)
     var orderId = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         val actionBar = supportActionBar
@@ -88,7 +89,7 @@ class LinePay : AppCompatActivity() {
            // println(token)
             val request = Request.Builder()
                 .addHeader("Authorization", "Token " + token)
-                .url(BuildConfig.LINE)
+                .url(URLs.LINE)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()

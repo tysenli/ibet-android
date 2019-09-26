@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    ​
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center_vertical"
+            android:paddingLeft="24dp"
+            android:text="Inbox"
+            android:background="#d8d8d8"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/textView54"
+            app:layout_constraintEnd_toEndOf="parent"
+    />
+    ​
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/item"
+            android:divider="@null"
+            android:layout_marginTop="19dp"
+    />
+    ​
+</LinearLayout>

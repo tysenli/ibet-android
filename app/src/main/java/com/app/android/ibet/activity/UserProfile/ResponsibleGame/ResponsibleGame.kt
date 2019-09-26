@@ -20,6 +20,7 @@ import android.widget.Toast
 import com.app.android.ibet.activity.Login.Login
 import com.app.android.ibet.activity.UserProfile.Banking.DepositMethod.AstropayInfo
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.userData
+import com.app.android.ibet.api.URLs
 import com.facebook.FacebookSdk.getApplicationContext
 import com.google.gson.JsonArray
 import kotlinx.android.synthetic.main.activity_amount_input.*
@@ -37,9 +38,10 @@ class ResponsibleGame : Fragment() {
     //var userData = Api().get(BuildConfig.USER)
     private var depoInterval = 0
     private var lossInterval = 0
-    var lockInterval = 0
+
     companion object {
-        var remindTime = 60
+        var remindTime = 2
+        var lockInterval = 0
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.frag_responsible_game, container, false)
@@ -48,13 +50,25 @@ class ResponsibleGame : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        five_min.background = if (remindTime == 5)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
-        thirty_min.background = if (remindTime == 30)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
-        sixty_min.background = if (remindTime == 60)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
-        two_hour.background = if (remindTime == 120)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
+
+        val acRequest = Request.Builder()
+            .url(URLs.ACTIVITY + "?userId=" + JSONObject(userData).getString("pk"))
+            .build()
+        val acResponse = OkHttpClient().newCall(acRequest).execute()
+        if (acResponse.code() == 200) {
+            val activityData = acResponse.body()!!.string()
+            remindTime = JSONObject(activityData).getString("activityOpt").toInt()
+        }
+
+
+        five_min.background = if (remindTime == 0)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
+        thirty_min.background = if (remindTime == 1)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
+        sixty_min.background = if (remindTime == 2)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
+        two_hour.background = if (remindTime == 3)resources.getDrawable(R.color.btn_d) else resources.getDrawable(R.color.btn_l)
+
 
         val request = Request.Builder()
-            .url(BuildConfig.GETLIMIT + JSONObject(userData).getString("pk"))
+            .url(URLs.GETLIMIT + JSONObject(userData).getString("pk"))
             .build()
         val response = OkHttpClient().newCall(request).execute()
 
@@ -259,7 +273,7 @@ class ResponsibleGame : Fragment() {
             depoJson.put("type", "deposit")
             val body = RequestBody.create(JSON, depoJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.SETLIMIT)
+                .url(URLs.SETLIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -292,7 +306,7 @@ class ResponsibleGame : Fragment() {
             depoJson.put("type", "deposit")
             val body = RequestBody.create(JSON, depoJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.REMOVELIMIT)
+                .url(URLs.REMOVELIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -339,7 +353,7 @@ class ResponsibleGame : Fragment() {
             lossJson.put("type", "loss")
             val body = RequestBody.create(JSON, lossJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.REMOVELIMIT)
+                .url(URLs.REMOVELIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -383,7 +397,7 @@ class ResponsibleGame : Fragment() {
             depoJson.put("type", "deposit")
             val body = RequestBody.create(JSON, depoJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.CANCELLIMIT)
+                .url(URLs.CANCELLIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -406,7 +420,7 @@ class ResponsibleGame : Fragment() {
             lossJson.put("type", "loss")
             val body = RequestBody.create(JSON, lossJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.CANCELLIMIT)
+                .url(URLs.CANCELLIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -560,7 +574,7 @@ class ResponsibleGame : Fragment() {
             lossJson.put("type", "loss")
             val body = RequestBody.create(JSON, lossJson.toString())
             val request = Request.Builder()
-                .url(BuildConfig.SETLIMIT)
+                .url(URLs.SETLIMIT)
                 .post(body)
                 .build()
             val response = client.newCall(request).execute()
@@ -581,32 +595,56 @@ class ResponsibleGame : Fragment() {
             toast.show()
         }
         five_min.setOnClickListener {
-            remindTime = 5
+            remindTime = 0
             five_min.background = resources.getDrawable(R.color.btn_d)
             thirty_min.background = resources.getDrawable(R.color.btn_l)
             sixty_min.background = resources.getDrawable(R.color.btn_l)
             two_hour.background = resources.getDrawable(R.color.btn_l)
         }
         thirty_min.setOnClickListener {
-            remindTime = 30
+            remindTime = 1
             five_min.background = resources.getDrawable(R.color.btn_l)
             thirty_min.background = resources.getDrawable(R.color.btn_d)
             sixty_min.background = resources.getDrawable(R.color.btn_l)
             two_hour.background = resources.getDrawable(R.color.btn_l)
         }
         sixty_min.setOnClickListener {
-            remindTime = 60
+            remindTime = 2
             five_min.background = resources.getDrawable(R.color.btn_l)
             thirty_min.background = resources.getDrawable(R.color.btn_l)
             sixty_min.background = resources.getDrawable(R.color.btn_d)
             two_hour.background = resources.getDrawable(R.color.btn_l)
         }
         two_hour.setOnClickListener {
-            remindTime = 120
+            remindTime = 3
             five_min.background = resources.getDrawable(R.color.btn_l)
             thirty_min.background = resources.getDrawable(R.color.btn_l)
             sixty_min.background = resources.getDrawable(R.color.btn_l)
             two_hour.background = resources.getDrawable(R.color.btn_d)
+        }
+        save_activity.setOnClickListener {
+            val client = OkHttpClient()
+            val acJson = JSONObject()
+            val JSON = MediaType.get("application/json; charset=utf-8")
+            acJson.put("activityOpt", remindTime)
+            acJson.put("userId", JSONObject(userData).getString("pk"))
+
+            val body = RequestBody.create(JSON, acJson.toString())
+            val request = Request.Builder()
+                .url(URLs.ACTIVITY)
+                .post(body)
+                .build()
+            val response = client.newCall(request).execute()
+            val toast = Toast.makeText(context,
+                "Changes are successfully updated", Toast.LENGTH_SHORT
+            )
+
+            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 260)
+            val view = toast.view
+            view.setBackgroundResource(R.color.toast)
+            val text = view.findViewById<TextView>(android.R.id.message)
+            text.setTextColor(Color.parseColor("#ffffff"))
+            toast.show()
         }
 
         one_day.setOnClickListener {

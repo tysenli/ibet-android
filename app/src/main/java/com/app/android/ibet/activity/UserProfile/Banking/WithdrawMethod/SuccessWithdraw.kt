@@ -12,6 +12,7 @@ import com.app.android.ibet.activity.MainActivity
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.Banking.Deposit
 import com.app.android.ibet.activity.UserProfile.Banking.Total
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_success.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -27,11 +28,12 @@ class SuccessWithdraw: Fragment() {
 
     override fun onStart() {
         super.onStart()
-        dep_amount.text = "Withdraw " + MyAccount.with_amt + " completed"
+        textView45.text = "Withdrawal submitted!"
+        dep_amount.text = "Withdraw " + MyAccount.with_amt + " submitted. Withdrawals are typically completed within 1 hour but please allow up to 3 hours for your bank to confirm."
 
         val request = Request.Builder()
             .header("Authorization", "Token "+ Login.token)
-            .url(BuildConfig.USER)
+            .url(URLs.USER)
             .build()
         val response = OkHttpClient().newCall(request).execute()
 

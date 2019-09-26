@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="0dp"
+            app:layout_constraintTop_toTopOf="parent">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="center_vertical"
+                android:paddingLeft="24dp"
+                android:text="Inbox"
+                android:background="#d8d8d8"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/textView54"
+                app:layout_constraintEnd_toEndOf="parent"
+        />
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentLeft="true"
+                      android:layout_marginLeft="22dp"
+                      android:layout_marginTop="23dp"
+                      android:layout_marginBottom="14dp"
+                      android:id="@+id/inbox_subject"
+                      android:textSize="14sp"
+                      android:textColor="#212121"
+                      android:letterSpacing="0.02"
+                      android:lineSpacingExtra="5sp"
+                      android:text="Subject"
+            />
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:id="@+id/inbox_time"-->
+            <!--android:textSize="10sp"-->
+            <!--android:textColor="#787878"-->
+            <!--android:letterSpacing="0.02"-->
+            <!--android:lineSpacingExtra="7sp"-->
+            <!--android:gravity="end"-->
+            <!--android:text="7/30"-->
+            <!--/>-->
+            <Button
+                    android:id="@+id/delete"
+                    android:layout_width="24dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/delete_btn"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginRight="26dp"/>
+        </RelativeLayout>
+        <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e4e4e4"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="8dp"
+                  android:layout_marginLeft="17dp"
+                  android:id="@+id/inbox_time"
+                  android:textSize="12sp"
+                  android:textColor="#000000"
+                  android:letterSpacing="0.02"
+                  android:lineSpacingExtra="5sp"
+                  android:text="07/30"
+        />
+        <TextView
+                android:id="@+id/inbox_content_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="17dp"
+                android:textSize="14sp"
+                android:textColor="#424242"
+                android:letterSpacing="0.02"
+                android:lineSpacingExtra="3sp"
+                android:text="Hello Jess,
+ Welcome to ibet! Lorem ipsum dolor sit amet,  et suas senserit sit. Sed ludus dolor possim ut.  Et mea vide invidunt argumentum, vim iisque explicari percipitur ad. Te case zril qui. No ludus oblique inciderint pro, mel lorem saepe dissentiet in."
+        />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

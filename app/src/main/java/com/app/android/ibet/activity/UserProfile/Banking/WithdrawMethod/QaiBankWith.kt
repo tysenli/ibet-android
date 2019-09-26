@@ -10,6 +10,7 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.with_amt
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_amount_input.amount_display
 import kotlinx.android.synthetic.main.activity_amount_input_withdraw.*
 import okhttp3.FormBody
@@ -19,7 +20,7 @@ import org.json.JSONObject
 
 class QaiBankWith: Fragment() {
     //private var parentContext = context
-    var userData = Api().get(BuildConfig.USER)
+    var userData = Api().get(URLs.USER)
     var withdraworderId = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -51,12 +52,12 @@ class QaiBankWith: Fragment() {
                     .add("language", "zh-Hans")
                     .build()
                 val request = Request.Builder()
-                    .url(BuildConfig.WITHDRAW)
+                    .url(URLs.WITHDRAW)
                     .post(formBody)
                     .build()
                 val response = client.newCall(request).execute()
                 var withdrawData = response.body()!!.string()
-                //println(withdrawData)
+                Api().myLog("bankWithdraw: $withdrawData")
                 withdraworderId = JSONObject(withdrawData).getJSONObject("payoutTransaction").getString("orderId")
                 var withdraw_url = JSONObject(withdrawData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
 

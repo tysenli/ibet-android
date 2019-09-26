@@ -1,5 +1,6 @@
 package com.app.android.ibet.activity.UserProfile.Banking.DepositMethod
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -12,7 +13,9 @@ import com.app.android.ibet.R
 import com.app.android.ibet.activity.UserProfile.MyAccount
 import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.depo_amt
 import com.app.android.ibet.api.Api
+import com.app.android.ibet.api.URLs
 import kotlinx.android.synthetic.main.activity_amount_input.*
+import kotlinx.android.synthetic.main.dialog.view.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -20,7 +23,7 @@ import org.json.JSONObject
 
 class QaiWechat : Fragment() {
     //private var parentContext = context
-    var userData = Api().get(BuildConfig.USER)
+    var userData = Api().get(URLs.USER)
     var orderId = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -30,8 +33,8 @@ class QaiWechat : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        depo_method_show.text = "Wechat"
-        deposit_amount2.hint = " Deposit 500 - 2,000                        Other"
+        depo_method_show.background = resources.getDrawable(R.drawable.wechat)
+        deposit_amount2.hint = " Deposit 500 - 2,000"
         amt_input_err.visibility = View.GONE
         var pk =  JSONObject(userData).getString("pk")
         money_25.text = "500"
@@ -107,30 +110,41 @@ class QaiWechat : Fragment() {
                 amt_input_err.visibility = View.VISIBLE
                 amt_input_err.text = "Please deposit between 500 - 2000"
             } else {
-                amt_input_err.visibility = View.GONE
-                val client = OkHttpClient()
-                val formBody = FormBody.Builder()
-                    .add("amount", amount_display.text.toString())
-                    .add("user_id", pk)
-                    .add("currency", "0")
-                    .add("language", "zh-Hans")
-                    .add("method", "WECHAT_PAY_H5")
-                    .build()
 
-                val request = Request.Builder()
-                    .url(BuildConfig.QAICASH)
-                    .post(formBody)
-                    .build()
-                val response = client.newCall(request).execute()
-                var wechatData = response.body()!!.string()
-                orderId = JSONObject(wechatData).getJSONObject("paymentPageSession").getString("orderId")
-                var wechat_url = JSONObject(wechatData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
+                val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog,null)
+                val builder = AlertDialog.Builder(context)
+                builder.setView(dialogView)
+                val dialog = builder.show()
+                dialogView.instruction_hint.text = resources.getText(R.string.instruction_hint)
+                dialogView.confirm.setOnClickListener {
+                    dialog.dismiss()
+                    amt_input_err.visibility = View.GONE
+                    val client = OkHttpClient()
+                    val formBody = FormBody.Builder()
+                        .add("amount", amount_display.text.toString())
+                        .add("user_id", pk)
+                        .add("currency", "0")
+                        .add("language", "zh-Hans")
+                        .add("method", "WECHAT_PAY_H5")
+                        .build()
 
-                val res = Intent(activity, QaiWechatOpenPage::class.java)
-                res.putExtra("wechaturl", wechat_url)
-                res.putExtra("orderId", orderId)
-                res.putExtra("balance", amount_display.text.toString())
-                startActivity(res)
+                    val request = Request.Builder()
+                        .url(URLs.QAICASH)
+                        .post(formBody)
+                        .build()
+                    val response = client.newCall(request).execute()
+                    var wechatData = response.body()!!.string()
+                    orderId = JSONObject(wechatData).getJSONObject("paymentPageSession").getString("orderId")
+                    var wechat_url =
+                        JSONObject(wechatData).getJSONObject("paymentPageSession").getString("paymentPageUrl")
+
+                    val res = Intent(activity, QaiWechatOpenPage::class.java)
+                    res.putExtra("wechaturl", wechat_url)
+                    res.putExtra("orderId", orderId)
+                    res.putExtra("balance", amount_display.text.toString())
+                    startActivity(res)
+                }
+
             }
 
 
