@@ -175,7 +175,7 @@ class AllGames: Fragment(){
     }
     private fun fetchFilter(){
 
-        val url = BuildConfig.GAME_FILTER
+        val url = URLs.GAME_FILTER
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
         client.newCall(request).enqueue((object: okhttp3.Callback{
