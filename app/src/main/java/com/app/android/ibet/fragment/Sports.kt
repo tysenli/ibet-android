@@ -36,7 +36,7 @@ class Sports (context: Context): Fragment() {
 
         val adapter = FragmentPagerItemAdapter(
             fragmentManager,FragmentPagerItems.with(parentContext)
-                .add("LIVE",GameLobbySlots().javaClass).create()
+                .add("LIVE",SlotsGames().javaClass).create()
         )
         sports_viewpager.adapter = adapter
         sports_viewpagertab.setViewPager(sports_viewpager)
