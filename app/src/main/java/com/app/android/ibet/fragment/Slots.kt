@@ -28,7 +28,7 @@ class Slots (context: Context): Fragment() {
 
         val adapter = FragmentPagerItemAdapter(
             fragmentManager, FragmentPagerItems.with(parentContext)
-                .add("ALL", SlotsGames().javaClass)
+                .add("ALL", GameLobbySlots().javaClass)
 
                 .create()
         )
