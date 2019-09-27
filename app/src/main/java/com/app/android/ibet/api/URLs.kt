@@ -52,8 +52,9 @@ public final class URLs {
         val LOG = BuildConfig.BASE_URL + "/system/api/logstreamtos3/"
 
         val GAME_URL = BuildConfig.BASE_URL + "/games/api/games/?type="
-        val GAME_URL_CATEGORY = BuildConfig.BASE_URL + "&category="
+        val GAME_URL_CATEGORY =  "&category="
         val GAME_FILTER= BuildConfig.BASE_URL + "/games/api/filter/"
+        val GAME_URL_FILTER = "&filtercategory="
 
 
 

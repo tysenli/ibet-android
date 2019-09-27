@@ -21,25 +21,18 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.frag_visa.*
 import kotlinx.android.synthetic.main.fragment_all_games.*
-import kotlinx.android.synthetic.main.game_lobby_fragment.*
 import okhttp3.Call
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-import org.json.JSONArray
-import org.json.JSONObject
 import java.io.IOException
-import com.google.gson.Gson
 import androidx.recyclerview.widget.RecyclerView
-import com.app.android.ibet.activity.UserProfile.MyAccount.Companion.adapter
 import com.app.android.ibet.fragment.NewGames.NewGames
 import com.app.android.ibet.fragment.NewGames.PopularGames
 import com.app.android.ibet.fragment.NewGames.SlotsGames
 import com.app.android.ibet.fragment.NewGames.TableGames
 import com.app.android.ibet.model.GameModelResponse
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
-import kotlinx.android.synthetic.main.game_child_recycler.*
-import kotlinx.android.synthetic.main.game_parent_recycler.*
+import com.app.android.ibet.api.URLs
 import java.util.HashMap
 
 
@@ -199,7 +192,7 @@ class AllGames: Fragment(){
     }
     fun fetchGames(category: String, recyclerView: RecyclerView, layoutManager: LinearLayoutManager, progressBar: ProgressBar, button: Button){
 
-        val url = BuildConfig.GAME_URL+ "live-casino" + BuildConfig.GAME_URL_CATEGORY + "all" + BuildConfig.GAME_URL_FILTER + category
+        val url = URLs.GAME_URL+ "live-casino" + URLs.GAME_URL_CATEGORY + "all" + URLs.GAME_URL_FILTER + category
 
         val request = Request.Builder().url(url).build()
 

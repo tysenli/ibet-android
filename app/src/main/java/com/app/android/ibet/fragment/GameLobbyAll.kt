@@ -89,7 +89,7 @@ class GameLobbyAll : Fragment() {
 
                 this@GameLobbyAll.activity!!.runOnUiThread {
                     game_recycler_list.adapter =
-                        GameLobbyAdapter(gameModelResponse)
+                        GameLobbyAdapter(GameModelResponse)
 
                 }
             }

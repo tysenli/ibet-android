@@ -24,6 +24,7 @@ import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
 import java.util.HashMap
+import com.app.android.ibet.api.URLs
 
 class PopularGames: Fragment() {
     private lateinit var rootView: View
@@ -105,7 +106,7 @@ class PopularGames: Fragment() {
 
     }
     private fun fetchGames(){
-        val url = BuildConfig.GAME_URL+ "live-casino" + BuildConfig.GAME_URL_CATEGORY + "all" + BuildConfig.GAME_URL_FILTER + "Popular"
+        val url = URLs.GAME_URL+ "live-casino" + URLs.GAME_URL_CATEGORY + "all" + URLs.GAME_URL_FILTER  + "Popular"
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
         client.newCall(request).enqueue((object: okhttp3.Callback{
