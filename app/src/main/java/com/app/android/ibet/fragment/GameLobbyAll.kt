@@ -26,7 +26,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import io.reactivex.disposables.CompositeDisposable
 import okhttp3.Call
 import okhttp3.Response
-
+import com.app.android.ibet.fragment.AllGames.GameLobbyAdapter
 
 class GameLobbyAll : Fragment() {
 
@@ -89,7 +89,7 @@ class GameLobbyAll : Fragment() {
 
                 this@GameLobbyAll.activity!!.runOnUiThread {
                     game_recycler_list.adapter =
-                        GameLobbyAdapter(GameModelResponse)
+                        GameLobbyAdapter(gameModelResponse)
 
                 }
             }
