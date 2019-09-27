@@ -24,6 +24,7 @@ public final class URLs {
         val MARKETING = BuildConfig.BASE_URL + "/users/api/marketing-settings/"
         val PRIVACY = BuildConfig.BASE_URL + "/users/api/privacy-settings/"
         val ACTIVITY = BuildConfig.BASE_URL + "/users/api/activity-check/"
+        val BET_HISTORY = BuildConfig.BASE_URL + "/users/api/bet-history/"
 
         val PAYPAL = BuildConfig.BASE_URL + "/accounting/api/paypal/create_payment"
         val PAYPAL_ORDER = BuildConfig.BASE_URL + "/accounting/api/paypal/get_order"

@@ -29,101 +29,236 @@
                   android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
                   app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.494"
                   app:layout_constraintVertical_bias="0.0">
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:padding="3dp"
-                  android:text="Placed"
-                  android:textSize="12sp"
-                  android:textColor="#000000"
-                  android:lineSpacingExtra="14sp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="Placed"
+                      android:layout_alignParentLeft="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="test"
+                      android:layout_alignParentRight="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"
+                      android:textStyle="bold"
+                      android:id="@+id/detail_placed"
+            />
+        </RelativeLayout>
+
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="ID"
-                  android:padding="3dp"
-                  android:textSize="12sp"
-                  android:textColor="#000000"
-                  android:lineSpacingExtra="14sp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="ID"
+                      android:layout_alignParentLeft="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="test"
+                      android:layout_alignParentRight="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"
+                      android:textStyle="bold"
+                      android:id="@+id/detail_id"
+            />
+        </RelativeLayout>
+
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Type"
-                  android:padding="3dp"
-                  android:textSize="12sp"
-                  android:textColor="#000000"
-                  android:lineSpacingExtra="14sp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="Type"
+                      android:layout_alignParentLeft="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="test"
+                      android:layout_alignParentRight="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"
+                      android:textStyle="bold"
+                      android:id="@+id/detail_type"
+            />
+        </RelativeLayout>
+
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Event"
-                  android:padding="3dp"
-                  android:textSize="12sp"
-                  android:textColor="#000000"
-                  android:lineSpacingExtra="14sp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="Event"
+                      android:layout_alignParentLeft="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="test"
+                      android:layout_alignParentRight="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"
+                      android:textStyle="bold"
+                      android:id="@+id/detail_event"
+            />
+        </RelativeLayout>
+
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Line"
-                  android:padding="3dp"
-                  android:textSize="12sp"
-                  android:textColor="#000000"
-                  android:lineSpacingExtra="14sp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="Line"
+                      android:layout_alignParentLeft="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="test"
+                      android:layout_alignParentRight="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"
+                      android:textStyle="bold"
+                      android:id="@+id/detail_line"
+            />
+        </RelativeLayout>
+
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Settled"
-                  android:padding="3dp"
-                  android:textSize="12sp"
-                  android:textColor="#000000"
-                  android:lineSpacingExtra="14sp"/>
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="Settled"
+                      android:layout_alignParentLeft="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="test"
+                      android:layout_alignParentRight="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"
+                      android:textStyle="bold"
+                      android:id="@+id/detail_settled"
+            />
+        </RelativeLayout>
+
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Result"
-                  android:padding="3dp"
-                  android:textSize="12sp"
-                  android:textColor="#000000"
-                  android:lineSpacingExtra="14sp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="Result"
+                      android:layout_alignParentLeft="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="test"
+                      android:layout_alignParentRight="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"
+                      android:textStyle="bold"
+                      android:id="@+id/detail_result"
+            />
+        </RelativeLayout>
+
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Stake"
-                  android:padding="3dp"
-                  android:textSize="12sp"
-                  android:textColor="#000000"
-                  android:lineSpacingExtra="14sp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="Stake"
+                      android:layout_alignParentLeft="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="test"
+                      android:layout_alignParentRight="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"
+                      android:textStyle="bold"
+                      android:id="@+id/detail_stake"
+            />
+        </RelativeLayout>
+
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Return"
-                  android:padding="3dp"
-                  android:textSize="12sp"
-                  android:textColor="#000000"
-                  android:lineSpacingExtra="14sp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="Return"
+                      android:layout_alignParentLeft="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="3dp"
+                      android:text="test"
+                      android:layout_alignParentRight="true"
+                      android:textSize="12sp"
+                      android:textColor="#000000"
+                      android:lineSpacingExtra="14sp"
+                      android:textStyle="bold"
+                      android:id="@+id/detail_return"
+            />
+        </RelativeLayout>
 
     </LinearLayout>
 
