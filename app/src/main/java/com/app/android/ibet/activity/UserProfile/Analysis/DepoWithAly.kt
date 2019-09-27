@@ -20,7 +20,6 @@ import com.app.android.ibet.api.Api
 import com.app.android.ibet.api.URLs
 import com.wajahatkarim3.easyvalidation.core.view_ktx.atleastOneLowerCase
 import kotlinx.android.synthetic.main.frag_depowith_aly.*
-import kotlinx.android.synthetic.main.frag_sports_aly.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
