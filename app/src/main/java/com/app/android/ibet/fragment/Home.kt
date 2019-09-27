@@ -12,6 +12,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import com.app.android.ibet.R
 import com.app.android.ibet.HomeGames
+import com.app.android.ibet.fragment.AllGames.AllGames
 
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -30,7 +31,7 @@ class Home : Fragment() {
         if (!this.initialized) {
             val fm = fragmentManager
             val ft = fm?.beginTransaction()
-            ft?.add(R.id.list_holder, GameLobbyAll(), "NEW_FRAG")
+            ft?.add(R.id.list_holder, AllGames(), "NEW_FRAG")
             ft?.commit()
             //search
             /*

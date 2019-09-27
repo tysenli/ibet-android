@@ -21,6 +21,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
+import com.app.android.ibet.fragment.AllGames.GameLobbyAdapter
 
 class GameLobbySlots: Fragment() {
     override fun onCreateView(
@@ -60,7 +61,8 @@ class GameLobbySlots: Fragment() {
 
 
                 this@GameLobbySlots.activity!!.runOnUiThread {
-                    game_recycler_list.adapter = GameLobbyAdapter(gameModelResponse)
+                    game_recycler_list.adapter =
+                        GameLobbyAdapter(gameModelResponse)
 
                 }
             }

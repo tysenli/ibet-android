@@ -16,7 +16,7 @@
             app:stl_indicatorInFront="false"
             app:stl_indicatorInterpolation="smart"
             app:stl_indicatorGravity="bottom"
-            app:stl_indicatorColor="#FFFFFF"
+            app:stl_indicatorColor="#ff0000"
             app:stl_indicatorThickness="4dp"
             app:stl_indicatorWidth="auto"
             app:stl_indicatorCornerRadius="2dp"

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content" android:background="#ffffff"
+                                                   >
+    <LinearLayout android:layout_width="match_parent" android:layout_height="30dp"
+                  android:id="@+id/newgame_bar"
+                  app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  android:layout_marginTop="10dp" >
+        <TextView
+                android:text="@string/Casino"
+                android:layout_width="177dp"
+                android:layout_height="match_parent" android:id="@+id/newgame_bar_title"
+                android:layout_marginStart="16dp"
+                android:textSize="28sp"
+                android:textColor="#252525"
+                android:lineSpacingExtra="8sp"
+        />
+        <Button
+                android:text="@string/filter"
+                android:textAllCaps="false"
+                android:paddingStart="12dp"
+                android:layout_width="80dp"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.01"
+                android:lineSpacingExtra="8sp"
+                android:layout_height="match_parent"
+                android:id="@+id/newgame_filter_button" android:background="@drawable/button_border"
+                android:drawableStart="@drawable/filter"
+        />
+        <Button
+                android:text="@string/sort"
+                android:layout_width="80dp"
+                android:paddingStart="12dp"
+                android:textAllCaps="false"
+                android:layout_height="match_parent"
+                android:textColor="#000000"
+                android:id="@+id/newgame_sort_button" android:background="@drawable/button_border"
+                android:drawableStart="@drawable/sort"/>
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/newgame_filter_expan"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/newgame_bar" android:layout_marginTop="16dp">
+        <ExpandableListView
+                android:id="@+id/newgame_filter_List_parents"
+                android:divider="#868686"
+                android:dividerHeight="0.5dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:groupIndicator="@null"
+                android:background="@color/colorPrimary"
+        />
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/newgame_sort_expan"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/newgame_bar" android:layout_marginTop="16dp">
+        <ListView
+                android:id="@+id/newgame_sort_List"
+                android:divider="#868686"
+                android:dividerHeight="0.5dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorPrimary"
+        />
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/newgame_bar"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/linearLayout2">
+        <TextView android:layout_width="160dp"
+                  android:layout_height="wrap_content"
+                  android:textSize="21sp"
+                  android:id="@+id/newgame_text"
+                  android:textColor="#252525"
+                  android:lineSpacingExtra="15sp"
+                  android:text="New"
+                  android:textAlignment="gravity"
+                  app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="16dp"
+                  app:layout_constraintBottom_toTopOf="@+id/newgame_recycler"
+                  app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                  android:layout_marginStart="16dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/newgame_recycler"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"/>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
