@@ -17,36 +17,36 @@
             android:id="@+id/textView54"
             app:layout_constraintEnd_toEndOf="parent"
     />
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:weightSum="2"
-                  android:id="@+id/item_layout"
-                  app:layout_constraintTop_toBottomOf="@+id/textView54"
-                  app:layout_constraintStart_toStartOf="parent"
-                  app:layout_constraintEnd_toEndOf="parent">
-        <Button
-                android:text="By Game"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textAllCaps="false"
-                android:background="#bebebe"
-                android:id="@+id/by_game"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-        />
-        <Button
-                android:text="By Day"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textAllCaps="false"
-                android:background="#d8d8d8"
-                android:id="@+id/by_day"
-                android:layout_weight="1"
-                app:layout_constraintStart_toEndOf="@+id/by_game"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-        />
-    </LinearLayout>
+
+    <Button
+            android:text="By Game"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:textAllCaps="false"
+            android:background="#bebebe"
+            android:id="@+id/by_game"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView54"/>
+    <Button
+            android:text="By Day"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:textAllCaps="false"
+            android:background="#d8d8d8"
+            android:id="@+id/by_day"
+            app:layout_constraintStart_toEndOf="@+id/by_game"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.272"
+            app:layout_constraintTop_toBottomOf="@+id/textView54"/>
+    <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/by_game" app:layout_constraintVertical_bias="0.0"
+            android:layout_marginTop="22dp">
 
     <ListView
             android:id="@+id/casino_list_bygame"
@@ -57,8 +57,10 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/item_layout" app:layout_constraintVertical_bias="0.0"
-            android:layout_marginTop="22dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/by_game" app:layout_constraintVertical_bias="0.0"
+           />
+    </HorizontalScrollView>
+
     <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -93,8 +93,8 @@
     <string name="forget_password">
         <u>FORGOT PASSWORD</u>
     </string>
-    <string name="signup_now">NOT A MEMBER?
-        <u>SIGN UP NOW</u>
+    <string name="signup_now"><u>NOT A MEMBER?
+        SIGN UP NOW</u>
     </string>
     <string name="sports">SPORTS</string>
     <string name="search">Search</string>
